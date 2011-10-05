@@ -1,4 +1,4 @@
-<h2>{$page_title}</h2>
+<h1>{t}Obsah{/t}</h1>
 
 <ul>
 	{render partial=base_book/chapter_item from=$book->getChapters() item=chapter}

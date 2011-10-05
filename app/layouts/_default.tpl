@@ -32,11 +32,9 @@
 	</head>
 
 	<body id="body_{$controller}_{$action}">
+		<h1 id="logo"><span>{t}ATK14 Book{/t}</span></h1>
+
 		<div class="container">  
-
-		<h1>{t}ATK14 Book{/t}</h1>
-
-		<hr />
 
 		{render partial=shared/layout/flash_message}
 

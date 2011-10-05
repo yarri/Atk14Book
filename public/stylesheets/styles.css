@@ -110,3 +110,20 @@ ul.radios, ul.checkboxes{
 	padding: 0.25em;
 }
 
+pre {
+	padding: 1em;
+	margin: 1em;
+	border: 1px solid #CCCCCC;
+}
+
+h1#logo{
+	background-color: #666666;
+	color: white;
+}
+h1#logo span{
+	display: block;
+	margin: 0 auto;
+	width: 950px;
+	padding-top: 1em;
+	padding-bottom: 0.5em;
+}
