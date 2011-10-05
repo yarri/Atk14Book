@@ -1,6 +1,8 @@
 <?
 class MainController extends ApplicationController{
 	function index(){
-		$this->page_title = _("Welcome!");	
+		$this->_redirect_to(array(
+			"controller" => "atk14_book",
+		));
 	}
 }

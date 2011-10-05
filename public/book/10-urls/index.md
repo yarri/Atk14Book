@@ -1,4 +1,4 @@
 Adresy URL
 ----------
 
-Tato kapitola vám ukáe, jak se vytváøejí a roznávají adresy URL v ATK14 aplikaci.
+Tato kapitola vÃ¡m ukÃ¡Å¾e, jak se vytvÃ¡Å™ejÃ­ a roznÃ¡vajÃ­ adresy URL v ATK14 aplikaci.
