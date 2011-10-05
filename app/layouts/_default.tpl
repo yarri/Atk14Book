@@ -34,7 +34,9 @@
 	<body id="body_{$controller}_{$action}">
 		<div class="container">  
 
-		<h1>{t}ATK14 Powered Website{/t}</h1>
+		<h1>{t}ATK14 Book{/t}</h1>
+
+		<hr />
 
 		{render partial=shared/layout/flash_message}
 

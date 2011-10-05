@@ -13,7 +13,7 @@ define("SECRET_TOKEN",(file_exists(dirname(__FILE__)."/random.txt") ? files::get
 define("ATK14_DOCUMENT_ROOT",dirname(__FILE__)."/../");
 define("ATK14_BASE_HREF","/");
 
-define("ATK14_APPLICATION_NAME","Our Colourful Website");
+define("ATK14_APPLICATION_NAME","ATK14 Book");
 define("ATK14_HTTP_HOST",PRODUCTION ? "book.atk14.net" : "atk14book.localhost");
 define("ATK14_ADMIN_EMAIL","your@email");
 
