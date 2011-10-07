@@ -1,2 +1,0 @@
-Generování adres v aplikaci
-===========================
