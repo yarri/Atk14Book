@@ -310,6 +310,10 @@ class MdBookChapter {
 		return "$parent_no$this->chapter_no";
 	}
 
+	function getParentChapter() {
+		return $this->parent_chapter;
+	}
+
 	/**
 	 * Gets HTML formatted content of chapter.
 	 *

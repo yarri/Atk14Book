@@ -21,12 +21,12 @@ class BaseBookController extends ApplicationController{
 		}
 
 		$this->tpl_data["chapter"] = $chapter;
+		$this->tpl_data["parent_chapter"] = $chapter->getParentChapter();
 		$this->tpl_data["page_content"] = $chapter->getContent();
 		$this->page_title = $chapter->getTitle();
 	}
 
 	function _before_filter(){
-
 		$this->book = $this->tpl_data["book"] = new MdBook($this->book_dir);
 		$this->tpl_data["book_title"] = $this->book_title;
 	}
