@@ -9,11 +9,11 @@ Co se stane, když takovou adresu navštívíme?
 
 ATK14 vytvoří a připraví kontroler - instanci třídy *BooksController* ze souboru
 
-    ./app/controllers/books_controller.inc
+    ./app/controllers/books_controller.php
 
 Kontroleru je nastaven příslušný formulář - instance třídy *EditForm* ze souboru
 
-    ./app/forms/books/edit_form.inc
+    ./app/forms/books/edit_form.php
 
 Následně je v kontroleru spuštěna metoda *edit()* a vyrenderována šablona
 

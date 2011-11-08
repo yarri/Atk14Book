@@ -4,7 +4,7 @@ Práce se šablonou
 V kontroleru přiravíme data pro šablonu následovně.
 
     <?php
-    // soubor ./app/controllers/products_controller.inc
+    // soubor ./app/controllers/products_controller.php
     ProductsController extends ApplicationController{
       function index(){
         $this->tpl_data["total_count"] = 123014;

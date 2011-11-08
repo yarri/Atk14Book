@@ -1,4 +1,4 @@
-<?
+<?php
 /**
 * Here is the list of routes (URIs) to controllers and their actions. Routes are
 * considered in order - first matching route will be used.
@@ -32,6 +32,19 @@
 * he will be transparently redicted to the new one.
 */
 $ATK14_GLOBAL->setValue("routes",array(
+
+	"
+	cs:kniha/<id>
+	en:book/<id>" =>												array(
+																					"__path__" => "atk14_book/detail",
+																					"id" => "/.+/"
+																					),
+
+	"
+	cs:kniha
+	en:book" =>															array(
+																					"__path__" => "atk14_book/index"
+																					),
 
 	// Here are SEF URI samples.
 	// Compressed notation for 2 languages is used.
