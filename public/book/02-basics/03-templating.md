@@ -4,7 +4,7 @@ Práce se šablonou
 V kontroleru přiravíme data pro šablonu následovně.
 
     <?php
-    // soubor ./app/controllers/products_controller.php
+    // soubor app/controllers/products_controller.php
     ProductsController extends ApplicationController{
       function index(){
         $this->tpl_data["total_count"] = 123014;
@@ -17,7 +17,7 @@ V kontroleru přiravíme data pro šablonu následovně.
 
 V šabloně jsou data dostupná takto.
 
-    {* soubor ./app/views/products/index.tpl *}
+    {* soubor app/views/products/index.tpl *}
     
     <h1>Vítejte v našem katalogu</h1>
     
@@ -33,7 +33,7 @@ V šabloně jsou data dostupná takto.
 
 Obsah vyrenderované šablony index.tpl bude zobrazen v layout šabloně, která může vypadat například takto.
     
-    {* soubor ./app/layouts/_default.tpl *}
+    {* soubor app/layouts/_default.tpl *}
     
     <html>
       <head>
@@ -58,7 +58,7 @@ Za velkou pozornost stojí dvojce funkcí *{placeholder}* a *{content}*.
 
 Přadstavte si takovýto layout.
 
-    {* soubor ./app/layouts/_default.tpl *}
+    {* soubor app/layouts/_default.tpl *}
     
     <html>
       <head>
@@ -81,7 +81,7 @@ Přadstavte si takovýto layout.
 
 Teď uvažujme o šabloně detailu produktu.
 
-    {* soubor ./app/views/products/detail.tpl *}
+    {* soubor app/views/products/detail.tpl *}
 
     <h1>{$product->getTitle()}</h1>
     {$product->getDescription()}
@@ -95,12 +95,12 @@ Co bude zobrazeno? Informace o produtu budou zobrazeny v *{placeholder}* a do na
 Ještě důležitější je však helper *{render}*. Ten mimo jiné nahrazuje Smartyho způsob nahravání podšablon pomocí *{include}*. V žádné pořádné ATK14 aplikaci vlastně nenajdete ani jedno
 {include} (uvědomte si však, že to je podmínka nutná, nikoli dostačující).
 
-Všimněte si, že už v layoutu již {render} použit je: {render partial=shared/layout/flash_message}. V tomto případě bude do daného místa vložen obsah šablony ./app/views/shared/\_flash\_message.tpl.
+Všimněte si, že už v layoutu již {render} použit je: {render partial=shared/layout/flash_message}. V tomto případě bude do daného místa vložen obsah šablony app/views/shared/\_flash\_message.tpl.
 Platí, že parciální šablony začínají podtržítkem a mají příponu tpl. Ani podtržítko, ani příponu však v parametru partial neuvádíme.
 
 Helper {render} však nahrazuje i Smartyho {foreach}. To si ukážeme na zobrazení přehledu produktů.
 
-    {* soubor ./app/views/products/index.tpl *}
+    {* soubor app/views/products/index.tpl *}
 
     <h1>Přehled produktů</h1>
   
@@ -118,7 +118,7 @@ Helper {render} však nahrazuje i Smartyho {foreach}. To si ukážeme na zobraze
 
 Každý řádek tabulky pak vykreslíme pomocí nasledující parciální šablony.
 
-    {* soubor ./app/views/products/_product_item.tpl *}
+    {* soubor app/views/products/_product_item.tpl *}
     
     <tr>
       <td>{$product->getTitle()}</td>
