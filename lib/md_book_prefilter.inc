@@ -14,7 +14,7 @@ class MdBookPrefilter {
 	}
 
 	function _place_source($filename){
-		$uf = new UrlFetcher("http://www.atk14.net/cs/sources/detail/?file=".urlencode($filename)."&format=raw");
+		$uf = new UrlFetcher("http://www.atk14.net/en/sources/detail/?file=".urlencode($filename)."&format=raw");
 		$content = $uf->getContent();
 		$content = str_replace("\t","  ",$content);
 		$out = array();
