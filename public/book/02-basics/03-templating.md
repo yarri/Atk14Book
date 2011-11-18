@@ -125,5 +125,6 @@ Každý řádek tabulky pak vykreslíme pomocí nasledující parciální šablo
       <td>{$product->getPrice()}</td>
     </tr>
 
+Pokud se vám zdá, že používání parciálních šablon místo {foreach} postrádá smysl, asi o tom docela dost přemýšlíte. Vězte však, že parciální šablonky jsou fajn a podporují princip DRY.
 
 Víc se teď nemá cenu o šablonách rozepisovat, ať vás nebolí hlava.

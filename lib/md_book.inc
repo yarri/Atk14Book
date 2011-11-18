@@ -321,6 +321,11 @@ class MdBookChapter {
 	 */
 	function getContent() {
 		$raw = files::get_file_content($this->getFile());
+
+		// TODO: solve this as dependency injection
+		$prefilter = new MdBookPrefilter();
+		$raw = $prefilter->filter($raw);
+
 		return Markdown($raw);
 	}
 
