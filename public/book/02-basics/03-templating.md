@@ -5,7 +5,7 @@ V kontroleru přiravíme data pro šablonu následovně.
 
     <?php
     // soubor app/controllers/products_controller.php
-    ProductsController extends ApplicationController{
+    class ProductsController extends ApplicationController{
       function index(){
         $this->tpl_data["total_count"] = 123014;
         $this->tpl_data["opening"] = array(
@@ -32,7 +32,7 @@ V šabloně jsou data dostupná takto.
     </p>
 
 Obsah vyrenderované šablony index.tpl bude zobrazen v layout šabloně, která může vypadat například takto.
-    
+
     {* soubor app/layouts/_default.tpl *}
     
     <html>

@@ -7,4 +7,4 @@ Formulářový framework, který je součástí ATK14, zajišťuje validaci př�
 
 Když začnete psát například akci pro registraci uživatele, je dobré myslet na formulář, který návštěvník uvidí na stránce. Je výhodné začít formulářem.
 
-Insert app/forms/users/crate_new_form.php
+Include app/forms/users/crate_new_form.php

@@ -18,7 +18,7 @@ Include app/controllers/money_transfers_controller.php
 Suma sumárum zapnutí ochrany před CSRF spočívá v jednom řádku - volání metody enable\_csrf\_protection() na formuláři.
 
 Chráněný formulář obsahuje kontrolní značku, která může vypadat například takto:
- 
+
 	<input type="hidden" value="2d1cd52926b3e0cb61e13858e8dd868622e758ef" name="_token" />
 
 Značka je obtížně odhadnutelná, je různá pro každého návštěvníka a má omezenou časovou platnost (asi 10 minut). V případě, že uživatel nepošle značku žádnou nebo pošle značku již neplatnou, validace formuláře selže s chybovou zprávou *Prosím, odešlete formulář znovu.*
