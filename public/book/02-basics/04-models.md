@@ -14,7 +14,7 @@ Teď je nutné popsat několik kouzel, které jsou do tohoto celého namíchány
 Vztah modelu k tabulce je dán názvem třídy. Třída *User* se spojí s tabulkou *users*, třída *Person* se spojí s tabulkou *people*,
 třída *RedWine* se spojí s tabulkou *red_wines* a pod.
 
-Podívejme se na vytváření instanci.
+Podívejme se na vytváření instancí.
 
 	<?php
 	// nacteni existujicich zaznamu
@@ -70,8 +70,4 @@ Záznam smažeme takto
 	// metoda destroy() nic nevrací, toho muzeme vyuzit...
 	$user = $user->destroy(); // ... a v $user uz neni nic
 
-Pro úplnost přikládáme zdrojový kód bázove třídy ApplicationModel.
-
-Include app/models/application_model.php
-
-Zde není žádná velká věda. Je tu par konverzních funkcí, které v TableRecord chybí a z nějakého důvodu se nám hodí.
+Myslete i zde na to, že v průběhu vykonávání metody *destroy()* dochází ke smazání příslušného záznamu z tabulky.
