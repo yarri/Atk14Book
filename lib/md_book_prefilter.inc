@@ -5,7 +5,7 @@ class MdBookPrefilter {
 
 		$replaces = array();
 
-		if(preg_match_all('/\nInclude (app.+)/',$raw,$matches_all,PREG_SET_ORDER)){
+		if(preg_match_all('/\nInclude (.+\.(inc|php|sql))/',$raw,$matches_all,PREG_SET_ORDER)){
 			foreach($matches_all as $matches){
 				$replaces[$matches[0]] = "\n".$this->_place_source($matches[1]);
 			}
