@@ -1,8 +1,6 @@
 Modely
 ======
 
-ATK14 obsahuje jednoduchý ORM framework TableRecord.
-
 Uvažujme tabulku, do které chceme ukládat uživatele.
 
 Include db/migrations/0001_users.sql
@@ -16,12 +14,20 @@ Teď je nutné popsat několik kouzel, které jsou do tohoto celého namíchány
 Vztah modelu k tabulce je dán názvem třídy. Třída *User* se spojí s tabulkou *users*, třída *Person* se spojí s tabulkou *people*,
 třída *RedWine* se spojí s tabulkou *red_wines* a pod.
 
-Instanci vytvoříme následovně.
+Podívejme se na vytváření instanci.
 
 	<?php
-	// nacteni existujicih zaznamu
+	// nacteni existujicich zaznamu
 	$user = User::GetInstanceById(1); // bude null, pokud zaznam s id 1 neexistuje
 	$users = User::GetInstanceById(array(1,33)); // vrati pole dvou objektu tridy User
+
+	// vyhledavani
+	$user = User::FindFirst(array("conditions" => array("login" => "john_doe")));
+	$johns = User::FindAll(array(
+		"conditions" => array("UPPER(name) LIKE :q"),
+		"bind_ar" => array(":q" => "%JOHN%"),
+		"order_by" => "UPPER(name)"
+	));
 
 	// vytvoreni noveho zaznamu
 	$user = User::CreateNewRecord(array(
@@ -61,11 +67,11 @@ Záznam smažeme takto
 	<?php
 	$user->destroy();
 
-	// Metoda destroy() nic nevrací. Toho muzeme vyuzit.
-	$user = $user->destroy(); // a v $user uz neni nic...
+	// metoda destroy() nic nevrací, toho muzeme vyuzit...
+	$user = $user->destroy(); // ... a v $user uz neni nic
 
 Pro úplnost přikládáme zdrojový kód bázove třídy ApplicationModel.
 
 Include app/models/application_model.php
 
-Zde není žádná velká věda. Jsou tu konverzní funkce, které v TableRecord chybí a z nějakého důvodu se nám hodí.
+Zde není žádná velká věda. Je tu par konverzních funkcí, které v TableRecord chybí a z nějakého důvodu se nám hodí.
