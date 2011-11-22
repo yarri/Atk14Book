@@ -5,7 +5,7 @@ class MdBookPrefilter {
 
 		$replaces = array();
 
-		if(preg_match_all('/\nInclude (.+\.(inc|php|sql))/',$raw,$matches_all,PREG_SET_ORDER)){
+		if(preg_match_all('/\nInclude (.+\.(inc|php|sql|tpl))/',$raw,$matches_all,PREG_SET_ORDER)){
 			foreach($matches_all as $matches){
 				$replaces[$matches[0]] = "\n".$this->_place_source($matches[1]);
 			}
@@ -15,12 +15,13 @@ class MdBookPrefilter {
 
 		$replaces = array();
 
-		if(preg_match_all('/\n(\t|    )((<\?|{\*|<).+?)(\n[^\s])/s',$raw,$matches_all,PREG_SET_ORDER)){
+		if(preg_match_all('/\n(\t|    )((<\?|--|{\*|<).+?)(\n[^\s])/s',$raw,$matches_all,PREG_SET_ORDER)){
 			foreach($matches_all as $matches){
 				$tr = array(
 					'<' => 'xml',
 					'<?' => 'php',
-					'{*' => 'smarty'
+					'{*' => 'smarty',
+					'--' => 'sql'
 				);
 				$lang = $tr[$matches[3]];
 				$replaces[$matches[0]] = "\n".$this->_highlight_intext_source($matches[2],$lang).$matches[4];
@@ -48,12 +49,25 @@ class MdBookPrefilter {
 	}
 
 	function _place_source($filename){
+		$suffix = preg_replace('/.*\.([^.]+)$/','\1',$filename);
 		$uf = new UrlFetcher($url = "http://www.atk14.net/en/sources/detail/?file=".urlencode($filename)."&format=raw");
 		if(!$uf->found()){
 			return '<p class="error">'."Vzdálený soubor $filename není možné načíst!".'</p>';
 		}
 		$content = $uf->getContent();
 		$content = str_replace("\t","  ",$content);
+		switch($suffix){
+			case "tpl":
+				$content = "{* file: $filename *}\n$content";
+				break;
+			case "php":
+			case "inc":
+				$content = preg_replace('/^<\?(php|)\n/',"<?\\1\n// file: $filename\n",$content);
+				break;
+			case "sql":
+				$content = "-- file: $filename\n$content";
+				break;
+		}
 
 		$out = array();
 
@@ -66,6 +80,7 @@ class MdBookPrefilter {
 
 	function _highlight_syntax($source,$lang){
 		$geshi = new GeSHi($source, $lang);
+		$geshi->enable_keyword_links(false);
 		return $geshi->parse_code();
 	}
 

@@ -6,7 +6,7 @@ Teď nevíme, jak tomu budeme říkat. Nejspíš *MVVC*, nebo možná víc sexy 
 
 Formulářový framework, který je součástí ATK14, zajišťuje validaci příchozích parametrů a pomáhá se zobrazením jednotlivých formulářových polí na stránce.
 
-Registrace uživatele může používat takovýto formulář.
+Pro registrace uživatele může být klidně použit takovýto formulář.
 
 Include app/forms/users/create_new_form.php
 
@@ -19,6 +19,9 @@ Include app/controllers/users_controller.php
 
 Není to velká věda, že?
 
-Formulář z našeho příkladu najdete na adrese <http://www.atk14.net/en/users/create_new/>
+O zobrazení formuláře se postará helper *{form}* a dvě sdílené šáblonky. Podívejte se.
 
+Include app/views/users/create_new.tpl
+
+Vyzkoušejte si tuto registraci uživatele v provozu na adrese <http://www.atk14.net/en/users/create_new/>
 
