@@ -15,24 +15,25 @@ class BaseBookController extends ApplicationController{
 		if($this->params->getString("format")=="sitemap"){
 			$this->render_template = false;
 			$this->response->setContentType("text/xml");
-			$this->response->writeln("<urlset>");
+			$this->response->writeln('<?xml version="1.0" encoding="UTF-8"?>');
+			$this->response->writeln('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">');
 			foreach($this->book->getChapters() as $chapter){
 				$this->response->writeln($this->_get_sitemap_chapter_item($chapter));
 				foreach($chapter->getSubChapters() as $subchapter){
 					$this->response->writeln($this->_get_sitemap_chapter_item($subchapter));
 				}
 			}
-			$this->response->write("</urlset>");
+			$this->response->write('</urlset>');
 		}
 	}
 
 	function _get_sitemap_chapter_item($chapter){
-		return "<loc>".$this->_link_to(array(
+		return "<url><loc>".$this->_link_to(array(
 			"action" => "detail",
 			"id" => $chapter,
 		),array(
 			"with_hostname" => true,
-		))."</loc>";
+		))."</loc></url>";
 	}
 
 	function detail(){
