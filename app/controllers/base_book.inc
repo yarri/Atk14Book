@@ -11,6 +11,28 @@ class BaseBookController extends ApplicationController{
 		$this->template_name = "base_book/index";
 
 		$this->page_title = $this->book_title;
+
+		if($this->params->getString("format")=="sitemap"){
+			$this->render_template = false;
+			$this->response->setContentType("text/xml");
+			$this->response->writeln("<urlset>");
+			foreach($this->book->getChapters() as $chapter){
+				$this->response->writeln($this->_get_sitemap_chapter_item($chapter));
+				foreach($chapter->getSubChapters() as $subchapter){
+					$this->response->writeln($this->_get_sitemap_chapter_item($subchapter));
+				}
+			}
+			$this->response->write("</urlset>");
+		}
+	}
+
+	function _get_sitemap_chapter_item($chapter){
+		return "<loc>".$this->_link_to(array(
+			"action" => "detail",
+			"id" => $chapter,
+		),array(
+			"with_hostname" => true,
+		))."</loc>";
 	}
 
 	function detail(){

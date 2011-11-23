@@ -33,6 +33,13 @@
 */
 $ATK14_GLOBAL->setValue("routes",array(
 
+	"sitemap.xml" =>												array(
+																					"__path__" => "atk14_book/index",
+																					"lang" => "cs",
+																					"format" => "sitemap",
+																					"__omit_trailing_slash__" => true,
+																					),
+
 	"
 	cs:kniha/<id>
 	en:book/<id>" =>												array(
