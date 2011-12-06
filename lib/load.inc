@@ -1,4 +1,4 @@
-<?
+<?php
 /**
 * This file helps you to load all your libraries and 3rd party software.
 *
@@ -6,4 +6,3 @@
 */
 
 require_once(dirname(__FILE__)."/markdown.php");
-require_once(dirname(__FILE__)."/geshi/geshi.php");
