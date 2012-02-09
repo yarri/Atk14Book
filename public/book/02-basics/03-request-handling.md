@@ -23,6 +23,8 @@ Obsah šablony je vykreslen v layoutu
 
     app/layouts/_default.tpl
 
-Výstup je odeslán uživateli.
+Výstup je odeslán spokojenému uživateli.
 
 Pro začátek není nutné vědět více.
+
+Na ATK14 je fajn, že stačí dodržet názvovou konvenci a toto všechno začne fungovat automaticky. Ctí se zde zásada *konvence před konfigurací*.

@@ -8,21 +8,25 @@
 
 {if $siblings}
 	<div id="siblings">
-	<h3>{t}Související kapitoly{/t}</h3>
+	<h3>{t}Sousedící kapitoly{/t}</h3>
 	<ul>
 		{render partial=base_book/sibling_item from=$siblings item=sibling}
 	</ul>
 	</div>
 {/if}
 
-{$page_content}
+<div id="content">
+	{$page_content}
+</div>
 
 {if $subchapters}
-<h3>{t title=$chapter->getTitle()}Obsah kapitoly %1{/t}</h3>
+<h4>{t}Seznam podkapitol{/t}</h4>
 <ul>
 	{render partial=base_book/subchapter_item from=$subchapters item=subchapter}
 </ul>
 {/if $subchapters}
+
+<hr />
 
 <div>
 	{if $chapter->getPrevChapter()}

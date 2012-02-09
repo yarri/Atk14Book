@@ -11,6 +11,7 @@ Takto vypadá ATK14 aplikace na disku.
             layouts/            místo pro layoutové šablony
             models/             místo pro modely
             views/              místo pro šablony
+            widgets/            místo pro vzhledové třídy formulářových políček
     atk14/                      zdrojové kódy frameworku
     config/                     místo pro konfigurační soubory
     db/migrations/              místo pro databázové migrace

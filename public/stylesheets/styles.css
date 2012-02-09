@@ -131,3 +131,10 @@ h1#logo span{
 li.active {
 	font-weight: bold;
 }
+
+#siblings{
+	background-color: #cccccc;
+	width: 15em;
+	padding: 1em;
+	margin-bottom: 1em;
+}

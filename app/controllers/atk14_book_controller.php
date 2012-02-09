@@ -1,5 +1,5 @@
 <?php
-require_once(dirname(__FILE__)."/base_book.inc");
+require_once(dirname(__FILE__)."/base_book.php");
 
 class Atk14BookController extends BaseBookController{
 
