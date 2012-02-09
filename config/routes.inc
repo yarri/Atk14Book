@@ -41,15 +41,15 @@ $ATK14_GLOBAL->setValue("routes",array(
 																					),
 
 	"
-	cs:kniha/<id>
-	en:book/<id>" =>												array(
+	cs:czech/<id>
+	en:english/<id>" =>											array(
 																					"__path__" => "atk14_book/detail",
 																					"id" => "/.+/"
 																					),
 
 	"
-	cs:kniha
-	en:book" =>															array(
+	cs:czech
+	en:english" =>													array(
 																					"__path__" => "atk14_book/index"
 																					),
 

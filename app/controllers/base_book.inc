@@ -44,8 +44,10 @@ class BaseBookController extends ApplicationController{
 		}
 
 		$this->tpl_data["chapter"] = $chapter;
-		$this->tpl_data["parent_chapter"] = $chapter->getParentChapter();
+		$this->tpl_data["parent_chapter"] = $parent = $chapter->getParentChapter();
 		$this->tpl_data["page_content"] = $chapter->getContent();
+		$this->tpl_data["siblings"] = $parent ? $parent->getSubChapters() : $this->book->getChapters();
+		$this->tpl_data["subchapters"] = $chapter->getSubChapters();
 		$this->page_title = $chapter->getTitle();
 	}
 
