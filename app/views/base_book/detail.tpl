@@ -6,25 +6,27 @@
 	&rarr; {t chapter=$chapter->getNo()}kapitola %1{/t}
 </p>
 
+<div id="content" class="span-20">
+	{$page_content}
+
+	{if $subchapters}
+	<h4>{t}Seznam podkapitol{/t}</h4>
+	<ul>
+		{render partial=base_book/subchapter_item from=$subchapters item=subchapter}
+	</ul>
+	{/if $subchapters}
+</div>
+
 {if $siblings}
+	<div class="span-4 last">
 	<div id="siblings">
-	<h3>{t}Sousedící kapitoly{/t}</h3>
+	<h4>{t}Sousedící kapitoly{/t}</h4>
 	<ul>
 		{render partial=base_book/sibling_item from=$siblings item=sibling}
 	</ul>
 	</div>
+	</div>
 {/if}
-
-<div id="content">
-	{$page_content}
-</div>
-
-{if $subchapters}
-<h4>{t}Seznam podkapitol{/t}</h4>
-<ul>
-	{render partial=base_book/subchapter_item from=$subchapters item=subchapter}
-</ul>
-{/if $subchapters}
 
 <hr />
 
