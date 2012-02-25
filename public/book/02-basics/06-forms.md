@@ -1,12 +1,9 @@
 Formuláře
 =========
 
-Asi jste zvyklí na návrhový vzor MVC. Je hezký, že? Nám se ale zdálo, že pro webové aplikace by jej bylo dobré doplnit o validaci parametrů.
-Teď nevíme, jak tomu budeme říkat. Nejspíš *MVVC*, nebo možná víc sexy *M2VC* (Model View Validation Controller).
-
 Formulářový framework, který je součástí ATK14, zajišťuje validaci příchozích parametrů a pomáhá se zobrazením jednotlivých formulářových polí na stránce.
 
-Pro registrace uživatele může být klidně použit takovýto formulář.
+Pro registrace uživatele může být klidně použit následující formulář.
 
 Include app/forms/users/create_new_form.php
 

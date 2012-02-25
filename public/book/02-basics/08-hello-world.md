@@ -14,7 +14,7 @@ Do kontroleru *main* přidáme akci *hello_world*, ...
 		function hello_world(){ } // akce je prazdna
 	}
 
-na tom správném místě vytvoříme šablonu, ...
+na tom správném místě vytvoříme šablonu...
 
 	{* file: app/views/main/hello_world.tpl *}
 
@@ -30,9 +30,10 @@ Varianta bez šablonky
 	class MainController extends ApplicationController{
 		function hello_world(){
 			$this->render_template = false;
-			$this->response->setContentType("text/plain");
 			$this->response->write("Hello World!");
 		}
 	}
 
 Pozdrav najdete na stejné adrese.
+
+Na závěr bych však všem doporučil framework ATK14 raději vůbec nepoužívat pro aplikace typu *Hello World* :)
