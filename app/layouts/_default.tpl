@@ -42,6 +42,19 @@
 
 		</div>
 
+		<div id="footer">
+			<div>
+				<a href="http://www.atk14.net/">{t}ATK14 je PHP framework pro nebojácné kluky{/t}</a><br />
+				{t}ATK14 Book je kniha o tomto frameworku a můžete do ní nahlédnout, i když patříte mezi bojácné{/t}<br /><br />
+				Copyleft
+				<!--[if lte IE 8]><span style="filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2); display: inline-block;"><![endif]-->
+				<span style="-webkit-transform: rotate(180deg); -moz-transform: rotate(180deg); -o-transform: rotate(180deg); -khtml-transform: rotate(180deg); -ms-transform: rotate(180deg); transform: rotate(180deg); display: inline-block;">
+        &copy;
+				</span>
+				<!--[if lte IE 8]></span><![endif]--> 2011 - {$current_year} {t}Jaromír Tomek & kolegové{/t}
+			</div>
+		</div>
+
 		{* Google analytics code *}
 		{javascript_tag}
 			var _gaq = _gaq || [];
@@ -54,7 +67,6 @@
 				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 			\})();
 		{/javascript_tag}
-
 	</body>
 
 </html>

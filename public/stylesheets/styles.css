@@ -128,6 +128,23 @@ h1#logo span{
 	padding-bottom: 0.5em;
 }
 
+#footer{
+	background-color: #666666;
+	color: white;
+	margin-top: 1em;
+}
+
+#footer>div{
+	margin: 0 auto;
+	width: 950px;
+	padding-top: 1em;
+	padding-bottom: 5em;
+}
+
+#footer a {
+	color: white;
+}
+
 li.active {
 	font-weight: bold;
 }

@@ -25,6 +25,7 @@ class ApplicationController extends Atk14Controller{
 	function _application_before_filter(){
 		$this->response->setContentType("text/html");
 		$this->response->setContentCharset("UTF-8");
+		$this->tpl_data["current_year"] = date("Y");
 	}
 
 	function _begin_database_transaction(){

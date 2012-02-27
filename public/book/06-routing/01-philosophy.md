@@ -1,7 +1,7 @@
 Filosofie přístupu k podobě URL
 ===============================
 
-ATK14 umožňuje definovat vzhled adres URL vedoucích na konkrétní akce tak, aby byly sympatické, líbívé a splňovaly bláznivé požadavky různých SEO a SEF teorií.
+ATK14 umožňuje definovat vzhled adres URL vedoucích na konkrétní akce tak, aby byly sympatické, líbivé a splňovaly bláznivé požadavky různých SEO a SEF teorií.
 
 Nicméně v počátcích vývoje aplikace se programátor o tvar URL nestará a pokorně se spokojí s výchozím vzhledem. Raději se věnuje smysluplnému uspořádání kontrolerů a jejich akcí a
 v šablonách veškeré odkazy generuje zásadně pomocí helperů.
@@ -40,7 +40,7 @@ Aplikace si několik dnů spokojeně pobrukuje v beta režimu a pak se objeví p
 	</ul>
 
 
-Taková změna pochopitelně v ATK14 možná je - jinak by zde nebyla vůbec zmiňována :) A velmi radostná zpráva je, že se do hotového kódu už nezasahuje.
+Taková změna pochopitelně v ATK14 možná je - jinak by zde nebyla vůbec zmiňována :) A velmi radostná zpráva je, že se do hotového kódu kontrolerů, šablon a modelů už nezasahuje.
 
 V našem příkladě si vystačíme s jedním statickým routerem.
 
@@ -48,10 +48,10 @@ V našem příkladě si vystačíme s jedním statickým routerem.
 	// file: config/routers/seo_router.php
 	class SeoRouter extends Atk14Router{
 		function setUp(){
-			$this->addRouter("/company/about-us/","main/about_us");
-			$this->addRouter("/company/contact/","main/contact");
-			$this->addRouter("/sitemap/","sitemap/index");
-			$this->addRouter("/sitemap.xml","sitemap/index",array("format" => "xml"));
+			$this->addRoute("/company/about-us/","main/about_us");
+			$this->addRoute("/company/contact/","main/contact");
+			$this->addRoute("/sitemap.xml","sitemap/index",array("format" => "xml"));
+			$this->addRoute("/sitemap/","sitemap/index");
 		}
 	}
 
