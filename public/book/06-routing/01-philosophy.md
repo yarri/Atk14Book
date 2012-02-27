@@ -59,4 +59,4 @@ Více je statickým routerům věnováno v následující kapitole.
 
 Když už si někdo takto pěkně upraví některá URL, ATK14 zajistí automatické přesměrování na novou adresu ve chvíli, kdy někdo navštíví URL v původním tvaru (např. z cache vyhledávače).
 Toto automatické přesměrování si můžete vyzkoušet například návštěvou této stránky <http://www.atk14.net/en/books/detail/?id=34&format=xml>. Pěkné, že? Pro úplnost prozradíme, že se o tuto adresu stará
-dynamický router, který do adresy doplňuje název knihy.
+dynamický router, který do ní doplňuje název knihy.

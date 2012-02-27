@@ -5,7 +5,7 @@ Dynamický router je dědic třídy _Atk14Router_, který obsahuje metody _recog
 Soubor ze zdrojovým kódem routeru musí být umístěn v adresáři _config/routers/_ a do aplikace musí být nahrán v souboru _config/routers/load.php_.
 
 Dynamický router je mnohem rafinovanější než router statický. Zatímco statický router v URL pouze přehazuje písmenka, v moci dynamického routeru je např. i
-dopnit titulek článku, po čemž často baží SEO kouzelníci.
+dopnit do URL titulek článku, po čemž baží SEO kouzelníci.
 
 Vězte, že pokud jsme se u statického routeru spokojili s tímto, ...
 
