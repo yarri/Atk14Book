@@ -14,6 +14,7 @@ Takto vypadá ATK14 aplikace na disku.
             widgets/            místo pro vzhledové třídy formulářových políček
     atk14/                      zdrojové kódy frameworku
     config/                     místo pro konfigurační soubory
+            routers/            zde jsou routery pro sexy URL
     db/migrations/              místo pro databázové migrace
     lib/                        místo pro externí knihovny
     locale/                     místo pro lokalizační slovníky gettextu
@@ -22,3 +23,6 @@ Takto vypadá ATK14 aplikace na disku.
     scripts/                    shellové skripty pro ovládání aplikace
     test/                       místo pro testovací třídy
     tmp/                        místo pro dočasné soubory
+
+Na první pohled se těch adresářů zdá hodně. Nejedná se o klam - adresářů je skutečně hodně :)
+Jakmile však začnete s ATK14 vyvíjet, velmi rychle se začnete orientovat. Nakonec zjistíte, že nejvíce času trávíte jen ve čtyřech adresářích.
