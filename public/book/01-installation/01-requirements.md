@@ -1,5 +1,5 @@
-Požadavky
-=========
+Requirements
+============
 
 ### Apache webserver
 
@@ -9,12 +9,12 @@ You need one to be installed :)
 
 Mod Rewrite has to be enabled.
 
-	$ /etc/apache2/mods-enabled
+	$ cd /etc/apache2/mods-enabled/
 	$ sudo ln -s ../mods-available/rewrite.load ./
 
 ### Git
 
-You need Git to checkout ATK14 source codes from http://github.com
+You need Git to checkout ATK14 source codes from <https://github.com/yarri/Atk14>
 
 	$ sudo apt-get install git
 
@@ -28,7 +28,7 @@ You need Postgresql server to be installed on you system. Install also the postg
 
 	$ sudo apt-get install postgresql php5-pgsql
 
-Postgresql access control file pg_hba.conf should look like this. The file may be found at /etc/postgresql/8.4/main/pg_hba.conf
+Postgresql access control file pg\_hba.conf should look like this. The file may be found at /etc/postgresql/8.4/main/pg\_hba.conf
 
 	# TYPE  DATABASE    USER       CIDR-ADDRESS  METHOD
 	local   all         postgres                 ident
@@ -42,11 +42,13 @@ These lines say that administer (postgres) can connect to any database but only 
 
 Now restart the server.
 
-	$ /etc/init.d/postgresql-8.4 restart
+	$ sudo service postgresql restart
+	or
+	$ sudo /etc/init.d/postgresql restart
 
 ### Gettext
 
-Please, install it.
+If you are planning to develop a multilanguage application, you need Gettext to be installed.
 
 	$ sudo apt-get install gettext php-gettext
 

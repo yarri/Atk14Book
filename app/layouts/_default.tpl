@@ -45,7 +45,7 @@
 		<div id="footer">
 			<div>
 				<a href="http://www.atk14.net/">{t}ATK14 je PHP framework pro nebojácné chlapce a děvčata{/t}</a><br />
-				{t}ATK14 Book je kniha o tomto frameworku a můžete do ní nahlédnout, i když zatím mezi ně nepatříte{/t}<br /><br />
+				{t}ATK14 Book je kniha o tomto frameworku a můžete do ní nahlédnout, i když mezi ně zatím nepatříte{/t}<br /><br />
 				Copyleft
 				<!--[if lte IE 8]><span style="filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2); display: inline-block;"><![endif]-->
 				<span style="-webkit-transform: rotate(180deg); -moz-transform: rotate(180deg); -o-transform: rotate(180deg); -khtml-transform: rotate(180deg); -ms-transform: rotate(180deg); transform: rotate(180deg); display: inline-block;">

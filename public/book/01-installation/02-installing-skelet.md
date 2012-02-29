@@ -1,5 +1,5 @@
-Instalace kostry
-================
+Installing the skelet
+=====================
 
 Now you are ready to install ATK14 skelet for your new web application. I presume that Apache has the Document Root at /var/www/. So /var/www/myapp/ should be the fine folder for your app.
 
