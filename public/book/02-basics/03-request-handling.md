@@ -21,7 +21,7 @@ Následně je v kontroleru spuštěna metoda *edit()* a vyrenderována šablona
 
 Obsah šablony je vykreslen v layoutu
 
-    app/layouts/_default.tpl
+    app/layouts/default.tpl
 
 Výstup je odeslán spokojenému uživateli.
 

@@ -33,7 +33,7 @@ V šabloně jsou data dostupná takto.
 
 Obsah vyrenderované šablony index.tpl bude zobrazen v layout šabloně, která může vypadat například takto.
 
-    {* soubor app/layouts/_default.tpl *}
+    {* soubor app/layouts/default.tpl *}
     
     <html>
       <head>
@@ -58,7 +58,7 @@ Za velkou pozornost stojí dvojce funkcí *{placeholder}* a *{content}*.
 
 Přadstavte si takovýto layout.
 
-    {* soubor app/layouts/_default.tpl *}
+    {* soubor app/layouts/default.tpl *}
     
     <html>
       <head>
