@@ -28,13 +28,13 @@ Put the freshly installed skelet on Git
 	$ echo 'tmp/*' >> .gitignore
 	$ echo '!log/README' >> .gitignore
 	$ echo 'log/*' >> .gitignore
-	$ git -A
+	$ git add -A
 	$ git commit -m 'initial commit'
 
 Setting up a remote repository
 -----------------------------
 
 	$ git clone --bare $HOME/projects/myapp /tmp/myapp.git
-	$ tar -zcf /tmp/myapp.git.gz /tmp/myapp.git
+	$ tar -zcf /tmp/myapp.git.tgz /tmp/myapp.git
 
 ... to be continued
