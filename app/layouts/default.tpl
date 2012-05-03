@@ -34,7 +34,12 @@
 	<body id="body_{$controller}_{$action}">
 		<h1 id="logo"><span>{t}ATK14 Book{/t}</span></h1>
 
-		<div class="container">  
+		<div class="container">
+
+		{form form=$search_form}
+			{$search_form|form_field:q}
+			<button type="submit">{t}Hledat{/t}</button>
+		{/form}
 
 		{render partial=shared/layout/flash_message}
 

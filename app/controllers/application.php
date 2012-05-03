@@ -26,6 +26,8 @@ class ApplicationController extends Atk14Controller{
 		$this->response->setContentType("text/html");
 		$this->response->setContentCharset("UTF-8");
 		$this->tpl_data["current_year"] = date("Y");
+
+		$this->tpl_data["search_form"] = Atk14Form::GetInstanceByFilename("searches/search_form.php",$this);
 	}
 
 	function _begin_database_transaction(){

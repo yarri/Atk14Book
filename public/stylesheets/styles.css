@@ -148,3 +148,12 @@ h1#logo span{
 li.active {
 	font-weight: bold;
 }
+
+#search_form {
+	float: right;
+	margin-top: -6em;
+}
+
+#id_q {
+	width: 15em;
+}

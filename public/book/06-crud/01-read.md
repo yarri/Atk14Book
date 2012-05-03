@@ -18,6 +18,30 @@ Seznam
 
 Seznam umístíme do akce _index_.
 
+Nejmenší možná varianta seznamu by mohla vypadat takto. Nenajdete v ní vyhledávání ani třídění podle sloupců.
+
+	<?php
+	// file: app/controllers/books_controller.php
+	class BooksController extends ApplicationController{
+
+		/**
+		 * Provides the list of books.
+		 */
+		function index(){
+			$this->page_title = "Listing books";
+
+			$this->tpl_data["finder"] = Book::Finder(array(
+				"order" => "UPPER(title)",
+				"limit" => 10,
+				"offset" => $this->params->getInt("offset"),
+			));
+		}
+
+		// ... other actions...
+	}
+
+Běžně je však vyhledávání i třídění podle sloupcu potřeba.
+
 	<?php
 	// file: app/controllers/books_controller.php
 	class BooksController extends ApplicationController{
