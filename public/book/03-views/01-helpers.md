@@ -1,47 +1,48 @@
 Helpery
 =======
 
-## Smarty Helpery
-
-Šablonovací systém Smarty, který ATK14 používá, obsahuje sám o sobě množství helperů.
-
-### Modifikátory
-
- * [capitalize](http://www.smarty.net/docsv2/en/language.modifiers.tpl#language.modifier.capitalize)
- * [cat](http://www.smarty.net/docsv2/en/language.modifier.cat.tpl)
- * [count_characters](http://www.smarty.net/docsv2/en/language.modifier.count.characters.tpl)
- * [count_paragraphs](http://www.smarty.net/docsv2/en/language.modifier.count,paragraphs.tpl)
- * [count_sentences](http://www.smarty.net/docsv2/en/language.modifier.count.sentences.tpl)
- * [count_words](http://www.smarty.net/docsv2/en/language.modifier.count.words.tpl)
- * [date_format](http://www.smarty.net/docsv2/en/language.modifier.date.format.tpl)
- * [default](http://www.smarty.net/docsv2/en/language.modifier.default.tpl)
- * [escape](http://www.smarty.net/docsv2/en/language.modifier.escape.tpl)
- * [indent](http://www.smarty.net/docsv2/en/language.modifier.indent.tpl)
- * [lower](http://www.smarty.net/docsv2/en/language.modifier.lower.tpl)
- * [nl2br](http://www.smarty.net/docsv2/en/language.modifier.nl2br.tpl)
- * [regex_replace](http://www.smarty.net/docsv2/en/language.modifier.regex.replace.tpl)
- * [replace](http://www.smarty.net/docsv2/en/language.modifier.replace.tpl)
- * [spacify](http://www.smarty.net/docsv2/en/language.modifier.spacify.tpl)
- * [string_format](http://www.smarty.net/docsv2/en/language.modifier.string.format.tpl)
- * [strip](http://www.smarty.net/docsv2/en/language.modifier.strip.tpl)
- * [strip_tags](http://www.smarty.net/docsv2/en/language.modifier.strip.tags.tpl)
- * [truncate](http://www.smarty.net/docsv2/en/language.modifier.truncate.tpl)
- * [upper](http://www.smarty.net/docsv2/en/language.modifier.upper.tpl)
- * [wordwrap](http://www.smarty.net/docsv2/en/language.modifier.wordwrap.tpl)
-
-Zdrojem tohoto seznamu je <http://www.smarty.net/docsv2/en/language.modifiers.tpl>
-
-### Věstavěné funkce
-
- * [{capture}](http://www.smarty.net/docsv2/en/language.builtin.functions.tpl#language.function.capture)
- * <del>[{config_load}](http://www.smarty.net/docsv2/en/language.function.config.load.tpl)</del>
- * [{foreach},{foreachelse}](http://www.smarty.net/docsv2/en/language.function.foreach.tpl)
- * [{if},{elseif},{else}](http://www.smarty.net/docsv2/en/language.function.if.tpl)
- * <del>[{include}](http://www.smarty.net/docsv2/en/language.function.include.tpl)</del>
- * <del>[{include_php}](http://www.smarty.net/docsv2/en/language.function.include.php.tpl)</del>
- * <del>[{insert}](http://www.smarty.net/docsv2/en/language.function.insert.tpl)</del>
- * [{ldelim},{rdelim}](http://www.smarty.net/docsv2/en/language.function.ldelim.tpl)
- * [{literal}](http://www.smarty.net/docsv2/en/language.function.literal.tpl)
- * [{php}](http://www.smarty.net/docsv2/en/language.function.php.tpl)
- * [{section},{sectionelse}](http://www.smarty.net/docsv2/en/language.function.section.tpl)
- * [{strip} ](http://www.smarty.net/docsv2/en/language.function.strip.tpl)
+block.a_destroy.php
+block.a.php
+block.a_remote.php
+block.a_remote_with_onclick.php
+block.content.php
+block.error_log.php
+block.form.php
+block.form_remote.php
+block.h.php
+block.insert_html.php
+block.javascript_tag.php
+block.jstring.php
+block.no_spam.php
+block.replace_html.php
+block.sortable.php
+block.t.php
+block.trim.php
+block.unless.php
+function.dump.php
+function.form_remote_tag.php
+function.form_tag.php
+function.javascript_script_tag.php
+function.link_to.php
+function.paginator.php
+function.placeholder.php
+function.render_component.php
+function.render.php
+function.stylesheet_link_tag.php
+function.to_json.php
+function.to_sentence.php
+modifier.count.php
+modifier.dump_constant.php
+modifier.field_id.php
+modifier.field.php
+modifier.field_value.php
+modifier.format_date.php
+modifier.format_datetime.php
+modifier.format_datetime_with_seconds.php
+modifier.form_field.php
+modifier.form_label.php
+modifier.h.php
+modifier.label.php
+modifier.no_spam.php
+modifier.to_json.php
+modifier.to_sentence.php
