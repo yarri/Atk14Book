@@ -12,9 +12,9 @@
 	{if $subchapters}
 	<h4>{t}Seznam podkapitol{/t}</h4>
 	<ul>
-		{render partial=base_book/subchapter_item from=$subchapters item=subchapter}
+		{render partial="base_book/subchapter_item" from=$subchapters item=subchapter}
 	</ul>
-	{/if $subchapters}
+	{/if}
 </div>
 
 {if $siblings}
@@ -22,7 +22,7 @@
 	<div id="siblings">
 	<h4>{t}Sousedící kapitoly{/t}</h4>
 	<ul>
-		{render partial=base_book/sibling_item from=$siblings item=sibling}
+		{render partial="base_book/sibling_item" from=$siblings item=sibling}
 	</ul>
 	</div>
 	</div>

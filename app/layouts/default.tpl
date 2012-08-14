@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 		<meta http-equiv="content-language" content="{$lang}" />
 
-		{render partial=shared/layout/meta_headers}
+		{render partial="shared/layout/meta_headers"}
 
 		<title>{$page_title|h} | {"ATK14_APPLICATION_NAME"|dump_constant}</title>
 		<meta name="description" content="{$page_description|h}" />
@@ -41,7 +41,7 @@
 			<button type="submit">{t}Hledat{/t}</button>
 		{/form}
 
-		{render partial=shared/layout/flash_message}
+		{render partial="shared/layout/flash_message"}
 
 		{placeholder}
 
