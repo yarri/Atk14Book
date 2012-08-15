@@ -3,9 +3,9 @@ Migrace
 
 Migrace pomáhají udržet shodné databázové schéma ve všech nainstalovaných instancích aplikace.
 
-Migrace je série seřazených patchů do databáze, pomocí kterých je možné přidávat tabulky, měnit stávající tabulky, vytvářet indexy, plnit tabulky datama...
+Migrace je série seřazených patchů do databáze, pomocí kterých je možné přidávat tabulky, měnit stávající tabulky, vytvářet indexy, plnit číselníky...
 
-Migrační soubory umísťujte do adresáře _db/migrations/_.
+Migrační soubory umísťujeme do adresáře _db/migrations/_.
 
 Every migration file must start with a numeric prefix which helps to order them. Good choice could be sequence 0001, 0002, 0003 or 201101121550, 201101121700 (i.e. current date in format YmdHi) or any other reasonable alphabetically increasing sequence.
 
@@ -28,7 +28,7 @@ If a migration file is a SQL script (0001_create_table_sections.sql), it's conte
 	 title VARCHAR(255)
 	);
 
-If a migration file is a PHP script (0003_filling_up_sections.inc), it's content should be like this:
+If a migration file is a PHP script (0003_filling_up_sections.php), it's content should be like this:
 
 	<?php
 	// file: db/migrations/0003_filling_up_sections.php
@@ -50,18 +50,18 @@ If a migration file is a PHP script (0003_filling_up_sections.inc), it's content
 
 Now run
 
-	$ php scripts/migration.php
+	$ ./scripts/migration
 
 ... and all pending migrations will be executed in the given order.
 
 In the production environment you have to run
 
-	$ ATK14_ENV=production php scripts/migration.php
+	$ ATK14_ENV=production ./scripts/migration
 
 or
 
 	$ export ATK14_ENV=production
-	$ php scripts/migration.php
+	$ ./scripts/migration
 
 Vlídné doporučení
 -----------------
