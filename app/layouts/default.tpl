@@ -7,7 +7,13 @@
 
 		{render partial=shared/layout/meta_headers}
 
-		<title>{$page_title|h} | {"ATK14_APPLICATION_NAME"|dump_constant}</title>
+		<title>
+			{if $controller=="atk14_book" && $action=="index"}
+				{"ATK14_APPLICATION_NAME"|dump_constant}
+			{else}
+				{$page_title|h} | {"ATK14_APPLICATION_NAME"|dump_constant}
+			{/if}
+		</title>
 		<meta name="description" content="{$page_description|h}" />
 
 		{stylesheet_link_tag file="blueprint/screen.css" media="screen, projection"}
@@ -56,7 +62,7 @@
 				<span style="-webkit-transform: rotate(180deg); -moz-transform: rotate(180deg); -o-transform: rotate(180deg); -khtml-transform: rotate(180deg); -ms-transform: rotate(180deg); transform: rotate(180deg); display: inline-block;">
         &copy;
 				</span>
-				<!--[if lte IE 8]></span><![endif]--> 2011 - {$current_year} {t}Jaromír Tomek & kolegové{/t}
+				<!--[if lte IE 8]></span><![endif]--> 2011 - {$current_year} {t}Mr. Tomek & kolegové{/t}
 			</div>
 		</div>
 
