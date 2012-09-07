@@ -7,7 +7,7 @@ Pokud plugin potřebuje konfigurační soubory, lze je uložit do adresáře
   
 Metoda pluginu 
 
-    $plugin->getConfigFile($fileName='', $include\_plugin\_name=true)
+    $plugin->getConfigFile($fileName='', $include_plugin_name=true)
 
 vytvoří jméno konfiguračního souboru dle daných pravidel
  
@@ -18,8 +18,8 @@ vytvoří jméno konfiguračního souboru dle daných pravidel
 
 Takto pojmenovaný soubor pak se nejprve hledá v &lt;docroot&gt;/config/ a následně v 
 &lt;docroot&gt;/plugins/&lt;plugin_name&gt;/config/ a vrátí filename prvního, které nalezne. 
-Proto je možné v pluginu dodávat standardní konfiguraci a změnu konfigurace může 
-vývojář provést snadno bez zásahu do samotného pluginu: zkopíruje jeho konfigurační
-souvbor do &lt;docroot&gt;/config/ a tam ho upraví.
+Proto je možné v pluginu dodávat standardní konfiguraci, přičemž změnu konfigurace lze 
+provést snadno bez zásahu do samotného pluginu: zkopíruje se konfigurační
+souvbor pluginu do &lt;docroot&gt;/config/ a tam se upraví.
 
 
