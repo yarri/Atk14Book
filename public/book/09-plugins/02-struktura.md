@@ -23,7 +23,7 @@ _&lt;docroot&gt;/app_ popř. _&lt;docroot&gt;/config_.
 Takto lze snadno modifikovat chování pluginu pro danou aplikaci (např. vytvořením pro aplikaci 
 specifického konfiguračního souboru či šablon).
 
-**Varování:** Vztah aplikace a pluginu je však pouze jednosměrný: zatímco aplikace může nahradit ("přebýt") jakýkoli
+**Varování:** Vztah aplikace a pluginu je však pouze jednosměrný: zatímco aplikace může nahradit ("přebít") jakýkoli
 soubor pluginu svým vlastním, plugin "podstrčit" aplikaci svůj vlastní soubor na místo standardního 
 nemůže. Pomocí pluginů tedy lze pouze přidávat nové "vlastnosti" aplikace, nikoli měnit stávající chování.
 
