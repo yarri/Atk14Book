@@ -19,6 +19,12 @@ Pokud chybu stále nelze objevit, smažte veškeré dočasné soubory.
 
 	$ rm -rf ./tmp/*
 
+### Provedení migrací
+
+Je možné, že chyba, se kterou se potýkáte, souvisí s tím, že nemáte zrealizovány všechny migrace databázového schématu. Zkontrolujte:
+
+	$ ./scripts/migrate
+
 ### Kontrola submodulů
 
 Verzujete na gitu? A máte ATK14 do projektu vložen jako submodul? Prověřte, že máte aktuální verzi.
