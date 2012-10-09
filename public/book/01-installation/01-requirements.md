@@ -20,7 +20,11 @@ You need Git to checkout ATK14 source codes from <https://github.com/yarri/Atk14
 
 ### PHP
 
-	$ sudo apt-get install php5 php5-cli
+	$ sudo apt-get install php5 php5-cli php-pear
+
+In order to run tests you need PHPUnit2 - the PHP unit testing framework.
+
+	$ sudo pear install --alldeps PHPUnit2
 
 ### Postgresql
 

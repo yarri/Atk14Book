@@ -1,6 +1,8 @@
 Pluginy
 ===============================
 
+!!! PLUGINY ZATÍM NEJSOU V HLAVNÍ VÝVOJOVÉ VĚTVI NAIMPLEMENTOVÁNY
+
 Pluginy umožňují oddělit ty části aplikace, které se používají ve více projektech, 
 do samostatného adresáře, který může být i samostatným git repozitářem (submodulem). 
 
