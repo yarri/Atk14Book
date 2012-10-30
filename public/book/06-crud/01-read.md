@@ -40,7 +40,7 @@ Nejmenší možná varianta seznamu by mohla vypadat takto. Nenajdete v ní vyhl
 		// ... other actions...
 	}
 
-Běžně je však vyhledávání i třídění podle sloupcu potřeba.
+Běžně je však vyhledávání i třídění podle sloupců potřeba.
 
 	<?php
 	// file: app/controllers/books_controller.php
@@ -99,5 +99,4 @@ Include app/views/books/_book_item.tpl
 
 V šabloně _index.tpl_ je použit helper _paginator_, který zajišťuje stránkování nalezených knih. Všechny potřebné údaje si paginator zjistí z proměnné šablonky _$finder_.
 
-Při stránkování záznamů paginátor zchovává v URL všechny parametry a přidává parametr _offset_ (viz kontroler).
-
+Při stránkování záznamů paginátor zachovává v URL všechny parametry a přidává parametr _offset_ (viz kontroler).

@@ -25,7 +25,7 @@ Nainstalujte Nette:
 	$ pear remote-list -c nette
 	$ pear install nette/nette
 
-Laděnku nastarujete v souboru lib/load.php
+Laděnku nastartujete v souboru lib/load.php
 
 	<?php
 	// file lib/load.php
@@ -37,7 +37,7 @@ Laděnku nastarujete v souboru lib/load.php
 		Nette\Diagnostics\Debugger::enable();
 	}
 
-V této ukázce bude Laděnka zapnuta pouze ve vývoji.
+V této ukázce bude Laděnka zapnuta pouze ve vývojovém prostředí.
 
 ### Kompilace všech šablon
 

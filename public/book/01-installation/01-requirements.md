@@ -1,6 +1,12 @@
 Requirements
 ============
 
+### Operating System
+
+A real operating system is required - Linux, FreeBSD...
+
+This chapter describes ATK14 installation on UBUNTU 10.10 or higher.
+
 ### Apache webserver
 
 You need one to be installed :)
