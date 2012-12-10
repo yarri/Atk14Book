@@ -5,7 +5,7 @@ Předpokládejme tabulku _books_ a třídu _Book_
 
 Include db/migrations/0005_books.sql
 
-Třída bude prázdná.
+Třída bude prázdná. Pro naše příklady žádný zvláštní obsah nepotřebujeme.
 
 	<?php
 	//file: app/models/book.php
@@ -66,7 +66,7 @@ Vyhledání prvního záznamu, který splňuje podmínku:
 	$book = Book::FindFirst("author",$author);
 	// nebo
 	$book = Book::FindFirst("author=:author",array(":author" => $author));
-	// nebo
+	// nebo (syntactic sugar)
 	$book = Book::FindFirstByAuthor($author);
 
 Všechny uvedené příklady povedou na stejný výsledek. Jisté úskalí zde spočívá v tom, že nevíme _jaký záznam přesně_ bude z databáze načten v případě, že v tabulce books je více záznamů s autorem Johnen Doe. Pomůžeme si třídením.
@@ -119,5 +119,8 @@ Všechny uvedené příklady povedou na stejný výsledek. Jisté úskalí zde s
 		"limit" => 10,
 		"offset" => 0,
 	));
+
+	// syntactic sugar
+	$books = Books::FindAllByAuthor($author,array("order_by" => "created DESC, id DESC", "limit" => 10));
 
 Teď už máte představu, jak se hledají TableRecord objekty.
