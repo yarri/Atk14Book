@@ -92,3 +92,17 @@ To může přijít vhod, když už všechny postupy selžou.
 	$ ATK14_ENV=development ./scripts/migrate
 
 Upozorňujeme však, že tak ztratíte z databáze všechna data, která nevznikla během migrací.
+
+### Chybějící mod_rewrite
+
+Pokud se v error logu Apache objeví něco takového
+
+    Invalid command 'RewriteEngine', perhaps misspelled or defined by a module not included in the server configuration
+
+zapněte mod_rewrite příkazem
+
+    sudo a2enmod rewrite
+
+a restartujte Apache
+
+    service apache2 restart	

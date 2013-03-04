@@ -17,6 +17,11 @@ Run browser and point to http://myapp.localhost/. If it's working than congrats!
 
 For a next application you should omit the Requirements chapter.
 
+Checking the installation
+-------------------------
+
+	$ ./scripts/check_installation
+
 Put the freshly installed skelet on Git
 ---------------------------------------
 

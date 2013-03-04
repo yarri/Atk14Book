@@ -13,10 +13,9 @@ You need one to be installed :)
 
 	$ sudo apt-get install apache2-mpm-prefork
 
-Mod Rewrite has to be enabled.
+Mod Rewrite needs to be enabled.
 
-	$ cd /etc/apache2/mods-enabled/
-	$ sudo ln -s ../mods-available/rewrite.load ./
+	$ sudo a2enmod rewrite
 
 ### Git
 
