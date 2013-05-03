@@ -8,7 +8,7 @@
 * You can inspect all ATK14 system`s constants in sys/src/default_settings.inc
 */
 
-define("SECRET_TOKEN",(file_exists(dirname(__FILE__)."/random.txt") ? files::get_file_content(dirname(__FILE__)."/random.txt",$err,$err_str) : "crDsduENNEnykcIwSqs0qI55AFco42NXj2AYNAqc0kTgImSBBUskdtjnlhMGwXBN"));
+define("SECRET_TOKEN",(file_exists(dirname(__FILE__)."/random.txt") ? Files::GetFileContent(dirname(__FILE__)."/random.txt",$err,$err_str) : "crDsduENNEnykcIwSqs0qI55AFco42NXj2AYNAqc0kTgImSBBUskdtjnlhMGwXBN"));
 
 define("ATK14_DOCUMENT_ROOT",dirname(__FILE__)."/../");
 define("ATK14_BASE_HREF","/");

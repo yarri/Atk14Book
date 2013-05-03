@@ -44,7 +44,6 @@ class MdBookPrefilter {
 		return $raw;
 
 		
-
 		return join("\n",$out);
 	}
 

@@ -320,7 +320,7 @@ class MdBookChapter {
 	 * @return string
 	 */
 	function getContent() {
-		$raw = files::get_file_content($this->getFile());
+		$raw = Files::GetFileContent($this->getFile());
 
 		// TODO: solve this as dependency injection
 		$prefilter = new MdBookPrefilter();
@@ -403,7 +403,7 @@ class MdBookChapter {
 			}
 		}
 		if (file_exists($this->chapter_file)) {
-			$content = preg_split("/\n/", files::get_file_content($this->chapter_file),null,PREG_SPLIT_NO_EMPTY);
+			$content = preg_split("/\n/", Files::GetFileContent($this->chapter_file),null,PREG_SPLIT_NO_EMPTY);
 		} else {
 			$content = array(basename(dirname($this->chapter_file)));
 		}
