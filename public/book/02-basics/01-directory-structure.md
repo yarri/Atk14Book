@@ -20,6 +20,8 @@ Takto vypadá ATK14 aplikace na disku.
     locale/                     místo pro lokalizační slovníky gettextu
     log/                        místo pro aplikační logy
     public/                     místo pro stylesheets, javascripty, obrázky a další statický obsah
+    robots/                     zde sídlí roboti
+            lock/               zde si roboti vytvářejí zámky pro zamezení konkurenčního běhu
     scripts/                    shellové skripty pro ovládání aplikace
     test/                       místo pro testovací třídy
     tmp/                        místo pro dočasné soubory

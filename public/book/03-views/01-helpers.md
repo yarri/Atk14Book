@@ -1,48 +1,8 @@
 Helpery
 =======
 
-block.a_destroy.php
-block.a.php
-block.a_remote.php
-block.a_remote_with_onclick.php
-block.content.php
-block.error_log.php
-block.form.php
-block.form_remote.php
-block.h.php
-block.insert_html.php
-block.javascript_tag.php
-block.jstring.php
-block.no_spam.php
-block.replace_html.php
-block.sortable.php
-block.t.php
-block.trim.php
-block.unless.php
-function.dump.php
-function.form_remote_tag.php
-function.form_tag.php
-function.javascript_script_tag.php
-function.link_to.php
-function.paginator.php
-function.placeholder.php
-function.render_component.php
-function.render.php
-function.stylesheet_link_tag.php
-function.to_json.php
-function.to_sentence.php
-modifier.count.php
-modifier.dump_constant.php
-modifier.field_id.php
-modifier.field.php
-modifier.field_value.php
-modifier.format_date.php
-modifier.format_datetime.php
-modifier.format_datetime_with_seconds.php
-modifier.form_field.php
-modifier.form_label.php
-modifier.h.php
-modifier.label.php
-modifier.no_spam.php
-modifier.to_json.php
-modifier.to_sentence.php
+Helpery jsou funkce používané v šablonách, které pomáhají při zobrazovaní hodnot, v přístupu k datům a při zjednodušování šablon.
+
+Jelikož ATK14 používá šablonovací systém [Smarty](http://www.smarty.net/), máte k dispozici všechny helpery ze Smarty.
+Samotné ATK14 pak obsahuje svou sadu helperů (viz adresář atk14/src/atk14/helpers/).
+No a konečně do své aplikace si můžete psát své specializované helpery - na to je adresář app/helpers/
