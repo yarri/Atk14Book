@@ -23,8 +23,8 @@
 		<![endif]-->
 		{stylesheet_link_tag file="styles.css" media="screen, projection"}
 
-		<script type="text/javascript" src="http{if $request->ssl()}s{/if}://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-		<script type="text/javascript" src="http{if $request->ssl()}s{/if}://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
 		{javascript_script_tag file="atk14.js"}
 
 		{placeholder for="head"}
@@ -43,7 +43,7 @@
 		<div class="container">
 
 		{form form=$search_form}
-			{$search_form|form_field:q}
+			{!$search_form|form_field:q}
 			<button type="submit">{t}Hledat{/t}</button>
 		{/form}
 
@@ -67,6 +67,7 @@
 		</div>
 
 		{* Google analytics code *}
+		{if $PRODUCTION}
 		{javascript_tag}
 			var _gaq = _gaq || [];
 			_gaq.push(['_setAccount', 'UA-27229703-2']);
@@ -78,6 +79,7 @@
 				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 			\})();
 		{/javascript_tag}
+		{/if}
 	</body>
 
 </html>
