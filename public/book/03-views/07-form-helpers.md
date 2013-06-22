@@ -1,32 +1,35 @@
 Vykreslování formulářů
 ======================
 
-* #### form ([block](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/block.form.php))
+* ### form ([block](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/block.form.php))
 
-        {form}
-          <fieldset>
-            {render partial="shared/form_field" field="name"}
-            <buttont type="submit">Send</buttont>
-          </fieldset>
-        {/form}
+	Vykreslí formulář. Není-li uvedeno jinak, použije výchozí formulář, který je v šabloně v proměnné _$form_
 
-* #### form_tag ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.form_tag.php))
+		{form}
+			<fieldset>
+				{render partial="shared/form_field" field="name"}
+				<div class="buttons">
+				<buttont type="submit">Send</buttont>
+				</div>
+			</fieldset>
+		{/form}
 
-* #### field_id ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.field_id.php))
+* ### form_remote ([block](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/block.form_remote.php))
 
-* #### field ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.field.php))
+	Vykreslí formulář, který bude obsloužen asynchronně pomocí _atk14.js_. Používá se stejně jako {form}.
 
-* #### field_value ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.field_value.php))
+* ### form_tag ([function](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/function.form_tag.php))
 
-* #### label ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.label.php))
+* ### form\_remote\_tag ([function](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/function.form_remote_tag.php))
 
-* #### form_field ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.form_field.php))
+* ### field_id ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.field_id.php))
 
-* #### form_label ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.form_label.php))
+* ### field ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.field.php))
 
-* #### form_remote ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.form_remote.php))
+* ### field_value ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.field_value.php))
 
-* #### form_remote_tag ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.form_remote_tag.php))
+* ### label ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.label.php))
 
-* #### form_tag ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.form_tag.php))
+* ### form_field ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.form_field.php))
 
+* ### form_label ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.form_label.php))

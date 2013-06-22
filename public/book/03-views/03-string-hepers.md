@@ -12,6 +12,7 @@
 		You are logged in as {$user->getName()|h}
 
 	A teď něco velmi důležitého. Modifikátor **_h_ je standardně nastaven jako automatický modifikátor pro tisk veškerých hodnot** (viz konfigurační konstanta ATK14\_SMARTY\_DEFAULT\_MODIFIER).
+	Helper _h_ je tím pádem nejpoužívanějším helperem a přitom ho v šablonách téměř neuvidíte.
 
 		{* ve skutečnosti totiž zápis *}
 		You are logged in as {$user->getName()}

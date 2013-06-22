@@ -3,52 +3,45 @@ Ostatní helpery
 
 Prezentace dat
 --------------
-* #### to_sentence ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.to_sentence.php))
 
-* #### to_json ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.to_json.php))
+* ### to_sentence ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.to_sentence.php))
 
-Ladeni
+* ### to_json ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.to_json.php), [function](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/function.to_json.php))
+
+Laděni
 ------
-* #### dump ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.dump.php))
 
-* #### error_log ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.error_log.php))
+* ### dump ([function](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/function.dump.php))
 
+* ### error_log ([block](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/block.error_log.php))
 
 Blokové helpery
 ---------------
-* #### insert_html ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.insert_html.php))
+* ### insert_html ([block](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/block.insert_html.php))
 
-	Popis...
+* ### jstring ([block](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/block.jstring.php))
 
-* #### jstring ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.jstring.php))
+* ### no_spam ([block](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/block.no_spam.php))
 
-	Popis...
+* ### replace_html ([block](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/block.replace_html.php))
 
-* #### no_spam ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.no_spam.php))
-
-	Popis...
-
-* #### replace_html ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.replace_html.php))
-
-	Popis...
-
-* #### unless ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.unless.php))
-
-	Popis...
+* ### unless ([block](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/block.unless.php))
 
 Funkce
 ------
-* #### javascript_script_tag ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.javascript_script_tag.php))
 
-* #### stylesheet_link_tag ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.stylesheet_link_tag.php))
+* ### javascript\_script\_tag ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.javascript_script_tag.php))
+
+* ### stylesheet\_link\_tag ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.stylesheet_link_tag.php))
 
 Modifikátory
 ------------
-* #### count ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.count.php))
 
-* #### dump_constant ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.dump_constant.php))
+* ### count ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.count.php))
 
-* #### no_spam ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.no_spam.php))
+* ### dump_constant ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.dump_constant.php))
+
+* ### no_spam ([modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.no_spam.php))
 
 
 
