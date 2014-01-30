@@ -73,6 +73,8 @@ class MdBook {
 	 */
 	var $last_chapter = null;
 
+	var $title = null;
+
 	function __construct($book_directory) {
 		$this->book_directory = $book_directory;
 		$this->_readContent();
@@ -109,6 +111,36 @@ class MdBook {
 			}
 		}
 		return null;
+	}
+
+	function getTitle(){
+		if(!isset($this->title)){
+			if($_c = $this->_getIndexContent()){
+				$ar = explode("\n",$_c);
+				$this->title = trim($ar[0]);
+			}
+		}
+
+		if(!$this->title){ $this->title = "MdBook"; }
+		return $this->title;
+	}
+
+	function setTitle($title){
+		$this->title = $title;
+	}
+
+	function getContent(){
+		if(!$raw = $this->_getIndexContent()){
+			$raw = $this->getTitle()."\n-------------------";
+		}
+
+		return Markdown($raw);
+	}
+
+	function _getIndexContent(){
+		if(file_exists($_f = "$this->book_directory/index.md")){
+			return Files::GetFileContent($_f);
+		}
 	}
 
 	private function _readContent() {
@@ -321,6 +353,7 @@ class MdBookChapter {
 	 */
 	function getContent() {
 		$raw = Files::GetFileContent($this->getFile());
+		//return Markdown($raw);
 
 		// TODO: solve this as dependency injection
 		$prefilter = new MdBookPrefilter();
@@ -458,5 +491,3 @@ class MdBookChapter {
 		return ($a<$b)?-1:1;
 	}
 }
-
-?>

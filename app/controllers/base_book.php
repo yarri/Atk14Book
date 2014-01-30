@@ -4,14 +4,10 @@
  * Chci pouzivat Markdown http://daringfireball.net/projects/markdown/
  */
 class BaseBookController extends ApplicationController{
-	var $book_name = "";
+	var $book_title = "";
 	var $book_dir = "";
 
 	function index(){
-		$this->template_name = "base_book/index";
-
-		$this->page_title = $this->book_title;
-
 		if($this->params->getString("format")=="sitemap"){
 			$this->render_template = false;
 			$this->response->setContentType("text/xml");
@@ -24,7 +20,12 @@ class BaseBookController extends ApplicationController{
 				}
 			}
 			$this->response->write('</urlset>');
+
+			return;
 		}
+
+		$this->template_name = "base_book/index";
+		$this->page_title = $this->book->getTitle();
 	}
 
 	function _get_sitemap_chapter_item($chapter){
@@ -39,7 +40,7 @@ class BaseBookController extends ApplicationController{
 	function detail(){
 		$this->template_name = "base_book/detail";
 
-		if(!$chapter = $this->book->getChapter($this->params->getString("id"))){
+		if(!$chapter = $this->chapter = $this->book->getChapter($this->params->getString("id"))){
 			return $this->_execute_action("error404");
 		}
 
@@ -53,8 +54,11 @@ class BaseBookController extends ApplicationController{
 
 	function _before_filter(){
 		$this->book = $this->tpl_data["book"] = new MdBook($this->book_dir,array(
-			"prefilter" => new MdBookPrefilter()
+			//"prefilter" => new MdBookPrefilter()
 		));
-		$this->tpl_data["book_title"] = $this->book_title;
+
+		if($this->book_title){ $this->book->setTitle($this->book_title); }
+
+		$this->tpl_data["book_title"] = $this->book->getTitle();
 	}
 }
