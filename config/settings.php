@@ -8,23 +8,16 @@
 * You can inspect all ATK14 system`s constants in sys/src/default_settings.inc
 */
 
-define("SECRET_TOKEN",(file_exists(dirname(__FILE__)."/random.txt") ? Files::GetFileContent(dirname(__FILE__)."/random.txt",$err,$err_str) : "crDsduENNEnykcIwSqs0qI55AFco42NXj2AYNAqc0kTgImSBBUskdtjnlhMGwXBN"));
-
-define("ATK14_DOCUMENT_ROOT",dirname(__FILE__)."/../");
-define("ATK14_BASE_HREF","/");
+define("SECRET_TOKEN",PRODUCTION ? Files::GetFileContent(dirname(__FILE__)."/secret_token.txt") : "crDsduENNEnykcIwSqs0qI55AFco42NXj2AYNAqc0kTgImSBBUskdtjnlhMGwXBN");
 
 define("ATK14_APPLICATION_NAME","ATK14 Book");
 define("ATK14_HTTP_HOST",PRODUCTION ? "book.atk14.net" : "atk14book.localhost");
-define("ATK14_ADMIN_EMAIL","your@email");
+define("DEFAULT_EMAIL","your@email");
 
-if(DEVELOPMENT){
-	// place for development environment settings
+if(DEVELOPMENT || TEST){
+	// a place for development and testing environment settings
 
-}
-
-if(PRODUCTION){
-	// place for production environment settings
-
+	ini_set("display_errors","1");
 }
 
 if(TEST){

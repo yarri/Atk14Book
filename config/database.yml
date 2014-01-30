@@ -12,6 +12,6 @@ test:
 
 production:
   host: 127.0.0.1
-  database: atk14production
-  username: atk14production
-  password: ypGLLy
+  database: atk14book_production
+  username: atk14book_production
+  password: <?=sha1(SECRET_TOKEN."Very_Sophisticated_Production_Password_Hiding")?>
