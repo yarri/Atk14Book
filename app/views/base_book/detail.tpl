@@ -7,7 +7,7 @@
 </p>
 
 <div id="content" class="span-20">
-	{$page_content}
+	{!$page_content}
 
 	{if $subchapters}
 	<h4>{t}Seznam podkapitol{/t}</h4>
