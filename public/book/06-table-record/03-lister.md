@@ -32,7 +32,7 @@ Následující migrace vytvoří tabulky pro články, autory a pro vazbu mezi n
 		author_id INTEGER NOT NULL,
 		rank INTEGER DEFAULT 999 NOT NULL,
 		CONSTRAINT fk_article_authors_articles FOREIGN KEY (article_id) REFERENCES articles ON DELETE CASCADE,
-		CONSTRAINT fk_author_authors_authors FOREIGN KEY (author_id) REFERENCES authors ON DELETE CASCADE
+		CONSTRAINT fk_article_authors_authors FOREIGN KEY (author_id) REFERENCES authors ON DELETE CASCADE
 	);
 
 Teď třída _Article_
