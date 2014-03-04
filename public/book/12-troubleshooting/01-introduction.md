@@ -73,7 +73,7 @@ Nebo si nechte nové řádky vypisovat v reálném čase:
 
 Pokud chybu stále nelze objevit, smažte veškeré dočasné soubory.
 
-	$ rm -rf ./tmp/*
+	$ ./scripts/delete_temporary_files
 
 ### Prověření instalace
 
