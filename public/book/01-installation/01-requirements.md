@@ -7,35 +7,17 @@ A UNIX-like operating system is required - Linux, FreeBSD...
 
 This chapter describes ATK14 installation on UBUNTU 10.10 or higher.
 
-### Apache webserver
-
-You need one to be installed :)
-
-	$ sudo apt-get install apache2-mpm-prefork
-
-Mod Rewrite needs to be enabled.
-
-	$ sudo a2enmod rewrite
-
 ### Git
 
 You need Git to checkout ATK14 source codes from <https://github.com/yarri/Atk14>
 
 	$ sudo apt-get install git
 
-### PHP
-
-	$ sudo apt-get install php5 php5-cli php-pear
-
-In order to run tests you need PHPUnit2 - the PHP unit testing framework.
-
-	$ sudo pear install --alldeps PHPUnit2
-
 ### Postgresql
 
 You need Postgresql server to be installed on you system. Install also the postgresql PHP extension.
 
-	$ sudo apt-get install postgresql php5-pgsql
+	$ sudo apt-get install postgresql
 
 Postgresql access control file pg\_hba.conf should look like this. The file may be found at /etc/postgresql/8.4/main/pg\_hba.conf
 
@@ -59,7 +41,7 @@ Now restart the server.
 
 If you are planning to develop a multilanguage application, you need Gettext to be installed.
 
-	$ sudo apt-get install gettext php-gettext
+	$ sudo apt-get install gettext
 
 Great tool for edition *.po files is Poedit.
 
@@ -73,4 +55,24 @@ Be sure that /var/lib/locales/supported.d/local contains lines:
 If it doesn't add these locales and then run:
 
 	$ sudo locale-gen
+
+### PHP
+
+	$ sudo apt-get install php5 php5-cli php-pear php5-pgsql php5-gettext
+
+In order to run tests you need PHPUnit2 - the PHP unit testing framework.
+
+	$ sudo pear install --alldeps PHPUnit2
+
+### Apache webserver
+
+Optionally you can install Apache webserver.
+
+	$ sudo apt-get install apache2-mpm-prefork
+
+Mod Rewrite needs to be enabled.
+
+	$ sudo a2enmod rewrite
+
+
 
