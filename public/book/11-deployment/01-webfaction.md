@@ -67,8 +67,8 @@ Kinky na nic nečeká a začne instalovat aplikaci do produkce do předem připr
 	[snapper@web436 ~/webapps/filcker] git submodule init && git submodule update
 	[snapper@web436 ~/webapps/filcker] chmod 777 tmp log
 
-Aplikace flicker na produkci načítá hodnotu konstanty SECRET_TOKEN ze souboru config/secret_token.txt. Tento soubor není verzován a měl
-by být dostatečně dlouhý, náhodný a za všech okolností udržován v tajnosti. Kinky může klidně soubor config/secret_token.txt vytvořit ručně
+Aplikace flicker na produkci načítá hodnotu konstanty SECRET\_TOKEN ze souboru config/secret\_token.txt. Tento soubor není verzován a měl
+by být dostatečně dlouhý, náhodný a za všech okolností udržován v tajnosti. Kinky může klidně soubor config/secret\_token.txt vytvořit ručně
 například tak, že do něj napíše jednu za svých psychedelických básní, ve které pro jistotu zpřeháže řádky a písmena, nebo využije náhodnou posloupnost znaků
 z /dev/urandom.
 
@@ -77,7 +77,7 @@ z /dev/urandom.
 Vytvoření produkční databáze
 ----------------------------
 
-Připojení do databáze (config/database.yml) je nastaveno tak, že produkční heslo závisí na hodnotě SECRET_TOKEN. Kinky si tedy zjistí heslo do produkční
+Připojení do databáze (config/database.yml) je nastaveno tak, že produkční heslo závisí na hodnotě SECRET\_TOKEN. Kinky si tedy zjistí heslo do produkční
 databáze uživatele i databázi vytvoří v control panelu WebFaction.
 
 	[snapper@web436 ~/webapps/filcker] ./scripts/dump_config database
