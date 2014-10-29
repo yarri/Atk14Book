@@ -5,3 +5,5 @@ log/*
 .*
 robots/lock/*
 config/secret_token.txt
+vendor
+composer.lock

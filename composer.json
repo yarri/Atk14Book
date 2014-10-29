@@ -1,0 +1,6 @@
+{
+    "require": {
+        "michelf/php-markdown": "1.4.0",
+        "easybook/geshi": "1.0.8.12"
+    }
+}
