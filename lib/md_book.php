@@ -134,7 +134,7 @@ class MdBook {
 			$raw = $this->getTitle()."\n-------------------";
 		}
 
-		return Markdown($raw);
+		return Michelf\Markdown::defaultTransform($raw);
 	}
 
 	function _getIndexContent(){
@@ -353,13 +353,14 @@ class MdBookChapter {
 	 */
 	function getContent() {
 		$raw = Files::GetFileContent($this->getFile());
-		//return Markdown($raw);
 
 		// TODO: solve this as dependency injection
 		$prefilter = new MdBookPrefilter();
 		$raw = $prefilter->filter($raw);
 
-		return Markdown($raw);
+		$out = Michelf\Markdown::defaultTransform($raw);
+		$postfilter = new MdBookPostfilter();
+		return $postfilter->filter($out);
 	}
 
 	/**

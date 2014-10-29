@@ -2,6 +2,9 @@
 class MdBookPrefilter {
 	function filter($raw){
 		$out = array();
+		$GLOBALS["wiki_replaces"] = array();
+
+		$raw = "\n$raw\n";
 
 		$replaces = array();
 
@@ -10,8 +13,10 @@ class MdBookPrefilter {
 				$replaces[$matches[0]] = "\n".$this->_place_source($matches[1]);
 			}
 		}
-
 		$raw = strtr($raw,$replaces);
+
+		$raw = preg_replace_callback('/[\n\r]```([ a-z0-9]*)[\n\r](.*?)\n```[\n\r]/s','_wiki_replace_source',$raw);
+
 
 		$replaces = array();
 
@@ -89,3 +94,14 @@ class MdBookPrefilter {
 		return $this->_highlight_syntax($source,$lang);
 	}
 }
+
+function _wiki_replace_source($matches){
+	($lang = trim($matches[1])) || ($lang = "auto");
+	$source = trim($matches[2]);
+	$geshi = new GeSHi($source, $lang);
+  $geshi->enable_keyword_links(false);
+	$id = "wikireplace".uniqid();
+	$GLOBALS["wiki_replaces"][$id] = $geshi->parse_code();
+	return $id;
+}
+

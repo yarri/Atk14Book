@@ -2,6 +2,9 @@
 class MdBookPostfilter {
 	function filter($content){
 		$content = preg_replace('/(<(p|h[0-9]|pre|ul)(| [^>]*)>)/e','_mark_element("\1")',$content);
+
+		$content = strtr($content,$GLOBALS["wiki_replaces"]);
+
 		return $content;
 	}
 }
