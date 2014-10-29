@@ -3,76 +3,75 @@ Requirements
 
 ### Operating System
 
-A UNIX-like operating system is required - Linux, FreeBSD...
+A UNIX-like operating system is required - Linux, [FreeBSD](http://www.freebsd.org/)...
 
-This chapter describes ATK14 installation on UBUNTU 10.10 or higher.
+This chapter describes ATK14 installation on [UBUNTU](http://www.ubuntu.com/) 10.10 or higher.
 
-### Git
+### Installing software packages
 
-You need Git to checkout ATK14 source codes from <https://github.com/yarri/Atk14>
+You will definitely need
 
-	$ sudo apt-get install git
+* _php_ 
+* _git_ for downloading source codes from [github.com](http://www.github.com/)
+* _postgresql_
 
-### Postgresql
+Optionally you should install
 
-You need Postgresql server to be installed on you system. Install also the postgresql PHP extension.
+* _gettext_ and _poedit_ for multilanguage applications
+* _apache web server_ if you find out that the built-in development web server is not good for you
 
-	$ sudo apt-get install postgresql
+
+```bash
+sudo apt-get install php5 php5-cli php-pear php5-pgsql php5-gettext git postgresql
+sudo apt-get install gettext poedit apache2-mpm-prefork
+```
+
+### Configuring Postgresql
 
 Postgresql access control file pg\_hba.conf should look like this. The file may be found at /etc/postgresql/8.4/main/pg\_hba.conf
 
-	# TYPE  DATABASE    USER       CIDR-ADDRESS  METHOD
-	local   all         postgres                 ident
-	host    all         postgres   127.0.0.1/32  ident
-	host    all         postgres   ::1/128       ident
-	local   sameuser    all                      md5
-	host    sameuser    all        127.0.0.1/32  md5
-	host    sameuser    all        ::1/128       md5
+```text
+# TYPE  DATABASE    USER       CIDR-ADDRESS  METHOD
+local   all         postgres                 ident
+host    all         postgres   127.0.0.1/32  ident
+host    all         postgres   ::1/128       ident
+local   sameuser    all                      md5
+host    sameuser    all        127.0.0.1/32  md5
+host    sameuser    all        ::1/128       md5
+```
 
 These lines say that administer (postgres) can connect to any database but only when he is logged as postgres in the system, other user can connect only to a database with the same name and must provide a correct password.
 
 Now restart the server.
 
-	$ sudo service postgresql restart
-	or
-	$ sudo /etc/init.d/postgresql restart
+```bash
+sudo service postgresql restart
+# or
+sudo /etc/init.d/postgresql restart
+```
 
-### Gettext
+### Configuring Gettext
 
-If you are planning to develop a multilanguage application, you need Gettext to be installed.
+Be sure that /var/lib/locales/supported.d/local contains these lines:
 
-	$ sudo apt-get install gettext
-
-Great tool for edition *.po files is Poedit.
-
-	$ sudo apt-get install poedit
-
-Be sure that /var/lib/locales/supported.d/local contains lines:
-
-	en_US.UTF-8 UTF-8
-	cs_CZ.UTF-8 UTF-8
+```text
+en_US.UTF-8 UTF-8
+cs_CZ.UTF-8 UTF-8
+```
 
 If it doesn't add these locales and then run:
 
-	$ sudo locale-gen
+```bash
+sudo locale-gen
+```
 
-### PHP
-
-	$ sudo apt-get install php5 php5-cli php-pear php5-pgsql php5-gettext
-
-In order to run tests you need PHPUnit2 - the PHP unit testing framework.
-
-	$ sudo pear install --alldeps PHPUnit2
-
-### Apache webserver
-
-Optionally you can install Apache webserver.
-
-	$ sudo apt-get install apache2-mpm-prefork
+### Configuring Apache webserver
 
 Mod Rewrite needs to be enabled.
 
-	$ sudo a2enmod rewrite
+```bash
+sudo a2enmod rewrite
+```
 
 
 
