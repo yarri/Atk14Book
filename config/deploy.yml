@@ -1,0 +1,14 @@
+production:
+  server: "kajka"
+  user: "devel"
+  url: http://book.atk14.net/
+  directory: "/home/devel/apps/book.atk14.net/production/"
+  deploy_via: "git_push"
+  deploy_repository: "devel@kajka:apps/book.atk14.net/repos/production.git"
+  deploy_branch: "master"
+  before_deploy:
+  - "@local composer.phar update"
+  rsync:
+  - "vendor"
+
+# vim: set et:
