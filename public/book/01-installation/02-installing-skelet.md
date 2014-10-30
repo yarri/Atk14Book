@@ -1,45 +1,28 @@
-Installing the skelet
-=====================
+Instalace kostry
+================
 
-Now you are ready to install ATK14 skelet for your new ATK14 web application.
-It is presumed that you put all your projects into the $HOME/projects/ directory and the new app will be named myapp.
+Pokud máte splněny požadavky z předchozí kapitoly, jste připraven nainstalovat si jednu z koster a nad ní postavit svůj skvělý nový projekt.
 
-	$ cd $HOME/projects/
-	$ wget -O atk14_init.sh https://raw.github.com/yarri/Atk14/master/installation/atk14_init.sh
-	$ chmod +x ./atk14_init.sh
-	$ mkdir myapp
-	$ cd myapp
-	$ ../atk14_init.sh
+V současnosti jsou k dispozici dvě kostry.
 
-You should follow all the instructions given by the script atk14_init.sh
+### 1. ATK14 Embryo
 
-Run browser and point to http://myapp.localhost/. If it's working than congrats!
+Toto je zelená loučka. Naprosté minimum. Jedna stránka a jeden luxusní obrázek. Toto je vhodná kostra pro projekty, které se vymykají naprosto všemu, co kdy kdo viděl. Všechno si tam budete muset udělat sami.
 
-For a next application you should omit the Requirements chapter.
+* běžící ukázka: <http://embryo.atk14.net/>
+* zdrojový kód: <https://github.com/atk14/Atk14Embryo.git>
+* návod na instalaci: <https://github.com/atk14/Atk14Embryo/blob/master/README.md#installation>
 
-Checking the installation
--------------------------
+Minimalistické, což?
 
-	$ ./scripts/check_installation
+### 2. ATK14 Skelet
 
-Put the freshly installed skelet on Git
----------------------------------------
+Tak tuto kostru budete milovat. ATK14 Skelet obsahuje sadu vyladěných věcí, které prostě fungují.
 
-	$ cd $HOME/projects/myapp/
-	$ rm -rf ./atk14
-	$ git init
-	$ git submodule add git://github.com/yarri/Atk14.git ./atk14
-	$ echo '!tmp/README' >> .gitignore
-	$ echo 'tmp/*' >> .gitignore
-	$ echo '!log/README' >> .gitignore
-	$ echo 'log/*' >> .gitignore
-	$ git add -A
-	$ git commit -m 'initial commit'
+* běžící ukázka: <http://skelet.atk14.net/>
+* zdrojový kód: <https://github.com/atk14/Atk14Skelet.git>
+* návod na instalaci: <https://github.com/atk14/Atk14Skelet/blob/master/README.md#installation>
 
-Setting up a remote repository
------------------------------
+### Resumé
 
-	$ git clone --bare $HOME/projects/myapp /tmp/myapp.git
-	$ tar -zcf /tmp/myapp.git.tgz /tmp/myapp.git
-
-... to be continued
+Je velmi těžké si z tolika koster vybrat tu správnou. Pokud si nejste jisti, zkuste obě :)
