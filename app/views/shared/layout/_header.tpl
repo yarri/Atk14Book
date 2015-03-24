@@ -9,4 +9,7 @@
 			{a action="main/index" namespace="" _title=$link_title}{$appname}{/a}
 		{/if}
 	</div>
+	<h1>{$appname}</h1>
+
+	<p>{t}Read, hear, and study the ATK14 Book. Grow your skills. Earn some money. Enjoy your free time.{/t}</p>
 </header>

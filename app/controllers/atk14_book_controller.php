@@ -15,4 +15,9 @@ class Atk14BookController extends BaseBookController{
 		parent::detail();
 		$this->template_name = "detail";
 	}
+
+	function index(){
+		parent::index();
+		$this->template_name = "index";
+	}
 }

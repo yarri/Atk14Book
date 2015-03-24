@@ -55,8 +55,44 @@
 	</head>
 
 	<body class="body_{$controller}_{$action}" data-controller="{$controller}" data-action="{$action}">
+
+		<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+			<div class="container">
+				<div class="navbar-header">
+					<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="/" class="navbar-brand"><i class="glyphicon glyphicon-home"></i></a>
+				</div>
+				<nav class="collapse navbar-collapse bs-navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li>
+							<a href="http://www.atk14.net/">ATK14</a>
+						</li>
+						<li>
+							<a href="http://api.atk14.net/">API Reference</a>
+						</li>
+						<li>
+							<a href="http://www.atk14sites.net/">Who uses ATK14?</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		 <!-- Docs page layout -->
+    <div class="bs-docs-header" id="content" tabindex="-1">
+      <div class="container">
+        <h1>ATK14 Book</h1>
+				<p>{t}Read, hear, and study the ATK14 Book. Grow your skills. Relax. Again.{/t}</p>
+      </div>
+    </div>
+
 		<div class="container{if $section_navigation} has-nav-section{/if}">
-			{render partial="shared/layout/header"}
+			{*render partial="shared/layout/header" *}
 
 			<div class="body">
 				{if $section_navigation}
@@ -71,7 +107,9 @@
 				</div>
 			</div>
 
+			{*
 			{render partial="shared/layout/footer"}
+			*}
 		</div>
 
 		{if $DEVELOPMENT}

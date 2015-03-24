@@ -7,8 +7,10 @@ production:
   deploy_repository: "devel@kajka:apps/book.atk14.net/repos/production.git"
   deploy_branch: "master"
   before_deploy:
-  - "@local composer.phar update"
+  - "@local composer update"
+  - "@local grunt dist"
   rsync:
   - "vendor"
+  - "public/dist"
 
 # vim: set et:

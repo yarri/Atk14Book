@@ -1,11 +1,13 @@
-ATK14 Book
-==========
+Úvod
+====
 
-Zde vzniká kniha o [populárním PHP frameworku](http://www.atk14.net/) pro nebojácné chlapce a děvčata. Upozorňujeme, že některé texty jsou hodně pracovní a jiné zcela chybí.
+ATK14 je PHP framework pro nebojácné chlapce a děvčata a ATK14 Book je kniha o tomto frameworku a můžete do ní nahlédnout, i když mezi ně zatím nepatříte.
+Upozorňujeme, že některé texty jsou hodně pracovní, jiné zcela chybí a některé dokonce nadbývají.
 
 Milí chlapci a děvčata, přejeme mnoho štěstí a odvahy při četbě.
 
 ![mladí ATK14 programátoři](/public/images/children.jpg)
+
 
 Obsah
 -----
