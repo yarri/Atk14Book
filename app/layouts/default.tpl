@@ -1,85 +1,84 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{$lang}" lang="{$lang}">
+{*
+ * The page Layout template
+ *
+ * Placeholders
+ * ------------
+ * head						 	located whithin the <head> tag
+ * main							the main (or default) one
+ * js_script_tags				place for javascript script tags
+ * js							place for javascript code
+ * domready						place for domready javascript code
+ *
+ * Variables
+ * ------------
+ * $lang
+ * $controller
+ * $action
+ * $namespace
+ * $logged_user
+ * $page_description
+ *
+ * Constants
+ * ------------
+ * $DEVELOPMENT
+ *}
+<!DOCTYPE html>
+<html lang="{$lang}">
 
 	<head>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-		<meta http-equiv="content-language" content="{$lang}" />
+		<meta charset="utf-8">
 
-		{render partial="shared/layout/meta_headers"}
-
-		<title>
-			{if $controller=="atk14_book" && $action=="index"}
+		<title>{trim}
+			{if $controller=="main" && $action=="index" && $namespace==""}
 				{"ATK14_APPLICATION_NAME"|dump_constant}
 			{else}
-				{$page_title|h} | {"ATK14_APPLICATION_NAME"|dump_constant}
+				{$page_title} | {"ATK14_APPLICATION_NAME"|dump_constant}
 			{/if}
-		</title>
-		<meta name="description" content="{$page_description|h}" />
+		{/trim}</title>
 
-		{stylesheet_link_tag file="blueprint/screen.css" media="screen, projection"}
-		{stylesheet_link_tag file="blueprint/print.css" media="print"}
-		<!--[if IE]>
-		{stylesheet_link_tag file="blueprint/ie.css" media="screen, projection"}
+		<meta name="description" content="{$page_description}" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+		{if $DEVELOPMENT}
+			{render partial="shared/layout/dev_info"}
+
+			{stylesheet_link_tag file="../dist/css/app.css" media="screen"}
+		{else}
+			{stylesheet_link_tag file="../dist/css/app.min.css" media="screen"}
+		{/if}
+
+		<!-- HTML5 shiv and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="{$public}dist/vendor/js/html5shiv.js"></script>
+			<script src="{$public}dist/vendor/js/respond.min.js"></script>
 		<![endif]-->
-		{stylesheet_link_tag file="styles.css" media="screen, projection"}
-
-		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
-		{javascript_script_tag file="atk14.js"}
-
-		{placeholder for="head"}
-
-		{javascript_tag}
-			{placeholder for="js"}
-			$(function() \{
-				{placeholder for="domready"}
-			\});
-		{/javascript_tag}	
 	</head>
 
-	<body id="body_{$controller}_{$action}">
-		<h1 id="logo"><span>{t}ATK14 Book{/t}</span></h1>
+	<body class="body_{$controller}_{$action}" data-controller="{$controller}" data-action="{$action}">
+		<div class="container{if $section_navigation} has-nav-section{/if}">
+			{render partial="shared/layout/header"}
 
-		<div class="container">
+			<div class="body">
+				{if $section_navigation}
+					<nav class="nav-section">
+						{render partial="shared/layout/section_navigation"}
+					</nav>
+				{/if}
 
-		{form form=$search_form}
-			{!$search_form|form_field:q}
-			<button type="submit">{t}Hledat{/t}</button>
-		{/form}
-
-		{render partial="shared/layout/flash_message"}
-
-		{placeholder}
-
-		</div>
-
-		<div id="footer">
-			<div>
-				<a href="http://www.atk14.net/">{t}ATK14 je PHP framework pro nebojácné chlapce a děvčata{/t}</a><br />
-				{t}ATK14 Book je kniha o tomto frameworku a můžete do ní nahlédnout, i když mezi ně zatím nepatříte{/t}<br /><br />
-				Copyleft
-				<!--[if lte IE 8]><span style="filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2); display: inline-block;"><![endif]-->
-				<span style="-webkit-transform: rotate(180deg); -moz-transform: rotate(180deg); -o-transform: rotate(180deg); -khtml-transform: rotate(180deg); -ms-transform: rotate(180deg); transform: rotate(180deg); display: inline-block;">
-        &copy;
-				</span>
-				<!--[if lte IE 8]></span><![endif]--> 2011 - {$current_year} {t}Mr. Tomek & kolegové{/t}
+				<div class="content-main">
+					{render partial="shared/layout/flash_message"}
+					{placeholder}
+				</div>
 			</div>
+
+			{render partial="shared/layout/footer"}
 		</div>
 
-		{* Google analytics code *}
-		{if $PRODUCTION}
-		{javascript_tag}
-			var _gaq = _gaq || [];
-			_gaq.push(['_setAccount', 'UA-27229703-2']);
-			_gaq.push(['_trackPageview']);
-
-			(function() \{
-				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-			\})();
-		{/javascript_tag}
+		{if $DEVELOPMENT}
+			{javascript_script_tag file="../dist/js/app.js"}
+			<script src="//localhost:35729/livereload.js"></script>
+		{else}
+			{javascript_script_tag file="../dist/js/app.min.js"}
 		{/if}
 	</body>
-
 </html>

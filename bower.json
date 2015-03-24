@@ -1,0 +1,10 @@
+{
+  "name": "atk14-skelet",
+  "dependencies": {
+    "jquery": "^1.10",
+    "bootstrap": "^3.1.1",
+    "html5shiv": "^3.7.0",
+    "respond": "^1.4.2",
+    "jquery-ui": "^1.10.3"
+  }
+}

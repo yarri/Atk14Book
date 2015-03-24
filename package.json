@@ -1,0 +1,41 @@
+{
+  "name": "atk14-book",
+  "title": "ATK14 Book",
+  "version": "0.1.0",
+  "description": "Best book about the ATK14 Framework ever",
+  "homepage": "http://book.atk14.net/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yarri/Atk14Book.git"
+  },
+  "contributors": [
+    {
+      "name": "Jaromír Tomek",
+      "email": "jaromir.tomek@gmail.com"
+    },
+    {
+      "name": "Bohdan Ganický",
+      "email": "bohdan.ganicky@gmail.com"
+    }
+  ],
+  "license": "WTFPL",
+  "readmeFilename": "README.md",
+  "gitHead": "08020875c22b1655ab0c9e5495a44df286687240",
+  "bugs": {
+    "url": "https://github.com/yarri/Atk14Book/issues"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.4",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-concat": "^0.4.0",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-less": "^0.11.0",
+    "grunt-contrib-uglify": "^0.4.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-jscs": "^0.6.1",
+    "jshint-stylish": "^0.1.5",
+    "load-grunt-tasks": "^0.4.0",
+    "time-grunt": "^0.3.1"
+  }
+}
