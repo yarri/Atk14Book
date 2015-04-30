@@ -4,13 +4,13 @@ Vytváření odkazů
 
 	Vykreslí html tag &lt;a&gt;
 
-		{a controllers="books" action="detail" id=$book}{$book->getTitle()}{/a}
+		{a ontroller="books" action="detail" id=$book}{$book->getTitle()}{/a}
 
 * #### a\_remote ([block](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/block.a_remote.php))
 
 	Vykreslí html tag &lt;a&gt;, který bude zpracován asynchronně pomocí _atk14.js_
 
-		{a_remote controllers="users" action="logout" _method="post" _confirm="Do you really want to sign out?"}Sign out{/a}
+		{a_remote controller="users" action="logout" _method="post" _confirm="Do you really want to sign out?"}Sign out{/a}
 
 * #### a\_destroy ([block](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/block.a_destroy.php))
 
