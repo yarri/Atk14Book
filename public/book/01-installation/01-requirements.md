@@ -11,24 +11,27 @@ This chapter describes ATK14 installation on [UBUNTU](http://www.ubuntu.com/) 10
 
 You will definitely need
 
-* _php_ 
-* _git_ for downloading source codes from [github.com](http://www.github.com/)
+* _php_ 5.3 or newer (optimally 5.5) with some addons
+* _git_
 * _postgresql_
 
-Optionally you should install
+Optionally you may want to install
 
 * _gettext_ and _poedit_ for multilanguage applications
 * _apache web server_ if you find out that the built-in development web server is not good for you
 
 
 ```bash
-sudo apt-get install php5 php5-cli php-pear php5-pgsql php5-gettext git postgresql
-sudo apt-get install gettext poedit apache2-mpm-prefork
+sudo apt-get install php5 php5-cli php-pear php5-pgsql php5-json php5-readline php5-mcrypt php5-gd
+sudo apt-get install git
+sudo apt-get install postgresql postgresql-client
+sudo apt-get install apache2-mpm-prefork
+sudo apt-get install gettext poedit
 ```
 
-### Configuring Postgresql
+### Configuring Postgresql in development
 
-Postgresql access control file pg\_hba.conf should look like this. The file may be found at /etc/postgresql/8.4/main/pg\_hba.conf
+Postgresql access control file pg\_hba.conf should look like this. The file may be found at /etc/postgresql/9.3/main/pg\_hba.conf
 
 ```text
 # TYPE  DATABASE    USER       CIDR-ADDRESS  METHOD
