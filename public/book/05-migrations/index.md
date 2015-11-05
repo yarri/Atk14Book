@@ -3,24 +3,27 @@ Migrace
 
 Migrace pomáhají udržet shodné databázové schéma ve všech nainstalovaných instancích aplikace.
 
-Migrace je série seřazených patchů do databáze, pomocí kterých je možné přidávat tabulky, měnit stávající tabulky, vytvářet indexy, plnit číselníky...
+Jedná se sérií seřazených patchů do databáze, pomocí kterých je možné přidávat tabulky, měnit stávající tabulky, vytvářet indexy, plnit číselníky...
 
 Migrační soubory umísťujeme do adresáře _db/migrations/_.
 
-Every migration file must start with a numeric prefix which helps to order them. Good choice could be sequence 0001, 0002, 0003 or 201101121550, 201101121700 (i.e. current date in format YmdHi) or any other reasonable alphabetically increasing sequence.
+Každý migrační soubor musí začínat numerickým prefixem, který zajistí provádění jednotlivých migrací ve správném pořadí. Dobrá volba může být posloupnost 0001, 0002, 0003, nebo 201101121550, 201101121700 (tj. aktualní datum a čas ve formátu YmdHi) a podobně.
 
 ### Příklady názvů migračních souborů
 
 	$ ls db/migrations/
-	0001_create_table_sections.sql
-	0002_create_table_article.sql
-	0003_filling_up_sections.php
+	0000_sessions.sql
+	0001_users.sql
+	0002_reset_admins_password_migration.php
+	0003_create_table_sections.sql
+	0004_filling_up_sections_migration.php
+	application_migration.php
 
-### Let see inside a migration file
+### Pojďme se podívat dovnitř migrařních souborů
 
-If a migration file is a SQL script (0001_create_table_sections.sql), it's content should be like this:
+Pokud je migrační soubor SQL skript, může jeho obsah vypadat třeba takto:
 
-	-- file: db/migrations/0001_create_table_sections.sql
+	-- file: db/migrations/0003_create_table_sections.sql
 	-- this migration creates the section table
 	CREATE SEQUENCE seq_sections;
 	CREATE TABLE sections(
@@ -28,12 +31,12 @@ If a migration file is a SQL script (0001_create_table_sections.sql), it's conte
 	 title VARCHAR(255)
 	);
 
-If a migration file is a PHP script (0003_filling_up_sections.php), it's content should be like this:
+Pokud je migrační soubor PHP skript, očekává se, že obsahuje třídu se stejným názvem, která je potomkem třídy Atk14Migration a která implementuje metodu up() - právě tato metoda je během migrace spušťena.
 
 	<?php
-	// file: db/migrations/0003_filling_up_sections.php
+	// file: db/migrations/0004_filling_up_sections_migration.php
 	// this migration fills up the migration table
-	class FillingUpSections extends Atk14Migration{
+	class FillingUpSectionsMigration extends ApplicationMigration{
 	 function up(){
 		 foreach((array("Javascript","PHP","CSS","Python","Ruby") as $title){
 			 Section::CreateNewRecord(array("title" => $title));
@@ -46,24 +49,63 @@ If a migration file is a PHP script (0003_filling_up_sections.php), it's content
 	 }
 	}
 
-### Do the migrations
+Třída ApplicationMigration je určena pro společné funkce všech PHP migrací. V některých aplikacích to může být užitečné.
 
-Now run
+	<?php
+	// file: db/migrations/application_migration.php
+	/**
+	 * The base class for all PHP migrations
+	 *
+	 * The perfect place for common methods (e.g. lorem ipsum generator)
+	 */
+	class ApplicationMigration extends Atk14Migration{
+
+	}
+
+### Spuštění migrací
+
+Pro provedení všech čekajících migrací spusťte
 
 	$ ./scripts/migration
 
-... and all pending migrations will be executed in the given order.
-
-In the production environment you have to run
+V produkci je nutné mít správně nastavenou proměnou prostředí ATK14_ENV
 
 	$ ATK14_ENV=production ./scripts/migration
 
-or
+nebo
 
 	$ export ATK14_ENV=production
 	$ ./scripts/migration
 
-Vlídné doporučení
------------------
+### Hrátky na příkazové řádce
 
-Jakkoli máte rádi visuální nastroje typu _phpMyAdmin_, nepoužívejte je pro úpravu struktury databáze. Všechny změny vždy provádějte pomocí migrací. Ušetříte tak práci sobě, ostatním, kteří aplikaci vyvíjejí s vámi. Jen si představte, že nově příchozí programátor, který vstupuje do projektu, si z verzovacího systémy stáhne vývojovou větev, spustí migrace a v tu ránu může začít pracovat na své vlastní kopii.
+Zjištění, které migrace ještě nebyly provedeny
+
+	$ ./scripts/migrace -p
+	# or
+	$ ./scripts/migrace --preview
+
+Zjištění, které migrace již proběhly
+
+	$ ./scripts/migrace -l
+	# or
+	$ ./scripts/migrace --list
+
+Provedení vybraných čekajících migrace mimo definované pořadí
+
+	$ ./scripts/migrace 0145_altering_basket_items.sql 0146_order_gifts.sql
+
+Opakované provedení migrace
+
+	$ ./scripts/migrace -f 0002_reset_admins_password_migration.php
+	# or
+	$ ./scripts/migrace --force 0002_reset_admins_password_migration.php
+
+Závěrem
+-------
+
+Jakkoli máte rádi visuální nastroje typu _phpPgAdmin_ nebo _Adminer_, nepoužívejte je pro úpravu struktury databáze. Všechny změny vždy provádějte pomocí migrací. Ušetříte tak práci sobě, ostatním, kteří aplikaci vyvíjejí s vámi.
+
+Jen si uvědomte, že nově příchozí programátor, který vstupuje do projektu, si jej z Gitu naklonuje, vytvoří databázi, spustí migrace a v tu ránu může začít pracovat na své vlastní kopii.
+
+Podobně budou patrně postupovat i nástroje pro automatické testování projektu (např. [Travis](https://travis-ci.org/)): naklonování zdrojového kódu &rarr; vytvoření prázdné testovací databáze &rarr; spuštění migrací &rarr; spuštění všech testů &rarr; úklid (smazání testovací databáze...) &rarr; report výsledku testování.
