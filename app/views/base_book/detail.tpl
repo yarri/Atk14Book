@@ -1,6 +1,4 @@
-<p>
-	{render partial="base_book/breadcrumbs"}
-</p>
+{render partial="base_book/breadcrumbs"}
 
 <div>
 	{$page_content nofilter}
