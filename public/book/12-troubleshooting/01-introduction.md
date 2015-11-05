@@ -15,29 +15,9 @@ Verzujete na gitu? A máte ATK14 do projektu vložen jako submodul? Prověřte, 
 
 	$ git submodule update
 
-### Použití Nette Laděnky
+### Nainstalujte si Tracy
 
-[_Nette Framework_](http://www.nette.org/) obsahuje skvělý nástroj [_Laděnka_](http://doc.nette.org/cs/debugging), který doporučujeme používat. Laděnka velmi pěkně vizualizuje chyby a výjimky.
-
-Nainstalujte Nette:
-
-	$ pear channel-discover pear.nette.org
-	$ pear remote-list -c nette
-	$ pear install nette/nette
-
-Laděnku nastartujete v souboru lib/load.php
-
-	<?php
-	// file lib/load.php
-	if(
-		DEVELOPMENT &&
-		!$HTTP_REQUEST->xhr()
-	){
-		require("Nette/loader.php");
-		Nette\Diagnostics\Debugger::enable();
-	}
-
-V této ukázce bude Laděnka zapnuta pouze ve vývojovém prostředí.
+[_Tracy_](https://tracy.nette.org/) je výborný ladící nástroj. Nainstalujte si ho. [Tady je návod.](http://forum.atk14.net/cs/topics/detail/?id=100)
 
 ### Kompilace všech šablon
 
@@ -87,8 +67,7 @@ Následujícím postupem zcela vyčištíte a následně zase obnovíte databáz
 
 To může přijít vhod, když už všechny postupy selžou.
 
-	$ ATK14_ENV=development ./scripts/purge_database_objects
-	$ ATK14_ENV=development ./scripts/initialize_database
+	$ ATK14_ENV=development ./scripts/destroy_database_objects
 	$ ATK14_ENV=development ./scripts/migrate
 
 Upozorňujeme však, že tak ztratíte z databáze všechna data, která nevznikla během migrací.
