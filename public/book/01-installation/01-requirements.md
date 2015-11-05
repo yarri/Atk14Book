@@ -19,6 +19,7 @@ Optionally you may want to install
 
 * _gettext_ and _poedit_ for multilanguage applications
 * _apache web server_ if you find out that the built-in development web server is not good for you
+* _rsync_ is useful for deploying an application into the production
 
 
 ```bash
@@ -27,6 +28,7 @@ sudo apt-get install git
 sudo apt-get install postgresql postgresql-client
 sudo apt-get install apache2-mpm-prefork
 sudo apt-get install gettext poedit
+sudo apt-get install rsync
 ```
 
 ### Configuring Postgresql in development
