@@ -7,7 +7,7 @@ důmyslná políčka.
 Políčko pro zadávání lichých čísel
 ----------------------------------
 
-ATK14 obsahuje políčko IntegerField pro zadávání celých čísel - IntegerField. Řekněme, že chceme vytvořit takové políčko, do kterého bude možné zadat pouze liché číslo.
+ATK14 obsahuje políčko pro zadávání celých čísel &mdash; _IntegerField_. Řekněme, že chceme vytvořit takové políčko, do kterého bude možné zadat pouze liché číslo.
 
 Include app/fields/odd_number_field.php
 
@@ -18,9 +18,9 @@ Formulář s políčkem *OddNumberField* si vyzkoušíte na adrese <http://www.a
 Políčko pro zadávání hesla
 --------------------------
 
-Ukázkové políčko pro heslo obsahuje skelet.
+Políčko _PasswordField_ patří rovněž do základní sady formulářových políček. Takto vypadá.
 
-Include atk14/skelet/app/fields/password_field.php
+Include atk14/src/forms/fields/password_field.php
 
 Je zde vidět, že metoda *clean()* nebyla překryta. Nebylo to nutné. Hlavní rozdíl mezi *CharField* a *PasswordField* je v jiném widgetu, který definuje to,
 jak bude políčko vykresleno ve formuláři. O widgetech se mluví v další kapitole.
