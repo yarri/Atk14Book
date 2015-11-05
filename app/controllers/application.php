@@ -1,4 +1,4 @@
-<?
+<?php
 class ApplicationController extends Atk14Controller{
 	function index(){
 		$this->_execute_action("error404");
@@ -12,6 +12,7 @@ class ApplicationController extends Atk14Controller{
 
 	function _initialize(){
 		$this->_prepend_before_filter("application_before_filter");
+		$this->_append_after_filter("application_after_filter");
 
 		if(!$this->rendering_component){
 			// Definujme toto jako posledni krok v _initialize()!
@@ -30,8 +31,17 @@ class ApplicationController extends Atk14Controller{
 		$this->tpl_data["search_form"] = Atk14Form::GetInstanceByFilename("searches/search_form.php",$this);
 	}
 
+	function _application_after_filter(){
+    if(DEVELOPMENT){
+      $bar = Tracy\Debugger::getBar();
+      $bar->addPanel(new DbMolePanel($this->dbmole));
+    }
+	}
+
 	function _begin_database_transaction(){
-		$this->dbmole->begin();
+		$this->dbmole->begin(array(
+			"execute_after_connecting" => true
+		));
 	}
 
 	function _end_database_transaction(){
