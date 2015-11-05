@@ -56,7 +56,9 @@ class MdBookPrefilter {
 		$suffix = preg_replace('/.*\.([^.]+)$/','\1',$filename);
 		$uf = new UrlFetcher($url = "http://www.atk14.net/en/sources/detail/?file=".urlencode($filename)."&format=raw");
 		if(!$uf->found()){
-			return '<p class="error">'."Vzdálený soubor $filename není možné načíst!".'</p>';
+			$err = "Remote file $filename could not be read";
+			trigger_error(sprintf("%s (%s)",$err,$GLOBALS["HTTP_REQUEST"]->getUrl()));
+			return '<p class="alert alert-danger"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> '.$err.'</p>';
 		}
 		$content = $uf->getContent();
 		$content = str_replace("\t","  ",$content);
