@@ -19,7 +19,7 @@ Každý migrační soubor musí začínat numerickým prefixem, který zajistí 
 	0004_filling_up_sections_migration.php
 	application_migration.php
 
-### Pojďme se podívat dovnitř migrařních souborů
+### Pojďme se podívat dovnitř migračních souborů
 
 Pokud je migrační soubor SQL skript, může jeho obsah vypadat třeba takto:
 
