@@ -20,7 +20,7 @@ class MdBookPrefilter {
 
 		$replaces = array();
 
-		if(preg_match_all('/\n(\t|    )((<\?|--|{\*|<).+?)(\n[^\s])/s',$raw,$matches_all,PREG_SET_ORDER)){
+		if(preg_match_all('/\n(\t|    )((<\?|--|{\*|<).+?)(\n[^\s]|$)/s',$raw,$matches_all,PREG_SET_ORDER)){
 			foreach($matches_all as $matches){
 				$tr = array(
 					'<' => 'xml',
