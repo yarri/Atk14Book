@@ -1,7 +1,7 @@
 Řetězcové funkce
 ================
 
-* ### h ([block](https://github.com/atk14/Atk14/blob/master/src/atk14/helpers/block.h.php) a [modifier](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/modifier.h.php))
+* ### h ([block](https://github.com/atk14/Atk14/blob/master/src/atk14/helpers/block.h.php) a [modifier](https://github.com/atk14/Atk14/blob/master/src/atk14/helpers/modifier.h.php))
 
 	Escapuje řídící znaky pro HTML. Obdoba PHP funkce [htmlspecialchars](http://php.net/manual/en/function.htmlspecialchars.php).
 

@@ -6,7 +6,7 @@ Prezentace dat
 
 * ### to_sentence ([modifier](https://github.com/atk14/Atk14/blob/master/src/atk14/helpers/modifier.to_sentence.php))
 
-* ### to_json ([modifier](https://github.com/atk14/Atk14/blob/master/src/atk14/helpers/modifier.to_json.php), [function](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/function.to_json.php))
+* ### to_json ([modifier](https://github.com/atk14/Atk14/blob/master/src/atk14/helpers/modifier.to_json.php), [function](https://github.com/atk14/Atk14/blob/master/src/atk14/helpers/function.to_json.php))
 
 Laděni
 ------
