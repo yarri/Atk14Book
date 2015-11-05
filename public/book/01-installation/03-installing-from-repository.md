@@ -2,14 +2,14 @@ Installing from a repository
 ============================
 
 Consider that you are about to install application running at <http://www.atk14.net/> on your computer into directory ~/projects/atk14/.
-This application has a public repository on Github at <https://github.com/yarri/Atk14>
+This application has a public repository on Github at <https://github.com/atk14/Atk14>
 
 ### Installing the source code
 
 	$ cd ~/projects/
 	$ mkdir atk14
 	$ cd atk14
-	$ git clone git://github.com/yarri/Atk14Net.git ./
+	$ git clone git://github.com/atk14/Atk14Net.git ./
 	$ git submodule init
 	$ git submodule update
 

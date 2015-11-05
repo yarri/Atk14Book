@@ -1,7 +1,7 @@
 Vkladání dílčích šablon a dalšího obsahu
 ========================================
 
-* ### render ([function](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/function.render.php))
+* ### render ([function](https://github.com/atk14/Atk14/blob/master/src/atk14/helpers/function.render.php))
 
 	Vložení dílčí šablony
 
@@ -26,13 +26,13 @@ Vkladání dílčích šablon a dalšího obsahu
 			{a action="detail" id=$article}{$article->getTitle()}{/a}
 		</li>
 
-* ### placeholder ([function](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/function.placeholder.php))
+* ### placeholder ([function](https://github.com/atk14/Atk14/blob/master/src/atk14/helpers/function.placeholder.php))
 	
 	Označí místo (typicky v layoutu), kam bude něco vyrenderováno někde jinde pomocí {content}.
 
 		{placeholder for="side_navigation"}
 
-* ### content ([block](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/block.content.php))
+* ### content ([block](https://github.com/atk14/Atk14/blob/master/src/atk14/helpers/block.content.php))
 
 	Vyrenderuje obsah pro stejně označené místo pomocí {placeholder}.
 
@@ -48,7 +48,7 @@ Vkladání dílčích šablon a dalšího obsahu
 			</ul>
 		{/content}
 
-* ### render_component ([function](https://github.com/yarri/Atk14/blob/master/src/atk14/helpers/function.render_component.php))
+* ### render_component ([function](https://github.com/atk14/Atk14/blob/master/src/atk14/helpers/function.render_component.php))
 
 	Vyrenderuje výstup z jiného kontroleru a akce. Toto se někdy hodí. Spíš se však snažte to vůbec nepoužívat.
 		
