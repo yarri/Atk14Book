@@ -87,7 +87,7 @@
     <div class="bs-docs-header" id="content" tabindex="-1">
       <div class="container">
         <h1>ATK14 Book</h1>
-				<p>{t}Read, hear, and study the ATK14 Book. Grow your skills. Relax. Again.{/t}</p>
+				<p>{t}Read, hear, and study the ATK14 Book. Grow your skills. Relax. Repeat.{/t}</p>
       </div>
     </div>
 
