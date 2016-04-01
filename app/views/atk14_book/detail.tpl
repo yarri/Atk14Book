@@ -7,7 +7,7 @@
 
 <div class="col-md-3" role="complementary">
 
-	<h4>Obsah</h4>
+	<h4>{t}Obsah{/t}</h4>
 	<ul class="nav nav-pills nav-stacked">
 		{!$navigation}
 	</ul>
