@@ -37,4 +37,4 @@ ATK14 Catalog vychází z ATK14 Skelet, který rozšiřuje zejména o _katalog p
 
 ### Resumé
 
-Je velmi těžké si z tolika koster vybrat tu správnou. Pokud si nejste jisti, zkuste všecny :)
+Je velmi těžké si z tolika koster vybrat tu správnou. Pokud si nejste jisti, zkuste všechny :)
