@@ -5,13 +5,13 @@ Requirements
 
 A UNIX-like operating system is required - Linux, [FreeBSD](http://www.freebsd.org/)...
 
-This chapter describes ATK14 installation on [UBUNTU](http://www.ubuntu.com/) 10.10 or higher.
+This chapter describes ATK14 installation on [UBUNTU](http://www.ubuntu.com/) 15.10 or higher.
 
 ### Installing software packages
 
 You will definitely need
 
-* _php_ 5.3 or newer (optimally 5.5) with some addons
+* _php_ 5.3 or newer (optimally 7.0) with some addons
 * _git_
 * _postgresql_
 
@@ -23,12 +23,19 @@ Optionally you may want to install
 
 
 ```bash
-sudo apt-get install php5 php5-cli php-pear php5-pgsql php5-json php5-readline php5-mcrypt php5-gd
+sudo apt-get install php php-cli php-pear php-pgsql php-json php-readline php-mcrypt php-gd
 sudo apt-get install git
 sudo apt-get install postgresql postgresql-client
-sudo apt-get install apache2-mpm-prefork
+sudo apt-get install apache2
 sudo apt-get install gettext poedit
 sudo apt-get install rsync
+```
+
+Install Composer. Visit <https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx> for installation instructions.
+
+For testing you need to have PHPUnit installed globally using Composer.
+```
+composer global require "phpunit/phpunit=4.8.*"
 ```
 
 ### Configuring Postgresql in development
