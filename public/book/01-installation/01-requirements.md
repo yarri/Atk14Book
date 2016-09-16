@@ -23,7 +23,7 @@ Optionally you may want to install
 
 
 ```bash
-sudo apt-get install php php-cli php-pgsql php-json php-readline php-mcrypt php-gd
+sudo apt-get install php php-cli php-pgsql php-json php-readline php-mcrypt php-gd php-mbstring
 sudo apt-get install git
 sudo apt-get install postgresql postgresql-client
 sudo apt-get install apache2 libapache2-mod-php
