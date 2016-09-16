@@ -23,10 +23,10 @@ Optionally you may want to install
 
 
 ```bash
-sudo apt-get install php php-cli php-pear php-pgsql php-json php-readline php-mcrypt php-gd
+sudo apt-get install php php-cli php-pgsql php-json php-readline php-mcrypt php-gd
 sudo apt-get install git
 sudo apt-get install postgresql postgresql-client
-sudo apt-get install apache2
+sudo apt-get install apache2 libapache2-mod-php
 sudo apt-get install gettext poedit
 sudo apt-get install rsync
 ```
@@ -36,30 +36,6 @@ Install Composer. Visit <https://getcomposer.org/doc/00-intro.md#installation-li
 For testing you need to have PHPUnit installed globally using Composer.
 ```
 composer global require "phpunit/phpunit=4.8.*"
-```
-
-### Configuring Postgresql in development
-
-Postgresql access control file pg\_hba.conf should look like this. The file may be found at /etc/postgresql/9.3/main/pg\_hba.conf
-
-```text
-# TYPE  DATABASE    USER       CIDR-ADDRESS  METHOD
-local   all         postgres                 ident
-host    all         postgres   127.0.0.1/32  ident
-host    all         postgres   ::1/128       ident
-local   sameuser    all                      md5
-host    sameuser    all        127.0.0.1/32  md5
-host    sameuser    all        ::1/128       md5
-```
-
-These lines say that administer (postgres) can connect to any database but only when he is logged as postgres in the system, other user can connect only to a database with the same name and must provide a correct password.
-
-Now restart the server.
-
-```bash
-sudo service postgresql restart
-# or
-sudo /etc/init.d/postgresql restart
 ```
 
 ### Configuring Gettext
@@ -84,6 +60,3 @@ Mod Rewrite needs to be enabled.
 ```bash
 sudo a2enmod rewrite
 ```
-
-
-
