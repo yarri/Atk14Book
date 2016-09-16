@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * Chci, aby to vypadalo jako http://progit.org/book/index.html
  * Chci pouzivat Markdown http://daringfireball.net/projects/markdown/
