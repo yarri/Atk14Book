@@ -23,7 +23,7 @@ Optionally you may want to install
 
 
 ```bash
-sudo apt-get install php php-cli php-pgsql php-json php-readline php-mcrypt php-gd php-mbstring
+sudo apt-get install php php-cli php-pgsql php-json php-readline php-mcrypt php-gd php-mbstring php-xml
 sudo apt-get install git
 sudo apt-get install postgresql postgresql-client
 sudo apt-get install apache2 libapache2-mod-php
@@ -31,7 +31,7 @@ sudo apt-get install gettext poedit
 sudo apt-get install rsync
 ```
 
-Install Composer. Visit <https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx> for installation instructions.
+Install Composer. Visit <https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx> for installation instructions or just run ```sudo apt-get install composer``` like a boss.
 
 For testing you need to have PHPUnit installed globally using Composer.
 ```
