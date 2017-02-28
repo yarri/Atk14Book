@@ -13,12 +13,14 @@ git checkout https://github.com/yarri/Atk14Book.git
 cd Atk14Book
 git submodule init
 git submodule update
-composer.phar install
+composer install
 ./scripts/create_database
 ./scripts/migrate
 ```
+If you are experiencing a trouble make sure that all requirements are met: <http://book.atk14.net/czech/installation%3Arequirements/>
 
-### Installing optional 3rd party libraries
+Installing optional 3rd party libraries
+---------------------------------------
 
 ```bash
 composer update
@@ -26,32 +28,28 @@ composer update
 
 If you don't have the Composer installed, visit http://www.getcomposer.org/
 
-### Front-end Assets Installation
-
+Front-end Assets Installation
+-----------------------------
 #### Install dependencies.
+With [Node.js](http://nodejs.org) and npm installed, run the following one liner from the root of your Skelet application:
 ```bash
-# Node Version manager
-wget -q -O - https://raw.github.com/creationix/nvm/master/install.sh | sh
-echo -e "\n. ~/.nvm/nvm.sh" >> ~/.bashrc && . ~/.nvm/nvm.sh
-# Node.js
-nvm install 0.10
-# Bower
-npm install -g bower
-# Grunt
-npm install -g grunt-cli
+$ npm install -g gulp && npm install -g bower && npm install && bower install
 ```
-#### Install skelet front-end dependencies via Bower.
+
+This will install all the tools you will need to serve and build your front-end assets.
+
+### Run initial build
+Run initial Gulp build process for presentation and admininstration.
 ```bash
-bower install
+$ gulp && gulp admin
 ```
-#### Install build dependencies.
+
+### Serve / watch
 ```bash
-npm install
+$ gulp serve
 ```
-#### Build.
-```bash
-grunt dist
-```
+
+This outputs an IP address you can use to locally test and another that can be used on devices connected to your network.
 
 Starting development webserver
 ------------------------------
