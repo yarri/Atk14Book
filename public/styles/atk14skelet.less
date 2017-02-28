@@ -1,5 +1,9 @@
-@import url("../assets/vendor/bootstrap/less/bootstrap.less");
-
+//
+// Atk14Skelet Init styles
+//
+// (if you are using a custom theme, you can remove this)
+//
+// ------------------------------------------------------
 
 /*
 ================================================================
@@ -13,6 +17,9 @@ body {
 }
 .alert {
 	margin-top: @line-height-computed;
+}
+body.loading, body.loading a, body.loading input, body.loading select, body.loading button {
+	cursor: wait;
 }
 
 
@@ -80,14 +87,66 @@ label {
 	label {
 		.make-sm-column(2);
 	}
-	.form-control {
+	.form-control, .checkboxes {
 		.make-sm-column(4);
 	}
 	.help-block {
 		.make-sm-column(6);
 	}
+	ul.help-block {
+		width: 100%;
+	}
 	.btn {
 		.make-sm-column-offset(2);
+	}
+	.checkboxes li {
+		.checkbox();
+		input {
+			left: 10px;
+		}
+	}
+	.checkbox {
+		padding-top: 0;
+		margin-bottom: @grid-gutter-width / 2;
+		@media (min-width: @screen-sm-min) {
+			.help-block {
+				margin-top: 0;
+				padding-left: @grid-gutter-width;
+			}
+			ul.help-block{
+				// in ul>li come error messages
+				margin-top: 5px;
+				width: 100%;
+				padding-left: @grid-gutter-width / 2;
+			}
+		}
+		@media (max-width: @screen-xs-max) {
+			input {
+				position: static;
+				margin-left: 0;
+			}
+		}
+	}
+	.form-group{
+		margin-left: 0;
+		margin-right: 0;
+		>.btn {  margin-left: 0; }
+	}
+	@media (min-width: @screen-sm-min) {
+		label {
+			text-align: right;
+			input {
+				position: absolute;
+				right: -@grid-gutter-width / 2;
+			}
+		}
+		ul.help-block {
+			margin-left: percentage((2 / @grid-columns));
+		}
+		.form-group > .btn:first-child { margin-left: percentage((2 / @grid-columns)); }
+	}
+	@media (max-width: @screen-xs-max) {
+		label { padding-left: 0; }
 	}
 }
 .form-group {
@@ -102,7 +161,6 @@ label {
 		}
 	}
 }
-
 
 /*
 ================================================================
@@ -127,7 +185,6 @@ label {
 	border-top: 1px dotted #eee;
 }
 
-
 /*
 ================================================================
 =LOGINS
@@ -141,61 +198,23 @@ label {
 	max-width: 480px;
 }
 
-/* Yarriho prasenicko zacina tady */
-
-.bs-docs-header, .bs-docs-masthead {
-    position: relative;
-    padding: 30px 15px;
-    color: #999;
-    text-align: center;
-    text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
-    background-color: #222;
-    background-repeat: repeat-x;
+/*
+=====================================================================================
+=Sticky footer styles (http://getbootstrap.com/examples/sticky-footer-navbar/)
+===================================================================================== */
+html {
+  position: relative;
+  min-height: 100%;
 }
-
-.bs-docs-header {
-    padding-top: 60px;
-    padding-bottom: 60px;
-    font-size: 24px;
-    text-align: left;
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 80px;
 }
-
-.bs-docs-header h1 {
-    font-size: 60px;
-    line-height: 1;
-}
-.bs-docs-header h1 {
-    margin-top: 0px;
-    color: #FFF;
-}
-
-.container-fluid > .navbar-collapse, .container-fluid > .navbar-header, .container > .navbar-collapse, .container > .navbar-header {
-    margin-right: -15px;
-    margin-left: -15px;
-}
-
-.navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
-    margin-left: -15px;
-}
-
-.container-fluid > .navbar-collapse, .container-fluid > .navbar-header, .container > .navbar-collapse, .container > .navbar-header {
-    margin-right: 0px;
-    margin-left: 0px;
-}
-.navbar-header {
-    float: left;
-}
-
-.bs-docs-nav .navbar-brand, .bs-docs-nav .navbar-nav > li > a {
-    font-weight: 500;
-    color: #222;
-}
-.navbar-brand:focus, .navbar-brand:hover {
-    text-decoration: none;
-}
-
-.bs-docs-nav {
-    margin-bottom: 0px;
-    background-color: #FFF;
-    border-bottom: 0px none;
+.footer {
+  position: absolute;
+  bottom: 0;
+	left: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 80px;
 }

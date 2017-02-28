@@ -41,16 +41,15 @@
 
 		{if $DEVELOPMENT}
 			{render partial="shared/layout/dev_info"}
-
-			{stylesheet_link_tag file="../dist/css/app.css" media="screen"}
-		{else}
-			{stylesheet_link_tag file="../dist/css/app.min.css" media="screen"}
 		{/if}
+
+		{stylesheet_link_tag file="$public/dist/styles/vendor.min.css" hide_when_file_not_found=true}
+		{stylesheet_link_tag file="$public/dist/styles/application.min.css"}
 
 		<!-- HTML5 shiv and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
-			<script src="{$public}dist/vendor/js/html5shiv.js"></script>
-			<script src="{$public}dist/vendor/js/respond.min.js"></script>
+			{javascript_script_tag file="$public/dist/scripts/html5shiv.min.js"}
+			{javascript_script_tag file="$public/dist/scripts/respond.min.js"}
 		<![endif]-->
 
 		{render partial="shared/layout/analyticstracking"}
@@ -115,11 +114,7 @@
 			*}
 		</div>
 
-		{if $DEVELOPMENT}
-			{javascript_script_tag file="../dist/js/app.js"}
-			<script src="//localhost:35729/livereload.js"></script>
-		{else}
-			{javascript_script_tag file="../dist/js/app.min.js"}
-		{/if}
+		{javascript_script_tag file="$public/dist/scripts/vendor.min.js"}
+		{javascript_script_tag file="$public/dist/scripts/application.min.js"}
 	</body>
 </html>
