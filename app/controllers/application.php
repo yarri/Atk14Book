@@ -35,6 +35,7 @@ class ApplicationController extends Atk14Controller{
     if(DEVELOPMENT){
       $bar = Tracy\Debugger::getBar();
       $bar->addPanel(new DbMolePanel($this->dbmole));
+			$bar->addPanel(new TemplatesPanel());
     }
 	}
 

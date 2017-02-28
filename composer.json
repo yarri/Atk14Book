@@ -2,6 +2,7 @@
     "require": {
         "michelf/php-markdown": "1.4.0",
         "easybook/geshi": "1.0.8.*",
-        "atk14/dbmole-panel": "dev-master"
+        "atk14/dbmole-panel": "dev-master",
+        "atk14/templates-panel": "dev-master"
     }
 }
