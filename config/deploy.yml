@@ -8,7 +8,8 @@ production:
   deploy_branch: "master"
   before_deploy:
   - "@local composer update"
-  - "@local grunt dist"
+  - "@local bower update"
+  - "@local gulp"
   rsync:
   - "vendor"
   - "public/dist"
