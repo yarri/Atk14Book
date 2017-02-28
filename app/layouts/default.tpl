@@ -58,8 +58,10 @@
 
 	<body class="body_{$controller}_{$action}" data-controller="{$controller}" data-action="{$action}">
 
-		<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+		<header>
+			<div class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
 			<div class="container">
+
 				<div class="navbar-header">
 					<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
 						<span class="sr-only">Toggle navigation</span>
@@ -82,16 +84,21 @@
 						</li>
 					</ul>
 				</nav>
-			</div>
-		</header>
 
-		 <!-- Docs page layout -->
-    <div class="bs-docs-header" id="content" tabindex="-1">
-      <div class="container">
-        <h1>ATK14 Book</h1>
-				<p>{t}Read, hear, and study the ATK14 Book. Grow your skills. Relax. Repeat.{/t}</p>
-      </div>
-    </div>
+			</div> <!-- </container> -->
+			</div>
+
+			<!-- Docs page layout -->
+			<div class="bs-docs-header" id="content" tabindex="-1">
+				<div class="container">
+					<h1>ATK14 Book</h1>
+					<p>{t}Read, hear, and study the ATK14 Book. Grow your skills. Relax. Repeat.{/t}</p>
+				</div>
+			</div>
+
+		</header>
+		
+
 
 		<div class="container{if $section_navigation} has-nav-section{/if}">
 			{*render partial="shared/layout/header" *}
