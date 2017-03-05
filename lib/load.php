@@ -15,3 +15,5 @@ if(
 ){
   Tracy\Debugger::enable(PRODUCTION, __DIR__ . '/../log/',ATK14_ADMIN_EMAIL);
 }
+
+class_autoload(__DIR__ . "/drink_markdown/");

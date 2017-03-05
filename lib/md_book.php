@@ -79,11 +79,14 @@ class MdBook {
 		$options += array(
 			"prefilter" => new MdBookPrefilter(),
 			"postfilter" => new MdBookPostfilter(),
+			"markdown_transformer" => new DrinkMarkdown(),
 		);
 
 		$this->book_directory = $book_directory;
+
 		$this->prefilter = $options["prefilter"];
 		$this->postfilter = $options["postfilter"];
+		$this->markdown_transformer = $options["markdown_transformer"];
 
 		$this->_readContent();
 		$this->_sortContent();
@@ -148,7 +151,8 @@ class MdBook {
 	function renderContent($content){
 		$raw = $this->prefilter->filter($content);
 
-		$out = Michelf\Markdown::defaultTransform($raw);
+		//$out = Michelf\Markdown::defaultTransform($raw);
+		$out = $this->markdown_transformer->transform($raw);
 
 		return $this->postfilter->filter($out);
 	}
