@@ -7,7 +7,3 @@ Upozorňujeme, že některé texty jsou hodně pracovní, jiné zcela chybí a n
 Milí chlapci a děvčata, přejeme mnoho štěstí a odvahy při četbě.
 
 ![mladí ATK14 programátoři](/public/images/children.jpg)
-
-
-Obsah
------

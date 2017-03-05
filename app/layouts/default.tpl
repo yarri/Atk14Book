@@ -77,7 +77,7 @@
 				<div class="collapse navbar-collapse" id="navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-							<a href="http://www.atk14.net/">ATK14</a>
+							<a href="http://www.atk14.net/">ATK14 Framework</a>
 						</li>
 						<li>
 							<a href="http://api.atk14.net/">API Reference</a>

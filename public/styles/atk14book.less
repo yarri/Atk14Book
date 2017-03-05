@@ -13,9 +13,10 @@ header {
 		border-radius: 0px;
 		a {
 			color: #222 !important;
-		}
-		a:hover {
-			background-color: @theme-color-darker;
+			&:hover {
+				text-decoration: underline;
+				background-color: @theme-color-darker;
+			}
 		}
 		.navbar-toggle {
 			border-color: @theme-color-darker;
@@ -53,5 +54,23 @@ header {
 		p {
 			color: @theme-color-darker;
 		}
+	}
+}
+
+.content-main {
+	img {
+		.img-responsive;
+	}
+
+	.breadcrumb {
+		padding-left: 0px;
+	}
+}
+
+ul.table-of-contents {
+	padding-left: 0px;
+	list-style-type: none;
+	ul {
+		list-style-type: none;
 	}
 }
