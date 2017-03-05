@@ -1,7 +1,7 @@
 Nahrávání obrázků: ImageField
 =============================
 
-Include app/forms/fields/image_field_form.php
+[Include app/forms/fields/image_field_form.php]
 
 *ImageField* je dědic třídy *FileField*, který vyžaduje, aby byl nahraný soubor obrázek.
 

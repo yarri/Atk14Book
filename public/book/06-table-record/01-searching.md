@@ -3,7 +3,7 @@ Hledání záznamů
 
 Předpokládejme tabulku _books_ a třídu _Book_
 
-Include db/migrations/0005_books.sql
+[Include db/migrations/0005_books.sql]
 
 Třída bude prázdná. Pro naše příklady žádný zvláštní obsah nepotřebujeme.
 

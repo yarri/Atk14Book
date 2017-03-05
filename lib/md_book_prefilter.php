@@ -8,7 +8,7 @@ class MdBookPrefilter {
 
 		$replaces = array();
 
-		if(preg_match_all('/\nInclude (.+\.(inc|php|sql|tpl))/',$raw,$matches_all,PREG_SET_ORDER)){
+		if(preg_match_all('/\n\[Include (.+\.(inc|php|sql|tpl))\]\s*/',$raw,$matches_all,PREG_SET_ORDER)){
 			foreach($matches_all as $matches){
 				$replaces[$matches[0]] = "\n".$this->_place_source($matches[1]);
 			}
@@ -16,7 +16,6 @@ class MdBookPrefilter {
 		$raw = strtr($raw,$replaces);
 
 		$raw = preg_replace_callback('/[\n\r]```([ a-z0-9]*)[\n\r](.*?)\n```[\n\r]/s','_wiki_replace_source',$raw);
-
 
 		$replaces = array();
 
@@ -35,21 +34,7 @@ class MdBookPrefilter {
 
 		$raw = strtr($raw,$replaces);
 
-
-		/*
-		foreach(explode("\n",$raw) as $line){
-			if(preg_match('/^Include (app\/[^\s]*)/',$line,$matches)){
-				$out[] = $this->_place_source($matches[1]);
-				continue;
-			}	
-			$out[] = $line;
-		}
-		*/
-
 		return $raw;
-
-		
-		return join("\n",$out);
 	}
 
 	function _place_source($filename){

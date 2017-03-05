@@ -3,11 +3,11 @@ Modely
 
 Uvažujme tabulku, do které chceme ukládat uživatele.
 
-Include db/migrations/0001_users.sql
+[Include db/migrations/0001_users.sql]
 
 Třída modelu pak může vypadat následovně.
 
-Include app/models/user.php
+[Include app/models/user.php]
 
 Teď je nutné popsat několik kouzel, které jsou do tohoto celého namíchány, jakkoli kouzla rádi nemáme.
 
