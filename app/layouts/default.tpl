@@ -70,7 +70,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="/"><i class="glyphicon glyphicon-home hidden-xs"></i> <strong class="hidden visible-xs">{"ATK14_APPLICATION_NAME"|dump_constant}</strong></a>
+					<a class="navbar-brand" href="/"><i class="glyphicon glyphicon-home hidden-xs"></i> <strong class="title hidden visible-xs">{"ATK14_APPLICATION_NAME"|dump_constant}</strong></a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
