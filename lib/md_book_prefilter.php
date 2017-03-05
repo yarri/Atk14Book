@@ -1,5 +1,14 @@
 <?php
 class MdBookPrefilter {
+
+	function __construct($options = []){
+		$options += [
+			"renderer" => function($template_name){ throw new Exception("No renderer given"); }, 
+		];
+
+		$this->renderer = $options["renderer"];
+	}
+
 	function filter($raw){
 		$out = array();
 		$GLOBALS["wiki_replaces"] = array();
@@ -13,6 +22,17 @@ class MdBookPrefilter {
 				$replaces[$matches[0]] = "\n".$this->_place_source($matches[1]);
 			}
 		}
+
+		if(preg_match_all('/\n\[Render (.+?)\]\s*/',$raw,$matches_all,PREG_SET_ORDER)){
+			foreach($matches_all as $matches){
+				$renderer = $this->renderer;
+				$_content = $renderer($matches[1]);
+				$id = "wikireplace".uniqid();
+				$GLOBALS["wiki_replaces"][$id] = $renderer($matches[1]);
+				$replaces[$matches[0]] = "\n".$id;
+			}
+		}
+
 		$raw = strtr($raw,$replaces);
 
 		$raw = preg_replace_callback('/[\n\r]```([ a-z0-9]*)[\n\r](.*?)\n```[\n\r]/s','_wiki_replace_source',$raw);

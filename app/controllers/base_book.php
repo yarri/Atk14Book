@@ -53,8 +53,15 @@ class BaseBookController extends ApplicationController{
 	}
 
 	function _before_filter(){
+		$controller = $this;
 		$this->book = $this->tpl_data["book"] = new MdBook($this->book_dir,array(
-			//"prefilter" => new MdBookPrefilter()
+			"prefilter" => new MdBookPrefilter([
+				"renderer" => function($template_name) use($controller){
+					return $controller->_render($template_name,[
+						"book" => $controller->book,
+					]);
+				}
+			])
 		));
 
 		if($this->book_title){ $this->book->setTitle($this->book_title); }
