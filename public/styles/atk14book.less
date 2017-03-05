@@ -19,15 +19,18 @@ header {
 			}
 		}
 		.navbar-toggle {
-			border-color: @theme-color-darker;
+			border: none;
+			border-color: none;
 			.icon-bar {
-				background-color: #222;
+				background-color: white;
+    		box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
 			}
 			&:hover, &:focus {
-				background-color: @theme-color-darker;
+				background-color: @theme-color;
 			}
 		}
 		.title {
+			color: white;
 			font-family: @font-family-sans-serif;
     	text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
 			font-weight: bold;
