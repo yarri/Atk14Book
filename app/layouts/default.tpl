@@ -59,20 +59,23 @@
 	<body class="body_{$controller}_{$action}" data-controller="{$controller}" data-action="{$action}">
 
 		<header>
-			<div class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
-			<div class="container">
 
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
-					<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
 						<span class="sr-only">Toggle navigation</span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="/" class="navbar-brand"><i class="glyphicon glyphicon-home"></i></a>
+					<a class="navbar-brand" href="/"><i class="glyphicon glyphicon-home hidden-xs"></i> <strong class="hidden visible-xs">{"ATK14_APPLICATION_NAME"|dump_constant}</strong></a>
 				</div>
-				<nav class="collapse navbar-collapse bs-navbar-collapse">
-					<ul class="nav navbar-nav">
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
 						<li>
 							<a href="http://www.atk14.net/">ATK14</a>
 						</li>
@@ -83,13 +86,13 @@
 							<a href="http://www.atk14sites.net/">Who uses ATK14?</a>
 						</li>
 					</ul>
-				</nav>
+				</div><!-- /.navbar-collapse -->
+			</div> <!-- /.container -->
+		</nav>
 
-			</div> <!-- </container> -->
-			</div>
 
 			<!-- Docs page layout -->
-			<div class="bs-docs-header" id="content" tabindex="-1">
+			<div class="bs-docs-header hidden-xs" id="content" tabindex="-1">
 				<div class="container">
 					<h1>ATK14 Book</h1>
 					<p>{t}Read, hear, and study the ATK14 Book. Grow your skills. Relax. Repeat.{/t}</p>
