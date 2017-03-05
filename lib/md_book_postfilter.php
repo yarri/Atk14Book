@@ -3,7 +3,7 @@ class MdBookPostfilter {
 	function filter($content){
 		$content = preg_replace_callback('/(<(p|h[0-9]|pre|ul)(| [^>]*)>)/',function($matches){  return _mark_element($matches[1]); },$content);
 
-		$content = strtr($content,$GLOBALS["wiki_replaces"]);
+		$content = strtr($content,$GLOBALS["md_book_replaces"]);
 
 		return $content;
 	}

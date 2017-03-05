@@ -11,7 +11,7 @@ class MdBookPrefilter {
 
 	function filter($raw){
 		$out = array();
-		$GLOBALS["wiki_replaces"] = array();
+		$GLOBALS["md_book_replaces"] = array();
 
 		$raw = "\n$raw\n";
 
@@ -27,15 +27,15 @@ class MdBookPrefilter {
 			foreach($matches_all as $matches){
 				$renderer = $this->renderer;
 				$_content = $renderer($matches[1]);
-				$id = "wikireplace".uniqid();
-				$GLOBALS["wiki_replaces"][$id] = $renderer($matches[1]);
+				$id = "mdbookreplace".uniqid();
+				$GLOBALS["md_book_replaces"][$id] = $renderer($matches[1]);
 				$replaces[$matches[0]] = "\n".$id;
 			}
 		}
 
 		$raw = strtr($raw,$replaces);
 
-		$raw = preg_replace_callback('/[\n\r]```([ a-z0-9]*)[\n\r](.*?)\n```[\n\r]/s','_wiki_replace_source',$raw);
+		$raw = preg_replace_callback('/[\n\r]```([ a-z0-9]*)[\n\r](.*?)\n```[\n\r]/s','_md_book_replace_source',$raw);
 
 		$replaces = array();
 
@@ -102,13 +102,13 @@ class MdBookPrefilter {
 	}
 }
 
-function _wiki_replace_source($matches){
+function _md_book_replace_source($matches){
 	($lang = trim($matches[1])) || ($lang = "auto");
 	$source = trim($matches[2]);
 	$geshi = new GeSHi($source, $lang);
   $geshi->enable_keyword_links(false);
-	$id = "wikireplace".uniqid();
-	$GLOBALS["wiki_replaces"][$id] = $geshi->parse_code();
+	$id = "mdbookreplace".uniqid();
+	$GLOBALS["md_book_replaces"][$id] = $geshi->parse_code();
 	return $id;
 }
 
