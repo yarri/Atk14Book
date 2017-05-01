@@ -80,13 +80,6 @@ class DrinkMarkdownPostfilter {
 		$replace_back = array_combine(array_values($replace_ar),array_keys($replace_ar));
 		$content = EasyReplace($content,$replace_back);
 
-		// Tables
-		if($this->table_class){
-			$content = preg_replace('/<table>/','<table class="'.htmlentities($this->table_class,ENT_COMPAT).'">',$content);
-		}
-		$content = preg_replace('/<thead>\s*<tr>(\s*<th[^>]*>\s*<\/th>\s*){1,}<\/tr>\s*<\/thead>/s','<thead></thead>',$content); // Removing empty headers
-
-		
 		// Iobjects
 		preg_match_all('/<p>\[#(\d+)[^\]]*\]<\/p>/',$content,$matches);
 		foreach($matches[1] as $i => $id){
@@ -96,6 +89,13 @@ class DrinkMarkdownPostfilter {
 		}
 
 		$content = strtr($content,$GLOBALS["wiki_replaces"]);
+		//var_dump($GLOBALS["wiki_replaces"]);
+
+		// Tables
+		if($this->table_class){
+			$content = preg_replace('/<table>/','<table class="'.htmlentities($this->table_class,ENT_COMPAT).'">',$content);
+		}
+		$content = preg_replace('/<thead>\s*<tr>(\s*<th[^>]*>\s*<\/th>\s*){1,}<\/tr>\s*<\/thead>/s','<thead></thead>',$content); // Removing empty headers
 
 		$content = "\n$content";
 		$content = preg_replace('/(<[a-z][^>]*>)(<\/[^>]+>)(<center>.*?<\/center>)/i','\1\3\2',$content); // "<p></p><center>Centered text</center>"

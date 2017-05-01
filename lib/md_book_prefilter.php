@@ -17,38 +17,19 @@ class MdBookPrefilter {
 
 		$replaces = array();
 
-		if(preg_match_all('/\n\[Include (.+\.(inc|php|sql|tpl))\]\s*/',$raw,$matches_all,PREG_SET_ORDER)){
+		if(preg_match_all('/\n\[Include (.+\.(inc|php|sql|tpl))\]\s*?\n/',$raw,$matches_all,PREG_SET_ORDER)){
 			foreach($matches_all as $matches){
-				$replaces[$matches[0]] = "\n".$this->_place_source($matches[1]);
+				$replaces[$matches[0]] = "\n".$this->_place_source($matches[1])."\n";
 			}
 		}
 
-		if(preg_match_all('/\n\[Render (.+?)\]\s*/',$raw,$matches_all,PREG_SET_ORDER)){
+		if(preg_match_all('/\n\[Render (.+?)\]\s*?\n/',$raw,$matches_all,PREG_SET_ORDER)){
 			foreach($matches_all as $matches){
 				$renderer = $this->renderer;
 				$_content = $renderer($matches[1]);
 				$id = "mdbookreplace".uniqid();
 				$GLOBALS["md_book_replaces"][$id] = $renderer($matches[1]);
-				$replaces[$matches[0]] = "\n".$id;
-			}
-		}
-
-		$raw = strtr($raw,$replaces);
-
-		$raw = preg_replace_callback('/[\n\r]```([ a-z0-9]*)[\n\r](.*?)\n```[\n\r]/s','_md_book_replace_source',$raw);
-
-		$replaces = array();
-
-		if(preg_match_all('/\n(\t|    )((<\?|--|{\*|<).+?)(\n[^\s]|$)/s',$raw,$matches_all,PREG_SET_ORDER)){
-			foreach($matches_all as $matches){
-				$tr = array(
-					'<' => 'xml',
-					'<?' => 'php',
-					'{*' => 'smarty',
-					'--' => 'sql'
-				);
-				$lang = $tr[$matches[3]];
-				$replaces[$matches[0]] = "\n".$this->_highlight_intext_source($matches[2],$lang).$matches[4];
+				$replaces[$matches[0]] = "\n$id\n";
 			}
 		}
 
@@ -67,48 +48,23 @@ class MdBookPrefilter {
 		}
 		$content = $uf->getContent();
 		$content = str_replace("\t","  ",$content);
+		$lang = "";
 		switch($suffix){
 			case "tpl":
+				$lang = "smarty";
 				$content = "{* file: $filename *}\n$content";
 				break;
 			case "php":
 			case "inc":
+				$lang = "php";
 				$content = preg_replace('/^<\?(php|)\n/',"<?\\1\n// file: $filename\n",$content);
 				break;
 			case "sql":
+				$lang = "sql";
 				$content = "-- file: $filename\n$content";
 				break;
 		}
 
-		$out = array();
-
-		foreach(explode("\n",$content) as $line){
-			$out[]  = "    $line";
-		}
-
-		return join("\n",$out);
-	}
-
-	function _highlight_syntax($source,$lang){
-		$geshi = new GeSHi($source, $lang);
-		$geshi->enable_keyword_links(false);
-		return $geshi->parse_code();
-	}
-
-	function _highlight_intext_source($source,$lang){
-		$source = trim($source);
-		$source = preg_replace('/\n(\t|    )/',"\n",$source);
-		return $this->_highlight_syntax($source,$lang);
+		return "```$lang\n$content\n```";
 	}
 }
-
-function _md_book_replace_source($matches){
-	($lang = trim($matches[1])) || ($lang = "auto");
-	$source = trim($matches[2]);
-	$geshi = new GeSHi($source, $lang);
-  $geshi->enable_keyword_links(false);
-	$id = "mdbookreplace".uniqid();
-	$GLOBALS["md_book_replaces"][$id] = $geshi->parse_code();
-	return $id;
-}
-
