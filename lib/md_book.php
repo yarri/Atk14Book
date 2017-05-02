@@ -148,13 +148,13 @@ class MdBook {
 		return $this->renderContent($raw);
 	}
 
-	function renderContent($content){
-		$raw = $this->prefilter->filter($content);
+	function renderContent($markdown){
 
-		//$out = Michelf\Markdown::defaultTransform($raw);
-		$out = $this->markdown_transformer->transform($raw);
+		$markdown = $this->prefilter->filter($markdown,$this->markdown_transformer);
 
-		return $this->postfilter->filter($out);
+		$html = $this->markdown_transformer->transform($markdown);
+
+		return $this->postfilter->filter($html,$this->markdown_transformer);
 	}
 
 	function _getIndexContent(){
