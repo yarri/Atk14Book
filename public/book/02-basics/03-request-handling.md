@@ -1,13 +1,13 @@
-Obsluha HTTP požadavku
-======================
+Zpracování HTTP požadavku
+=========================
 
-Mysleme opět na nějakou skutečnou adresu
+Mysleme na nějakou smysluplnou adresu
 
     http://www.atk14.net/en/books/edit/?id=29
 
 Co se stane, když takovou adresu navštívíme?
 
-ATK14 vytvoří a připraví kontroler - instanci třídy *BooksController* ze souboru
+Framework ATK14 vytvoří a připraví kontroler - instanci třídy *BooksController* ze souboru
 
     app/controllers/books_controller.php
 

@@ -1,23 +1,31 @@
-Práce se šablonou
-=================
+Šablony
+=======
 
-V kontroleru přiravíme data pro šablonu následovně.
+V této kapitole pochopíte základní principy práce se šablonou. Pusťme se do toho.
+
+Předpokládejme adresu
+
+    http://www.atk14.net/cs/products/
+
+která vede na akci *index* v kontroleru *products*.
+
+V akci jsou data pro šablonu připravována do pole ```$this->tpl_data```
 
     <?php
-    // soubor app/controllers/products_controller.php
+    // file: app/controllers/products_controller.php
     class ProductsController extends ApplicationController{
       function index(){
         $this->tpl_data["total_count"] = 123014;
-        $this->tpl_data["opening"] = array(
+        $this->tpl_data["opening"] = [
           "from" => "8:00",
           "to" => "18:00",
-        )
+        ];
       }
     }
 
 V šabloně jsou data dostupná takto.
 
-    {* soubor app/views/products/index.tpl *}
+    {* file: app/views/products/index.tpl *}
     
     <h1>Vítejte v našem katalogu</h1>
     
@@ -33,22 +41,23 @@ V šabloně jsou data dostupná takto.
 
 Obsah vyrenderované šablony index.tpl bude zobrazen v layout šabloně, která může vypadat například takto.
 
-    {* soubor app/layouts/default.tpl *}
+    {* file: app/layouts/default.tpl *}
     
     <html>
       <head>
-        <title>{$page_title|h}</title>
+        <title>{$page_title}</title>
       </head>
       <body>
-        {render partial=shared/layout/flash_message}
+        {render partial="shared/layout/flash_message"}
         {placeholder}
       </body>
     </html>
 
-Dá se vytušit, že vyrenderovaná šablona index.tpl bude umístěna v layoutu do místa *{placeholder}*.
+Asi tušíte, že vyrenderovaná šablona index.tpl bude umístěna v layoutu do místa *{placeholder}*.
 
-Pokud tipujete, že toto jsou [Smarty](http://www.smarty.net/) šablony, máte pravdu. ATK14 používá knihovnu Smarty ve verzi 2.6.
-Seznamte se se Smarty. Pro psaní šablon v ATK14 to budete potřebovat. Tady je [dokumentace](http://www.smarty.net/docsv2/en/).
+Pokud tipujete, že toto jsou smarty šablony, nemýlíte se. Framework ATK14 šablonovací engine *[Smarty](http://www.smarty.net/)* skutečně používá.
+
+Pokud Smartyho vůbec neznáte, seznamte se s ním v jeho [dokumentaci](http://www.smarty.net/docs/en/), budete to potřebovat.
 
 Helpery
 -------
@@ -58,11 +67,11 @@ Za velkou pozornost stojí dvojce funkcí *{placeholder}* a *{content}*.
 
 Přadstavte si takovýto layout.
 
-    {* soubor app/layouts/default.tpl *}
+    {* file: app/layouts/default.tpl *}
     
     <html>
       <head>
-        <title>{$page_title|h}</title>
+        <title>{$page_title}</title>
       </head>
       <body>
 
@@ -74,9 +83,10 @@ Přadstavte si takovýto layout.
           </ul>
         </div>
 
-        {render partial=shared/layout/flash_message}
+        {render partial="shared/layout/flash_message"}
         {placeholder}
       </body>
+
     </html>
 
 Teď uvažujme o šabloně detailu produktu.

@@ -27,7 +27,7 @@ Pokud je název akce *index*, v URL se neuvádí.
     http://www.atk14.net/en/books/?search=boat&offset=10
 
 
-Kombinace kontroleru *main*, akce *index* a vychozí jazykové verze je považováná za *frontpage*.
+Akce *index* v kontroleru *main* ve výchozím jazyce je považováná za *frontpage*.
 
     http://www.atk14.net/
 
@@ -58,7 +58,7 @@ O namespace bude pojednáno později.
 Adresář public
 --------------
 
-Adresář *public* je určen pro servírování statického obsahu jako jsou styly CSS, javascripty, obrázky atd. Adresy směřující do public nejsou obsluhovány frameworkem ATK14.
+Adresář *public* je určen pro statický obsah jako jsou styly CSS, javascripty, obrázky atd. Adresy směřující do public nejsou obsluhovány frameworkem ATK14.
 
     http://www.atk14.net/public/stylesheets/styles.css
     http://www.atk14.net/public/images/atk14.gif
