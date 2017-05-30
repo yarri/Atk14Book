@@ -6,18 +6,20 @@ V této kapitole pochopíte základní principy práce se šablonou. Pusťme se 
 Předpokládejme adresu
 
     http://www.atk14.net/cs/products/
-
+    
 která vede na akci *index* v kontroleru *products*.
 
-V akci jsou data pro šablonu připravována do pole ```$this->tpl_data```
+V příslušné metodě jsou data pro šablonu připravována do pole ```$this->tpl_data```. Všimněte si, že titulek a popis stránky (page_title a page_description) se nemusí nastavovat pomocí pole tpl_data.
 
     <?php
     // file: app/controllers/products_controller.php
     class ProductsController extends ApplicationController{
       function index(){
+        $this->page_title = "List of Products";
+        $this->page_description = "Brief list of our products, introducing product categories, shopping guides and many more...";
         $this->tpl_data["total_count"] = 123014;
         $this->tpl_data["opening"] = [
-          "from" => "8:00",
+          "from" => "08:00",
           "to" => "18:00",
         ];
       }
@@ -26,26 +28,25 @@ V akci jsou data pro šablonu připravována do pole ```$this->tpl_data```
 V šabloně jsou data dostupná takto.
 
     {* file: app/views/products/index.tpl *}
-    
     <h1>Vítejte v našem katalogu</h1>
     
     <p>
-      V našem katalogu je přesně {$total_count} produktů.
-      Přejeme vám pevné nervy při jeho procházení.
+      There are exactly {$total_count} products in our catalog.
+      We wish you strong nerves when you browse.
     </p>
 
     <p>
-      Máme otevřeno od {$opening.from} do {$opening.to}.
-      Proto je nám líto, když přijdete jindy.
+      We are open from {$opening.from} to {$opening.to}.
+      That's why we're a little bit sorry when you come too early or too late.
     </p>
 
 Obsah vyrenderované šablony index.tpl bude zobrazen v layout šabloně, která může vypadat například takto.
 
     {* file: app/layouts/default.tpl *}
-    
     <html>
       <head>
         <title>{$page_title}</title>
+        <meta name="description" content="{$page_description}"></meta>
       </head>
       <body>
         {render partial="shared/layout/flash_message"}
@@ -55,9 +56,9 @@ Obsah vyrenderované šablony index.tpl bude zobrazen v layout šabloně, která
 
 Asi tušíte, že vyrenderovaná šablona index.tpl bude umístěna v layoutu do místa *{placeholder}*.
 
-Pokud tipujete, že toto jsou smarty šablony, nemýlíte se. Framework ATK14 šablonovací engine *[Smarty](http://www.smarty.net/)* skutečně používá.
+Pokud tipujete, že toto jsou smarty šablony, nemýlíte se. Framework ATK14 šablonovací engine *[Smarty](http://www.smarty.net/)* skutečně používá a nebyl vybrán náhodou &mdash; Smarty je spolehlivý a lety prověřený nástroj, který odvádí spoustu dobré práce.
 
-Pokud Smartyho vůbec neznáte, seznamte se s ním v jeho [dokumentaci](http://www.smarty.net/docs/en/), budete to potřebovat.
+Pokud Smartyho vůbec neznáte, trošku se s ním seznamte v [dokumentaci](http://www.smarty.net/docs/en/), bude se vám to hodit.
 
 Helpery
 -------
