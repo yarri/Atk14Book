@@ -1,6 +1,16 @@
 Modely
 ======
 
+Framework ATK14 obsahuje vlastní jednoduchou ORM knihovnu _TableRecord_, kterou lze provozovat nad databázemi Postgresql nebo MySQL (ukázky v této knize jsou pro Postgresql). Navíc je k dispozici systém tzv. _migrací_, který zajišťuje automatickou aplikaci změn databázového schématu.
+
+Uvažujme tabulku pro ukládání článků.
+
+[Include db/migrations/0004_articles.sql]
+
+Modelová třída pro článek může vypadat takto.
+
+[Include app/models/article.php]
+
 Uvažujme tabulku, do které chceme ukládat uživatele.
 
 [Include db/migrations/0001_users.sql]

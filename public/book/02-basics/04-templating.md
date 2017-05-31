@@ -9,7 +9,7 @@ Předpokládejme adresu
     
 která vede na akci *index* v kontroleru *products*.
 
-V příslušné metodě jsou data pro šablonu připravována do pole ```$this->tpl_data```. Všimněte si, že titulek a popis stránky (page_title a page_description) se nemusí nastavovat pomocí pole tpl_data.
+V příslušné metodě jsou data pro šablonu připravována do pole ```$this->tpl_data```. Všimněte si, že titulek a popis stránky (page_title a page_description) se do pole $this->tpl_data nastavují.
 
     <?php
     // file: app/controllers/products_controller.php
@@ -28,7 +28,7 @@ V příslušné metodě jsou data pro šablonu připravována do pole ```$this->
 V šabloně jsou data dostupná takto.
 
     {* file: app/views/products/index.tpl *}
-    <h1>Vítejte v našem katalogu</h1>
+    <h1>{$page_title}</h1>
     
     <p>
       There are exactly {$total_count} products in our catalog.
@@ -45,7 +45,7 @@ Obsah vyrenderované šablony index.tpl bude zobrazen v layout šabloně, která
     {* file: app/layouts/default.tpl *}
     <html>
       <head>
-        <title>{$page_title}</title>
+        <title>{$page_title} | Flying Circus Company</title>
         <meta name="description" content="{$page_description}"></meta>
       </head>
       <body>
@@ -54,88 +54,9 @@ Obsah vyrenderované šablony index.tpl bude zobrazen v layout šabloně, která
       </body>
     </html>
 
-Asi tušíte, že vyrenderovaná šablona index.tpl bude umístěna v layoutu do místa *{placeholder}*.
+Asi tušíte, že vyrenderovaná šablona index.tpl bude umístěna v layoutu do místa *{placeholder}*. Na místo řádku _{render partial="shared/layoutu/flash_message"}_ bude vložena daná sdílená šablona. O sdílených šablonách se dozvíte později.
 
 Pokud tipujete, že toto jsou smarty šablony, nemýlíte se. Framework ATK14 šablonovací engine *[Smarty](http://www.smarty.net/)* skutečně používá a nebyl vybrán náhodou &mdash; Smarty je spolehlivý a lety prověřený nástroj, který odvádí spoustu dobré práce.
-
 Pokud Smartyho vůbec neznáte, trošku se s ním seznamte v [dokumentaci](http://www.smarty.net/docs/en/), bude se vám to hodit.
 
-Helpery
--------
-
-ATK14 přináší sadu vlastních funkcí a pomocníků (helperů), které rozšiřují možnosti Smarty.
-Za velkou pozornost stojí dvojce funkcí *{placeholder}* a *{content}*.
-
-Přadstavte si takovýto layout.
-
-    {* file: app/layouts/default.tpl *}
-    
-    <html>
-      <head>
-        <title>{$page_title}</title>
-      </head>
-      <body>
-
-        <div id="navigation">
-          <h3>Rozcestník</h3>
-          <ul id="navigation">
-            <li><a href="/">Hlavní stránka</a></li>
-            {placeholder for=other_navigation_items}
-          </ul>
-        </div>
-
-        {render partial="shared/layout/flash_message"}
-        {placeholder}
-      </body>
-
-    </html>
-
-Teď uvažujme o šabloně detailu produktu.
-
-    {* soubor app/views/products/detail.tpl *}
-
-    <h1>{$product->getTitle()}</h1>
-    {$product->getDescription()}
-
-    {content for=other_navigation_items}
-      <li><a href="{$product->getManualUrl()}">Stáhněte si manuál k produktu</a></li>
-    {/content}
-
-Co bude zobrazeno? Informace o produtu budou zobrazeny v *{placeholder}* a do navigace, tedy mimo hlavní obsah, bude přidán další odkaz pro stažení manuálu právě prohlíženého produktu.
-
-Ještě důležitější je však helper *{render}*. Ten mimo jiné nahrazuje Smartyho způsob nahravání podšablon pomocí *{include}*. V žádné pořádné ATK14 aplikaci vlastně nenajdete ani jedno
-{include} (uvědomte si však, že to je podmínka nutná, nikoli dostačující).
-
-Všimněte si, že už v layoutu již {render} použit je: {render partial=shared/layout/flash_message}. V tomto případě bude do daného místa vložen obsah šablony app/views/shared/\_flash\_message.tpl.
-Platí, že parciální šablony začínají podtržítkem a mají příponu tpl. Ani podtržítko, ani příponu však v parametru partial neuvádíme.
-
-Helper {render} však nahrazuje i Smartyho {foreach}. To si ukážeme na zobrazení přehledu produktů.
-
-    {* soubor app/views/products/index.tpl *}
-
-    <h1>Přehled produktů</h1>
-  
-    <table>
-      <thead>
-        <tr>
-          <th>Název</th>
-          <th>Cena</th>
-        </tr>
-      </thead>
-      <tbody>
-        {render partial=product_item from=$products item=product}
-      </tbody>
-    </table>
-
-Každý řádek tabulky pak vykreslíme pomocí nasledující parciální šablony.
-
-    {* soubor app/views/products/_product_item.tpl *}
-    
-    <tr>
-      <td>{$product->getTitle()}</td>
-      <td>{$product->getPrice()}</td>
-    </tr>
-
-Pokud se vám zdá, že používání parciálních šablon místo {foreach} postrádá smysl, asi o tom docela dost přemýšlíte. Vězte však, že parciální šablonky jsou fajn a podporují princip DRY.
-
-Víc se teď nemá cenu o šablonách rozepisovat, ať vás nebolí hlava.
+Pro začátek to o šablonách stačí.
