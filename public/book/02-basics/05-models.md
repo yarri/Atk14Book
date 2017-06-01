@@ -3,81 +3,92 @@ Modely
 
 Framework ATK14 obsahuje vlastní jednoduchou ORM knihovnu _TableRecord_, kterou lze provozovat nad databázemi Postgresql nebo MySQL (ukázky v této knize jsou pro Postgresql). Navíc je k dispozici systém tzv. _migrací_, který zajišťuje automatickou aplikaci změn databázového schématu.
 
-Uvažujme tabulku pro ukládání článků.
+Uvažujme tabulku pro ukládání článků. Existuje migrace pro vytvoření tabulky _articles_. Migrace je očíslovaný patch, který je aplikován do databáze v určeném pořadí. 
 
 [Include db/migrations/0004_articles.sql]
 
-Modelová třída pro článek může vypadat takto.
+Spuštěním příkazu ```./scripts/migrate``` dojde k aplikaci čekajících migrací do aktuální databáze. O migracích bude pojednáno později.
 
-[Include app/models/article.php]
+Poté, co byla tabulka articles založena, vytvoříme modelovou třídu _Article_ jako dědice TableRecord.
 
-Uvažujme tabulku, do které chceme ukládat uživatele.
+    <?php
+    // file: app/models/article.php
+    class Article extends TableRecord {
 
-[Include db/migrations/0001_users.sql]
+    }
 
-Třída modelu pak může vypadat následovně.
+Existuje jmenná konvence v pojmenování tabulky, sekvence a modelové třídy, pokud je tato konvence dodržena, automaticky je třída Article propojena s tabulkou articles a sekvencí seq_articles. Stejně by byla třída HappyPerson ze souboru app/models/happy_person.php propojena s tabulkou happy_people a sekvencí seq_happy_people.
 
-[Include app/models/user.php]
+### Vytváření záznamu
 
-Teď je nutné popsat několik kouzel, které jsou do tohoto celého namíchány, jakkoli kouzla rádi nemáme.
+    <?php
+    $article = Article::CreateNewRecord([
+      "title" => "Top ten songs of the week",
+      "teaser" => "The ten most popular songs of the week based on...",
+      "body" => "This week brings a big surprise...",
+      "published_at" => "2017-06-01 00:00:00",
+    ]);
+    
+    echo $article->getId(); // automatically assigned value by the sekvence, e.g. 123
 
-Vztah modelu k tabulce je dán názvem třídy. Třída *User* se spojí s tabulkou *users*, třída *Person* se spojí s tabulkou *people*,
-třída *RedWine* se spojí s tabulkou *red_wines* a pod.
+    $article2 = Article::CreateNewRecord([
+       "id" => 2233,
+       "title" => "Another article",
+    ]);
 
-Podívejme se na vytváření instancí.
+    echo $article2->getId(); // 2233
 
-	<?php
-	// nacteni existujicich zaznamu
-	$user = User::GetInstanceById(1); // bude null, pokud zaznam s id 1 neexistuje
-	$users = User::GetInstanceById(array(1,33)); // vrati pole dvou objektu tridy User
+### Čtení hodnot z objektu
 
-	// vyhledani jednoho zaznamu
-	$user = User::FindFirst(array("conditions" => array("login" => "john_doe")));
+Základní metoda pro přečtení hodnoty z objektu je _getValue()_. Existuje i jednopísmenný alias _g()_.
 
-	// vyhledani vice zaznamu
-	$johns = User::FindAll(array(
-		"conditions" => array("UPPER(name) LIKE :q"),
-		"bind_ar" => array(":q" => "%JOHN%"),
-		"order_by" => "UPPER(name)"
-	));
+    <?php
+    echo $article->getValue("title"); // "Top ten songs of the week"
+    echo $article2->g("title"); // "Another article"
 
-	// vytvoreni noveho zaznamu
-	$user = User::CreateNewRecord(array(
-		"login" => "john_doe",
-		"password" => "Secreeet129",
-		"name" => "John Doe",
-		"email" => "john.doe@gmail.com"
-	));
+Pomocí kouzel s metodou ___call()_ je zajištěno, že lze volat i neexistující metodu s CamelCase zápisem názvu požadovaného políčka.
 
-Hodnoty jednolivých polí načteme nebo změníme takto.
+    <?php
+    echo $article->getTitle(); // "Top ten songs of the week"
+    echo $article->getPublishedAt(); // "2017-06-01 00:00:00"
 
-	<?php
-	// nacteni hodnot z instance
-	$user->getValue("login");
-	$user->g("login"); // toto zhusta pouzivany alias pro getValue
-	$user->getLogin(); // pozor na kouzlo! metodu getLogin() ve tride nemame, presto funguje
 
-	// nastaveni hodnoty
-	$user->setValue("name","John MC Doe");
-	$user->s("name","John MC Doe"); // dalsi zhusta pouzivany alias pro setValue(), ale i pro setValues()
+### Změna hodnot
 
-	// hromadne nastaveni hodnot
-	$user->setValues(array(
-		"name" => "John MC Doe",
-		"email" => "john.mc.doe@gmail.com"
-	));
-	$user->s(array(
-		"name" => "John MC Doe",
-		"email" => "john.mc.doe@gmail.com"
-	));
+Pro změnu jedné hodnoty je určena hodnota _setValue()_, pro změnu více hodnota _setValues()_. Jednopísmenný alias _s()_ zvláda obojí, proto se nejčastěji používá právě ten.
 
-Je důležité si uvědomit, že při volání metod *CreateNewRecord()*, *setValue()*, *setValues()* dochází k ukládaní resp. ke změnám dat v tabulce.
-Myslete na to ve chvíli, kdy měníte několik polí. Změnte je najednou voláním *setValues()*. Je to rychlejší než několik volání *setValue()*.
+    <?php
+    // single value assignment
+    $article2->setValue("title","Another great article");
 
-Záznam smažeme voláním *destroy()*.
+    // mass assignment
+    $article2->setValues([
+      "teaser" => "Great teaser of the great article",
+      "body" => "..."
+    ]);
 
-	<?php
-	// smazani zaznamu
-	$user->destroy();
+    // using s() method
 
-Myslete i zde na to, že v průběhu vykonávání metody *destroy()* dochází ke smazání příslušného záznamu z tabulky.
+    $article2->s("title","Another great article");
+
+    $article2->s([
+      "teaser" => "Great teaser of the great article",
+      "body" => "..."
+    ]);
+
+Za zmínku stojí, že během volání těchto metod dochází k automatické změně dat i v databázi. TableRecord tedy zajišťuje průběžnou persistenci dat, tím pádem neobsahuje metody jako _persist()_, saveToDb() a pod.
+
+### Vyhledání záznamu
+
+Základní metoda _GetInstanceById()_ vyhledá záznam v příslušné tabulce podle _ID_. Metoda přijímá jako parametr i pole.
+
+    <?php
+    $article = Article::GetInstanceById(123); // returns null if the article #123 doesn't exist
+    $articles = Article::GetInstanceById([123,124]); // returns array of objects
+    $articles = Article::GetInstanceById(["a" => 123,"b" => 124]); // returns associative array of objects
+
+
+### Smazání záznamu
+
+Voláním metody _destroy()_ je příslušný záznam odstraněn z databáze. 
+
