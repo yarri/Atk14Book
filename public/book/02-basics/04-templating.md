@@ -9,7 +9,7 @@ Předpokládejme adresu
     
 která vede na akci *index* v kontroleru *products*.
 
-V příslušné metodě jsou data pro šablonu připravována do pole ```$this->tpl_data```. Všimněte si, že titulek a popis stránky (page_title a page_description) se do pole $this->tpl_data nastavují.
+V příslušné metodě jsou data pro šablonu připravována do pole ```$this->tpl_data```. Všimněte si, že titulek a popis stránky (page_title a page_description) se do pole $this->tpl_data nenastavují.
 
     <?php
     // file: app/controllers/products_controller.php

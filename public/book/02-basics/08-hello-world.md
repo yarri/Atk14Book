@@ -8,32 +8,29 @@ Varianta se šablonkou
 
 Do kontroleru *main* přidáme akci *hello_world*, ...
 
-	<?php
-	// file: app/controllers/main_controller.php
-	class MainController extends ApplicationController{
-		function hello_world(){ } // akce je prazdna
-	}
+    <?php
+    // file: app/controllers/main_controller.php
+    class MainController extends ApplicationController{
+      function hello_world(){ } // akce je prazdna
+    }
 
 na tom správném místě vytvoříme šablonu...
 
-	{* file: app/views/main/hello_world.tpl *}
-
-	Hello World!
+    {* file: app/views/main/hello_world.tpl *}
+    Hello World!
 
 a pozdrav nás čeká na adrese http://myapp.localhost/en/main/hello_world/
 
 Varianta bez šablonky
 ---------------------
 
-	<?php
-	// file: app/controllers/main_controller.php
-	class MainController extends ApplicationController{
-		function hello_world(){
-			$this->render_template = false;
-			$this->response->write("Hello World!");
-		}
-	}
+    <?php
+    // file: app/controllers/main_controller.php
+    class MainController extends ApplicationController{
+      function hello_world(){
+        $this->render_template = false;
+        $this->response->write("Hello World!");
+      }
+    }
 
 Pozdrav najdete na stejné adrese.
-
-Na závěr bych však všem doporučil framework ATK14 raději vůbec nepoužívat pro aplikace typu *Hello World* :)
