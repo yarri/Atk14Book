@@ -87,8 +87,19 @@ Základní metoda _GetInstanceById()_ vyhledá záznam v příslušné tabulce p
     $articles = Article::GetInstanceById([123,124]); // returns array of objects
     $articles = Article::GetInstanceById(["a" => 123,"b" => 124]); // returns associative array of objects
 
+K vyhledání jenoho záznamu podle něčeho jiného než ID, ale i podle ID se používají metody _Find()_, _FindFirst()_ nebo _FindBySomething()_.
+
+    <?php
+    $article = Article::FindByTitle("Another great article");
+    $article = Another::Find("title=:title",[
+      ":title" => "Another great article"
+    ]);
+
+### Vyhledání více záznamů
 
 ### Smazání záznamu
 
-Voláním metody _destroy()_ je příslušný záznam odstraněn z databáze. 
+Voláním metody _destroy()_ je příslušný záznam odstraněn z databáze.
 
+    <?php
+    $article->destroy();
