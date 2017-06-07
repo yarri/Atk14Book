@@ -16,6 +16,8 @@ class MdBookPostfilter {
 			
 			foreach(array(
 				"php" => '/^<\?php/',
+				"yaml" => '/file: .*\.yml/',
+				"sql" => '/file: .*\.sql/',
 				"smarty" => '/\{\*/',
 				"javascript" => '/\{/'
 			) as $l => $pattern){
