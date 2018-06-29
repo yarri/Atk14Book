@@ -1,11 +1,9 @@
 production:
-  server: "kajka"
+  server: "cloudkicker.plovarna.cz"
   user: "devel"
   url: http://book.atk14.net/
-  directory: "/home/devel/apps/book.atk14.net/production/"
-  deploy_via: "git_push"
-  deploy_repository: "devel@kajka:apps/book.atk14.net/repos/production.git"
-  deploy_branch: "master"
+  directory: "/home/{{user}}/apps/book.atk14.net/production/"
+  deploy_repository: "{{user}}@{{server}}:apps/book.atk14.net/repos/production.git"
   before_deploy:
   - "@local composer update"
   - "@local bower update"
