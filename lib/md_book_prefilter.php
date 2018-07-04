@@ -1,5 +1,5 @@
 <?php
-class MdBookPrefilter {
+class MdBookPrefilter extends DrinkMarkdownFilter {
 
 	function __construct($options = []){
 		$options += [

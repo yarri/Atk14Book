@@ -55,7 +55,7 @@
  * </code>
  *
  */
-class MdBook {
+class MdBook extends DrinkMarkdown {
 
 	/**
 	 * @var string

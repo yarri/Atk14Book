@@ -1,5 +1,5 @@
 <?php
-class MdBookPostfilter {
+class MdBookPostfilter extends DrinkMarkdownFilter {
 
 	function filter($content,$transformer){
 		$content = strtr($content,$GLOBALS["md_book_replaces"]);
@@ -29,7 +29,7 @@ class MdBookPostfilter {
 
 			if(!$lang){ continue; }
 
-			$source_code = $transformer->formatSourceCode($source_code,array(
+			$source_code = $this->formatSourceCode($source_code,array(
 				"lang" => $lang
 			));
 			$replaces[$snippet] = $source_code;
