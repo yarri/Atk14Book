@@ -11,6 +11,10 @@ Spustíme jej tímto příkazem.
 
 	$ ./scripts/robot_runner cool_hand
 
+Příkaz robot_runner spuštěný bez parametru vypíše seznam dostupných robotů a nabídne prompt pro zadání názvu robota, který má být spuštěn.
+
+	$ ./scripts/robot_runner
+
 V souboru ./robots/application_robot.php najdete společného předka pro všechny roboty.
 
 [Include robots/application_robot.php]
