@@ -40,7 +40,7 @@ If your concern is compatibility with PHP 5.3, which is very uncommon, you need 
 
 ### Configuring Gettext
 
-Be sure that /var/lib/locales/supported.d/local contains your desired locales. For instance:
+Be sure that /etc/locale.gen (or /var/lib/locales/supported.d/local on some systems) contains your desired locales. For instance:
 
 ```text
 en_US.UTF-8 UTF-8
