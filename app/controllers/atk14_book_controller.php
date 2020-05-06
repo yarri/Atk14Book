@@ -21,7 +21,7 @@ class Atk14BookController extends BaseBookController{
 
 		$this->template_name = "detail";
 
-		$navigation = new Navigation();
+		$navigation = new Menu14();
 		$chapter = $this->chapter;
 		($parent_chapter = $chapter->getParentChapter()) || ($parent_chapter = $chapter);
 
