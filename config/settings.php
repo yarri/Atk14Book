@@ -14,6 +14,8 @@ define("ATK14_APPLICATION_NAME","ATK14 Book");
 define("ATK14_HTTP_HOST",PRODUCTION ? "book.atk14.net" : "atk14book.localhost");
 define("DEFAULT_EMAIL","your@email");
 
+definedef("SOURCE_CODE_SERVER_URL","https://www.atk14.net/");
+
 if(DEVELOPMENT || TEST){
 	// a place for development and testing environment settings
 
