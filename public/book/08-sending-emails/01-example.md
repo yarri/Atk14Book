@@ -1,5 +1,5 @@
-Příklad zasílání e-mailu
-========================
+Základní ukázka zasílání e-mailu
+================================
 
 Na <http://www.atk14.net/en/reminders/create_new/> naleznete hypotetický příklad se zasíláním e-mailů. Přísná knihovnice zde zasílá roztržitým čtenářům upomínky k vrácení knih do knihovny. Příklad si zde projdeme.
 
@@ -7,11 +7,11 @@ Je zde jednoduchý formulář pro zadání e-mailové adresy čtenáře a výbě
 
 [Include app/forms/reminders/create_new_form.php]
 
-V kontroleru na tom správném místě voláme $this->mailer->execute(). Jako parametry předáváme název akce a zvalidovaná data z formuláře.
+V kontroleru na tom správném místě voláme metodu ```$this->mailer->send_reminder()```, které předáme příslušné parametry.
 
 [Include app/controllers/reminders_controller.php]
 
-V maileru máme definovanou akci send\_reminder().
+V maileru je akce ```send_reminder()``` správně definovaná.
 
 [Include app/controllers/application_mailer.php]
 
