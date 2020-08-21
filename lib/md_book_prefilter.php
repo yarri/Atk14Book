@@ -40,7 +40,7 @@ class MdBookPrefilter extends DrinkMarkdownFilter {
 
 	function _place_source($filename){
 		$suffix = preg_replace('/.*\.([^.]+)$/','\1',$filename);
-		$uf = new UrlFetcher($url = "http://www.atk14.net/en/sources/detail/?file=".urlencode($filename)."&format=raw");
+		$uf = new UrlFetcher($url = SOURCE_CODE_SERVER_URL . "en/sources/detail/?file=".urlencode($filename)."&format=raw");
 		if(!$uf->found()){
 			$err = "Remote file $filename could not be read";
 			trigger_error(sprintf("%s (%s)",$err,$GLOBALS["HTTP_REQUEST"]->getUrl()));
