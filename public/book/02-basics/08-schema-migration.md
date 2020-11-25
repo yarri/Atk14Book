@@ -1,5 +1,5 @@
-Migrace databového schématu
-===========================
+Migrace databázového schématu
+=============================
 
 ATK14 Framework obsahuje nástroj na postupné aplikování většinou malých změn (_patches_) do databázového schématu tak, aby databázové schéma bylo vždy v poslední požadované verzi. Pro tento mechanismus se zažil zkrácený název _migrace_.
 
