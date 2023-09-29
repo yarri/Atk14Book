@@ -19,7 +19,15 @@ K tomu vám přejeme hodně štěstí.
 
 Minimalistické, což?
 
-### 2. ATK14 Skelet
+### 2. ATK14 Mini Skelet
+
+Tato konstra vznikla zeštíhlením kostry ATK14 Skelet, která během vývoje pořádně narostla. Byly odstraněny administrovatelné stránky, články, seznamy odkazů a další součásti. Byly však zachovány důležité komponenty pro stavbu budoucí aplikace, jako je podpora vicejazykových textů v aplikačních modelech, práce se slugy pro tvorbu nádherných URL atd. 
+
+* živá ukázka: <http://miniskelet.atk14.net/>
+* zdrojový kód: <https://github.com/atk14/Atk14MiniSkelet.git>
+* návod na instalaci: <https://github.com/atk14/Atk14MiniSkelet/blob/master/README.md#installation>
+
+### 3. ATK14 Skelet
 
 Tak tuto kostru budete milovat. ATK14 Skelet obsahuje sadu vyladěných věcí, které prostě fungují.
 
@@ -27,13 +35,21 @@ Tak tuto kostru budete milovat. ATK14 Skelet obsahuje sadu vyladěných věcí, 
 * zdrojový kód: <https://github.com/atk14/Atk14Skelet.git>
 * návod na instalaci: <https://github.com/atk14/Atk14Skelet/blob/master/README.md#installation>
 
-### 3. ATK14 Catalog
+### 4. ATK14 Catalog
 
 ATK14 Catalog vychází z ATK14 Skelet, který rozšiřuje zejména o _katalog produktů_.
 
 * živá ukázka: <http://catalog.atk14.net/>
 * zdrojový kód: <https://github.com/atk14/Atk14Catalog.git>
 * návod na instalaci: <https://github.com/atk14/Atk14Catalog/blob/master/README.md#installation>
+
+### 5. ATK14 Eshop
+
+ATK14 Eshop vychází z ATK14 Catalog, který rozšiřuje zejména o plnohodnotný e-shop.
+
+* živá ukázka: <http://eshop.atk14.net/>
+* zdrojový kód: <https://github.com/atk14/Atk14Eshop.git>
+* návod na instalaci: <https://github.com/atk14/Atk14Eshop/blob/master/README.md#installation>
 
 ### Resumé
 
