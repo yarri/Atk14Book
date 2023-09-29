@@ -1,6 +1,5 @@
 Deployment
 ==========
 
-Doporučení, zásady, tipy a triky při deploymentu ATK14 aplikací.
-
-Najdete tu rovněž praktické ukázky ze života.
+Součástí frameworku Atk14 je užitečný nástroj pro automatické nasazování nových verzí aplikace do produkčního prostředí (tzv. deployment).
+V následujících kapitolách se mu podíváme na zoubek.
