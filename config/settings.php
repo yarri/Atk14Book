@@ -8,11 +8,15 @@
 * You can inspect all ATK14 system`s constants in sys/src/default_settings.inc
 */
 
-define("SECRET_TOKEN",PRODUCTION ? Files::GetFileContent(dirname(__FILE__)."/secret_token.txt") : "crDsduENNEnykcIwSqs0qI55AFco42NXj2AYNAqc0kTgImSBBUskdtjnlhMGwXBN");
+definedef("DEFAULT_EMAIL","your@email");
+definedef("ATK14_ADMIN_EMAIL",DEFAULT_EMAIL); // the address for sending error reports and so on...
 
-define("ATK14_APPLICATION_NAME","ATK14 Book");
-define("ATK14_HTTP_HOST",PRODUCTION ? "book.atk14.net" : "atk14book.localhost");
-define("DEFAULT_EMAIL","your@email");
+definedef("ATK14_APPLICATION_NAME","ATK14 Book");
+definedef("ATK14_APPLICATION_DESCRIPTION","The greatest (and only) book about an awesome PHP framework ");
+
+definedef("ATK14_HTTP_HOST",PRODUCTION ? "book.atk14.net" : "atk14book.localhost");
+
+date_default_timezone_set('Europe/Prague');
 
 definedef("SOURCE_CODE_SERVER_URL","https://www.atk14.net/");
 
