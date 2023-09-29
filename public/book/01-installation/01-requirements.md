@@ -5,13 +5,13 @@ Requirements
 
 A UNIX-like operating system is required - Linux, [FreeBSD](http://www.freebsd.org/)...
 
-This chapter describes ATK14 installation on [UBUNTU](http://www.ubuntu.com/) 15.10 or higher.
+This chapter describes ATK14 installation on [UBUNTU](http://www.ubuntu.com/) 22.04 or higher.
 
 ### Installing software packages
 
 You will definitely need
 
-* _php_ 5.3 or newer (optimally 7.0) with some addons
+* _php_ 7.1 or newer (optimally 8.1) with some addons
 * _git_
 * _postgresql_
 
@@ -23,7 +23,7 @@ Optionally you may want to install
 
 
 ```bash
-sudo apt-get install php php-cli php-pgsql php-json php-readline php-mcrypt php-gd php-mbstring php-xml
+sudo apt-get install php php-cli php-pgsql php-json php-readline php-mcrypt php-gd php-xml
 sudo apt-get install git
 sudo apt-get install composer
 sudo apt-get install postgresql postgresql-client
@@ -34,9 +34,8 @@ sudo apt-get install rsync
 
 For testing you need to have PHPUnit installed globally using Composer.
 ```
-composer global require "phpunit/phpunit 5.*"
+composer global require --ignore-platform-reqs "phpunit/phpunit ~7.5"
 ```
-If your concern is compatibility with PHP 5.3, which is very uncommon, you need to install PHPUnit 4.8 (```composer global require phpunit/phpunit 4.8.*```)
 
 ### Configuring Gettext
 
@@ -64,4 +63,3 @@ sudo a2enmod rewrite
 ### Configuring Postgresql
 
 Usually it's ok to leave postgresql running with the default configuration. If you have troubles with Postgresql, you may find useful tips on http://forum.atk14.net/topic/database/konfigurace-postgresql-120/
-
