@@ -1,8 +1,8 @@
 {
     "require": {
-        "atk14/dbmole-panel": "dev-master",
-        "atk14/templates-panel": "dev-master",
-        "atk14/drink-markdown": "dev-master",
-        "atk14/menu14": "^1.3"
+        "atk14/dbmole-panel": "^1.0",
+        "atk14/templates-panel": "^1.0",
+        "atk14/drink-markdown": "^0.8",
+        "atk14/menu14": "^1.5|^2.0"
     }
 }
