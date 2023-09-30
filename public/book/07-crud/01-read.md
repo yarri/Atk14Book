@@ -7,7 +7,7 @@ editaci již hotového záznamu a smazání záznamu.
 
 Předpokládejme jednoduchou tabulku pro ukládání knih
 
-[Include db/migrations/0005_books.sql]
+[Include db/migrations/0002_books.sql]
 
 Předpokládejme kontroler s názvem _BooksController_.
 
