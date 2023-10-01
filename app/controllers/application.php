@@ -24,17 +24,44 @@ class ApplicationController extends Atk14Controller{
 	}
 
 	function _application_before_filter(){
+		global $ATK14_GLOBAL;
+
 		$this->response->setContentType("text/html");
-		$this->response->setContentCharset("UTF-8");
+		$this->response->setContentCharset(DEFAULT_CHARSET);
+		$this->response->setHeader("Cache-Control","private, max-age=0, must-revalidate");
+		$this->response->setHeader("Pragma","no-cache");
+
+		// security headers
+		$this->response->setHeader("X-Frame-Options","SAMEORIGIN"); // avoiding clickjacking attacks; "SAMEORIGIN", "DENY"
+		$this->response->setHeader("X-XSS-Protection","1; mode=block");
+		$this->response->setHeader("Referrer-Policy","same-origin"); // "same-origin", "strict-origin", "strict-origin-when-cross-origin"...
+		$this->response->setHeader("X-Content-Type-Options","nosniff");
+		//$this->response->setHeader("Content-Security-Policy","default-src 'self' data: 'unsafe-inline' 'unsafe-eval'");
+
+		$this->response->setHeader("X-Powered-By","ATK14 Framework");
+
+		if(
+			(PRODUCTION && $this->request->get() && !$this->request->xhr() && ("www.".$this->request->getHttpHost()==ATK14_HTTP_HOST || $this->request->getHttpHost()=="www.".ATK14_HTTP_HOST)) ||
+			(defined("REDIRECT_TO_CORRECT_HOSTNAME_AUTOMATICALLY") && constant("REDIRECT_TO_CORRECT_HOSTNAME_AUTOMATICALLY") && $this->request->getHttpHost()!=ATK14_HTTP_HOST)
+		){
+			// redirecting from http://example.com/xyz to http://www.example.com/xyz
+			$scheme = (defined("REDIRECT_TO_SSL_AUTOMATICALLY") && constant("REDIRECT_TO_SSL_AUTOMATICALLY")) ? "https" : $this->request->getScheme();
+			return $this->_redirect_to("$scheme://".ATK14_HTTP_HOST.$this->request->getUri(),array("moved_permanently" => true));
+		}
+
+		if(!$this->request->ssl() && defined("REDIRECT_TO_SSL_AUTOMATICALLY") && constant("REDIRECT_TO_SSL_AUTOMATICALLY")){
+			return $this->_redirect_to_ssl();
+		}
+
 		$this->tpl_data["current_year"] = date("Y");
 
 		$this->tpl_data["search_form"] = Atk14Form::GetInstanceByFilename("searches/search_form.php",$this);
 	}
 
 	function _application_after_filter(){
-    if(DEVELOPMENT){
-      $bar = Tracy\Debugger::getBar();
-      $bar->addPanel(new DbMolePanel($this->dbmole));
+		if(DEVELOPMENT){
+			$bar = Tracy\Debugger::getBar();
+			$bar->addPanel(new DbMolePanel($this->dbmole));
 			$bar->addPanel(new TemplatesPanel());
     }
 	}
