@@ -278,7 +278,7 @@ class MdBookChapter {
 		}
 	}
 
-	static function CmpChapters(&$ch1,&$ch2) {
+	static function CmpChapters($ch1,$ch2) {
 		$a = $ch1->chapter_no;
 		$b = $ch2->chapter_no;
 		if ($a==$b)
