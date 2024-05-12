@@ -231,7 +231,7 @@ class MdBookChapter {
 			}
 		}
 		if (file_exists($this->chapter_file)) {
-			$content = preg_split("/\n/", Files::GetFileContent($this->chapter_file),null,PREG_SPLIT_NO_EMPTY);
+			$content = preg_split("/\n/", Files::GetFileContent($this->chapter_file),-1,PREG_SPLIT_NO_EMPTY);
 		} else {
 			$content = array(basename(dirname($this->chapter_file)));
 		}
