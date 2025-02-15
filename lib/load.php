@@ -6,14 +6,16 @@
 */
 
 // composer
-require_once(__DIR__.'/../vendor/autoload.php');
+if(file_exists(__DIR__."/../vendor/autoload.php")){
+	require(__DIR__."/../vendor/autoload.php");
+}
 
 if(
-  !TEST &&
-  !$HTTP_REQUEST->xhr() &&
-  php_sapi_name()!="cli" // we do not want Tracy in cli
+	!TEST &&
+	class_exists("Tracy\Debugger") &&
+	php_sapi_name()!="cli" // we do not want Tracy in cli
 ){
-  Tracy\Debugger::enable(PRODUCTION, __DIR__ . '/../log/',ATK14_ADMIN_EMAIL);
+	Tracy\Debugger::enable(PRODUCTION, __DIR__ . '/../log/',PRODUCTION ? ATK14_ADMIN_EMAIL : null);
 }
 
 class_autoload(__DIR__ . "/drink_markdown/");
