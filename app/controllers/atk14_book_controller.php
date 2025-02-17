@@ -1,60 +1,31 @@
 <?php
-require_once(dirname(__FILE__)."/base_book.php");
+require_once(__DIR__ . "/md_book_base.php");
 
-class Atk14BookController extends BaseBookController{
+class Atk14BookController extends MdBookBaseController {
 
 	function _before_filter(){
-		global $ATK14_GLOBAL;
+		$this->book_dir = ATK14_DOCUMENT_ROOT . "/public/book/";
 
-		$this->book_dir = $ATK14_GLOBAL->getPublicRoot()."book/";
+		$this->book = new MdBook($this->book_dir,array("keep_html_tables_unmodified" => false, "table_class" => ""));
 
-		parent::_before_filter();
-	}
-
-	function detail(){
-		parent::detail();
-
-		if(!$this->chapter){
-			// Perhaps error 404
-			return;
-		}
-
-		$this->template_name = "detail";
-
-		$navigation = new Menu14();
-		$chapter = $this->chapter;
-		($parent_chapter = $chapter->getParentChapter()) || ($parent_chapter = $chapter);
-
-		foreach($this->book->getChapters() as $ch){
-			$navigation->add(
-				$ch->getNo().". ".$ch->getTitle(),
-				$this->_link_to(array(
-					"action" => "detail",
-					"id" => $ch->getId()
-				)),
-				array("active" => $ch->getNo()===$chapter->getNo())
-			);
-
-			if($ch->getNo()===$parent_chapter->getNo()){
-				// vypsani podkapitol
-				foreach($parent_chapter->getSubChapters() as $ch){
-					$navigation->add(
-						'<div style="padding-left: 1em;">'.$ch->getNo()." ".$ch->getTitle().'</div>',
-						$this->_link_to(array(
-							"action" => "detail",
-							"id" => $ch->getId()
-						)),
-						array("active" => $ch->getNo()===$chapter->getNo())
-					);
-				}
-			}
-
-			$this->tpl_data["navigation"] = $navigation;
-		}
-	}
-
-	function index(){
-		parent::index();
-		$this->template_name = "index";
+		$this->book->registerBlockShortcode("example", array(
+			"callback" => function($content,$params){
+				$content = str_replace("\t","  ",$content);
+				$content = trim($content);
+				$code_id = "code_example_".uniqid();
+				return "
+					<div class=\"styleguide-example\">
+					<div class=\"styleguide-example__output\">
+					$content
+					</div>
+					<button class=\"btn btn-sm btn-outline-secondary styleguide-example__show-code-btn js-styleguide-reveal-code\" type=\"button\" data-toggle=\"collapse\" data-target=\"#" . $code_id . "\" aria-expanded=\"false\"><i class=\"fas fa-code\"></i> Show code</button>
+					<div class=\"styleguide-example__code collapse\" id=\"" . $code_id . "\">
+					<pre><code class=\"language-html\">" . h($content) . "</code></pre>
+					</div>
+					</div>
+				";
+			},
+			"markdown_transformation_enabled" => false,
+		));
 	}
 }
