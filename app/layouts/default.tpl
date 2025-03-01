@@ -105,6 +105,7 @@
 
 		<div class="container{if $section_navigation} has-nav-section{/if}">
 			{*render partial="shared/layout/header" *}
+			{render partial="shared/breadcrumbs"}
 
 			<div class="body">
 				{if $section_navigation}

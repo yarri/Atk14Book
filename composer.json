@@ -4,6 +4,6 @@
         "atk14/templates-panel": "^1.0",
         "atk14/drink-markdown": "^0.8",
         "atk14/menu14": "^1.5|^2.0",
-        "atk14/md-book": "^0.2.2"
+        "atk14/md-book": "dev-master"
     }
 }

@@ -1,11 +1,18 @@
 <?php
+#[\AllowDynamicProperties]
 class ApplicationController extends Atk14Controller{
+
+	/**
+	 * @var Menu14
+	 */
+	var $breadcrumbs;
+
 	function index(){
 		$this->_execute_action("error404");
 	}
 
 	function error404(){
-		$this->page_title = "Page not found";
+		$this->page_title = $this->breadcrumbs[] = _("Page not found");
 		$this->response->setStatusCode(404);
 		$this->template_name = "application/error404";
 	}
@@ -20,6 +27,14 @@ class ApplicationController extends Atk14Controller{
 			// a _end_database_transaction() zase jako posledni after filtr.
 			$this->_prepend_before_filter("begin_database_transaction");
 			$this->_append_after_filter("end_database_transaction");
+		}
+	}
+
+	function _before_render(){
+		global $ATK14_GLOBAL;
+
+		if(!isset($this->tpl_data["breadcrumbs"]) && isset($this->breadcrumbs)){
+			$this->tpl_data["breadcrumbs"] = $this->breadcrumbs;
 		}
 	}
 
@@ -52,6 +67,8 @@ class ApplicationController extends Atk14Controller{
 		if(!$this->request->ssl() && defined("REDIRECT_TO_SSL_AUTOMATICALLY") && constant("REDIRECT_TO_SSL_AUTOMATICALLY")){
 			return $this->_redirect_to_ssl();
 		}
+
+		$this->breadcrumbs = new Menu14();
 
 		$this->tpl_data["current_year"] = date("Y");
 
