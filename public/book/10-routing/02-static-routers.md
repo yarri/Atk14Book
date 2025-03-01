@@ -94,7 +94,7 @@ Výchozí router
 
 V každé aplikaci naleznete výchozí router, který definuje obecný model URL. Tento router musí být zařazen v souboru _config/routers/load.php_ na posledním místě.
 
-[Include config/routers/default_router.php]
+[include file=config/routers/default_router.php]
 
 Obvykle není třeba tento router upravovat. Jsou však situace, kdy možnost změny obecných pravidel uvítáte - např. ve chíli když vytváříte pouze jednojazyčnou aplikaci,
 není pořeba kód jazykové verze v URL uvádět vůbec.

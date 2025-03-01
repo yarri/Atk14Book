@@ -3,7 +3,7 @@ Příznakové políčko: BoleanField
 
 Následující formulář obsahuje 2 boolean políčka.
 
-[Include app/forms/fields/boolean_field_form.php]
+[include file=app/forms/fields/boolean_field_form.php]
 
 Na adrese <http://www.atk14.net/en/fields/boolean_field/> si formulář proklikejte. Mimo jiné zjistíte, že výchozí *widget* pro *BooleanField* je *checkbox*.
 

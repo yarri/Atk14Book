@@ -5,15 +5,15 @@ Dejme tomu, že kdesi v útrobách našeho webu máme akci na převod peněz na 
 
 Formulář obsahuje dvě políčka: peněžní obnos a číslo bankovního účtu příjemce. Ve formuláři aktivujeme ochranu před CSRF, protože si myslíme, že si to zaslouží.
 
-[Include app/forms/money_transfers/create_new_form.php]
+[include file=app/forms/money_transfers/create_new_form.php]
 
 Šablona vypadá velmi typicky.
 
-[Include app/views/money_transfers/create_new.tpl]
+[include file=app/views/money_transfers/create_new.tpl]
 
 Rovněz kontroler nenabízí žádná překvapení.
 
-[Include app/controllers/money_transfers_controller.php]
+[include file=app/controllers/money_transfers_controller.php]
 
 Suma sumárum zapnutí ochrany před CSRF spočívá v jednom řádku - volání metody enable\_csrf\_protection() na formuláři.
 
