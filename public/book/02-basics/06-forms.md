@@ -10,17 +10,17 @@ Pokud si nevystačíte z fieldy a widgety, které jsou součástí ATK14, může
 
 Teď si prohlédněte takový typický formulář pro registrace uživatele. Jednotlivá políčka formuláře jsou určena v metode *set_up()*. A vidíte, že i formulář může mít svou validační metodu _clean()_, ve které se obvyke řeší vztahy mezi políčky.
 
-[Include app/forms/users/create_new_form.php]
+[include file=app/forms/users/create_new_form.php]
 
 Podívejte se, jak vypadé akce *create_new()* v UsersController. Metoda _validate()_ vrací pole vyčištěných dat. Pokud by byla byť jen jedna hodnota špatně, bude vrácen NULL.
 
-[Include app/controllers/users_controller.php]
+[include file=app/controllers/users_controller.php]
 
 Není to velká věda, že?
 
 O zobrazení formuláře se postará helper *{form}* a dvě sdílené šáblonky. Podívejte se.
 
-[Include app/views/users/create_new.tpl]
+[include file=app/views/users/create_new.tpl]
 
 Vyzkoušejte si tuto registraci uživatele v provozu na adrese <http://www.atk14.net/en/users/create_new/>
 

@@ -38,7 +38,7 @@ publikovaného článku, nepovede již URL s původním nadpisem na žádný čl
 Podívejte se na zdrojový kód vzorového routeru z <http://www.atk14.net/en/books/>, který pro jistotu v URL nechává i _id_ knihy. A dokáže tak vyvolat automatické
 přesměrování v případě, že se název knihy změnil.
 
-[Include config/routers/books_router.php]
+[include file=config/routers/books_router.php]
 
 Metoda _recognize()_ rozpoznává příchozí URI. Jestliže router usoudí, že dané URI obsluhuje, nastaví všechny potřebné vlastnosti (controller, action, lang a params).
 V opačném případě nenastavuje nic a ATK14 pak předá URI k rozpoznání dalšímu routeru v pořadí. Metoda _recognize()_ přijímá parametr _$uri_. Hodnota předaná v tomto parametru vznikla zeštíhledním skutečného URI. Uvažujte tuto adresu, ...

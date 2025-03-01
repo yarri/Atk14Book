@@ -5,7 +5,7 @@ Framework ATK14 obsahuje vlastní jednoduchou ORM knihovnu _TableRecord_, kterou
 
 Uvažujme tabulku pro ukládání článků. Existuje migrace pro vytvoření tabulky _articles_. Migrace je očíslovaný patch, který je aplikován do databáze v určeném pořadí. 
 
-[Include db/migrations/0004_articles.sql]
+[include file=db/migrations/0004_articles.sql]
 
 Spuštěním příkazu ```./scripts/migrate``` dojde k aplikaci čekajících migrací do aktuální databáze. O migracích bude pojednáno později.
 

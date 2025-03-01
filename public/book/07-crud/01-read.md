@@ -7,7 +7,7 @@ editaci již hotového záznamu a smazání záznamu.
 
 Předpokládejme jednoduchou tabulku pro ukládání knih
 
-[Include db/migrations/0002_books.sql]
+[include file=db/migrations/0002_books.sql]
 
 Předpokládejme kontroler s názvem _BooksController_.
 
@@ -87,15 +87,15 @@ Běžně je však vyhledávání i třídění podle sloupců potřeba.
 
 Ve formuláři máme jedno políčko pro vyhledávání. Jednoduché jako facka.
 
-[Include app/forms/books/index_form.php]
+[include file=app/forms/books/index_form.php]
 
 Vykresneí zajišťuje šablona index.tpl s jednou parciální šablonkou, ...
 
-[Include app/views/books/index.tpl]
+[include file=app/views/books/index.tpl]
 
 ... která vykresluje jeden řádek v tabulce.
 
-[Include app/views/books/_book_item.tpl]
+[include file=app/views/books/_book_item.tpl]
 
 V šabloně _index.tpl_ je použit helper _paginator_, který zajišťuje stránkování nalezených knih. Všechny potřebné údaje si paginator zjistí z proměnné šablonky _$finder_.
 
