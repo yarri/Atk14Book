@@ -46,6 +46,10 @@ class DefaultRouter extends Atk14Router{
 		$this->addRoute("/<id>/","cs/main/detail",["id" => '/[^\/]{3,}/']);
 		$this->addRoute("/","cs/main/index");
 
+		// Old routes
+		$this->addRoute("/czech/<id>/","cs/main/detail",["id" => '/[^\/]{3,}/']);
+		$this->addRoute("/czech/","cs/main/index");
+
 		// Generic routes follow.
 		// Keep them on the end of the list.
 
