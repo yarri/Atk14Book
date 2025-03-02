@@ -29,7 +29,7 @@
  *
  *      $ ./scripts/recognize_route http://myapp.localhost/creature-123/
  *
- * For more information about routing see http://book.atk14.net/czech/routing/
+ * For more information about routing see http://book.atk14.net/routing/
  */
 class DefaultRouter extends Atk14Router{
 
@@ -45,10 +45,6 @@ class DefaultRouter extends Atk14Router{
 
 		$this->addRoute("/<id>/","cs/main/detail",["id" => '/[^\/]{3,}/']);
 		$this->addRoute("/","cs/main/index");
-
-		// Old routes
-		$this->addRoute("/czech/<id>/","cs/main/detail",["id" => '/[^\/]{3,}/']);
-		$this->addRoute("/czech/","cs/main/index");
 
 		// Generic routes follow.
 		// Keep them on the end of the list.

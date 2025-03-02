@@ -12,6 +12,11 @@ class ApplicationController extends Atk14Controller{
 	}
 
 	function error404(){
+		// Old URIs
+		if($this->request->get() && preg_match('/^\/czech(|\/.*)$/',$this->request->getUri(),$matches)){
+			return $this->_redirect_to($matches[1],["moved_permanently" => true]);
+		}
+
 		$this->page_title = $this->breadcrumbs[] = _("Page not found");
 		$this->response->setStatusCode(404);
 		$this->template_name = "application/error404";
