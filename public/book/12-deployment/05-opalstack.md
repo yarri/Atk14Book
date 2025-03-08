@@ -48,7 +48,7 @@ Rovněž na začátek crontabu doplní nastaveni PATH a ATK14_ENV.
 Vytvoření aplikace, site a databáze
 -----------------------------------
 
-V control panelu si Kinky vytvoří aplikaci *filcker* typu *PHP-FPM Apache* s preferovanou verzí PHP, tedy 8.3.
+V control panelu na Oplastacku Kinky vytvoří aplikaci *filcker* typu *PHP-FPM Apache* s preferovanou verzí PHP, tedy 8.3.
 
 Aplikace bude umístěna do adresáře /home/snapper/apps/filcker. Kinky si zkontroluje existenci tohoto adresáře a vyprázdní ho, pokud obsahuje nějaký vzorový index soubor.
 
@@ -56,7 +56,7 @@ Dále v control panelu přidá nové domény flicker.net a www.flicker.net.
 
 V dialogu *Add site* založí aplikaci názvem (Site name) *flicker_production*. K site připojí domény flicker.net a www.flicker.net a aplikaci flicker.
 
-Nyní vytvoří PostgreSQL uživatele flicker_production a databázi flicker_production, přístup do této databáze bude umožněn právě tomu novému uživateli.
+Nyní vytvoří PostgreSQL uživatele flicker_production a databázi flicker_production. Přístup do této databáze bude umožněn právě tomu novému uživateli.
 
 Heslo databázového uživatele flicker_production Opalstack zveřejní v nástroji *Notice Log*. Heslo si Kinky poznamená a z Notice Logu smaže.
 
@@ -64,6 +64,8 @@ Recept pro deployment do produkce
 ---------------------------------
 
 Kinky zapíše recept pro deployment do produkce do souboru config/deploy.yml.
+
+	[kinky@notebook ~/projects/filcker]$ vim config/deploy.yml
 
 	# file: config/deploy.yml
 	production:
@@ -88,7 +90,7 @@ Kinky zapíše recept pro deployment do produkce do souboru config/deploy.yml.
 Přenos aplikace do produkce
 ---------------------------
 
-ATK14 framework obsahuje nástroj scripts/initialize_deployment_stage, který přečte daný recept v config/deploy.yml a sestaví shellové příkazy, které provedou přenost aplikace na produkční server.
+ATK14 framework obsahuje nástroj scripts/initialize_deployment_stage, který na základě daného receptu v config/deploy.yml sestaví shellové příkazy pro přenos aplikace na produkční server.
 
 Kinky tedy spustí:
 
@@ -98,16 +100,16 @@ Pečlivě prozkoumá, jaké příkazy jsou vypsány. Vypadá to dobře a tak neb
 
 	[kinky@notebook ~/projects/filcker]$ ./scripts/initialize_deployment_stage production | sh
 
-Uf. Tentokrát dopadlo všechno dobře, proto se Kinky zase uvolňuje a jeho krevní tlak se vrácí zpět do normálu.
+Uf. Tentokrát dopadlo všechno dobře, proto se Kinky zase uvolňuje a jeho krevní tlak se pozvolna vrácí zpět do normálu.
 
-Kdyby něco dobře nedopadlo, pokusil by se Kinky zjistit, na jakém příkazu proces selhal, provedl by opravný zásah a pokračoval od příslušného příkazu dále.
+Kdyby něco dobře nedopadlo, pokusil by se Kinky zjistit, na jakém příkazu proces selhal, provedl by opravný zásah a pokračoval od problematického příkazu dále.
 
 Konfigurace a naplnění produkční databáze
 -----------------------------------------
 
 Kinky se přihlásí do produkční instalace, kde založí lokální soubor s konfigurací napojení do databáze. Použije heslo, které si dříve poznačil.
 
-Všimněte si, že do souboru nemusíme zadávat konfiguraci protestovací a vývojovou databázi. Do těch se napojovat nebudeme.
+Všimněte si, že do souboru není nutné zadávat konfiguraci pro testovací a vývojovou databázi. Do těch se v produkci napojovat nebudeme.
 
 	[kinky@notebook ~/projects/filcker]$ ./scripts/shell production
 	[snapper@opal6 ~/apps/flicker$ vim local_config/database.yml
@@ -119,7 +121,7 @@ Všimněte si, že do souboru nemusíme zadávat konfiguraci protestovací a vý
 		username: "filcker_production"
 		password: "DatabasePassword123"
 
-Kinky teď může otestovat, že se do produkční databáze napojí:
+Kinky teď může otestovat, že se do produkční databáze připojí:
 
 	[snapper@opal6 ~/apps/flicker]$ ./scripts/dbconsole
 
