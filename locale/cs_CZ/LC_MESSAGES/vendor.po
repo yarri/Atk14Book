@@ -1,0 +1,149 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-28 12:00+0100\n"
+"PO-Revision-Date: 2022-04-25 17:22+0200\n"
+"Last-Translator: Jaromir Tomek <jaromir.tomek@gmail.com>\n"
+"Language-Team: \n"
+"Language: cs_CZ\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+
+#~ msgid "Headers"
+#~ msgstr "Hlavičky"
+
+#~ msgid "HTML body"
+#~ msgstr "HTML text"
+
+#~ msgid "Plain text body"
+#~ msgstr "Prostý text"
+
+#~ msgid "No mail has been sent"
+#~ msgstr "Žádný e-mail nebyl odeslán"
+
+#~ msgid "Slug"
+#~ msgstr "Slug"
+
+#~ msgid "funny-green-mug"
+#~ msgstr "zabavny-zeleny-hrnek"
+
+#~ msgid "Write something like black-cat-white-cat"
+#~ msgstr "Napište něco jako cerna-kocka-bily-kocour"
+
+#~ msgid "This doesn't look like an URL"
+#~ msgstr "Toto nevypadá jako URL"
+
+#~ msgid "Temporary file uploading is not enabled"
+#~ msgstr "Nahrávání dočasných souborů není povoleno"
+
+#, php-format
+#~ msgid "The file exceeds the maximum file size, which is %s"
+#~ msgstr "Soubor překračuje maximální velikost, která je %s."
+
+#~ msgid "Error 1"
+#~ msgstr "Chyba 1"
+
+#~ msgid "Error 2"
+#~ msgstr "Chyba 2"
+
+#~ msgid ""
+#~ "The file has been already deleted on the server, please upload it again"
+#~ msgstr "Soubor byl na serveru již smazán, nahrajte jej prosím znovu."
+
+#~ msgid "The file was not fully uploaded, please upload it again"
+#~ msgstr "Soubor nebyl zcela nahrán, nahrajte jej prosím znovu."
+
+#~ msgid "Service Unavailable"
+#~ msgstr "Služba je nedostupná"
+
+#~ msgid "This site is in maintenance. Please come back later."
+#~ msgstr "Probíhá údržba této stránky. Přijďte prosím později."
+
+#~ msgid "The form contains errors, therefore it cannot be processed."
+#~ msgstr "Formulář obsahuje chyby, proto nemůže být zpracován."
+
+#~ msgid "Please, submit the form again"
+#~ msgstr "Prosím, odešlete formulář znovu"
+
+#~ msgid "Sort table by this column"
+#~ msgstr "Třídit tabulku podle tohoto sloupce"
+
+#~ msgid "Are you sure?"
+#~ msgstr "Jste si jistý?"
+
+#~ msgid "items total"
+#~ msgstr "položek celkem"
+
+#~ msgid "Prev"
+#~ msgstr "Předchozí"
+
+#~ msgid "Next"
+#~ msgstr "Následující"
+
+#~ msgid "and"
+#~ msgstr "a"
+
+#~ msgid ""
+#~ "Please try to solve the test. It is important for us to be sure that we "
+#~ "are communicating with a human."
+#~ msgstr ""
+#~ "Prosím, pokuste to vyřešit. Je pro nás důležité, abychom si byli jisti, "
+#~ "že komunikujeme s člověkem."
+
+#~ msgid "The test was not successful. Please try it again."
+#~ msgstr "Test nebyl úspěšný. Zkuste to prosím znovu."
+
+#~ msgid ""
+#~ "We are experiencing some technical issue during the communication with an "
+#~ "captcha API. Please try it later."
+#~ msgstr ""
+#~ "Při komunikaci s rozhraním captcha API se vyskytl technický problém. "
+#~ "Zkuste to prosím později."
+
+#~ msgid "Enter phone number in format %sample_phone_number%"
+#~ msgstr "Zadejte telefonní číslo ve formátu %sample_phone_number%"
+
+#~ msgid "Enter valid phone number (%sample_phone_number%)"
+#~ msgstr "Zadejte platné telefonní číslo (%sample_phone_number%)"
+
+#~ msgid "Enter phone number"
+#~ msgstr "Zadejte telefonní číslo"
+
+#~ msgid "remove"
+#~ msgstr "odstranit"
+
+#~ msgid "Download attachment"
+#~ msgstr "Stáhnout přílohu"
+
+#~ msgid "Display image"
+#~ msgstr "Zobrazit obrázek"
+
+#~ msgid "Unknown error"
+#~ msgstr "Neznámá chyba"
+
+#~ msgid ""
+#~ "We are experiencing some technical issue during the communication with "
+#~ "Google. Please try it later."
+#~ msgstr ""
+#~ "Během komunikace se společností Google došlo k technickým problémům. "
+#~ "Zkuste to prosím později."
+
+#~ msgid "Hello World!"
+#~ msgstr "Ahoj světe!"
+
+#~ msgid "Hello Another World!"
+#~ msgstr "Ahoj jiný světe!"
+
+#~ msgid "Enter valid phone number (+420.605123456)"
+#~ msgstr "Zadejte platné telefonní číslo (+420.605123456)"
+
+#~ msgid "Enter phone number in format +420.605123456"
+#~ msgstr "Zadejte telefonní číslo ve formátu +420.605123456"

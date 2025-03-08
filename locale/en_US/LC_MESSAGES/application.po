@@ -1,0 +1,934 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-03 00:28+0100\n"
+"PO-Revision-Date: 2025-01-28 12:09+0100\n"
+"Last-Translator: Jaromir Tomek <jaromir.tomek@gmail.com>\n"
+"Language-Team: Team <team@email.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+msgid "Read, hear, and study the ATK14 Book. Grow your skills. Relax. Repeat."
+msgstr ""
+
+msgid "Error 404: Page not found"
+msgstr "Error 404: Page not found"
+
+msgid "We are deeply sorry, but the page on the URI <em>%1</em> wasn't found."
+msgstr "We are deeply sorry, but the page on the URI <em>%1</em> wasn't found."
+
+msgid "Go to the homepage"
+msgstr "Go to the homepage"
+
+msgid "The following difficulties have occurred during the form processing:"
+msgstr "The following difficulties have occurred during the form processing:"
+
+msgid ""
+"Some of the items were filled incorrectly. Please, check the form and "
+"correct the errors."
+msgstr ""
+"Some of the items were filled incorrectly. Please, check the form and "
+"correct the errors."
+
+msgid "required"
+msgstr ""
+
+msgid "Example:"
+msgstr ""
+
+msgid "Save"
+msgstr "Save"
+
+msgid ""
+"This site runs on <a href=\"http://www.atk14.net/\">ATK14 Framework</a>, for "
+"now and ever after"
+msgstr ""
+"This site runs on <a href=\"http://www.atk14.net/\">ATK14 Framework</a>, for "
+"now and ever after"
+
+msgid "Go to home page"
+msgstr ""
+
+msgid ""
+"Read, hear, and study the ATK14 Book. Grow your skills. Earn some money. "
+"Enjoy your free time."
+msgstr ""
+
+msgid "Table of contents"
+msgstr "Table of contents"
+
+msgid "Subchapters"
+msgstr ""
+
+#: ../app/controllers/application.php:20
+msgid "Page not found"
+msgstr "Page not found"
+
+#: ../app/forms/creatures/create_new_form.php:5
+msgid "Name"
+msgstr "Name"
+
+#: ../app/forms/creatures/create_new_form.php:10
+msgid "Description"
+msgstr ""
+
+#: ../app/forms/creatures/create_new_form.php:16
+msgid "Image URL"
+msgstr ""
+
+#: ../app/forms/creatures/index_form.php:7
+msgid "Search term"
+msgstr "Search term"
+
+#: ../app/helpers/modifier.display_bool.php:9
+msgid "Yes"
+msgstr "Yes"
+
+#: ../app/helpers/modifier.display_bool.php:11
+msgid "No"
+msgstr "No"
+
+#~ msgid "Nahoru"
+#~ msgstr "Top"
+
+#~ msgid "Best regards"
+#~ msgstr "Best regards"
+
+#~ msgid "%1 Support Team"
+#~ msgstr "%1 Support Team"
+
+#~ msgid "web"
+#~ msgstr "web"
+
+#~ msgid "email"
+#~ msgstr "email"
+
+#~ msgid ""
+#~ "Best regards\n"
+#~ "\n"
+#~ "%1 Support Team\n"
+#~ "web: %2\n"
+#~ "email: %3"
+#~ msgstr ""
+#~ "Best regards\n"
+#~ "\n"
+#~ "%1 Support Team\n"
+#~ "web: %2\n"
+#~ "email: %3"
+
+#~ msgid "Error 403: Forbidden"
+#~ msgstr "Error 403: Forbidden"
+
+#~ msgid "You don`t have a permission to access <em>%1</em> on this server."
+#~ msgstr "You don`t have a permission to access <em>%1</em> on this server."
+
+#~ msgid "Currently you are not logged as an admin user."
+#~ msgstr "Currently you are not logged as an admin user."
+
+#~ msgid "or"
+#~ msgstr "or"
+
+#~ msgid "Sign in as an admin user"
+#~ msgstr "Sign in as an admin user"
+
+#~ msgid "Sign in"
+#~ msgstr "Sign in"
+
+#~ msgid "Have you forgotten password?"
+#~ msgstr "Have you forgotten password?"
+
+#~ msgid "You are signed in as <em>%1</em>."
+#~ msgstr "You are signed in as <em>%1</em>."
+
+#~ msgid "Click on the button to sign out."
+#~ msgstr "Click on the button to sign out."
+
+#~ msgid "Hello %1!"
+#~ msgstr "Hello %1!"
+
+#~ msgid ""
+#~ "Have you forgotten your password? To reset your password, click on the "
+#~ "following link"
+#~ msgstr ""
+#~ "Have you forgotten your password? To reset your password, click on the "
+#~ "following link"
+
+#~ msgid "Please note that this link is valid for 2 hours only."
+#~ msgstr "Please note that this link is valid for 2 hours only."
+
+#~ msgid "Your password was just updated in recovery mode."
+#~ msgstr "Your password was just updated in recovery mode."
+
+#~ msgid "The update has been executed upon a request from IP address %1"
+#~ msgstr "The update has been executed upon a request from IP address %1"
+
+#~ msgid "Thanks for signing up for %1!"
+#~ msgstr "Thanks for signing up for %1!"
+
+#~ msgid "Here is your data summary"
+#~ msgstr "Here is your data summary"
+
+#~ msgid "login"
+#~ msgstr "login"
+
+#~ msgid "name"
+#~ msgstr "name"
+
+#~ msgid ""
+#~ "<em>ATK14 Mini Skelet</em> is the <a href=\"https://skelet.atk14.net/"
+#~ "\">ATK14 Skelet</a> on a heavy diet. All the unnecessary meat has been "
+#~ "cut away and what's left would like to be the very basis of your web "
+#~ "application."
+#~ msgstr ""
+#~ "<em>ATK14 Mini Skelet</em> is the <a href=\"https://skelet.atk14.net/"
+#~ "\">ATK14 Skelet</a> on a heavy diet. All the unnecessary meat has been "
+#~ "cut away and what's left would like to be the very basis of your web "
+#~ "application."
+
+#~ msgid "The Mini Skelet contains mainly"
+#~ msgstr "The Mini Skelet contains mainly"
+
+#~ msgid "User registration"
+#~ msgstr "User registration"
+
+#~ msgid "with strong blowfish passwords hashing"
+#~ msgstr "with strong blowfish passwords hashing"
+
+#~ msgid "Basic administration"
+#~ msgstr "Basic administration"
+
+#~ msgid "RESTful API"
+#~ msgstr "RESTful API"
+
+#~ msgid "Sitemap"
+#~ msgstr "Sitemap"
+
+#~ msgid "Localization"
+#~ msgstr "Localization"
+
+#~ msgid "English"
+#~ msgstr "English"
+
+#~ msgid "Czech"
+#~ msgstr "Czech"
+
+#~ msgid "Installation"
+#~ msgstr "Installation"
+
+#~ msgid ""
+#~ "Are you planning to kick up a new project from the Atk14MiniSkelet? "
+#~ "Great! Just run the following commands."
+#~ msgstr ""
+#~ "Are you planning to kick up a new project from the Atk14MiniSkelet? "
+#~ "Great! Just run the following commands."
+
+#~ msgid ""
+#~ "You can find more information in <a href=\"https://github.com/atk14/"
+#~ "Atk14MiniSkelet/blob/master/README.md#installation\">the installation "
+#~ "instructions.</a>"
+#~ msgstr ""
+#~ "You can find more information in <a href=\"https://github.com/atk14/"
+#~ "Atk14MiniSkelet/blob/master/README.md#installation\">the installation "
+#~ "instructions.</a>"
+
+#~ msgid ""
+#~ "If you want to help us to improve the Atk14MiniSkelet, <a href=\"https://"
+#~ "github.com/atk14/Atk14MiniSkelet\">fork it on GitHub.</a>"
+#~ msgstr ""
+#~ "If you want to help us to improve the Atk14MiniSkelet, <a href=\"https://"
+#~ "github.com/atk14/Atk14MiniSkelet\">fork it on GitHub.</a>"
+
+#~ msgid "Further Reading & Resources"
+#~ msgstr "Further Reading & Resources"
+
+#~ msgid "ATK14 Project"
+#~ msgstr "ATK14 Project"
+
+#~ msgid "ATK14 Book"
+#~ msgstr "ATK14 Book"
+
+#~ msgid "API Reference"
+#~ msgstr "API Reference"
+
+#~ msgid "ATK14 on GitHub"
+#~ msgstr "ATK14 on GitHub"
+
+#~ msgid "ATK14 Mini Skelet on GitHub"
+#~ msgstr "ATK14 Mini Skelet on GitHub"
+
+#~ msgid "The address has expired or already been used."
+#~ msgstr "The address has expired or already been used."
+
+#~ msgid "The URL is either expired or invalid."
+#~ msgstr "The URL is either expired or invalid."
+
+#~ msgid "In the form bellow set the new password for user <em>%1</em>"
+#~ msgstr "In the form bellow set the new password for user <em>%1</em>"
+
+#~ msgid "The password recovery link has been sent to your email address."
+#~ msgstr "The password recovery link has been sent to your email address."
+
+#~ msgid ""
+#~ "If you don't receive instructions within a few minutes, check your "
+#~ "email's spam and junk filters."
+#~ msgstr ""
+#~ "If you don't receive instructions within a few minutes, check your "
+#~ "email's spam and junk filters."
+
+#~ msgid "Attachments"
+#~ msgstr "Attachments"
+
+#~ msgid "OK"
+#~ msgstr "OK"
+
+#~ msgid "Optional"
+#~ msgstr "Optional"
+
+#~ msgid "Examples:"
+#~ msgstr "Examples:"
+
+#~ msgid "Edit article"
+#~ msgstr "Edit article"
+
+#~ msgid "Edit attachment"
+#~ msgstr "Edit attachment"
+
+#~ msgid "Edit photogallery"
+#~ msgstr "Edit photogallery"
+
+#~ msgid "Edit object"
+#~ msgstr "Edit object"
+
+#~ msgid "Create new object"
+#~ msgstr "Create new object"
+
+#~ msgid "Objects administration"
+#~ msgstr "Objects administration"
+
+#~ msgid "Edit links"
+#~ msgstr "Edit links"
+
+#~ msgid "Edit page"
+#~ msgstr "Edit page"
+
+#~ msgid "Create a subpage"
+#~ msgstr "Create a subpage"
+
+#~ msgid "List of pages"
+#~ msgstr "List of pages"
+
+#~ msgid "Edit image"
+#~ msgstr "Edit image"
+
+#~ msgid "Edit video"
+#~ msgstr "Edit video"
+
+#~ msgid "Create a new record"
+#~ msgstr "Create a new record"
+
+#~ msgid "Show menu"
+#~ msgstr "Show menu"
+
+#~ msgid "zavřít"
+#~ msgstr "close"
+
+#~ msgid "Change language"
+#~ msgstr "Change language"
+
+#~ msgid "Administration"
+#~ msgstr "Administration"
+
+#~ msgid "Profile"
+#~ msgstr "Profile"
+
+#~ msgid "Sign out"
+#~ msgstr "Sign out"
+
+#~ msgid "Register"
+#~ msgstr "Register"
+
+#~ msgid "Menu"
+#~ msgstr "Menu"
+
+#~ msgid "Here you can find the list of all commands in <em>%1</em>."
+#~ msgstr "Here you can find the list of all commands in <em>%1</em>."
+
+#~ msgid "Homepage"
+#~ msgstr "Homepage"
+
+#~ msgid "New user registration"
+#~ msgstr "New user registration"
+
+#~ msgid ""
+#~ "If you don't have yet an account on this site, this is absolutely must to "
+#~ "do procedure"
+#~ msgstr ""
+#~ "If you don't have yet an account on this site, this is absolutely must to "
+#~ "do procedure"
+
+#~ msgid "Sign in to our site"
+#~ msgstr "Sign in to our site"
+
+#~ msgid "API"
+#~ msgstr "API"
+
+#~ msgid "We offer an awesome restful API"
+#~ msgstr "We offer an awesome restful API"
+
+#~ msgid "Recent articles"
+#~ msgstr "Recent articles"
+
+#~ msgid "Articles"
+#~ msgstr "Articles"
+
+#~ msgid ""
+#~ "You have been successfully registered and now you are logged in as "
+#~ "<em>%1</em>."
+#~ msgstr ""
+#~ "You have been successfully registered and now you are logged in as "
+#~ "<em>%1</em>."
+
+#~ msgid ""
+#~ "Now you can <a href=\"%1\">go to the homepage</a> and enjoy our website."
+#~ msgstr ""
+#~ "Now you can <a href=\"%1\">go to the homepage</a> and enjoy our website."
+
+#~ msgid "You have been successfully registered."
+#~ msgstr "You have been successfully registered."
+
+#~ msgid "Now you can <a href=\"%1\">sign in</a> and enjoy our website."
+#~ msgstr "Now you can <a href=\"%1\">sign in</a> and enjoy our website."
+
+#~ msgid "Username (login)"
+#~ msgstr "Username (login)"
+
+#~ msgid "Your name"
+#~ msgstr "Your name"
+
+#~ msgid "Your email"
+#~ msgstr "Your email"
+
+#~ msgid "Are you admin?"
+#~ msgstr "Are you admin?"
+
+#~ msgid "Yes, you are"
+#~ msgstr "Yes, you are"
+
+#~ msgid "Change your account data"
+#~ msgstr "Change your account data"
+
+#~ msgid "Change your password"
+#~ msgstr "Change your password"
+
+#~ msgid "Current password"
+#~ msgstr "Current password"
+
+#~ msgid "New password"
+#~ msgstr "New password"
+
+#~ msgid "For security reasons, this function is disabled"
+#~ msgstr "For security reasons, this function is disabled"
+
+#~ msgid "Bad password"
+#~ msgstr "Bad password"
+
+#~ msgid "There is no such user"
+#~ msgstr "There is no such user"
+
+#~ msgid "Forbidden"
+#~ msgstr "Forbidden"
+
+#~ msgid "Home"
+#~ msgstr "Home"
+
+#~ msgid "New registration"
+#~ msgstr "New registration"
+
+#~ msgid "Reset Your Password"
+#~ msgstr "Reset Your Password"
+
+#~ msgid "Your password was updated"
+#~ msgstr "Your password was updated"
+
+#~ msgid "Message sent from contact page"
+#~ msgstr "Message sent from contact page"
+
+#~ msgid "User profile"
+#~ msgstr "User profile"
+
+#, php-format
+#~ msgid "Commands in %s"
+#~ msgstr "Commands in %s"
+
+#, php-format
+#~ msgid "submit using method %s"
+#~ msgstr "submit using method %s"
+
+#~ msgid "Nothing has been found on this address"
+#~ msgstr "Nothing has been found on this address"
+
+#~ msgid "You don't have access to the requested resource"
+#~ msgstr "You don't have access to the requested resource"
+
+#~ msgid "Sorry, An internal error happened"
+#~ msgstr "Sorry, An internal error happened"
+
+#, php-format
+#~ msgid ""
+#~ "Wrong login and password combination. <a href=\"%s\">Have you forgotten "
+#~ "your password?</a>"
+#~ msgstr ""
+#~ "Wrong login and password combination. <a href=\"%s\">Have you forgotten "
+#~ "your password?</a>"
+
+#~ msgid "Wrong login and password combination"
+#~ msgstr "Wrong login and password combination"
+
+#, php-format
+#~ msgid "You have been successfully logged in as <em>%s</em>"
+#~ msgstr "You have been successfully logged in as <em>%s</em>"
+
+#~ msgid "You have been successfully logged out"
+#~ msgstr "You have been successfully logged out"
+
+#, php-format
+#~ msgid "You've stayed logged in as <em>%s</em>"
+#~ msgstr "You've stayed logged in as <em>%s</em>"
+
+#~ msgid "Welcome at ATK14 Mini Skelet!"
+#~ msgstr "Welcome at ATK14 Mini Skelet!"
+
+#~ msgid "There is no such user with the given login or email"
+#~ msgstr "There is no such user with the given login or email"
+
+#~ msgid ""
+#~ "This user account has been deactivated. Password recovery process can not "
+#~ "be started."
+#~ msgstr ""
+#~ "This user account has been deactivated. Password recovery process can not "
+#~ "be started."
+
+#~ msgid ""
+#~ "Password recovery can not be initiated for this user. Email address is "
+#~ "not set."
+#~ msgstr ""
+#~ "Password recovery can not be initiated for this user. Email address is "
+#~ "not set."
+
+#~ msgid "Your password has been updated successfully"
+#~ msgstr "Your password has been updated successfully"
+
+#~ msgid "Password recovery"
+#~ msgstr "Password recovery"
+
+#~ msgid "To register as a new user, sign out first"
+#~ msgstr "To register as a new user, sign out first"
+
+#, php-format
+#~ msgid ""
+#~ "You have been successfully registered and now you are logged in as "
+#~ "<em>%s</em>"
+#~ msgstr ""
+#~ "You have been successfully registered and now you are logged in as "
+#~ "<em>%s</em>"
+
+#~ msgid "Thank you for your registration!"
+#~ msgstr "Thank you for your registration!"
+
+#~ msgid "Nothing has been changed"
+#~ msgstr "Nothing has been changed"
+
+#~ msgid "This email address is used by another user."
+#~ msgstr "This email address is used by another user."
+
+#, php-format
+#~ msgid ""
+#~ "Your account data has been updated. Next time you should sign-in with "
+#~ "login name <em>%s</em>."
+#~ msgstr ""
+#~ "Your account data has been updated. Next time you should sign-in with "
+#~ "login name <em>%s</em>."
+
+#~ msgid "Your account data has been updated"
+#~ msgstr "Your account data has been updated"
+
+#~ msgid "This is not your current password"
+#~ msgstr "This is not your current password"
+
+#~ msgid "Ano"
+#~ msgstr "Yes"
+
+#~ msgid "Ne"
+#~ msgstr "No"
+
+#, php-format
+#~ msgid ""
+#~ "Only letters, numbers, dots and dashes are allowed. Up to %s characters."
+#~ msgstr ""
+#~ "Only letters, numbers, dots and dashes are allowed. Up to %s characters."
+
+#~ msgid "This username has been already taken"
+#~ msgstr "This username has been already taken"
+
+#~ msgid "Only letters, numbers, dots and dashes are allowed"
+#~ msgstr "Only letters, numbers, dots and dashes are allowed"
+
+#~ msgid "There is no such record"
+#~ msgstr "There is no such record"
+
+#~ msgid "Slug"
+#~ msgstr "Slug"
+
+#~ msgid "funny-green-mug"
+#~ msgstr "funny-green-mug"
+
+#~ msgid "Write something like black-cat-white-cat"
+#~ msgstr "Write something like black-cat-white-cat"
+
+#~ msgid "Create"
+#~ msgstr "Create"
+
+#~ msgid "Show"
+#~ msgstr "Show"
+
+#~ msgid "Search"
+#~ msgstr "Search"
+
+#~ msgid "Update"
+#~ msgstr "Update"
+
+#~ msgid "Delete"
+#~ msgstr "Delete"
+
+#~ msgid "Search query"
+#~ msgstr "Search query"
+
+#~ msgid "Login name"
+#~ msgstr "Login name"
+
+#~ msgid "Password"
+#~ msgstr "Password"
+
+#~ msgid "Login or email address"
+#~ msgstr "Login or email address"
+
+#~ msgid "Send me a recovery link"
+#~ msgstr "Send me a recovery link"
+
+#~ msgid "Set new password"
+#~ msgstr "Set new password"
+
+#~ msgid "In order to register you need to obtain an invitation code"
+#~ msgstr "In order to register you need to obtain an invitation code"
+
+#~ msgid "This is not a valid invitation code"
+#~ msgstr "This is not a valid invitation code"
+
+#~ msgid "The new password is the same as your current password"
+#~ msgstr "The new password is the same as your current password"
+
+#~ msgid "Firstname"
+#~ msgstr "Firstname"
+
+#~ msgid "Lastname"
+#~ msgstr "Lastname"
+
+#~ msgid "Email address"
+#~ msgstr "Email address"
+
+#~ msgid "We will not disclose this address"
+#~ msgstr "We will not disclose this address"
+
+#~ msgid "Password (repeat)"
+#~ msgstr "Password (repeat)"
+
+#~ msgid "Password doesn't match"
+#~ msgstr "Password doesn't match"
+
+#~ msgid "Delay the next sign-in attempt for a second"
+#~ msgstr "Delay the next sign-in attempt for a second"
+
+#, php-format
+#~ msgid "Delay the next sign-in attempt for %s minutes"
+#~ msgstr "Delay the next sign-in attempt for %s minutes"
+
+#, php-format
+#~ msgid "Delay the next sign-in attempt for one minute and %s seconds"
+#~ msgstr "Delay the next sign-in attempt for one minute and %s seconds"
+
+#~ msgid "Delay the next sign-in attempt for one minute"
+#~ msgstr "Delay the next sign-in attempt for one minute"
+
+#, php-format
+#~ msgid "Delay the next sign-in attempt for %s seconds"
+#~ msgstr "Delay the next sign-in attempt for %s seconds"
+
+#, php-format
+#~ msgid "Delay the next sign-in attempt for %s minutes and %s seconds"
+#~ msgstr "Delay the next sign-in attempt for %s minutes and %s seconds"
+
+#~ msgid "deleted user"
+#~ msgstr "deleted user"
+
+#~ msgid "inactive user"
+#~ msgstr "inactive user"
+
+#~ msgid "administrator"
+#~ msgstr "administrator"
+
+#~ msgid "Posted by <em>%1</em> on <time datetime=\"%2\">%3</time>"
+#~ msgstr "Posted by <em>%1</em> on <time datetime=\"%2\">%3</time>"
+
+#~ msgid ""
+#~ "This is not a published article! It's not available to the public "
+#~ "audience."
+#~ msgstr ""
+#~ "This is not a published article! It's not available to the public "
+#~ "audience."
+
+#~ msgid "newer article"
+#~ msgstr "newer article"
+
+#~ msgid "older article"
+#~ msgstr "older article"
+
+#~ msgid "At the moment there are no news."
+#~ msgstr "At the moment there are no news."
+
+#~ msgid ""
+#~ "If you have any question, contact us through the following form. We will "
+#~ "reply to you as soon as we can."
+#~ msgstr ""
+#~ "If you have any question, contact us through the following form. We will "
+#~ "reply to you as soon as we can."
+
+#~ msgid "The message has been sent to us. We will reply as soon as we can."
+#~ msgstr "The message has been sent to us. We will reply as soon as we can."
+
+#~ msgid "Email"
+#~ msgstr "Email"
+
+#~ msgid "Signing up for newsletter"
+#~ msgstr "Signing up for newsletter"
+
+#~ msgid "URL"
+#~ msgstr "URL"
+
+#~ msgid "IP address"
+#~ msgstr "IP address"
+
+#~ msgid "Logged user:"
+#~ msgstr "Logged user:"
+
+#~ msgid "The Skelet contains mainly"
+#~ msgstr "The Skelet contains mainly"
+
+#~ msgid "Pages with a hierarchical structure"
+#~ msgstr "Pages with a hierarchical structure"
+
+#~ msgid "Contact page with fast contact form"
+#~ msgstr "Contact page with fast contact form"
+
+#~ msgid "Articles section"
+#~ msgstr "Articles section"
+
+#~ msgid "Manageable link lists in header and footer"
+#~ msgstr "Manageable link lists in header and footer"
+
+#~ msgid ""
+#~ "Are you planning to kick up a new project from the Atk14Skelet? Great! "
+#~ "Just run the following commands."
+#~ msgstr ""
+#~ "Are you planning to kick up a new project from the Atk14Skelet? Great! "
+#~ "Just run the following commands."
+
+#~ msgid ""
+#~ "You can find more information in <a href=\"https://github.com/atk14/"
+#~ "Atk14Skelet/blob/master/README.md#installation\">the installation "
+#~ "instructions.</a>"
+#~ msgstr ""
+#~ "You can find more information in <a href=\"https://github.com/atk14/"
+#~ "Atk14Skelet/blob/master/README.md#installation\">the installation "
+#~ "instructions.</a>"
+
+#~ msgid ""
+#~ "If you want to help us to improve the Atk14Skelet, <a href=\"https://"
+#~ "github.com/atk14/Atk14Skelet\">fork it on GitHub.</a>"
+#~ msgstr ""
+#~ "If you want to help us to improve the Atk14Skelet, <a href=\"https://"
+#~ "github.com/atk14/Atk14Skelet\">fork it on GitHub.</a>"
+
+#~ msgid "ATK14 Skelet on GitHub"
+#~ msgstr "ATK14 Skelet on GitHub"
+
+#~ msgid ""
+#~ "This is not a visible page! It's not available to the public audience."
+#~ msgstr ""
+#~ "This is not a visible page! It's not available to the public audience."
+
+#~ msgid "Subpages"
+#~ msgstr "Subpages"
+
+#~ msgid "Photo gallery"
+#~ msgstr "Photo gallery"
+
+#~ msgid "Previous"
+#~ msgstr "Previous"
+
+#~ msgid "Next"
+#~ msgstr "Next"
+
+#~ msgid "Zavřít"
+#~ msgstr "Close"
+
+#~ msgid "Zobrazování přes celou obrazovka"
+#~ msgstr "Full screen display"
+
+#~ msgid "Přiblížení"
+#~ msgstr "Zoom in"
+
+#~ msgid "Předchozí (šipka doleva)"
+#~ msgstr "Previous (left arrow)"
+
+#~ msgid "Další (šipka doprava)"
+#~ msgstr "Next (right arrow)"
+
+#~ msgid "Pages"
+#~ msgstr "Pages"
+
+#~ msgid "Temporary file uploading is not enabled"
+#~ msgstr "Temporary file uploading is not enabled"
+
+#, php-format
+#~ msgid "The file exceeds the maximum file size, which is %s"
+#~ msgstr "The file exceeds the maximum file size, which is %s"
+
+#~ msgid "Error 1"
+#~ msgstr "Error 1"
+
+#~ msgid "Error 2"
+#~ msgstr "Error 2"
+
+#, php-format
+#~ msgid "Articles tagged with <em>%s</em>"
+#~ msgstr "Articles tagged with <em>%s</em>"
+
+#~ msgid "Contact message"
+#~ msgstr "Contact message"
+
+#~ msgid "Contact message sent"
+#~ msgstr "Contact message sent"
+
+#~ msgid "Welcome!"
+#~ msgstr "Welcome!"
+
+#~ msgid ""
+#~ "The file has been already deleted on the server, please upload it again"
+#~ msgstr ""
+#~ "The file has been already deleted on the server, please upload it again"
+
+#~ msgid "The file was not fully uploaded, please upload it again"
+#~ msgstr "The file was not fully uploaded, please upload it again"
+
+#~ msgid ""
+#~ "Zadejte URL videa. Lze vložit video ze služeb, které poskytují API podle "
+#~ "specifikace <a href=\"http://oembed.com/\">oEmbed</a>."
+#~ msgstr ""
+#~ "Enter video URL. You can embed a video from services that provide the <a "
+#~ "href=\"http://oembed.com/\">oEmbed specification</a>."
+
+#~ msgid ""
+#~ "Nelze získat informace o videu. Ověřte URL videa a podporu oEmbed u "
+#~ "poskytovatele videa."
+#~ msgstr ""
+#~ "Unable to get video information. Check video URL and oEmbed support with "
+#~ "your video provider."
+
+#~ msgid "Typ souboru na tomto URL není video"
+#~ msgstr "The file type at this URL is not a video"
+
+#~ msgid "page"
+#~ msgstr "page"
+
+#~ msgid "There is no such page"
+#~ msgstr "There is no such page"
+
+#~ msgid "Ensure that there are max %max% tags (now there are %count%)"
+#~ msgstr "Ensure that there are max %max% tags (now there are %count%)"
+
+#, php-format
+#~ msgid "There is no tag <em>%s</em>"
+#~ msgstr "There is no tag <em>%s</em>"
+
+#, php-format
+#~ msgid "Tag <em>%s</em> is there more than once"
+#~ msgstr "Tag <em>%s</em> is there more than once"
+
+#~ msgid "Sign up for newsletter"
+#~ msgstr "Sign up for newsletter"
+
+#~ msgid "Text"
+#~ msgstr "Text"
+
+#~ msgid "Spam protection"
+#~ msgstr "Spam protection"
+
+#~ msgid "Send message"
+#~ msgstr "Send message"
+
+#~ msgid "Video"
+#~ msgstr "Video"
+
+#~ msgid "Galerie"
+#~ msgstr "Gallery"
+
+#~ msgid "Obrázek"
+#~ msgstr "Picture"
+
+#~ msgid "remove"
+#~ msgstr "remove"
+
+#~ msgid "Download attachment"
+#~ msgstr "Download attachment"
+
+#~ msgid "Display image"
+#~ msgstr "Display image"
+
+#~ msgid ""
+#~ "Only letters, numbers, dots and dashes are allowed. Up to 50 characters."
+#~ msgstr ""
+#~ "Only letters, numbers, dots and dashes are allowed. Up to 50 characters."
+
+#~ msgid "Login"
+#~ msgstr "Login"
+
+#~ msgid "atk14.date_format"
+#~ msgstr "m/d/Y"
+
+#~ msgid "atk14.parse_date_pattern"
+#~ msgstr "/^(?<month>[0-9]{1,2})\\/(?<day>[0-9]{1,2})\\/(?<year>[0-9]{4})$/"
+
+#~ msgid "atk14.datetime_format"
+#~ msgstr "m/d/Y H:i"
+
+#~ msgid "atk14.parse_datetime_pattern"
+#~ msgstr ""
+#~ "/^(?<month>[0-9]{1,2})\\/(?<day>[0-9]{1,2})\\/(?<year>[0-9]{4}) (?"
+#~ "<hours>[0-9]{2}):(?<minutes>[0-9]{2})$/"
+
+#~ msgid "atk14.datetime_with_seconds_format"
+#~ msgstr "m/d/Y H:i:s"
+
+#~ msgid "atk14.parse_datetime_with_seconds_pattern"
+#~ msgstr ""
+#~ "/^(?<month>[0-9]{1,2})\\/(?<day>[0-9]{1,2})\\/(?<year>[0-9]{4}) (?"
+#~ "<hours>[0-9]{2}):(?<minutes>[0-9]{2}):(?<seconds>[0-9]{2})$/"

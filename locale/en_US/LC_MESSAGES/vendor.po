@@ -1,0 +1,147 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-28 12:00+0100\n"
+"PO-Revision-Date: 2022-04-25 16:30+0200\n"
+"Last-Translator: Jaromir Tomek <jaromir.tomek@gmail.com>\n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+
+#~ msgid "Headers"
+#~ msgstr "Headers"
+
+#~ msgid "HTML body"
+#~ msgstr "HTML body"
+
+#~ msgid "Plain text body"
+#~ msgstr "Plain text body"
+
+#~ msgid "No mail has been sent"
+#~ msgstr "No mail has been sent"
+
+#~ msgid "Slug"
+#~ msgstr "Slug"
+
+#~ msgid "funny-green-mug"
+#~ msgstr "funny-green-mug"
+
+#~ msgid "Write something like black-cat-white-cat"
+#~ msgstr "Write something like black-cat-white-cat"
+
+#~ msgid "This doesn't look like an URL"
+#~ msgstr "This doesn't look like an URL"
+
+#~ msgid "Temporary file uploading is not enabled"
+#~ msgstr "Temporary file uploading is not enabled"
+
+#, php-format
+#~ msgid "The file exceeds the maximum file size, which is %s"
+#~ msgstr "The file exceeds the maximum file size, which is %s"
+
+#~ msgid "Error 1"
+#~ msgstr "Error 1"
+
+#~ msgid "Error 2"
+#~ msgstr "Error 2"
+
+#~ msgid ""
+#~ "The file has been already deleted on the server, please upload it again"
+#~ msgstr ""
+#~ "The file has been already deleted on the server, please upload it again"
+
+#~ msgid "The file was not fully uploaded, please upload it again"
+#~ msgstr "The file was not fully uploaded, please upload it again"
+
+#~ msgid "Service Unavailable"
+#~ msgstr "Service Unavailable"
+
+#~ msgid "This site is in maintenance. Please come back later."
+#~ msgstr "This site is in maintenance. Please come back later."
+
+#~ msgid "The form contains errors, therefore it cannot be processed."
+#~ msgstr "The form contains errors, therefore it cannot be processed."
+
+#~ msgid "Please, submit the form again"
+#~ msgstr "Please, submit the form again"
+
+#~ msgid "Are you sure?"
+#~ msgstr "Are you sure?"
+
+#~ msgid "items total"
+#~ msgstr "items total"
+
+#~ msgid "Prev"
+#~ msgstr "Prev"
+
+#~ msgid "Next"
+#~ msgstr "Next"
+
+#~ msgid "and"
+#~ msgstr "and"
+
+#~ msgid ""
+#~ "Please try to solve the test. It is important for us to be sure that we "
+#~ "are communicating with a human."
+#~ msgstr ""
+#~ "Please try to solve the test. It is important for us to be sure that we "
+#~ "are communicating with a human."
+
+#~ msgid "The test was not successful. Please try it again."
+#~ msgstr "The test was not successful. Please try it again."
+
+#~ msgid ""
+#~ "We are experiencing some technical issue during the communication with an "
+#~ "captcha API. Please try it later."
+#~ msgstr ""
+#~ "We are experiencing some technical issue during the communication with an "
+#~ "captcha API. Please try it later."
+
+#~ msgid "Enter phone number in format %sample_phone_number%"
+#~ msgstr "Enter phone number in format %sample_phone_number%"
+
+#~ msgid "Enter valid phone number (%sample_phone_number%)"
+#~ msgstr "Enter valid phone number (%sample_phone_number%)"
+
+#~ msgid "Enter phone number"
+#~ msgstr "Enter phone number"
+
+#~ msgid "remove"
+#~ msgstr "remove"
+
+#~ msgid "Download attachment"
+#~ msgstr "Download attachment"
+
+#~ msgid "Display image"
+#~ msgstr "Display image"
+
+#~ msgid "Unknown error"
+#~ msgstr "Unknown error"
+
+#~ msgid ""
+#~ "We are experiencing some technical issue during the communication with "
+#~ "Google. Please try it later."
+#~ msgstr ""
+#~ "We are experiencing some technical issue during the communication with "
+#~ "Google. Please try it later."
+
+#~ msgid "Hello World!"
+#~ msgstr "Hello World!"
+
+#~ msgid "Hello Another World!"
+#~ msgstr "Hello Another World!"
+
+#~ msgid "Enter valid phone number (+420.605123456)"
+#~ msgstr "Enter valid phone number (+420.605123456)"
+
+#~ msgid "Enter phone number in format +420.605123456"
+#~ msgstr "Enter phone number in format +420.605123456"
