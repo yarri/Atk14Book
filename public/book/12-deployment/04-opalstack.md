@@ -139,4 +139,4 @@ Následný deployment je pak snadný jako facka. Kinky a jeho kolegové v klidu 
 
     [kinky@notebook ~/projects/filcker]$ ./scripts/deployment production
 
-Tohleto se vážně podařilo! :)
+Tohleto se Kinkymu vážně podařilo! :)

@@ -1,5 +1,5 @@
-Deployment ATK14 aplikace
-=========================
+Základy deploymentu ATK14 aplikací
+==================================
 
 Framework ATK14 obsahuje nástroj pro deployment aktuální verze aplikace do produkce. Jedná se o přírůstkový deployment (continuous deployment). Tedy v produkci nám už běží aplikace v nějaké verzi a my tam pomocí tohoto nástroje nahrajeme aktuální verzi.
 
@@ -108,6 +108,8 @@ Pokud cokoli selže, činnost skriptu je ukončena, je zobrazen popis chyby a p�
 Konfigurace pro více produkčních prostředí
 ------------------------------------------
 
+Konfigurační souboru může obsahovat popis pro více produkčních instalací.
+
     # file: config/deploy.yml
     production:
       url: "https://www.myapp.com/"
@@ -129,8 +131,21 @@ Konfigurace pro více produkčních prostředí
 
     staging:
       url: "https://staging.myapp.com/"
+      server: "alpha.example.com"
+      user: "deploy"
+      env: "PATH=/home/deploy/bin:$PATH"
       directory: "/var/www/myapp_staging"
       deploy_repository: "/home/deploy/repos/myapp_staging.git"
+      before_deploy:
+      - "@local composer update"
+      - "@local npm install"
+      - "@local gulp"
+      - "@local gulp admin"
+      rsync:
+      - "public/admin/dist/"
+      - "vendor/"
+      after_deploy:
+      - "./scripts/migrate && ./scripts/delete_temporary_files dbmole_cache"
 
 Deployment do produkce:
 
@@ -139,3 +154,5 @@ Deployment do produkce:
 Deployment na staging:
 
     [john@asterix ~/projects/myapp]$ ./scripts/deploy staging
+
+V další kapitole se podíváme na to, jak zjednodušit obsah konfiguračního souboru config/deploy.yml
