@@ -1,25 +1,24 @@
 Prvotní instalace aplikace do produkce
 ======================================
 
-    # file: config/deploy.yml
-    production:
-      server: "alpha.example.com"
-      user: "deploy"
-      directory: "/home/deploy/webapps/myapp/"
-      deploy_repository: "/home/deploy/repos/myapp.git"
+Poté, co jsme nádherně popsali produkční instalaci do souboru config/deploy.yml, nás čeká instalace aplikace do produkčního prostředí. Jedná se o souvislou řadu úkonů, se kterými nám pomůže skript *initialize_deployment_stage*.
+
+Jeho použití je následující:
 
 
-    mkdir -p /home/deploy/repos/myapp.git
-    git init --bare /home/deploy/repos/myapp.git
+		./scripts/initialize_deployment_stage production
 
-    cd projects/myapp
-    git remote add production deploy@alpha.example.com:/home/deploy/repos/myapp.git
-    git push production master:master
+Klidně to vyzkoušejte. Nestane se nic, pouze se vypíší shellové příkazy, které nainstalují aplikaci do dané produkčního prostředí.
 
-    mkdir -p /home/deploy/webapps/myapp
-    cd /home/deploy/webapps/myapp
-    git clone /home/deploy/repos/myapp.git ./
-    git submodule init && git submodule update
-    chmod 777 tmp/ log/
-    head -c 200 /dev/urandom | base64 -w 0 > config/.secret_token.txt
+Prozkoumejte je, a pokud se vám budou zamlouvat, spusťtě:
+
+		./scripts/initialize_deployment_stage production | sh
+
+Pokud všechno dopadne dobře, máte vyhráno. Pokud něco selže, pokuste se zjistit, kde nastal problém, proveďte opravu a pokračujte ve spouštění příkazů od příslušného místa.
+
+Jakmile máte hotovo, přihlaste se na danou produkci.
+
+		./scripts/shell production
+
+... a dokonfigurujte aplikaci. Což znemaná především konfigurace připojení do databáze v souboru local_config/database.yml a event. další specifická nastavení v souboru local_config/settings.php.
 

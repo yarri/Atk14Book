@@ -40,6 +40,10 @@ nebo zkráceně:
 
   ./scripts/deploy -d staging
 
+případně si můžeme vypsat konfiguraci pro všechny instalace:
+
+  ./scripts/deploy --dump
+
 Pokud chceme, aby nějaký předpis dědil od jiného předpisu než prvního, uvedeme to v hodnotě extends.
 
 Představte si, že máme aplikaci, kterou instalujeme do preview na jiný server, na jiné místo, pod jiného uživatele a chceme, aby byl přístup na web omezen pomocí .httaccess doplněním nastavení, které jsme si připravili do souboru .htaccess.preview_addon. A zároveň kolegové z maďarské pobočky projevili zájem o své vlastní preview. Konfigurační soubor může vypadat např. takto:
