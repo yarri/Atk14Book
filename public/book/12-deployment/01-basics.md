@@ -155,4 +155,4 @@ Deployment na staging:
 
     [john@asterix ~/projects/myapp]$ ./scripts/deploy staging
 
-V další kapitole se podíváme na to, jak zjednodušit obsah konfiguračního souboru config/deploy.yml
+Při pohledu na obsah souboru s návody na deployment do dvou produkčních instalací si možná řeknete, že obsahuje příliš mnoho duplicitních řádků. A právě proto se v další kapitole podíváme na to, jak obsah souboru config/deploy.yml zjednodušit.
