@@ -69,7 +69,7 @@ class ApplicationController extends Atk14Controller{
 			return $this->_redirect_to("$scheme://".ATK14_HTTP_HOST.$this->request->getUri(),array("moved_permanently" => true));
 		}
 
-		if(!$this->request->ssl() && defined("REDIRECT_TO_SSL_AUTOMATICALLY") && constant("REDIRECT_TO_SSL_AUTOMATICALLY")){
+		if(!$this->request->ssl() && defined("REDIRECT_TO_SSL_AUTOMATICALLY") && constant("REDIRECT_TO_SSL_AUTOMATICALLY") && !in_array("$this->namespace/$this->controller",["/remote_tests"])){
 			return $this->_redirect_to_ssl();
 		}
 
