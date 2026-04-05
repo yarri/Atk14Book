@@ -2,7 +2,7 @@ Zobrazení seznamu
 =================
 
 Uvažujte celkem představitelnou situaci, kdy je třeba na nějakém URL zobrazit seznam knížek
-a nabídnou všechny možné související operace - tj. především zobrazení podrobného detailu knihy, založení nového záznamu,
+a nabídnout všechny možné související operace - tj. především zobrazení podrobného detailu knihy, založení nového záznamu,
 editaci již hotového záznamu a smazání záznamu.
 
 Předpokládejme jednoduchou tabulku pro ukládání knih
@@ -22,14 +22,14 @@ CREATE TABLE books(
 
 Předpokládejme kontroler s názvem _BooksController_.
 
-Koneckonců podívejte se na adresu <http://www.atk14.net/en/books/>, tam to všechno uvidíte.
+Koneckonců podívej se na adresu <http://www.atk14.net/en/books/>, tam to všechno uvidíš.
 
 Seznam
 ------
 
 Seznam umístíme do akce _index_.
 
-Nejmenší možná varianta seznamu by mohla vypadat takto. Nenajdete v ní vyhledávání ani třídění podle sloupců.
+Nejmenší možná varianta seznamu by mohla vypadat takto. Nenajdeš v ní vyhledávání ani třídění podle sloupců.
 
 	<?php
 	// file: app/controllers/books_controller.php
@@ -112,7 +112,7 @@ class IndexForm extends ApplicationForm{
 }
 ```
 
-Vykresneí zajišťuje šablona index.tpl s jednou parciální šablonkou, ...
+Vykreslení zajišťuje šablona index.tpl s jednou parciální šablonkou, ...
 
 ```smarty
 {* file: app/views/books/index.tpl *}

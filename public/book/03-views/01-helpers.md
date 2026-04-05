@@ -3,16 +3,16 @@ Helpery
 
 Helpery jsou funkce používané v šablonách, které pomáhají při zobrazovaní hodnot, v přístupu k datům a při zjednodušování šablon.
 
-Jelikož ATK14 používá šablonovací systém [Smarty](http://www.smarty.net/), máte k dispozici všechny helpery ze Smarty.
+Jelikož ATK14 používá šablonovací systém [Smarty](http://www.smarty.net/), máš k dispozici všechny helpery ze Smarty.
 Samotné ATK14 pak obsahuje svou sadu helperů (viz adresář atk14/src/atk14/helpers/).
-No a konečně do své aplikace si můžete psát své specializované helpery - na to je adresář app/helpers/
+No a konečně do své aplikace si můžeš psát své specializované helpery - na to je adresář app/helpers/
 
 ----------------------------------------------------------------------------------------------------------------------------------
 
 ATK14 přináší sadu vlastních funkcí a pomocníků (helperů), které rozšiřují možnosti Smarty.
-Za velkou pozornost stojí dvojce funkcí *{placeholder}* a *{content}*.
+Za velkou pozornost stojí dvojice funkcí *{placeholder}* a *{content}*.
 
-Přadstavte si takovýto layout.
+Představ si takovýto layout.
 
     {* file: app/layouts/default.tpl *}
     
@@ -47,10 +47,10 @@ Teď uvažujme o šabloně detailu produktu.
       <li><a href="{$product->getManualUrl()}">Stáhněte si manuál k produktu</a></li>
     {/content}
 
-Co bude zobrazeno? Informace o produtu budou zobrazeny v *{placeholder}* a do navigace, tedy mimo hlavní obsah, bude přidán další odkaz pro stažení manuálu právě prohlíženého produktu.
+Co bude zobrazeno? Informace o produktu budou zobrazeny v *{placeholder}* a do navigace, tedy mimo hlavní obsah, bude přidán další odkaz pro stažení manuálu právě prohlíženého produktu.
 
-Ještě důležitější je však helper *{render}*. Ten mimo jiné nahrazuje Smartyho způsob nahravání podšablon pomocí *{include}*. V žádné pořádné ATK14 aplikaci vlastně nenajdete ani jedno
-{include} (uvědomte si však, že to je podmínka nutná, nikoli dostačující).
+Ještě důležitější je však helper *{render}*. Ten mimo jiné nahrazuje Smartyho způsob nahrávání podšablon pomocí *{include}*. V žádné pořádné ATK14 aplikaci vlastně nenajdete ani jedno
+{include} (uvědom si však, že to je podmínka nutná, nikoli dostačující).
 
 Všimněte si, že už v layoutu již {render} použit je: {render partial=shared/layout/flash_message}. V tomto případě bude do daného místa vložen obsah šablony app/views/shared/\_flash\_message.tpl.
 Platí, že parciální šablony začínají podtržítkem a mají příponu tpl. Ani podtržítko, ani příponu však v parametru partial neuvádíme.
@@ -82,6 +82,6 @@ Každý řádek tabulky pak vykreslíme pomocí nasledující parciální šablo
       <td>{$product->getPrice()}</td>
     </tr>
 
-Pokud se vám zdá, že používání parciálních šablon místo {foreach} postrádá smysl, asi o tom docela dost přemýšlíte. Vězte však, že parciální šablonky jsou fajn a podporují princip DRY.
+Pokud se ti zdá, že používání parciálních šablon místo {foreach} postrádá smysl, asi o tom docela dost přemýšlíš. Věz však, že parciální šablonky jsou fajn a podporují princip DRY.
 
-Víc se teď nemá cenu o šablonách rozepisovat, ať vás nebolí hlava.
+Víc se teď nemá cenu o šablonách rozepisovat, ať tě nebolí hlava.

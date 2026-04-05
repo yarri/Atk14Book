@@ -1,7 +1,7 @@
-Formulářová Políčka
+Formulářová políčka
 ===================
 
-ATK14 přichází se základní sadou formulářových políček. Vy pak máte v rukou možnost tato základní políčka rozšiřovat a vytvářet tak zcela nová
+ATK14 přichází se základní sadou formulářových políček. Ty pak máš v rukou možnost tato základní políčka rozšiřovat a vytvářet tak zcela nová
 důmyslná políčka.
 
 Políčko pro zadávání lichých čísel
@@ -33,9 +33,9 @@ class OddNumberField extends IntegerField{
 }
 ```
 
-Všimněte si metody *clean()*. Ta je důležitá. V ní dochází k validaci vstupní hodnoty. Výstupem pak je popis chyby a samotná "vyčištěná" hodnota. V případě, že byla hodnota zvalidována bez chyby, musí být popis chyby (*$err*) nastaven na *null*.
+Všimni si metody *clean()*. Ta je důležitá. V ní dochází k validaci vstupní hodnoty. Výstupem pak je popis chyby a samotná "vyčištěná" hodnota. V případě, že byla hodnota zvalidována bez chyby, musí být popis chyby (*$err*) nastaven na *null*.
 
-Formulář s políčkem *OddNumberField* si vyzkoušíte na adrese <http://www.atk14.net/en/fields/odd_number_field/>
+Formulář s políčkem *OddNumberField* si vyzkoušíš na adrese <http://www.atk14.net/en/fields/odd_number_field/>
 
 Políčko pro zadávání hesla
 --------------------------

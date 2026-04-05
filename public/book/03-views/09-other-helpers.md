@@ -8,7 +8,7 @@ Prezentace dat
 
 * ### to_json ([modifier](https://github.com/atk14/Atk14/blob/master/src/atk14/helpers/modifier.to_json.php), [function](https://github.com/atk14/Atk14/blob/master/src/atk14/helpers/function.to_json.php))
 
-Laděni
+Ladění
 ------
 
 * ### dump ([function](https://github.com/atk14/Atk14/blob/master/src/atk14/helpers/function.dump.php))

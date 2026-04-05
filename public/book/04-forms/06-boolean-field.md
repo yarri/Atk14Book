@@ -1,5 +1,5 @@
-Příznakové políčko: BoleanField
-===============================
+Příznakové políčko: BooleanField
+================================
 
 Následující formulář obsahuje 2 boolean políčka.
 
@@ -27,10 +27,10 @@ class BooleanFieldForm extends ApplicationForm{
 }
 ```
 
-Na adrese <http://www.atk14.net/en/fields/boolean_field/> si formulář proklikejte. Mimo jiné zjistíte, že výchozí *widget* pro *BooleanField* je *checkbox*.
+Na adrese <http://www.atk14.net/en/fields/boolean_field/> si formulář proklikej. Mimo jiné zjistíš, že výchozí *widget* pro *BooleanField* je *checkbox*.
 
-Volba *required* nemá pro boolean políčka smysl, proto je u obou polí nastavena na false. Pokud budete po uživateli chtít, aby zaškrnul nějaký checkbox
-(a například tím potvrdil souhlas s obchodníma podmínkama e-shopu), doplňte tuto kontrolu do validační metody *clean()*.
+Volba *required* nemá pro boolean políčka smysl, proto je u obou polí nastavena na false. Pokud budeš po uživateli chtít, aby zaškrtl nějaký checkbox
+(a například tím potvrdil souhlas s obchodními podmínkami e-shopu), doplň tuto kontrolu do validační metody *clean()*.
 
 	<?php
 	class OrderForm extends ApplicationForm{

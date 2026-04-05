@@ -50,13 +50,13 @@ Vyhledání prvního záznamu, který splňuje podmínku:
 	// najde prvni knihu s autorem John Doe
 	$author = "John Doe";
 	$book = Book::FindFirst(array(
-		"conditions" => aray(
+		"conditions" => array(
 			"author" => $author
 		)
 	));
 	// nebo
 	$book = Book::FindFirst(array(
-		"conditions" => aray(
+		"conditions" => array(
 			"author=:author"
 		),
 		"bind_ar" => array(":author" => $author)
@@ -68,7 +68,7 @@ Vyhledání prvního záznamu, který splňuje podmínku:
 	));
 	// nebo
 	$book = Book::FindFirst(array(
-		"conditions" => aray(
+		"conditions" => array(
 			"author" => ":author"
 		),
 		"bind_ar" => array(":author" => $author)
@@ -80,12 +80,12 @@ Vyhledání prvního záznamu, který splňuje podmínku:
 	// nebo (syntactic sugar)
 	$book = Book::FindFirstByAuthor($author);
 
-Všechny uvedené příklady povedou na stejný výsledek. Jisté úskalí zde spočívá v tom, že nevíme _jaký záznam přesně_ bude z databáze načten v případě, že v tabulce books je více záznamů s autorem Johnen Doe. Pomůžeme si třídením.
+Všechny uvedené příklady povedou na stejný výsledek. Jisté úskalí zde spočívá v tom, že nevíme _jaký záznam přesně_ bude z databáze načten v případě, že v tabulce books je více záznamů s autorem John Doe. Pomůžeme si třídením.
 
 	<?php
 	$author = "John Doe";
 	$book = Book::FindFirst(array(
-		"conditions" => aray(
+		"conditions" => array(
 			"author" => $author
 		),
 		"order_by" => "created DESC, id DESC"
@@ -134,4 +134,4 @@ Všechny uvedené příklady povedou na stejný výsledek. Jisté úskalí zde s
 	// syntactic sugar
 	$books = Books::FindAllByAuthor($author,array("order_by" => "created DESC, id DESC", "limit" => 10));
 
-Teď už máte představu, jak se hledají TableRecord objekty.
+Teď už máš představu, jak se hledají TableRecord objekty.

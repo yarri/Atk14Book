@@ -1,4 +1,4 @@
-Formátovani datumů
+Formátování datumů
 ==================
 
 Základní formátování datumu a času.

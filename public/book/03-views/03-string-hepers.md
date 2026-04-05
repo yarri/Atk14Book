@@ -20,7 +20,7 @@
 		{* ve skutečnosti znamená *}
 		You are logged in as {$user->getName()|h}
 
-		{* pokud si defaultní escapování nepřejete, zapište *}
+		{* pokud si defaultní escapování nepřeješ, zapiš *}
 		You are logged in as {$user->getName() nofilter}
 
 		{* nebo jednoduše použijte výkřičník *}

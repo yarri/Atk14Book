@@ -2,7 +2,7 @@ Statické routery
 ================
 
 Statický router je dědic třídy _Atk14Router_, který obsahuje metodu _setUp()_, ve které volá alespoň jednou metodu _addRoute()_.
-Soubor ze zdrojovým kódem routeru musí být umístěn v adresáři _config/routers/_ a do aplikace musí být nahrán v souboru _config/routers/load.php_.
+Soubor se zdrojovým kódem routeru musí být umístěn v adresáři _config/routers/_ a do aplikace musí být nahrán v souboru _config/routers/load.php_.
 
 Pomocí statického routeru je možné realizovat pouze formální změnu podoby adresy URL. Statický router není schopen do adresy přidat něco, co nemá v okamžiku sestavování při ruce.
 
@@ -15,7 +15,7 @@ Uvedený kód může vygenerovat následující HTML kód.
 	
 	<a href="/en/articles/detail/?id=123">Some very nice article about ATK14`s routing</a>
 
-Pokud chcete realizovat změnu URL detailu článku tímto způsobem, ...
+Pokud chceš realizovat změnu URL detailu článku tímto způsobem, ...
 
 	<!-- english variant -->
 	<a href="/article-123.html">Some very nice article about ATK14`s routing</a>
@@ -39,9 +39,9 @@ Pokud chcete realizovat změnu URL detailu článku tímto způsobem, ...
 		}
 	}
 
-Bystří určitě rozpoznali použití regulárního vyrazů pro detekci čísla v URL. A s regulárními výrazy se statický router už nemůže jevit jako bezzubé ořezávátko.
+Bystří určitě rozpoznali použití regulárních výrazů pro detekci čísla v URL. A s regulárními výrazy se statický router už nemůže jevit jako bezzubé ořezávátko.
 
-Představte si teď situaci, že časem aplikaci rozšíříte o finskou jazykovou verzi, ale do routeru podporu finských URL nedoplníte. Co se stane?
+Představ si teď situaci, že časem aplikaci rozšíříš o finskou jazykovou verzi, ale do routeru podporu finských URL nedoplníš. Co se stane?
 Odkazy na články ve finštině budou sestaveny podle obecného pravidla.
 
 	<!-- english variant -->
@@ -72,7 +72,7 @@ ATK14 při sestavování odkazů postupně prochází všechna pravidla a použi
 		}
 	}
 
-Tady je velmi důležite uvědomit si, co by se stalo, kdyby byly poslední 2 pravidla přehozena. Začnou se dít nedobré věci. Následující kód...
+Tady je velmi důležité uvědomit si, co by se stalo, kdyby byly poslední 2 pravidla přehozena. Začnou se dít nedobré věci. Následující kód...
 
 	{* a template snippet *}
 	{a controller=sitemap action=index format=xml}Sitemap in XML{/a}
@@ -86,13 +86,13 @@ Tady je velmi důležite uvědomit si, co by se stalo, kdyby byly poslední 2 pr
 Přátelské doporučení
 --------------------
 
-Odložte starost o podobu URL na co možná nejpozději. Věnujte se vývoji. Nasaďte co možná nejrychleji aplikaci do produkce. Nasbírejte dostatek podkladových dat do Google Analytics.
-A až pak si začněte promýšlet, které adresy stojí za to, aby vypadaly lépe pro uživatele nebo vyhledávače.
+Odlož starost o podobu URL na co možná nejpozději. Věnuj se vývoji. Nasaď co možná nejrychleji aplikaci do produkce. Nasbirej dostatek podkladových dat do Google Analytics.
+A až pak si začni promýšlet, které adresy stojí za to, aby vypadaly lépe pro uživatele nebo vyhledávače.
 
 Výchozí router
 --------------
 
-V každé aplikaci naleznete výchozí router, který definuje obecný model URL. Tento router musí být zařazen v souboru _config/routers/load.php_ na posledním místě.
+V každé aplikaci najdeš výchozí router, který definuje obecný model URL. Tento router musí být zařazen v souboru _config/routers/load.php_ na posledním místě.
 
 ```php
 <?php
@@ -124,8 +124,8 @@ class DefaultRouter extends Atk14Router {
 }
 ```
 
-Obvykle není třeba tento router upravovat. Jsou však situace, kdy možnost změny obecných pravidel uvítáte - např. ve chíli když vytváříte pouze jednojazyčnou aplikaci,
-není pořeba kód jazykové verze v URL uvádět vůbec.
+Obvykle není třeba tento router upravovat. Jsou však situace, kdy možnost změny obecných pravidel uvítáš - např. ve chvíli když vytváříš pouze jednojazyčnou aplikaci,
+není potřeba kód jazykové verze v URL uvádět vůbec.
 
 
 

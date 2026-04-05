@@ -1,9 +1,9 @@
 Lister - tříděný seznam
 =======================
 
-Pakliže máte např. tabulku pro články a u každého článků chcete udržovat seznam autorů jako tříděný seznam, použijte _Lister_.
+Pakliže máš např. tabulku pro články a u každého článku chceš udržovat seznam autorů jako tříděný seznam, použij _Lister_.
 
-Následující migrace vytvoří tabulky pro články, autory a pro vazbu mezi nima.
+Následující migrace vytvoří tabulky pro články, autory a pro vazbu mezi nimi.
 
 	-- file db/migrations/0005_articles_authors.sql
 	CREATE SEQUENCE seq_articles;
@@ -51,13 +51,13 @@ Teď třída _Article_
 		}
 	}
 
-No a konečně třída _Author_, kde ale nečekejte nic zvláštního
+No a konečně třída _Author_, kde ale nečekej nic zvláštního
 
 	<?php
 	// file app/models/author.php
 	class Author extends TableRecord{ }
 
-Teď vytvořme nějaky článek a par autorů.
+Teď vytvořme nějaký článek a pár autorů.
 
 	<?php
 	$article = Article::CreateNewRecord(array(
@@ -93,6 +93,6 @@ Tak pojďme přátelé už konečně na nějakou rozumnou práci.
 	$lister->setRecordRank(array($bill,$norman));
 	print_r($article->getAuthors()); // array($bill,$norman)
 
-Další informace najdete [v dokumentaci třídy _TableRecord\_Lister_](http://api.atk14.net/classes/TableRecord_Lister.html)
+Další informace najdeš [v dokumentaci třídy _TableRecord\_Lister_](http://api.atk14.net/classes/TableRecord_Lister.html)
 
 Užívejte Lister v pokoji!

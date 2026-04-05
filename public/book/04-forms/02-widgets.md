@@ -1,7 +1,7 @@
 Widgets
 =======
 
-Widget [vidžet] určuje to, jak je formulářové políčko na stránce vykresleno. Uvažujme teď nějakou řetězcové políčko _CharField_, které vykreslíke 3x jinak.
+Widget [vidžet] určuje to, jak je formulářové políčko na stránce vykresleno. Uvažujme teď nějaké řetězcové políčko _CharField_, které vykreslíme 3x jinak.
 
 	<?php
 	// file app/forms/main/sample_form.php
@@ -29,7 +29,7 @@ Widget [vidžet] určuje to, jak je formulářové políčko na stránce vykresl
 
 Je, myslím, dobře předvídatelné, jak budou tato pole vykreslena.
 
-Další příklad vhodný ke zmínění je _ChoiceField_. Ten lze vykresli pomocí select boxu nebo radio buttonků.
+Další příklad vhodný ke zmínění je _ChoiceField_. Ten lze vykreslit pomocí select boxu nebo radio buttonků.
 
 	<?
 	// file app/forms/main/choice_form.php
@@ -73,4 +73,4 @@ V ATK14 najdete tyto widgety:
  * Textarea
  * TextInput
 
-Pokud vám to nebude stačit, napište si nový widget a umístěte ho adresáře _app/widgets/_. Na potřebu napsat si svůj vlastní widget možná narazíte při implementaci [reCAPTCHA](http://www.google.com/recaptcha)
+Pokud ti to nebude stačit, napiš si nový widget a umísti ho do adresáře _app/widgets/_. Na potřebu napsat si svůj vlastní widget možná narazíš při implementaci [reCAPTCHA](http://www.google.com/recaptcha)

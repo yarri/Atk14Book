@@ -1,4 +1,4 @@
-Vkladání dílčích šablon a dalšího obsahu
+Vkládání dílčích šablon a dalšího obsahu
 ========================================
 
 * ### render ([function](https://github.com/atk14/Atk14/blob/master/src/atk14/helpers/function.render.php))
@@ -8,7 +8,7 @@ Vkladání dílčích šablon a dalšího obsahu
 		{* zde bude vložena šablona app/views/shared/_user_info.tpl *}
 		{render partial="shared/user_info"}
 
-	Projítí kolekce a vykreslení dílčí šablony pro každý prvek
+	Projití kolekce a vykreslení dílčí šablony pro každý prvek
 
 		{* file: app/views/articles/index.tpl *}
 		<ul>
@@ -50,6 +50,6 @@ Vkladání dílčích šablon a dalšího obsahu
 
 * ### render_component ([function](https://github.com/atk14/Atk14/blob/master/src/atk14/helpers/function.render_component.php))
 
-	Vyrenderuje výstup z jiného kontroleru a akce. Toto se někdy hodí. Spíš se však snažte to vůbec nepoužívat.
+	Vyrenderuje výstup z jiného kontroleru a akce. Toto se někdy hodí. Spíš se však snaž to vůbec nepoužívat.
 		
 		{render_component controller=navigation action=index}

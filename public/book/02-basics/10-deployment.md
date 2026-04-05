@@ -1,10 +1,10 @@
 Deployment
 ==========
 
-Součástí frameworku ATK14 je nástroj pro instalaci vašeho projektu do produkce. Pro přenos souborů je použit _git_, pro přenos neverzovaných souborů _rsync_ a na produkční server je nutný _ssh přístup_.
-Lze zadat příkazy, které budou spuštěny před nebo po deploymentu na lokalním stroji (váš vývojový notebook) nebo na produkčním serveru. Je tak možné např. zautomatizovat sestavování stylů a skriptů, vytvořit zálohu a pod.
+Součástí frameworku ATK14 je nástroj pro instalaci tvého projektu do produkce. Pro přenos souborů je použit _git_, pro přenos neverzovaných souborů _rsync_ a na produkční server je nutný _ssh přístup_.
+Lze zadat příkazy, které budou spuštěny před nebo po deploymentu na lokalním stroji (tvůj vývojový notebook) nebo na produkčním serveru. Je tak možné např. zautomatizovat sestavování stylů a skriptů, vytvořit zálohu a pod.
 
-Prohlédněte ukázkový konfigurační soubor.
+Prohlédni ukázkový konfigurační soubor.
 
     # file: config/deploy.yml
     production:

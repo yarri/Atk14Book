@@ -33,4 +33,4 @@ Varianta bez šablonky
       }
     }
 
-Pozdrav najdete na stejné adrese.
+Pozdrav najdeš na stejné adrese.

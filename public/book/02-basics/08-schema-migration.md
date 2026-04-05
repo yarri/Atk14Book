@@ -3,7 +3,7 @@ Migrace databázového schématu
 
 ATK14 Framework obsahuje nástroj na postupné aplikování většinou malých změn (_patches_) do databázového schématu tak, aby databázové schéma bylo vždy v poslední požadované verzi. Pro tento mechanismus se zažil zkrácený název _migrace_.
 
-Jednotlivé změny jsou ukládány do číslovaných souborů v adresáři db/migrations/. Číslování zajišťuje aplikaci změn ve správném pořadí. Jednou provedený změnový soubor již nebude ve stejné databáze znovu prováděn (pakliže si to nevynutíte).
+Jednotlivé změny jsou ukládány do číslovaných souborů v adresáři db/migrations/. Číslování zajišťuje aplikaci změn ve správném pořadí. Jednou provedený změnový soubor již nebude ve stejné databázi znovu prováděn (pakliže si to nevynutíš).
 
 Změnový soubor může být _SQL patch_.
 

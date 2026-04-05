@@ -1,7 +1,7 @@
 Textové políčko: CharField
 ==========================
 
-Pravděpodobně nejvíce používané políčko je pro zadávání textové hodnoty. Podívejte se, jak se takové políčko vkládá do formuláře.
+Pravděpodobně nejvíce používané políčko je pro zadávání textové hodnoty. Podívej se, jak se takové políčko vkládá do formuláře.
 
 ```php
 <?php
@@ -28,4 +28,4 @@ class CharFieldForm extends ApplicationForm{
 }
 ```
 
-Příklad si vyzkoušíte na adrese <http://www.atk14.net/en/fields/char_field/>
+Příklad si vyzkoušíš na adrese <http://www.atk14.net/en/fields/char_field/>

@@ -4,7 +4,7 @@ Vytváření odkazů
 
 	Vykreslí html tag &lt;a&gt;
 
-		{a ontroller="books" action="detail" id=$book}{$book->getTitle()}{/a}
+		{a controller="books" action="detail" id=$book}{$book->getTitle()}{/a}
 
 * #### a\_remote ([block](https://github.com/atk14/Atk14/blob/master/src/atk14/helpers/block.a_remote.php))
 
@@ -14,7 +14,7 @@ Vytváření odkazů
 
 * #### a\_destroy ([block](https://github.com/atk14/Atk14/blob/master/src/atk14/helpers/block.a_destroy.php))
 
-	Vykreslí odkaz pro smazání nějakého záznamu. Jedná se zkratku pro volání a\_remote.
+	Vykreslí odkaz pro smazání nějakého záznamu. Jedná se o zkratku pro volání a\_remote.
 
 		{a_destroy id=$book}Delete this book entry{/a_destroy}
 
@@ -27,4 +27,4 @@ Vytváření odkazů
 
 * #### a\_remote\_with\_onclick ([block](https://github.com/atk14/Atk14/blob/master/src/atk14/helpers/block.a_remote_with_onclick.php))
 
-	Tohle je něco, co asi vůbec nepoužijete :)
+	Tohle je něco, co asi vůbec nepoužiješ :)

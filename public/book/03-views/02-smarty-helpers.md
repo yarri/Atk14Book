@@ -44,4 +44,4 @@ Zdrojem tohoto seznamu je <http://www.smarty.net/docsv2/en/language.modifiers.tp
  * [{section},{sectionelse}](http://www.smarty.net/docsv2/en/language.function.section.tpl)
  * [{strip} ](http://www.smarty.net/docsv2/en/language.function.strip.tpl)
 
-Přešrtnuté metody funkce se neslučují s principy ATK14 a jeden se může dostat do potíží, pokud je bude používat.
+Přeškrtnuté funkce se neslučují s principy ATK14 a můžeš se dostat do potíží, pokud je budeš používat.

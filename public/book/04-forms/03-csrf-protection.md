@@ -41,7 +41,7 @@ class CreateNewForm extends ApplicationForm{
 {/form}
 ```
 
-Rovněz kontroler nenabízí žádná překvapení.
+Rovněž kontroler nenabízí žádná překvapení.
 
 ```php
 <?php
@@ -79,6 +79,6 @@ Před CSRF je vhodné chránit formuláře odesílané metodou POST (nebo jinou 
 Není nutné chránit takové formuláře, kdy k její realizaci jediný HTTP požadavek nestačí. Dejme tomu, že uživatel provede změny ve formuláři a následně je mu pro kontrolu zobrazen přehled se zvýrazněním toho, co upravil.
 Samotná změna však bude provedena až poté, co přehled potvrdí (stiskne tlačítko).
 
-Chráněný formulář z našeho příkladu si na živo osahejte na adrese <http://www.atk14.net/en/money_transfers/create_new/>
+Chráněný formulář z našeho příkladu si na živo osahej na adrese <http://www.atk14.net/en/money_transfers/create_new/>
 
-Cítíte se lépe, když máte CSRF ochranu vyřešenou?
+Cítíš se lépe, když máš CSRF ochranu vyřešenou?

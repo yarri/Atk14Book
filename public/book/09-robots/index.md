@@ -34,7 +34,7 @@ Příkaz robot_runner spuštěný bez parametru vypíše seznam dostupných robo
 
 	$ ./scripts/robot_runner
 
-V souboru ./robots/application_robot.php najdete společného předka pro všechny roboty.
+V souboru ./robots/application_robot.php najdeš společného předka pro všechny roboty.
 
 ```php
 <?php
@@ -50,7 +50,7 @@ class ApplicationRobot extends Atk14Robot{
 }
 ```
 
-Buďte na roboty hodní, dělají totiž dokola věci, které sami dělat nechcete.
+Buď na roboty hodný, dělají totiž dokola věci, které sám dělat nechceš.
 
 
 

@@ -1,7 +1,7 @@
 Základní ukázka zasílání e-mailu
 ================================
 
-Na <http://www.atk14.net/en/reminders/create_new/> naleznete hypotetický příklad se zasíláním e-mailů. Přísná knihovnice zde zasílá roztržitým čtenářům upomínky k vrácení knih do knihovny. Příklad si zde projdeme.
+Na <http://www.atk14.net/en/reminders/create_new/> najdeš hypotetický příklad se zasíláním e-mailů. Přísná knihovnice zde zasílá roztržitým čtenářům upomínky k vrácení knih do knihovny. Příklad si zde projdeme.
 
 Je zde jednoduchý formulář pro zadání e-mailové adresy čtenáře a výběr knihy.
 
@@ -101,4 +101,4 @@ return our book "{$book->getTitle()}", you have borrowed.
 Your librarian Pvt. Vasquez
 ```
 
-Vidíte, že zasílání zpráv v ATK14 není velká věda.
+Vidíš, že zasílání zpráv v ATK14 není velká věda.

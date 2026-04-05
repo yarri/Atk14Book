@@ -9,7 +9,7 @@ Vykreslování formulářů
 			<fieldset>
 				{render partial="shared/form_field" field="name"}
 				<div class="buttons">
-				<buttont type="submit">Send</buttont>
+				<button type="submit">Send</button>
 				</div>
 			</fieldset>
 		{/form}
