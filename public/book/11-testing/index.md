@@ -1,232 +1,256 @@
-Testing
-=======
+Testování
+=========
 
-Historicky text o testovani. NUTNO PREPSAT!!!
+Testování je v ATK14 prvotřídní záležitost. Pro spouštění testů se používá nástroj [Tester](https://github.com/atk14/Tester), který je wrapperem nad PHPUnit. Díky němu píšeš testy jednou a fungují napříč různými verzemi PHP (5.6, 7.x, 8.x) i PHPUnit (4.8 až 11.0) bez jakýchkoliv úprav.
 
-## Unit testy
+Instalace
+---------
 
-Script scripts/run\_unit\_tests vyhleda v pracovnim adresari soubory, zinicializuje tridy testovacich pripadu (Test Case) a spusti testy. Je mozne jej poustet pomoci PHP4 i PHP5.
+Tester nainstaluj do projektu jako vývojovou závislost:
 
-### Pozadavky pro PHP4
+	$ composer require --dev atk14/tester
 
-	$ pear install PHPUnit
+Po instalaci je k dispozici příkaz `run_unit_tests`.
 
-### Pozadavky pro PHP5
+Struktura adresáře test/
+------------------------
 
-	$ pear install --alldeps PHPUnit2
+Testy umísťuj do adresáře `test/`. Testy jsou rozděleny do podadresářů podle charakteru testovaných objektů. Každý podadresář má vlastní `initialize.php` a `tc_base.php`.
 
-Pozn.: Pokud mame v sytemu obe verze PHP, muzeme pomoci promenne PHP_PEAR_PHP_BIN urcit, ktera verze interpretu bude spoustena:
+	test/
+	├── fixtures/               # testovací data ve formátu YAML
+	│   ├── users.yml
+	│   └── articles.yml
+	├── models/                 # testy modelů
+	│   ├── initialize.php
+	│   ├── tc_base.php
+	│   └── tc_user.php
+	├── controllers/            # testy kontrolerů
+	│   ├── initialize.php
+	│   ├── tc_base.php
+	│   └── tc_logins.php
+	├── fields/                 # testy formulářových políček
+	│   ├── initialize.php
+	│   ├── tc_base.php
+	│   └── tc_slug_field.php
+	└── routers/                # testy routerů
+	    ├── initialize.php
+	    ├── tc_base.php
+	    └── tc_pages_router.php
 
-	$ PHP_PEAR_PHP_BIN=/usr/bin/php-cgi pear install PHPUnit
-
-### Tridy testovaci pripadu
-
-Unit testy umistujeme do adresare test do souboru tc_*.inc. Kazdy soubor tc_*.inc musi obsahovat tridu tc_*, ktera musi byt dedicem tridy tc_base.
-
-Napriklad hodlame-li napsat unit testy pro funkcni kody vnitrnich objektu, ktere se nachazeji v adreasari sys/extras/inobj/, vytvorime adresar sys/extras/inobj/test/, ve kterem potom zacneme tvorit soubory tc_*.inc.
-
-Napr. soubor test/tc_product.inc
-
-	
-	<?php
-	class tc_product extends tc_base{
-
-		// ....
-		
-	}
-	
-
-### Spousteni testu, skript run\_unit\_test
-
-Testovani spustime tak, ze se prepneme do adresare s testy
-
-	$ cd sys/extras/inobj/test/
-
-a spustime skript run\_unit\_test
-
-	$ run_unit_test.php
-
-Skript automaticky vyhleda vsechny soubory tc_*.inc, nacte je a spusti metody testovacich trid zacinajici slovem test.
-
-Skript run\_unit\_test.php jsem napsal sam a je dispozici v scripts/run\_unit\_test. Je dobre k nemu mit nastavenou cestu.
+Soubor `initialize.php` je načten automaticky před každým test case souborem. Obvykle v něm inicializuješ ATK14:
 
 	<?php
-	class tc_product extends tc_base{
-		
-		// bude automaticky spusteno behem testovani
-		function test_zjistovani_poctu_na_sklade(){
-		 // ...
-		}
+	// file: test/models/initialize.php
+	define("TEST", true);
+	define("MY_BLOWFISH_ROUNDS", 6); // výchozí hodnota 12 by testy zbytečně zpomalila
+	require(__DIR__ . "/../../atk14/load.php");
 
-		// taky bude automaticky spusteno behem testovani
-		function test_zjistovani_ceny(){
-		 // ...
-		}
-	 
-		// nasledujici funkce nezacina slovem test a nebude proto behem testovani spustena
-		function _priprav_tesatovaci_product(){
-		 //..
-		}
-	}
-	
+Spouštění testů
+---------------
 
-### Inicializace testovaciho prostredi
+Testy spouštíš přímo v příslušném podadresáři:
 
-V pripade, ze je nutne pred samotnym zahajenim testu inicializovat nejakym zpusobem prostredi: naincludovat soubory, definovat konstanty apod, zapiseme vse potrebne do souboru test/initialize.inc.
+	# všechny testy modelů
+	$ cd test/models/ && run_unit_tests
 
-Dulezita poznamka: pokud v souboru test/initialize.inc bude naincludovan dbmole.inc a pgmole.inc (nebo oraclemole.inc), bude automaticky vytvorena instance $dbmole. Rovnez bude automaticky zaregistrovana funcke pro zachytavani DbMole chyb.
+	# konkrétní test case
+	$ run_unit_tests tc_user
 
-Ukazka souboru test/initialize.inc
+	# více test case najednou
+	$ run_unit_tests tc_user tc_article
 
-	<?php
-	require("../../../../init.inc");
-	require_once(PATH_EXTRAS_CLASSES."dbmole.inc");
-	require_once(PATH_EXTRAS_CLASSES."pgmole.inc");
-	require_once(PATH_EXTRAS_CLASSES."inobj/load.inc");
-	require_once(PATH_EXTRAS_CLASSES."functions.inc");
-	require_once(PATH_EXTRAS_CLASSES."xmole.inc");
-	require_once(PATH_EXTRAS_CLASSES."dates.inc");
-	require_once(PATH_EXTRAS_CLASSES."translate.inc");
-	require_once(PATH_EXTRAS_CLASSES."logger.inc");
-	require_once(PATH_EXTRAS_CLASSES."masterapi/load.inc");
-	require_once(APP_DOCUMENT_ROOT."dbconnect.inc");
-	
+Pro spuštění všech testů najednou slouží skript `./scripts/run_all_tests`, který prochází všechny podadresáře s `initialize.php` a spustí v každém `run_unit_tests`. Hodí se zejména v CI.
 
-### Bazova trida tc_base
+	$ ./scripts/run_all_tests
 
-Pokud chceme v testovacich tridach pouzivat spolecne metody nebo vlastnosti, muzeme je definovat ve tride tc_base.
+Bázové třídy pro různé typy testů
+----------------------------------
 
-Priklad tridy tc_base (soubor test/tc_base.inc)
+Třída `TcBase` v každém podadresáři rozšiřuje jinou třídu `TcAtk14*` podle toho, co se v daném podadresáři testuje:
 
-	<?php
-	class tc_base extends tc_super_base{
-		var $_BossId = 10010;
-		var $_DemoId = 26107;
-		var $_FidorkaId = 19316;
-		var $_KofolaId = 22199;
-		var $_PapirId = 15001;
+| Podadresář     | TcBase extends        | Co přidává navíc                          |
+|----------------|-----------------------|-------------------------------------------|
+| `models/`      | `TcAtk14Model`        | přístup k `$this->dbmole`, fixtures       |
+| `controllers/` | `TcAtk14Controller`   | HTTP klient `$this->client`               |
+| `fields/`      | `TcAtk14Field`        | metody `assertValid()`, `assertInvalid()` |
+| `routers/`     | `TcAtk14Router`       | metody `assertBuildable()`, `assertRecognizable()` |
 
-		function _vezmi_kofolu(){
-			return $this->_get_product($this->_KofolaId);
-		}
+Fixtures — testovací data
+--------------------------
 
-		function _vezmi_fidorku(){
-			return $this->_get_product($this->_FidorkaId);
-		}
+Fixtures jsou YAML soubory v adresáři `test/fixtures/`. Definuješ v nich pojmenované záznamy, které se před každým testem vloží do databáze.
 
-		function _vezmi_papir(){
-			return $this->_get_product($this->_PapirId);
-		}
+	# file: test/fixtures/users.yml
 
-		function _vezmi_vyrobce_canon(){
-			return inobj_Brand::GetInstanceById(8);
-		}
-	}
-	
+	rambo:
+	  login: "rambo"
+	  firstname: "John"
+	  lastname: "Rambo"
+	  password: "secret"
+	  email: "john@rambo.com"
 
-### Typy testu
+	inactive_user:
+	  login: "inactive.user"
+	  firstname: "Ivor"
+	  lastname: "Inactivator"
+	  email: "ivor@inactivator.com"
+	  active: false
+
+Název souboru (`users.yml`) určuje model (`User`), jehož metodou `CreateNewRecord()` se záznamy vytvoří. Přihlašovací hesla se při vkládání automaticky zahashují.
+
+Fixture načteš v test case souboru pomocí anotace `@fixture`. Záznamy pak máš k dispozici jako pole `$this->users`:
 
 	<?php
-	class tc_product extends tc_base{
+	/**
+	 * @fixture users
+	 */
+	class TcUser extends TcBase {
+
 		function test(){
-			$product = inobj_Product::GetInstanceById(5);
-
-			$this->assertNotNull($product);                         // ocekavame, ze v $product neco je
-				
-			$this->assertEquals(5,$product->getId());               // ocekavame hodnotu 5
-			$this->assertType("intege",$product->getId());          // ocekavame typ integer
-
-			$null_product = inobj_Product::GetInstanceById(-100);   // neexistujici id
-			$this->assertNull($null_product);                       // ocekavame null
-
-			$this->assertTrue($product->IsAction());                // ocekavame true
-			$this->assertFalse($product->IsDeleted());              // ocekavame false
-
-			$this->assertRegExp("/papir/",$product->getLabel());    // musi byt porovnatelne s regularnim vyrazem
-			$this->assertNotRegExp("/paper/",$product->getLabel()); // nesmi byt porovnatelne s regularnim vyrazem
-
-			// Dalsi testy:
-			// $this->assertContains();                             // string nebo pole musi obsahovat podstrink, resp. prvek
-			// $this->assertNotContains();                          // opak assertContains()
-
-			$this->fail("produkt musi mit cenu");                   // pokud dosahneme misto, ktere je z pohledu testovani spatne, muzeme primo pouzit metody fail
-		} 
-	}
-	
-
-### Bezpecne testovani
-
-Pisme testy tak, aby nemenily data v databazi. Protoze pak bude mozne testy poustet i nad ostryma datama. Dosahneme toho tak, ze na zacatku testu zahajime transakci a na konci testi provedeme ROLLBACK.
-
-	<?php
-	class tc_product extends tc_base{
-		global $dbmole;
-
-		$dbmole->begin();
-
-		$product = inobj_Product::GetInstanceById(5);
-
-		$this->assertTrue($product->IsVisible());
-
-		$dbmole->doQuery("UPDATE product SET visible='N' WHERE id=5");
-
-		$this->assertFalse($product->IsVisible());
-
-		$dbmole->rollback();
-	}
-
-Ale lepe...
-
-	<?php
-	// file: tc_base.php
-	class tc_base extends tc_super_base{
-		function setUp(){
-			$GLOBALS["dbmole"]->begin();
-		}
-
-		function tearDown(){
-			$GLOBALS["dbmole"]->rollback();
+			$rambo = $this->users["rambo"];
+			$this->assertEquals("John Rambo", $rambo->getName());
+			$this->assertTrue($rambo->isActive());
 		}
 	}
 
-... metody setUp() a tearDown() jsou automaticky spouštěny před každou testovaci funkcí.
-	
-
-### Nebezpecne testy
-
-V pripade, ze test po sobe zanecha nejakou zmenu, nebo nas muze pripravit o penize - zaregistruje domenu apod, umistime testovaci tridu do souboru, ktery zacina vykricnikem.
-
-Tyto soubory nebudou pri testovani automaticky provedeny, paklize nebudou vyslovne uvedeny jako parametry skriptu run\_unit\_tests.
-
-Soubor test/!tc_registrace_domeny.inc
+Potřebuješ-li více fixtures najednou, přidej více anotací:
 
 	<?php
-	class tc_domain_registration  extends tc_base {
-		
-		function test_registrace_domeny(){
-			// ...
+	/**
+	 * @fixture users
+	 * @fixture articles
+	 */
+	class TcArticle extends TcBase {
+		// ...
+	}
+
+Databázová izolace
+------------------
+
+Aby testy vzájemně neovlivňovaly data v databázi, každý test probíhá uvnitř transakce, která se na konci vrátí zpět. Zajišťuje to `TcBase` v každém podadresáři:
+
+	<?php
+	// file: test/models/tc_base.php
+	class TcBase extends TcAtk14Model {
+
+		function _setUp(){
+			$this->dbmole->begin();      // začátek transakce
+			$this->setUpFixtures();      // vložení fixture dat
+		}
+
+		function _tearDown(){
+			$this->dbmole->rollback();   // vrácení všech změn
 		}
 	}
-	
 
-...
+Díky tomu každá testovací metoda dostane čistou kopii dat definovaných ve fixtures a případné změny (INSERT, UPDATE, DELETE) se po testu automaticky vrátí.
 
-	$ run_unit_tests.php \!tc_domain_registration.inc
-
-## Rozdily v testech pro PHP5
-
-### testovani typu object
-
-	$this->assertType("object",$obj); // nefunguje v PHP5
-	$this->assertTrue(is_object($obj)); // funguje v PHP4 i PHP5
-
-### testovani rovnosti
-V PHP5 jsou pri volani assertEquals() testovany i typy hodnot.
+Testování modelů
+----------------
 
 	<?php
-	// ...
-	$val = 5.0;
-	$this->assertEquals(5,$val); // dopadne spatne v PHP5
-	$this->assertEquals(5.0,$val); // v poradku pro PHP4 i PHP5
+	/**
+	 * @fixture users
+	 */
+	class TcUser extends TcBase {
 
-Uff...
+		function testHashingPassword(){
+			$rambo = $this->users["rambo"];
+
+			// heslo je uloženo jako hash, ne jako plain text
+			$this->assertTrue($rambo->getPassword() != "secret");
+
+			// přihlášení se správným heslem
+			$user = User::Login("rambo", "secret");
+			$this->assertNotNull($user);
+
+			// přihlášení se špatným heslem
+			$user = User::Login("rambo", "wrong");
+			$this->assertNull($user);
+		}
+
+		function test_destroy(){
+			$rambo = $this->users["rambo"];
+			$rambo_id = $rambo->getId();
+
+			$rambo->destroy(); // soft delete
+
+			$rambo = User::GetInstanceById($rambo_id);
+			$this->assertTrue($rambo->isDeleted());
+			$this->assertFalse($rambo->isActive());
+		}
+	}
+
+Testování kontrolerů
+--------------------
+
+Bázová třída pro testy kontrolerů poskytuje HTTP klienta simulujícího skutečné požadavky. CSRF ochranu v testech obcházíme nastavením testovacího tokenu:
+
+	<?php
+	// file: test/controllers/tc_base.php
+	class TcBase extends TcAtk14Controller {
+
+		function _setUp(){
+			$this->dbmole->begin();
+			$this->setUpFixtures();
+			$GLOBALS["HTTP_REQUEST"]->setPostVar("_csrf_token_", "testing_csrf_token");
+		}
+
+		function _tearDown(){
+			$this->dbmole->rollback();
+		}
+	}
+
+Samotný test pak simuluje GET a POST požadavky a ověřuje odpovědi:
+
+	<?php
+	/**
+	 * @fixture users
+	 */
+	class TcLogins extends TcBase {
+
+		function test(){
+			$client = $this->client;
+
+			// uživatel ještě není přihlášen
+			$client->get("main/index");
+			$this->assertEquals(200, $client->getStatusCode());
+			$this->assertStringNotContains("rambo", $client->getContent());
+
+			// pokus o přihlášení se špatným heslem
+			$ctrl = $client->post("logins/create_new", array(
+				"login"    => "rambo",
+				"password" => "wrong",
+			));
+			$this->assertEquals(200, $client->getStatusCode());
+			$this->assertTrue($ctrl->form->has_errors());
+
+			// přihlášení se správným heslem
+			$ctrl = $client->post("logins/create_new", array(
+				"login"    => "rambo",
+				"password" => "secret",
+			));
+			$this->assertEquals(303, $client->getStatusCode()); // přesměrování
+			$this->assertFalse($ctrl->form->has_errors());
+
+			// uživatel je nyní přihlášen
+			$client->get("main/index");
+			$this->assertStringContains("rambo", $client->getContent());
+
+			// odhlášení
+			$client->post("logins/destroy");
+			$this->assertEquals(303, $client->getStatusCode());
+		}
+	}
+
+Nebezpečné testy
+----------------
+
+Některé testy nechceš spouštět automaticky — například ty, které odesílají skutečné e-maily nebo mění produkční data. Pojmenuj je s vykřičníkem na začátku:
+
+	!tc_send_real_email.php
+
+Takové soubory `run_unit_tests` přeskočí. Spustíš je pouze explicitně:
+
+	$ run_unit_tests \!tc_send_real_email.php
