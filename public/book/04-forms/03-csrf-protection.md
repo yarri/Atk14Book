@@ -5,15 +5,66 @@ Dejme tomu, že kdesi v útrobách našeho webu máme akci na převod peněz na 
 
 Formulář obsahuje dvě políčka: peněžní obnos a číslo bankovního účtu příjemce. Ve formuláři aktivujeme ochranu před CSRF, protože si myslíme, že si to zaslouží.
 
-[include file=app/forms/money_transfers/create_new_form.php]
+```php
+<?php
+// file: app/forms/money_transfers/create_new_form.php
+class CreateNewForm extends ApplicationForm{
+  function set_up(){
+    $this->add_field("amount",new FloatField(array(
+      "label" => "Amount of Money",
+      "min_value" => 0.1
+    )));
+    $this->add_field("bank_account",new CharField(array(
+      "label" => "Target bank account"
+    )));
+
+    $this->enable_csrf_protection(); // this call enables a CSRF protection
+  }
+}
+```
 
 Šablona vypadá velmi typicky.
 
-[include file=app/views/money_transfers/create_new.tpl]
+```smarty
+{* file: app/views/money_transfers/create_new.tpl *}
+<h1>{$page_title}</h1>
+
+<p class="lead">The form on this page has a protection against <abbr title="Cross-site request forgery">CSFR</abbr>. You can check out, that the form contains hidden field named <code>_token</code>. Try to modify it's value or just let it expire (about 10 mins).</p>
+
+{render partial="shared/form_error" small_form=1}
+
+{form}
+  {render partial="shared/form_field" fields="amount,bank_account"}
+  <div class="form-group">
+    <button type="submit" class="btn btn-default">Send my money away</button>
+  </div>
+{/form}
+```
 
 Rovněz kontroler nenabízí žádná překvapení.
 
-[include file=app/controllers/money_transfers_controller.php]
+```php
+<?php
+// file: app/controllers/money_transfers_controller.php
+class MoneyTransfersController extends ApplicationController{
+
+  function create_new(){
+    $this->page_title = "New money transfer";
+
+    if($this->request->post() && ($d = $this->form->validate($this->params))){
+      // consider that we have a logged user in $this->logged_user variable....
+      // $this->_send_money($d["amount"],$this->logged_user->getBankAccount(),$d["bank_account"]);
+
+      $this->flash->success("Congratulation! Your money has been sent!");
+      $this->_redirect_to("money_transfers/create_new");
+    }
+  }
+
+  function _send_money($money_amount,$source_bank_account,$destination_bank_account){
+    // TODO: here should be a great bank transfer code
+  }
+}
+```
 
 Suma sumárum zapnutí ochrany před CSRF spočívá v jednom řádku - volání metody enable\_csrf\_protection() na formuláři.
 

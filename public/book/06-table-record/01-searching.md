@@ -3,7 +3,18 @@ Hledání záznamů
 
 Předpokládejme tabulku _books_ a třídu _Book_
 
-[include file=db/migrations/0002_books.sql]
+```sql
+-- file: db/migrations/0002_books.sql
+CREATE SEQUENCE seq_books;
+CREATE TABLE books(
+  id INT PRIMARY KEY DEFAULT NEXTVAL('seq_books'),
+  title VARCHAR(255),
+  code VARCHAR(255),
+  shelfmark VARCHAR(255),
+  author VARCHAR(255),
+  year_of_publication INT
+);
+```
 
 Třída bude prázdná. Pro naše příklady žádný zvláštní obsah nepotřebujeme.
 

@@ -3,7 +3,26 @@ Roboti - automaticky spouštěné úlohy
 
 Roboty umísťujeme do adresáře ./robots/. Ukázkový robot může vypadat například takto:
 
-[include file=robots/cool_hand_robot.php]
+```php
+<?php
+// file: robots/cool_hand_robot.php
+/**
+ * An example robot which logs a message and then does nothing
+ */
+class CoolHandRobot extends ApplicationRobot{
+
+  function run(){
+    // In here there is access to:
+    //
+    //  $this->logger
+    //  $this->dbmole
+    //  $this->mailer
+    //  ...
+
+    $this->logger->info("The Cool Hand robot is eating eggs");
+  }
+}
+```
 
 Tento robůtek nedělá nic, pouze zaloguje zprávu do logu ./log/robots.log.
 
@@ -17,7 +36,19 @@ Příkaz robot_runner spuštěný bez parametru vypíše seznam dostupných robo
 
 V souboru ./robots/application_robot.php najdete společného předka pro všechny roboty.
 
-[include file=robots/application_robot.php]
+```php
+<?php
+// file: robots/application_robot.php
+class ApplicationRobot extends Atk14Robot{
+  function beforeRun(){
+    $this->dbmole->begin();
+  }
+
+  function afterRun(){
+    $this->dbmole->commit();
+  }
+}
+```
 
 Buďte na roboty hodní, dělají totiž dokola věci, které sami dělat nechcete.
 

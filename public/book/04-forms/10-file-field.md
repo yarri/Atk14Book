@@ -1,7 +1,17 @@
 Nahrávání souborů: FileField
 ============================
 
-[include file=app/forms/fields/file_field_form.php]
+```php
+<?php
+// file: app/forms/fields/file_field_form.php
+class FileFieldForm extends ApplicationForm{
+  function set_up(){
+    $this->add_field("file",new FileField(array(
+      // "required" => true
+    )));
+  }
+}
+```
 
 Volání metody *enable\_file\_upload()* je klíčový moment. Bez něj se upload souborů nepodaří :)
 
