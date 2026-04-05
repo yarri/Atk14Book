@@ -10,7 +10,7 @@
 function smarty_function_drink_shortcode__include($params, $template) {
 	$filename = $params["file"];
 	$suffix = preg_replace('/.*\.([^.]+)$/','\1',$filename);
-	$uf = new UrlFetcher($url = "http://www.atk14.net/en/sources/detail/?file=".urlencode($filename)."&format=raw");
+	$uf = new UrlFetcher($url = "https://www.atk14.net/en/sources/detail/?file=".urlencode($filename)."&format=raw");
 	if(!$uf->found()){
 		$err = "Remote file $filename could not be read";
 		trigger_error(sprintf("%s (%s)",$err,$GLOBALS["HTTP_REQUEST"]->getUrl()));
