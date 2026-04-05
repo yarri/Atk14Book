@@ -5,19 +5,19 @@ Jednotlivá doporučení jsou seřazena podle významu.
 
 ### Provedení migrací
 
-Je možné, že chyba, se kterou se potýkáte, souvisí s tím, že nemáte zrealizovány všechny migrace databázového schématu. Zkontrolujte:
+Je možné, že chyba, se kterou se potýkáš, souvisí s tím, že nemáš zrealizovány všechny migrace databázového schématu. Zkontroluj:
 
 	$ ./scripts/migrate
 
 ### Kontrola submodulů
 
-Verzujete na gitu? A máte ATK14 do projektu vložen jako submodul? Prověřte, že máte aktuální verzi.
+Verzuješ na gitu? A máš ATK14 do projektu vložen jako submodul? Prověř, že máš aktuální verzi.
 
 	$ git submodule update
 
 ### Nainstalujte si Tracy
 
-[_Tracy_](https://tracy.nette.org/) je výborný ladící nástroj. Nainstalujte si ho. [Tady je návod.](http://forum.atk14.net/cs/topics/detail/?id=100)
+[_Tracy_](https://tracy.nette.org/) je výborný ladící nástroj. Nainstaluj si ho. [Tady je návod.](http://forum.atk14.net/cs/topics/detail/?id=100)
 
 ### Kompilace všech šablon
 
@@ -27,25 +27,25 @@ Skript _compile\_all\_templates_ se pokusí zkompilovat všechny šablony. Lze t
 
 ### Nastavení php.ini
 
-Ve vývojovém prostředí je důležité nechat si zobrazovat chyby. Otevřete si soubor php.ini
+Ve vývojovém prostředí je důležité nechat si zobrazovat chyby. Otevři si soubor php.ini
 
 	$ sudo mcedit /etc/php5/apache2/php.ini
 
-A v něm prověřte, že máte nastaveno 
+A v něm prověř, že máš nastaveno
 
 	display_errors = On
 
-Pamatujte, že pokud změníte nastavení v php.ini, je nutné restartovat Apache.
+Pamatuj, že pokud změníš nastavení v php.ini, je nutné restartovat Apache.
 
 	$ sudo service apache2 restart
 
 ### Inspekce logu
 
-Prozkoumejte chybový log Apache. Tímto příkazem zobrazíte posledních 100 řádků v error logu:
+Prozkoumej chybový log Apache. Tímto příkazem zobrazíš posledních 100 řádků v error logu:
 
 	$ tail -100 /var/log/apache2/error.log
 
-Nebo si nechte nové řádky vypisovat v reálném čase:
+Nebo si nech nové řádky vypisovat v reálném čase:
 
 	$ tail -f /var/log/apache2/error.log
 
@@ -57,7 +57,7 @@ Pokud chybu stále nelze objevit, smažte veškeré dočasné soubory.
 
 ### Prověření instalace
 
-ATK14 obsahuje skript _check\_installation_ pro ověření instalace. Spuťte ho a pokud se zde objeví něco nedobrého, sjednejte nápravu.
+ATK14 obsahuje skript _check\_installation_ pro ověření instalace. Spusť ho a pokud se zde objeví něco nedobrého, sjednej nápravu.
 
 	$ ./scripts/check_installation
 
@@ -70,7 +70,7 @@ To může přijít vhod, když už všechny postupy selžou.
 	$ ATK14_ENV=development ./scripts/destroy_database_objects
 	$ ATK14_ENV=development ./scripts/migrate
 
-Upozorňujeme však, že tak ztratíte z databáze všechna data, která nevznikla během migrací.
+Upozorňuji však, že tak ztratíš z databáze všechna data, která nevznikla během migrací.
 
 ### Chybějící mod_rewrite
 

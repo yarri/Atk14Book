@@ -32,7 +32,7 @@ Tím pádem lze konfiguraci z konce předchozí kapitoly zjednodušit tak, že v
       directory: "/var/www/myapp_staging"
       deploy_repository: "/home/deploy/repos/myapp_staging.git"
 
-Abychom si zkontrolovali, jak ve skutečnosti předpis pro staging vypadá, spustíme:
+Abys zkontroloval, jak ve skutečnosti předpis pro staging vypadá, spusť:
 
   ./scripts/deploy --dump staging
 
@@ -40,13 +40,13 @@ nebo zkráceně:
 
   ./scripts/deploy -d staging
 
-případně si můžeme vypsat konfiguraci pro všechny instalace:
+případně si můžeš vypsat konfiguraci pro všechny instalace:
 
   ./scripts/deploy --dump
 
-Pokud chceme, aby nějaký předpis dědil od jiného předpisu než prvního, uvedeme to v hodnotě extends.
+Pokud chceš, aby nějaký předpis dědil od jiného předpisu než prvního, uveď to v hodnotě extends.
 
-Představte si, že máme aplikaci, kterou instalujeme do preview na jiný server, na jiné místo, pod jiného uživatele a chceme, aby byl přístup na web omezen pomocí .httaccess doplněním nastavení, které jsme si připravili do souboru .htaccess.preview_addon. A zároveň kolegové z maďarské pobočky projevili zájem o své vlastní preview. Konfigurační soubor může vypadat např. takto:
+Představ si, že máš aplikaci, kterou instaluješ do preview na jiný server, na jiné místo, pod jiného uživatele a chceš, aby byl přístup na web omezen pomocí .htaccess doplněním nastavení, které sis připravil do souboru .htaccess.preview_addon. A zároveň kolegové z maďarské pobočky projevili zájem o své vlastní preview. Konfigurační soubor může vypadat např. takto:
 
     # file: config/deploy.yml
     production:
@@ -84,7 +84,7 @@ Představte si, že máme aplikaci, kterou instalujeme do preview na jiný serve
       directory: "/home/preview/apps/myapp_hungary_preview/"
       deploy_repository: "/home/preview/repos/myapp_hungary_preview.git"
 
-Zase si ověříme, jak konfigurace vlastně ve skutečnosti vypadá:
+Zase si ověř, jak konfigurace vlastně ve skutečnosti vypadá:
 
     ./scripts/deploy --dump preview_hungary
 

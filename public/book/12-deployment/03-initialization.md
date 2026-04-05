@@ -1,26 +1,26 @@
 Prvotní instalace aplikace do produkce
 ======================================
 
-Poté, co jsme tak precizně popsali produkční instalaci do souboru config/deploy.yml, nás čeká instalace aplikace do tohoto prostředí. Jedná se o jednorázovou akci, která má souvislou řadu úkonů, se kterými nám ale ATK14 framework ochotně pomůže.
+Poté, co jsi tak precizně popsal produkční instalaci do souboru config/deploy.yml, tě čeká instalace aplikace do tohoto prostředí. Jedná se o jednorázovou akci, která má souvislou řadu úkonů, se kterými ti ale ATK14 framework ochotně pomůže.
 
-Příprava produkčnéího serveru
+Příprava produkčního serveru
 -----------------------------
 
-Pokud stojíme před serverem, na kterém zatím neběží ani jedna ATK14 aplikace, provedeme pár drobných nastavení.
+Pokud stojíš před serverem, na kterém zatím neběží ani jedna ATK14 aplikace, proveď pár drobných nastavení.
 
-V .bash_profile si nastavíme proměnnou prostředí ATK14_ENV na production.
+V .bash_profile si nastav proměnnou prostředí ATK14_ENV na production.
 
     # .bash_profile
     ...
     ATK14_ENV=production
     export ATK14_ENV
 
-Pokud je na serveru k dispozici více verzí PHP současně, nalinkujeme si preferovanou verzi PHP do $HOME/bin
+Pokud je na serveru k dispozici více verzí PHP současně, nalinkuj si preferovanou verzi PHP do $HOME/bin
 
     mkdir $HOME/bin
     ln -s /usr/bin/php83 ~/bin/php
 
-a cestu $HOME/bin si přídáme do proměnné prostředí PATH v $HOME/.bash_profile.
+a cestu $HOME/bin si přidej do proměnné prostředí PATH v $HOME/.bash_profile.
 
     # .bash_profile
     ...
@@ -45,24 +45,24 @@ Jeho použití je následující:
 
     $ ./scripts/initialize_deployment_stage production
 
-Klidně to vyzkoušejte. Nestane se nic, pouze se vypíší shellové příkazy, které nainstalují aplikaci do dané produkčního prostředí.
+Klidně to vyzkoušej. Nestane se nic, pouze se vypíší shellové příkazy, které nainstalují aplikaci do daného produkčního prostředí.
 
-Prozkoumejte je, a pokud se vám budou zamlouvat, spusťtě:
+Prozkoumej je, a pokud se ti budou zamlouvat, spusť:
 
     $ ./scripts/initialize_deployment_stage production | sh
 
-Pokud všechno dopadne dobře, máte vyhráno. Pokud něco selže, pokuste se zjistit, kde nastal problém, proveďte opravu a pokračujte ve spouštění příkazů od příslušného místa.
+Pokud všechno dopadne dobře, máš vyhráno. Pokud něco selže, pokus se zjistit, kde nastal problém, proveď opravu a pokračuj ve spouštění příkazů od příslušného místa.
 
-Jakmile máte hotovo, přihlaste se na danou produkci.
+Jakmile máš hotovo, přihlas se na danou produkci.
 
     $ ./scripts/shell production
 
-... a dokonfigurujte aplikaci. Což znemaná především konfigurace připojení do databáze v souboru local_config/database.yml a event. další specifická nastavení v souboru local_config/settings.php.
+... a dokonfiguruj aplikaci. Což znamená především konfiguraci připojení do databáze v souboru local_config/database.yml a event. další specifická nastavení v souboru local_config/settings.php.
 
 Konfigurace databáze
 --------------------
 
-Na produkci nakonfigurujeme připojení k databázi v souboru local_config/database.yml.
+Na produkci nakonfiguruj připojení k databázi v souboru local_config/database.yml.
 
     # file: local_config/database.yml
     production:
@@ -71,15 +71,15 @@ Na produkci nakonfigurujeme připojení k databázi v souboru local_config/datab
       username: "database_user"
       password: "password"
 
-Ověříme funkčnost napojení příkazem:
+Ověř funkčnost napojení příkazem:
 
     $ ./scripts/dbconsole
 
-měli bychom se úspěšně připojit do databáze.
+měl bys se úspěšně připojit do databáze.
 
 Konfigurace virtuálního serveru Apache
 --------------------------------------
 
-Pro vytvoření konfigurace virtuálního serveru Apache spusťte v produkci skript virtual_host_configuration a nechejte se inspirovat:
+Pro vytvoření konfigurace virtuálního serveru Apache spusť v produkci skript virtual_host_configuration a nech se inspirovat:
 
     $ ./scripts/virtual_host_configuration

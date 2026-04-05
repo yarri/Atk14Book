@@ -43,13 +43,13 @@ Konfigurace je uložena v souboru ```config/deploy.yml``` a ve své nejjednoduš
 
 V tomto konfiguračním souboru je toliko zapsáno, že:
 
-1. je zde posána konfigurace pouze pro jednu produkční instalaci označenou *production*,
+1. je zde popsána konfigurace pouze pro jednu produkční instalaci označenou *production*,
 2. aplikace je nainstalována na serveru alpha.example.com,
 3. na server se přistupuje uživatelem deploy,
 4. aplikace je umístěna v adresáři /var/www/myapp/ a
 5. aplikace se checkoutuje z produkčního repozitáře /home/deploy/repos/myapp.git.
 
-Ve skutečnosti však toho bude konfigurační souboru obsahovat více. Následující příklad se už více podobá tomu, co vidíme v praxi.
+Ve skutečnosti však toho bude konfigurační soubor obsahovat více. Následující příklad se už více podobá tomu, co vidíme v praxi.
 
     # file: config/deploy.yml
     production:
@@ -78,7 +78,7 @@ Ve skutečnosti však toho bude konfigurační souboru obsahovat více. Následu
 Spuštění deploymentu
 --------------------
 
-Před samotným deploymentem je dobré se ujistit, ža commit hash, na kterém stojíme, je ten, který chceme nasadit do produkce.
+Před samotným deploymentem je dobré se ujistit, že commit hash, na kterém stojíme, je ten, který chceme nasadit do produkce.
 
 Pak už stačí zadat:
 
@@ -101,14 +101,14 @@ Mimo jiné je provedeno následující:
     git checkout master && git fetch origin && git reset --hard origin/master
     git submodule init && git submodule update
 
-Případné další příkazy, které budou provedeny, závisí na konfiguraci v config/develop.yml.
+Případné další příkazy, které budou provedeny, závisí na konfiguraci v config/deploy.yml.
 
 Pokud cokoli selže, činnost skriptu je ukončena, je zobrazen popis chyby a případně i popis řešení na její odstranění.
 
 Konfigurace pro více produkčních prostředí
 ------------------------------------------
 
-Konfigurační souboru může obsahovat popis pro více produkčních instalací.
+Konfigurační soubor může obsahovat popis pro více produkčních instalací.
 
     # file: config/deploy.yml
     production:
@@ -155,4 +155,4 @@ Deployment na staging:
 
     [john@asterix ~/projects/myapp]$ ./scripts/deploy staging
 
-Při pohledu na obsah souboru s návody na deployment do dvou produkčních instalací si možná řeknete, že obsahuje příliš mnoho duplicitních řádků. A právě proto se v další kapitole podíváme na to, jak obsah souboru config/deploy.yml zjednodušit.
+Při pohledu na obsah souboru s návody na deployment do dvou produkčních instalací si možná řekneš, že obsahuje příliš mnoho duplicitních řádků. A právě proto se v další kapitole podíváme na to, jak obsah souboru config/deploy.yml zjednodušit.

@@ -4,7 +4,7 @@ Instalace aplikace na Opalstack
 Oblíbený [webhoster Opalstack](https://www.opalstack.com/) nabízí na svých hostingových serverech rozumné prostředí s PHP, Apachem, Postgresql a ssh přístupem.
 Nainstalovat zde ATK14 aplikaci a provozovat ji není vůbec žádný velký problém.
 
-Představte si, že Jan "Kinky" Kučera přistupuje na Opalstack jako uživatel snapper a má za úkol rozjet aplikaci www.flicker.net - revoluční službu
+Představte si, že Jan "Kinky" Kučera přistupuje na Opalstack jako uživatel snapper a má za úkol rozjet aplikaci www.filcker.net - revoluční službu
 pro sdílení nepříjemných zážitků.
 
 Pojďme se podívat, co všechno musí Kinky udělat, aby svou ATK14 aplikaci nainstaloval na Opalstack.
@@ -14,7 +14,7 @@ Pojďme se podívat, co všechno musí Kinky udělat, aby svou ATK14 aplikaci na
 
 Tento krok je nutné provést pouze jednou. Při instalaci druhé a další ATK14 aplikace jej už neprovádíme.
 
-Kinky vytvoři na přiděleném opalstack serveru adresář $HOME/bin, kam nalinkuje binárku php v preferované verzi.
+Kinky vytvoří na přiděleném opalstack serveru adresář $HOME/bin, kam nalinkuje binárku php v preferované verzi.
 
     [kinky@notebook ~]$ ssh snapper@snapper.opalstacked.com
     [snapper@opal6 ~]$ mkdir bin
@@ -37,7 +37,7 @@ Do ~/.bash_profile si novou cestu přidá do PATH a nastaví proměnnou prostře
     ATK14_ENV=production
     export ATK14_ENV
 
-Rovněž na začátek crontabu doplní nastaveni PATH a ATK14_ENV.
+Rovněž na začátek crontabu doplní nastavení PATH a ATK14_ENV.
 
     [snapper@opal6 ~]$ crontab -e
 
@@ -49,17 +49,17 @@ Rovněž na začátek crontabu doplní nastaveni PATH a ATK14_ENV.
 Vytvoření aplikace, site a databáze
 -----------------------------------
 
-V control panelu na Oplastacku Kinky vytvoří aplikaci *filcker* typu *PHP-FPM Apache* s preferovanou verzí PHP, tedy 8.3.
+V control panelu na Opalstacku Kinky vytvoří aplikaci *filcker* typu *PHP-FPM Apache* s preferovanou verzí PHP, tedy 8.3.
 
 Aplikace bude umístěna do adresáře /home/snapper/apps/filcker. Kinky si zkontroluje existenci tohoto adresáře a vyprázdní ho, pokud obsahuje nějaký vzorový index soubor.
 
-Dále v control panelu přidá nové domény flicker.net a www.flicker.net.
+Dále v control panelu přidá nové domény filcker.net a www.filcker.net.
 
-V dialogu *Add site* založí aplikaci názvem (Site name) *flicker_production*. K site připojí domény flicker.net a www.flicker.net a aplikaci flicker.
+V dialogu *Add site* založí aplikaci názvem (Site name) *filcker_production*. K site připojí domény filcker.net a www.filcker.net a aplikaci filcker.
 
-Nyní vytvoří PostgreSQL uživatele flicker_production a databázi flicker_production. Přístup do této databáze bude umožněn právě tomu novému uživateli.
+Nyní vytvoří PostgreSQL uživatele filcker_production a databázi filcker_production. Přístup do této databáze bude umožněn právě tomu novému uživateli.
 
-Heslo databázového uživatele flicker_production Opalstack se zpožděním zveřejní v nástroji *Notice Log*. Heslo si Kinky poznamená a z Notice Logu jej smaže.
+Heslo databázového uživatele filcker_production Opalstack se zpožděním zveřejní v nástroji *Notice Log*. Heslo si Kinky poznamená a z Notice Logu jej smaže.
 
 Recept pro deployment do produkce
 ---------------------------------
@@ -70,12 +70,12 @@ Kinky zapíše recept pro deployment do produkce do souboru config/deploy.yml.
 
     # file: config/deploy.yml
     production:
-      url: "https://www.flicker.net/"
+      url: "https://www.filcker.net/"
       user: "snapper"
       env: "PATH=/home/{{user}}/bin:$PATH"
       server: "{{user}}.opalstacked.com"
-      directory: "/home/{{user}}/apps/flicker/"
-      deploy_repository: "{{user}}@{{server}}:repos/flicker.git"
+      directory: "/home/{{user}}/apps/filcker/"
+      deploy_repository: "{{user}}@{{server}}:repos/filcker.git"
       before_deploy:
       - "@local composer update"
       - "@local npm install"
@@ -97,7 +97,7 @@ Kinky tedy spustí:
 
     [kinky@notebook ~/projects/filcker]$ ./scripts/initialize_deployment_stage production
 
-Pečlivě prozkoumá, jaké příkazy jsou vypsány. Vypadá to dobře a tak nebojácně zadáva:
+Pečlivě prozkoumá, jaké příkazy jsou vypsány. Vypadá to dobře a tak nebojácně zadává:
 
     [kinky@notebook ~/projects/filcker]$ ./scripts/initialize_deployment_stage production | sh
 
@@ -110,10 +110,10 @@ Konfigurace a naplnění produkční databáze
 
 Kinky se přihlásí do produkční instalace, kde založí lokální soubor s konfigurací napojení do databáze. Do souboru vloží heslo, které si poznačil dříve.
 
-Všimněte si, že vůbec není nutné zadávat konfiguraci pro testovací a vývojovou databázi. Do těch se v produkci napojovat nebudeme.
+Všimni si, že vůbec není nutné zadávat konfiguraci pro testovací a vývojovou databázi. Do těch se v produkci napojovat nebudeme.
 
     [kinky@notebook ~/projects/filcker]$ ./scripts/shell production
-    [snapper@opal6 ~/apps/flicker$ vim local_config/database.yml
+    [snapper@opal6 ~/apps/filcker$ vim local_config/database.yml
 
     # file: local_config/database.yml
     production:
@@ -124,18 +124,18 @@ Všimněte si, že vůbec není nutné zadávat konfiguraci pro testovací a vý
 
 Kinky teď může otestovat, že se do produkční databáze připojí:
 
-    [snapper@opal6 ~/apps/flicker]$ ./scripts/dbconsole
+    [snapper@opal6 ~/apps/filcker]$ ./scripts/dbconsole
 
 Pokud vše klapne, spustí migrace:
     
-    [snapper@opal6 ~/apps/flicker]$ ./scripts/migrate
+    [snapper@opal6 ~/apps/filcker]$ ./scripts/migrate
 
 A je hotovo.
 
 Deployment
 ----------
 
-Následný deployment je pak snadný jako facka. Kinky a jeho kolegové v klidu vyvíjejí na svých noteboocích a jakmile se rozhodnou svou práci zvěřejnit v produkci, spustí:
+Následný deployment je pak snadný jako facka. Kinky a jeho kolegové v klidu vyvíjejí na svých noteboocích a jakmile se rozhodnou svou práci zveřejnit v produkci, spustí:
 
     [kinky@notebook ~/projects/filcker]$ ./scripts/deployment production
 
