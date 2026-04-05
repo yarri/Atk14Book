@@ -23,20 +23,20 @@ Pokud například chceme umožnit přístup k akcím daného kontroleru jenom z 
 		}
 	}
 
-Tento příklad na vás bez přípravy vybalil několik věcí. V *$this->request* je k dispozici objekt zastřešující HTTP požadavek. Metoda *\_before_filter()*
+Tento příklad na tebe bez přípravy vybalil několik věcí. V *$this->request* je k dispozici objekt zastřešující HTTP požadavek. Metoda *\_before_filter()*
 je spuštěna před požadovanou akcí a je v ní možné tok procesu vyřizování požadavku odklonit - v našem případě dochází ke spuštění úplně jiné akce
 (*error403*). Může zde však dojít i k přesměrování.
 
 V každé akci je v proměnné *$this->form* vždy k dispozici formulář. Kontroler *BooksController* má v akci *edit()* formulář *EditForm* ze souboru
 *app/forms/books/edit_form.php*. Pokud tento soubor nebude existovat, bude v *$this->form* k dispozici alespoň prázdný formulář
-(instance *ApplicationForm*). Časem sami zjistíte, jak se může hodit i formulář bez jediného políčka.
+(instance *ApplicationForm*). Časem sám zjistíš, jak se může hodit i formulář bez jediného políčka.
 
-V proměnné *$this->params* jsou k dispozici všechny parametry HTTP požadavku z GET a/nebo POST. Jedná se o instanci třídy *Dictionary*, která nabízí metody pro příjmenou práci. Ve zkratce snad jenom tolik:
+V proměnné *$this->params* jsou k dispozici všechny parametry HTTP požadavku z GET a/nebo POST. Jedná se o instanci třídy *Dictionary*, která nabízí metody pro příjemnou práci. Ve zkratce snad jenom tolik:
 
 	<?php
 	// ...
 	$this->params->defined("id"); // true, pokud se v parametrech nachazi id
 	$this->params->getValue("id"); // vrati hodnotu parametru id tak, jak se v pozadavku nachazi nebo vrati null, pokud zde parametr id neni
-	$this->params->getInt("int"); // vrati hodnotu parametru id pretypovanou na integer nebo vrati null, pokud zde parametr id neni
+	$this->params->getInt("id"); // vrati hodnotu parametru id pretypovanou na integer nebo vrati null, pokud zde parametr id neni
 
 to be continued...
