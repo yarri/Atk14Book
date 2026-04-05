@@ -1,30 +1,28 @@
 Zpracování HTTP požadavku
 =========================
 
-Mysleme na nějakou smysluplnou adresu
+Vezměme si konkrétní adresu:
 
     http://www.atk14.net/en/books/edit/?id=29
 
-Co se stane, když takovou adresu navštívíme?
+Co se stane, když ji navštívíš?
 
-Framework ATK14 vytvoří a připraví kontroler - instanci třídy *BooksController* ze souboru
+Framework ATK14 vytvoří a připraví kontroler — instanci třídy *BooksController* ze souboru:
 
     app/controllers/books_controller.php
 
-Kontroleru je nastaven příslušný formulář - instance třídy *EditForm* ze souboru
+Kontroleru je nastaven příslušný formulář — instance třídy *EditForm* ze souboru:
 
     app/forms/books/edit_form.php
 
-Následně je v kontroleru spuštěna metoda *edit()* a vyrenderována šablona
+Následně je v kontroleru spuštěna metoda *edit()* a vyrenderována šablona:
 
     app/views/books/edit.tpl
 
-Obsah šablony je vykreslen v layoutu
+Obsah šablony je vykreslen v layoutu:
 
     app/layouts/default.tpl
 
 Výstup je odeslán spokojenému uživateli.
 
-Pro začátek není nutné vědět více.
-
-Na ATK14 je fajn, že stačí dodržet názvovou konvenci a toto všechno začne fungovat automaticky. Ctí se zde zásada *konvence před konfigurací*.
+Na ATK14 je fajn, že stačí dodržet názvovou konvenci a vše začne fungovat automaticky — bez jediného řádku konfigurace. Říká se tomu zásada *konvence před konfigurací*.

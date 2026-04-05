@@ -1,12 +1,12 @@
 Instalace kostry
 ================
 
-Pokud máte splněny požadavky z předchozí kapitoly, jste připraven nainstalovat si jednu z koster a nad ní postavit svůj skvělý nový projekt.
+Pokud máš splněny požadavky z předchozí kapitoly, jsi připraven nainstalovat si jednu z koster a nad ní postavit svůj skvělý nový projekt.
 
-Kostra je taková malá funkční aplikace naprogramovaná v ATK14 Frameworku, kterou je možné pohodlně rozvinout, upravit podle vašich potřeb. Zdrojový kód kostry je otevřený,
-je verzován na Githubu a samotný ATK14 Framework je do něj vložen jako submodul.
+Kostra je taková malá funkční aplikace naprogramovaná v ATK14 Frameworku, kterou je možné pohodlně rozvinout a upravit podle svých potřeb. Zdrojový kód kostry je otevřený,
+je verzován na GitHubu a samotný ATK14 Framework je do něj vložen jako submodul.
 
-V současnosti jsou k dispozici tři kostry.
+V současnosti je k dispozici pět koster.
 
 ### 1. ATK14 Embryo
 

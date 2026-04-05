@@ -1,15 +1,15 @@
 Šablony
 =======
 
-V této kapitole pochopíte základní principy práce se šablonou. Pusťme se do toho.
+V této kapitole pochopíš základní principy práce se šablonou. Pusťme se do toho.
 
-Předpokládejme adresu
+Předpokládejme adresu:
 
     http://www.atk14.net/cs/products/
-    
+
 která vede na akci *index* v kontroleru *products*.
 
-V příslušné metodě jsou data pro šablonu připravována do pole ```$this->tpl_data```. Všimněte si, že titulek a popis stránky (page_title a page_description) se do pole $this->tpl_data nenastavují.
+V příslušné metodě jsou data pro šablonu připravována do pole `$this->tpl_data`. Všimni si, že titulek a popis stránky (`page_title` a `page_description`) se do `$this->tpl_data` nenastavují — mají vlastní atributy kontroleru.
 
     <?php
     // file: app/controllers/products_controller.php
@@ -51,16 +51,16 @@ V šabloně jsou data dostupná takto.
 
     {render partial="newest_product_item" from=$newest_products item=product}
 
-V této šabloně je použita parciální (dílčí) šablona newest_product_item, nad kterou je iterováno pole $newest_products. Pro přehlednost jsou parciální šablony umísťovány do souboru začínající znakem podtržítko.
+V této šabloně je použita parciální (dílčí) šablona `newest_product_item`, nad kterou je iterováno pole `$newest_products`. Pro přehlednost jsou parciální šablony umísťovány do souboru začínajícího znakem podtržítko.
 
     {* file: app/views/products/_newest_product_item.tpl *}
     <h4>{a action="detail" id=$product->getId()}{$product->getName()}{/a}</h4>
 
     <p>{$product->getDescription()}</p>
 
-Více se o parciálních šablonách se dozvíte později.
+Více o parciálních šablonách se dozvíš později.
 
-Obsah vyrenderované šablony index.tpl bude zobrazen v layout šabloně, která může vypadat například takto.
+Obsah vyrenderované šablony `index.tpl` bude zobrazen v layoutové šabloně, která může vypadat například takto.
 
     {* file: app/layouts/default.tpl *}
     <html>
@@ -74,9 +74,9 @@ Obsah vyrenderované šablony index.tpl bude zobrazen v layout šabloně, která
       </body>
     </html>
 
-Asi tušíte, že vyrenderovaná šablona index.tpl bude umístěna v layoutu do místa *{placeholder}*. Na místo řádku _{render partial="shared/layoutu/flash_message"}_ bude vložena daná sdílená parciální šablona, která zajistí zobrazení _flash_ zprávy. Později se dozvíte, k čemu se flash zprávy hodí. 
+Asi tušíš, že vyrenderovaná šablona `index.tpl` bude umístěna v layoutu do místa `{placeholder}`. Na místo řádku `{render partial="shared/layout/flash_message"}` bude vložena daná sdílená parciální šablona, která zajistí zobrazení flash zprávy. Později se dozvíš, k čemu se flash zprávy hodí.
 
-Pokud tipujete, že toto jsou smarty šablony, nemýlíte se. Framework ATK14 šablonovací engine *[Smarty](http://www.smarty.net/)* skutečně používá a nebyl vybrán náhodou &mdash; Smarty je spolehlivý a lety prověřený nástroj, který odvádí spoustu dobré práce.
-Pokud Smartyho vůbec neznáte, trošku se s ním seznamte v [dokumentaci](http://www.smarty.net/docs/en/), bude se vám to hodit.
+Pokud tipuješ, že toto jsou Smarty šablony, nemýlíš se. Framework ATK14 šablonovací engine *[Smarty](http://www.smarty.net/)* skutečně používá a nebyl vybrán náhodou — Smarty je spolehlivý a lety prověřený nástroj, který odvádí spoustu dobré práce.
+Pokud Smarty vůbec neznáš, trošku se s ním seznam v [dokumentaci](http://www.smarty.net/docs/en/), bude se ti to hodit.
 
 Pro začátek to o šablonách stačí.

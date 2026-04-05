@@ -1,61 +1,76 @@
-Installing from a repository
-============================
+Instalace z repozitáře
+======================
 
-Consider that you are about to install application running at <http://www.atk14.net/> on your computer into directory ~/projects/atk14/.
-This application has a public repository on Github at <https://github.com/yarri/Atk14Net>
+Představ si, že chceš na svůj počítač do adresáře `~/projects/atk14/` nainstalovat aplikaci běžící na <http://www.atk14.net/>.
+Tato aplikace má veřejný repozitář na GitHubu: <https://github.com/yarri/Atk14Net>
 
-### Installing the source code
+### Instalace zdrojového kódu
 
-  $ cd ~/projects/
-  $ mkdir atk14
-  $ cd atk14
-  $ git clone https://github.com/yarri/Atk14Net.git ./
-  $ git submodule init
-  $ git submodule update
-  $ composer update
+```bash
+cd ~/projects/
+mkdir atk14
+cd atk14
+git clone https://github.com/yarri/Atk14Net.git ./
+git submodule init
+git submodule update
+composer update
 
-  $ chmod 777 tmp
-  $ chmod 777 log
+chmod 777 tmp
+chmod 777 log
+```
 
-### Preparing database
+### Příprava databáze
 
-  $ ./scripts/create_database
-  $ ./scripts/migrate
+```bash
+./scripts/create_database
+./scripts/migrate
+```
 
-You can now enter the database console by typing
+Do databázové konzole se dostaneš příkazem:
 
-  $ ./scripts/dbconsole
+```bash
+./scripts/dbconsole
+```
 
-### Apache configuration
+### Konfigurace Apache
 
-Run this command and follow the listed instructions
-  
-  $ ./scripts/virtual_host_configuration
+Spusť tento příkaz a postupuj podle zobrazených instrukcí:
 
-Now visit http://atk14.localhost/ in you browser.
+```bash
+./scripts/virtual_host_configuration
+```
 
-### ... when something went wrong
+Poté otevři v prohlížeči <http://atk14.localhost/>.
 
-In case of troubles or after a new installation you should run the following command
+### ... když něco nefunguje
 
-  $ ./scripts/check_installation
+V případě potíží nebo po čerstvé instalaci spusť:
 
-Outpout may give you a clue to solve a problem.
+```bash
+./scripts/check_installation
+```
 
-### Preparing testing database
+Výstup ti může napovědět, kde je problém.
 
-In order to run tests you have to create and initialize a testing database
+### Příprava testovací databáze
 
-  $ ATK14_ENV=TEST ./scripts/create_database
-  $ ATK14_ENV=TEST ./scripts/migrate
+Pro spouštění testů je potřeba vytvořit a inicializovat testovací databázi:
 
-To enter the test database console, type
+```bash
+ATK14_ENV=TEST ./scripts/create_database
+ATK14_ENV=TEST ./scripts/migrate
+```
 
-  $ ATK14_ENV=TEST ./scripts/dbconsole
+Do testovací databázové konzole se dostaneš takto:
 
-### Testing
+```bash
+ATK14_ENV=TEST ./scripts/dbconsole
+```
 
-To run all the application tests, run the following command
+### Spouštění testů
 
-  $ ./scripts/run_all_tests
+Všechny testy aplikace spustíš příkazem:
 
+```bash
+./scripts/run_all_tests
+```
