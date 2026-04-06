@@ -54,7 +54,7 @@ In legacy projects where the table and sequence names cannot be derived from the
       "published_at" => "2017-06-01 00:00:00",
     ]);
 
-    echo $article->getId(); // automaticky přiřazená hodnota ze sekvence, např. 123
+    echo $article->getId(); // value automatically assigned from the sequence, e.g. 123
 
     $article2 = Article::CreateNewRecord([
        "id" => 2233,
@@ -82,16 +82,16 @@ Through some magic with the ___call()_ method, you can also call non-existent me
 The _setValue()_ method changes a single value, while _setValues()_ changes multiple values. The single-letter alias _s()_ handles both, which is why it is most commonly used.
 
     <?php
-    // změna jedné hodnoty
+    // changing a single value
     $article2->setValue("title", "Another great article");
 
-    // hromadná změna
+    // bulk change
     $article2->setValues([
       "teaser" => "Great teaser of the great article",
       "body" => "..."
     ]);
 
-    // pomocí metody s()
+    // using the s() method
     $article2->s("title", "Another great article");
 
     $article2->s([
@@ -106,24 +106,24 @@ It is worth noting that calling these methods automatically updates the data in 
 The basic method _GetInstanceById()_ finds a record in the corresponding table by its _ID_. The method also accepts an array as a parameter.
 
     <?php
-    $article = Article::GetInstanceById(123); // vrátí null, pokud článek #123 neexistuje
-    $articles = Article::GetInstanceById([123, 124]); // vrátí pole objektů
-    $articles = Article::GetInstanceById(["a" => 123, "b" => 124]); // vrátí asociativní pole objektů
+    $article = Article::GetInstanceById(123); // returns null if article #123 does not exist
+    $articles = Article::GetInstanceById([123, 124]); // returns an array of objects
+    $articles = Article::GetInstanceById(["a" => 123, "b" => 124]); // returns an associative array of objects
 
 To find a single record by something other than ID (as well as by ID), use the _FindFirst()_ method (with alias _Find()_) or the _FindBySomething()_ methods.
 
     <?php
-    // jediný řetězcový parametr je vložen přímo do SQL dotazu
+    // a single string parameter is inserted directly into the SQL query
     $article = Article::FindFirst("title='Another great article'");
 
-    // pokud za řetězcovým parametrem následuje pole, jsou to hodnoty,
-    // které jsou bezpečně vloženy do SQL dotazu na jejich místa
+    // if an array follows the string parameter, those are the values
+    // that are safely substituted into the SQL query at their placeholders
     $article = Article::FindFirst("title=:title OR title=:title2", [
       ":title" => "Another great article",
       ":title2" => "Yet another great article"
     ]);
 
-    // další pole jsou volby ($options)
+    // the next array holds options ($options)
     $article = Article::FindFirst("title=:title OR title=:title2", [
       ":title" => "Another great article",
       ":title2" => "Yet another great article"
@@ -131,17 +131,17 @@ To find a single record by something other than ID (as well as by ID), use the _
       "order_by" => "published_at DESC"
     ]);
 
-    // sudý počet skalárních parametrů je převeden na dvojice pole = hodnota
+    // an even number of scalar parameters is converted to field=value pairs
     $article = Article::FindFirst("title", "Another great article");
 
-    // bude vyhledán takový záznam, u kterého jsou splněny všechny podmínky
+    // a record matching all conditions will be returned
     $article = Article::FindFirst("title", "Another great article", "published_at", "2017-06-01 00:00:00");
 
-    // pokud je za sudým počtem parametrů pole, jedná se o volby
+    // if an array follows an even number of parameters, it is treated as options
     $article = Article::FindFirst("title", "Another great article", ["order_by" => "published_at DESC"]);
 
-    // to jsou ale všechno syntaktické cukry pro snadný zápis podmínek;
-    // generický způsob používání metody FindFirst() je čistě pomocí voleb
+    // all of the above are syntactic sugar for writing conditions;
+    // the generic way to use FindFirst() is purely through options
     $article = Article::FindFirst([
       "conditions" => [
         "title=:title OR title=:title2",
@@ -195,4 +195,4 @@ Calling the _destroy()_ method removes the corresponding record from the databas
 If the table has a `deleted` column, `destroy()` performs a _soft delete_ — the record stays in the database but the `deleted` flag is set to `true` and it is automatically filtered out in subsequent queries. To force a physical delete, pass `true` as a parameter.
 
     <?php
-    $article->destroy(true); // fyzické smazání bez ohledu na sloupec deleted
+    $article->destroy(true); // physical delete regardless of the deleted column

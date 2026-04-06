@@ -58,7 +58,7 @@ class WatchdogNotifierRobot extends ApplicationRobot {
       $this->mailer->send_watchdog_notification($watched_product);
       $watched_product->markAsNotified();
 
-      // commit po každém záznamu — neztrácíme práci při pádu uprostřed
+      // commit after each record — we don't lose work if the process crashes midway
       $this->_commit();
     }
   }

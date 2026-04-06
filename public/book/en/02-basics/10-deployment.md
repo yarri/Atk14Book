@@ -28,7 +28,7 @@ In practice it is common to have multiple production environments — e.g. _prev
 
 Deployment is triggered with `./scripts/deploy`
 
-    # deployment do výchozí (první) stage
+    # deploy to the default (first) stage
     $ ./scripts/deploy
   
     # deployment do stage production

@@ -18,22 +18,22 @@ Structure of the test/ directory
 Place tests in the `test/` directory. Tests are split into subdirectories based on the type of objects being tested. Each subdirectory has its own `initialize.php` and `tc_base.php`.
 
 	test/
-	├── fixtures/               # testovací data ve formátu YAML
+	├── fixtures/               # test data in YAML format
 	│   ├── users.yml
 	│   └── articles.yml
-	├── models/                 # testy modelů
+	├── models/                 # model tests
 	│   ├── initialize.php
 	│   ├── tc_base.php
 	│   └── tc_user.php
-	├── controllers/            # testy kontrolerů
+	├── controllers/            # controller tests
 	│   ├── initialize.php
 	│   ├── tc_base.php
 	│   └── tc_logins.php
-	├── fields/                 # testy formulářových políček
+	├── fields/                 # form field tests
 	│   ├── initialize.php
 	│   ├── tc_base.php
 	│   └── tc_slug_field.php
-	└── routers/                # testy routerů
+	└── routers/                # router tests
 	    ├── initialize.php
 	    ├── tc_base.php
 	    └── tc_pages_router.php
@@ -43,7 +43,7 @@ The `initialize.php` file is loaded automatically before each test case file. It
 	<?php
 	// file: test/models/initialize.php
 	define("TEST", true);
-	define("MY_BLOWFISH_ROUNDS", 6); // výchozí hodnota 12 by testy zbytečně zpomalila
+	define("MY_BLOWFISH_ROUNDS", 6); // the default value of 12 would unnecessarily slow down tests
 	require(__DIR__ . "/../../atk14/load.php");
 
 Running tests
@@ -135,12 +135,12 @@ To prevent tests from affecting each other's database data, each test runs insid
 	class TcBase extends TcAtk14Model {
 
 		function _setUp(){
-			$this->dbmole->begin();      // začátek transakce
-			$this->setUpFixtures();      // vložení fixture dat
+			$this->dbmole->begin();      // begin transaction
+			$this->setUpFixtures();      // insert fixture data
 		}
 
 		function _tearDown(){
-			$this->dbmole->rollback();   // vrácení všech změn
+			$this->dbmole->rollback();   // roll back all changes
 		}
 	}
 
@@ -158,14 +158,14 @@ Testing models
 		function testHashingPassword(){
 			$rambo = $this->users["rambo"];
 
-			// heslo je uloženo jako hash, ne jako plain text
+			// password is stored as a hash, not plain text
 			$this->assertTrue($rambo->getPassword() != "secret");
 
-			// přihlášení se správným heslem
+			// login with the correct password
 			$user = User::Login("rambo", "secret");
 			$this->assertNotNull($user);
 
-			// přihlášení se špatným heslem
+			// login with the wrong password
 			$user = User::Login("rambo", "wrong");
 			$this->assertNull($user);
 		}
@@ -213,12 +213,12 @@ The test itself then simulates GET and POST requests and verifies the responses:
 		function test(){
 			$client = $this->client;
 
-			// uživatel ještě není přihlášen
+			// user is not logged in yet
 			$client->get("main/index");
 			$this->assertEquals(200, $client->getStatusCode());
 			$this->assertStringNotContains("rambo", $client->getContent());
 
-			// pokus o přihlášení se špatným heslem
+			// attempt to log in with the wrong password
 			$ctrl = $client->post("logins/create_new", array(
 				"login"    => "rambo",
 				"password" => "wrong",
@@ -226,19 +226,19 @@ The test itself then simulates GET and POST requests and verifies the responses:
 			$this->assertEquals(200, $client->getStatusCode());
 			$this->assertTrue($ctrl->form->has_errors());
 
-			// přihlášení se správným heslem
+			// login with the correct password
 			$ctrl = $client->post("logins/create_new", array(
 				"login"    => "rambo",
 				"password" => "secret",
 			));
-			$this->assertEquals(303, $client->getStatusCode()); // přesměrování
+			$this->assertEquals(303, $client->getStatusCode()); // redirect
 			$this->assertFalse($ctrl->form->has_errors());
 
-			// uživatel je nyní přihlášen
+			// user is now logged in
 			$client->get("main/index");
 			$this->assertStringContains("rambo", $client->getContent());
 
-			// odhlášení
+			// logout
 			$client->post("logins/destroy");
 			$this->assertEquals(303, $client->getStatusCode());
 		}

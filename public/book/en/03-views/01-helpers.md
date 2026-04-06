@@ -23,9 +23,9 @@ Imagine a layout like this.
       <body>
 
         <div id="navigation">
-          <h3>Rozcestník</h3>
+          <h3>Navigation</h3>
           <ul id="navigation">
-            <li><a href="/">Hlavní stránka</a></li>
+            <li><a href="/">Home</a></li>
             {placeholder for=other_navigation_items}
           </ul>
         </div>
@@ -38,13 +38,13 @@ Imagine a layout like this.
 
 Now consider a product detail template.
 
-    {* soubor app/views/products/detail.tpl *}
+    {* file: app/views/products/detail.tpl *}
 
     <h1>{$product->getTitle()}</h1>
     {$product->getDescription()}
 
     {content for=other_navigation_items}
-      <li><a href="{$product->getManualUrl()}">Stáhněte si manuál k produktu</a></li>
+      <li><a href="{$product->getManualUrl()}">Download the product manual</a></li>
     {/content}
 
 What will be rendered? The product information will appear in *{placeholder}* and an additional link to download the manual for the currently viewed product will be injected into the navigation — outside the main content area.
@@ -57,15 +57,15 @@ Partial templates start with an underscore and have the `.tpl` extension — nei
 
 The *{render}* helper also replaces Smarty's *{foreach}*. Let's see this in action on a product listing.
 
-    {* soubor app/views/products/index.tpl *}
+    {* file: app/views/products/index.tpl *}
 
-    <h1>Přehled produktů</h1>
+    <h1>Product listing</h1>
   
     <table>
       <thead>
         <tr>
-          <th>Název</th>
-          <th>Cena</th>
+          <th>Name</th>
+          <th>Price</th>
         </tr>
       </thead>
       <tbody>
@@ -75,7 +75,7 @@ The *{render}* helper also replaces Smarty's *{foreach}*. Let's see this in acti
 
 Each table row is then rendered by the following partial template.
 
-    {* soubor app/views/products/_product_item.tpl *}
+    {* file: app/views/products/_product_item.tpl *}
     
     <tr>
       <td>{$product->getTitle()}</td>

@@ -14,7 +14,7 @@ For example, if you want to restrict access to the actions of a given controller
 	<?php
 	class SecretsController extends ApplicationController{
 
-		// tady bude kod nekolika velmi tajnych akci...
+		// here will be the code for several very secret actions...
 
 		function _before_filter(){
 			if($this->request->getRemoteAddr()!="10.20.30.40"){
@@ -35,8 +35,8 @@ In every action, `$this->form` always holds a form object. The *BooksController*
 
 	<?php
 	// ...
-	$this->params->defined("id"); // true, pokud se v parametrech nachazi id
-	$this->params->getValue("id"); // vrati hodnotu parametru id tak, jak se v pozadavku nachazi nebo vrati null, pokud zde parametr id neni
-	$this->params->getInt("id"); // vrati hodnotu parametru id pretypovanou na integer nebo vrati null, pokud zde parametr id neni
+	$this->params->defined("id"); // true if id is present in the parameters
+	$this->params->getValue("id"); // returns the value of the id parameter as it appears in the request, or null if id is not present
+	$this->params->getInt("id"); // returns the value of the id parameter cast to integer, or null if id is not present
 
 to be continued...
