@@ -78,6 +78,27 @@ class ApplicationController extends Atk14Controller{
 		$this->tpl_data["current_year"] = date("Y");
 
 		$this->tpl_data["search_form"] = Atk14Form::GetInstanceByFilename("searches/search_form.php",$this);
+
+		// data for language swith
+		$languages = array();
+		$current_language = null;
+		$params_homepage = array("namespace" => "", "controller" => "main", "action" => "index");
+		$params = ($this->request->get() && !preg_match('/^error/',$this->action)) ? $this->params->toArray() : $params_homepage;
+		foreach($ATK14_GLOBAL->getConfig("locale") as $l => $locale){
+			$params["lang"] = $l;
+			$item = array(
+				"lang" => $l,
+				"name" => isset($locale["name"]) ? $locale["name"] : $l,
+				"switch_url" => $this->_link_to($params,["with_hostname" => true]),
+			);
+			if($this->lang==$l){
+				$current_language = $item;
+				continue;
+			}
+			$languages[] = $item;
+		}
+		$this->tpl_data["current_language"] = $current_language;
+		$this->tpl_data["supported_languages"] = $languages;
 	}
 
 	function _application_after_filter(){

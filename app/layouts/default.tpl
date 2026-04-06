@@ -87,6 +87,7 @@
 						</li>
 					</ul>
 				</div><!-- /.navbar-collapse -->
+				{render partial="shared/langswitch"}
 			</div> <!-- /.container -->
 		</nav>
 
