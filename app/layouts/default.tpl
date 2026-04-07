@@ -48,6 +48,10 @@
 			document.documentElement.className = document.documentElement.className.replace( /\bno-js\b/, "js" );
 		{/javascript_tag}
 
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+
 		{stylesheet_link_tag file="$public/dist/styles/vendor.css" hide_when_file_not_found=true}
 		{stylesheet_link_tag file="$public/dist/styles/application_styles.css"}
 
