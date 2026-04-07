@@ -25,10 +25,12 @@
 }
 
 #toc-toggle {
+  border-inline-start: 1px solid $border-color;
   &.show, &.showing, &.hiding {
     overflow-y:scroll;
     padding-top: 1rem;
     padding-bottom: 1rem;
+    border: none;
   }
   
 }
