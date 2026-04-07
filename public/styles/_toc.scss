@@ -24,6 +24,15 @@
   }
 }
 
+#toc-toggle {
+  &.show, &.showing, &.hiding {
+    overflow-y:scroll;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+}
+
 .toc {
   
 }
