@@ -1,0 +1,29 @@
+.nav--toc {
+  //outline: 1px solid red;
+  .nav-link {
+    color: inherit;
+    transition: background-color 1s ease;
+    &.active {
+      color: $primary;
+      border-bottom: 1px solid $primary;
+    }
+    &:hover {
+      background-color: $gray-200;
+      transition: background-color 0.2s ease;
+    }
+    &--level-1 {
+      font-weight: bold;
+    }
+    &--level-2 {
+      font-weight: normal;
+      padding-inline-start: 3ch;
+      .chapter-no {
+        color: $gray-600;
+      }
+    }
+  }
+}
+
+.toc {
+  
+}
