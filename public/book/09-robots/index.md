@@ -103,7 +103,7 @@ Agregační skripty a crontab
 
 V praxi roboty nespouštíš po jednom, ale seskupuješ je do agregačních skriptů podle toho, jak často mají běžet. Tyto skripty umísťuj do adresáře `./local_scripts/`.
 
-Pro skripty spouštěné každých 5 minut:
+Pro roboty spouštěné každých 5 minut:
 
 ```bash
 #!/usr/bin/env bash
@@ -118,7 +118,7 @@ cd ..
 ./scripts/robot_runner invoice_file_notifier
 ```
 
-Pro skripty spouštěné jednou denně:
+Pro roboty spouštěné jednou denně:
 
 ```bash
 #!/usr/bin/env bash
@@ -132,7 +132,7 @@ cd ..
 ./scripts/robot_runner import_delivery_service_branches
 ```
 
-Pro skripty spouštěné jednou týdně:
+Pro roboty spouštěné jednou týdně:
 
 ```bash
 #!/usr/bin/env bash
