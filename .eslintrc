@@ -1,0 +1,39 @@
+{
+  "parser": "@babel/eslint-parser",
+  "env": {
+		"browser": true,
+    "node": true,
+    "commonjs": true,
+		"jquery": true,
+    "es6": true
+  },
+  "globals": {
+    "bootstrap": true
+  },
+  "rules": {
+    "no-cond-assign": [
+      2,
+      "except-parens"
+    ],
+    "curly": 2,
+    "eqeqeq": 2,
+    "no-eq-null": 2,
+    "no-unused-expressions": 2,
+    "wrap-iife": [
+      2,
+      "any"
+    ],
+    "no-caller": 2,
+    "quotes": [
+      2,
+      "double"
+    ],
+    "no-undef": 2,
+    "no-unused-vars": 2
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 8,
+    "requireConfigFile": false
+  }
+}

@@ -24,6 +24,9 @@ definedef("ATK14_HTTP_HOST",PRODUCTION ? "book.atk14.net" : "atk14book.localhost
 
 date_default_timezone_set('Europe/Prague');
 
+definedef("USING_BOOTSTRAP5",true);
+definedef("USING_FONTAWESOME",true);
+
 definedef("REDIRECT_TO_SSL_AUTOMATICALLY",PRODUCTION);
 
 // Automatic redirection to the ATK14_HTTP_HOST
