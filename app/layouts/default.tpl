@@ -85,9 +85,17 @@
 						<li>
 							<a href="http://www.atk14sites.net/">Who uses ATK14?</a>
 						</li>
+						{foreach $supported_languages as $l}
+							<li>
+								<a href="{$l.switch_url}">
+									{if $l.lang === $lang}<strong>{/if}
+									{$l.name}
+									{if $l.lang === $lang}</strong>{/if}
+								</a>
+							</li>
+						{/foreach}
 					</ul>
 				</div><!-- /.navbar-collapse -->
-				{render partial="shared/langswitch"}
 			</div> <!-- /.container -->
 		</nav>
 
