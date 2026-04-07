@@ -1,4 +1,9 @@
 {
+    "config": {
+      "platform": {
+        "php": "8.1"
+      }
+    },
     "require": {
         "atk14/dbmole-panel": "^1.0",
         "atk14/templates-panel": "^1.0",
