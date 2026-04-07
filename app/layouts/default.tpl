@@ -63,51 +63,13 @@
 
 	<body class="body_{$controller}_{$action}" data-controller="{$controller}" data-action="{$action}">
 
-		<header>
-
-		<nav class="navbar navbar-default">
-			<div class="container">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="/"><i class="glyphicon glyphicon-home hidden-xs"></i> <strong class="title hidden visible-xs">{"ATK14_APPLICATION_NAME"|dump_constant}</strong></a>
-				</div>
-
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="navbar-collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li>
-							<a href="http://www.atk14.net/">ATK14 Framework</a>
-						</li>
-						<li>
-							<a href="http://api.atk14.net/">API Reference</a>
-						</li>
-						<li>
-							<a href="http://www.atk14sites.net/">Who uses ATK14?</a>
-						</li>
-						{foreach $supported_languages as $l}
-							<li>
-								<a href="{$l.switch_url}">
-									{if $l.lang === $lang}<strong>{/if}
-									{$l.name}
-									{if $l.lang === $lang}</strong>{/if}
-								</a>
-							</li>
-						{/foreach}
-					</ul>
-				</div><!-- /.navbar-collapse -->
-			</div> <!-- /.container -->
-		</nav>
+		<header class="mt-0 pt-0">
+			{render partial="shared/layout/header"}
 
 
 			<!-- Docs page layout -->
 			<div class="bs-docs-header hidden-xs" id="content" tabindex="-1">
-				<div class="container">
+				<div class="container-fluid">
 					<h1>ATK14 Book</h1>
 					<p>{t}Read, hear, and study the ATK14 Book. Grow your skills. Relax. Repeat.{/t}</p>
 				</div>
@@ -117,7 +79,7 @@
 		
 
 
-		<div class="container{if $section_navigation} has-nav-section{/if}">
+		<div class="container-fluid{if $section_navigation} has-nav-section{/if}">
 			{*render partial="shared/layout/header" *}
 			{render partial="shared/breadcrumbs"}
 

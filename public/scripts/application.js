@@ -1,3 +1,19 @@
+/* Imports */
+import * as bootstrap from "bootstrap";
+
+// Alternatively you can import only the BS components you need. Seems to have no effect on the bundle size.
+/*
+import { Alert, Button, Carousel, Collapse, Dropdown, Modal, Offcanvas, Popover, ScrollSpy, Tab, Toast, Tooltip } from "bootstrap";
+let bootstrap = { Alert, Button, Carousel, Collapse, Dropdown, Modal, Offcanvas, Popover, ScrollSpy, Tab, Toast, Tooltip }
+*/
+
+//console.log( "bootstrap", bootstrap );
+//console.log( "Alert", Alert );
+window.$ = window.jQuery = require("jquery");
+require( "unobfuscatejs" );
+require( "atk14js" );
+
+
 /* global window */
 ( function( window, $, undefined ) {
 	"use strict";
