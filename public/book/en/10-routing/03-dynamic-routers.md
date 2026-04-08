@@ -8,25 +8,29 @@ A dynamic router is far more sophisticated than a static one. While a static rou
 
 Know that if we were satisfied with this from the static router, ...
 
-	<!-- english variant -->
-	<a href="/article-123.html">Some very nice article about ATK14`s routing</a>
+```html
+<!-- english variant -->
+<a href="/article-123.html">Some very nice article about ATK14`s routing</a>
 
-	<!-- czech variant -->
-	<a href="/clanek-123.html">Velmi zdařilý článek o routování v ATK14</a>
+<!-- czech variant -->
+<a href="/clanek-123.html">Velmi zdařilý článek o routování v ATK14</a>
 
-	<!-- finnish  variant -->
-	<a href="/artikkeli-123.html">Jotkut erittäin mukava juttu ATK14 `s reititys</a>
+<!-- finnish  variant -->
+<a href="/artikkeli-123.html">Jotkut erittäin mukava juttu ATK14 `s reititys</a>
+```
 
 ... with a dynamic router we are able to achieve something like this...
 
-	<!-- english variant -->
-	<a href="/article/some-very-nice-article-about-atk14s-routing.html">Some very nice article about ATK14`s routing</a>
+```html
+<!-- english variant -->
+<a href="/article/some-very-nice-article-about-atk14s-routing.html">Some very nice article about ATK14`s routing</a>
 
-	<!-- czech variant -->
-	<a href="/clanek/velmi-zdarily-clanek-o-routovani-v-atk14.html">Velmi zdařilý článek o routování v ATK14</a>
+<!-- czech variant -->
+<a href="/clanek/velmi-zdarily-clanek-o-routovani-v-atk14.html">Velmi zdařilý článek o routování v ATK14</a>
 
-	<!-- finnish variant -->
-	<a href="/artikkeli/jotkut-erittain-mukava-juttu-atk14s-reititys.html">Jotkut erittäin mukava juttu ATK14 `s reititys</a>
+<!-- finnish variant -->
+<a href="/artikkeli/jotkut-erittain-mukava-juttu-atk14s-reititys.html">Jotkut erittäin mukava juttu ATK14 `s reititys</a>
+```
 
 ... and again none of the existing code needs to be touched.
 
@@ -95,11 +99,15 @@ class BooksRouter extends Atk14Router{
 The _recognize()_ method recognises an incoming URI. If the router determines that it handles the given URI, it sets all the necessary properties (controller, action, lang, and params).
 Otherwise it sets nothing and ATK14 passes the URI to the next router in line. The _recognize()_ method receives a _$uri_ parameter. The value passed in this parameter is a trimmed version of the actual URI. Consider this address, ...
 
-	http://myapp.localhost/admin/en/articles/edit/?id=123
+```text
+http://myapp.localhost/admin/en/articles/edit/?id=123
+```
 
 ... where _admin_ is the _namespace_. The value passed as $uri will then be:
 
-	/en/articles/edit/
+```text
+/en/articles/edit/
+```
 
 The _id_ parameter is found in the `$this->params` member property and the namespace name in `$this->namespace`.
 

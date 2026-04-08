@@ -32,18 +32,20 @@ Click through the form at <http://www.atk14.net/en/fields/boolean_field/>. You'l
 The *required* option makes no sense for boolean fields, so it is set to false on both fields. If you want to require the user to check a checkbox
 (for example, to confirm that they agree to the e-shop's terms and conditions), add that check to the *clean()* validation method.
 
-	<?php
-	class OrderForm extends ApplicationForm{
+```php
+<?php
+class OrderForm extends ApplicationForm{
 
-		// ....
+	// ....
 
-		function clean(){
-			if(!$this->cleaned_data["confirm"]){
-				$this->set_error("confirm","Please, check the checkbox");
-			}
-
-			return array(null,$this->cleaned_data);
+	function clean(){
+		if(!$this->cleaned_data["confirm"]){
+			$this->set_error("confirm","Please, check the checkbox");
 		}
+
+		return array(null,$this->cleaned_data);
 	}
+}
+```
 
 That covers boolean fields.

@@ -34,12 +34,14 @@ Configuration file
 
 Configuration is stored in `config/deploy.yml` and in its simplest form might look like this:
 
-    # file: config/deploy.yml
-    production:
-      server: "alpha.example.com"
-      user: "deploy"
-      directory: "/var/www/myapp/"
-      deploy_repository: "/home/deploy/repos/myapp.git"
+```yaml
+# file: config/deploy.yml
+production:
+  server: "alpha.example.com"
+  user: "deploy"
+  directory: "/var/www/myapp/"
+  deploy_repository: "/home/deploy/repos/myapp.git"
+```
 
 This configuration file states that:
 
@@ -51,24 +53,26 @@ This configuration file states that:
 
 In practice the configuration file will contain more. The following example is closer to what you'll see in real projects.
 
-    # file: config/deploy.yml
-    production:
-      url: "https://www.myapp.com/"
-      server: "alpha.example.com"
-      user: "deploy"
-      env: "PATH=/home/deploy/bin:$PATH"
-      directory: "/var/www/myapp/"
-      deploy_repository: "/home/deploy/repos/myapp.git"
-      before_deploy:
-      - "@local composer update"
-      - "@local npm install"
-      - "@local gulp"
-      - "@local gulp admin"
-      rsync:
-      - "public/admin/dist/"
-      - "vendor/"
-      after_deploy:
-      - "./scripts/migrate && ./scripts/delete_temporary_files dbmole_cache"
+```yaml
+# file: config/deploy.yml
+production:
+  url: "https://www.myapp.com/"
+  server: "alpha.example.com"
+  user: "deploy"
+  env: "PATH=/home/deploy/bin:$PATH"
+  directory: "/var/www/myapp/"
+  deploy_repository: "/home/deploy/repos/myapp.git"
+  before_deploy:
+  - "@local composer update"
+  - "@local npm install"
+  - "@local gulp"
+  - "@local gulp admin"
+  rsync:
+  - "public/admin/dist/"
+  - "vendor/"
+  after_deploy:
+  - "./scripts/migrate && ./scripts/delete_temporary_files dbmole_cache"
+```
 
 - The `url` value is informational only. It is simply useful for clarity and diagnosing potential issues.
 - `env` allows you to set environment variables.
@@ -82,7 +86,9 @@ Before running the deployment it is good to verify that the commit hash you are 
 
 Then simply run:
 
-    [john@asterix ~/projects/myapp]$ ./scripts/deploy production
+```shell
+[john@asterix ~/projects/myapp]$ ./scripts/deploy production
+```
 
 The deployment process will start executing commands one by one, reporting them in its output.
 
@@ -90,16 +96,22 @@ Among other things, the following is performed:
 
 1. A git remote named *production* is created if it doesn't exist yet:
 
-    git remote add production deploy@alpha.example.com:/home/deploy/repos/myapp.git
+```shell
+git remote add production deploy@alpha.example.com:/home/deploy/repos/myapp.git
+```
 
 2. The current HEAD from the current branch (let's say develop) is pushed to the *master* branch of the remote *production*:
 
-    git push production develop:master
+```shell
+git push production develop:master
+```
 
 3. On the server alpha.example.com, in the directory /var/www/myapp/, the following commands are run:
 
-    git checkout master && git fetch origin && git reset --hard origin/master
-    git submodule init && git submodule update
+```shell
+git checkout master && git fetch origin && git reset --hard origin/master
+git submodule init && git submodule update
+```
 
 Any additional commands that are executed depend on the configuration in `config/deploy.yml`.
 
@@ -110,49 +122,55 @@ Configuration for multiple production environments
 
 The configuration file can contain descriptions for multiple production installations.
 
-    # file: config/deploy.yml
-    production:
-      url: "https://www.myapp.com/"
-      server: "alpha.example.com"
-      user: "deploy"
-      env: "PATH=/home/deploy/bin:$PATH"
-      directory: "/var/www/myapp/"
-      deploy_repository: "/home/deploy/repos/myapp.git"
-      before_deploy:
-      - "@local composer update"
-      - "@local npm install"
-      - "@local gulp"
-      - "@local gulp admin"
-      rsync:
-      - "public/admin/dist/"
-      - "vendor/"
-      after_deploy:
-      - "./scripts/migrate && ./scripts/delete_temporary_files dbmole_cache"
+```yaml
+# file: config/deploy.yml
+production:
+  url: "https://www.myapp.com/"
+  server: "alpha.example.com"
+  user: "deploy"
+  env: "PATH=/home/deploy/bin:$PATH"
+  directory: "/var/www/myapp/"
+  deploy_repository: "/home/deploy/repos/myapp.git"
+  before_deploy:
+  - "@local composer update"
+  - "@local npm install"
+  - "@local gulp"
+  - "@local gulp admin"
+  rsync:
+  - "public/admin/dist/"
+  - "vendor/"
+  after_deploy:
+  - "./scripts/migrate && ./scripts/delete_temporary_files dbmole_cache"
 
-    staging:
-      url: "https://staging.myapp.com/"
-      server: "alpha.example.com"
-      user: "deploy"
-      env: "PATH=/home/deploy/bin:$PATH"
-      directory: "/var/www/myapp_staging"
-      deploy_repository: "/home/deploy/repos/myapp_staging.git"
-      before_deploy:
-      - "@local composer update"
-      - "@local npm install"
-      - "@local gulp"
-      - "@local gulp admin"
-      rsync:
-      - "public/admin/dist/"
-      - "vendor/"
-      after_deploy:
-      - "./scripts/migrate && ./scripts/delete_temporary_files dbmole_cache"
+staging:
+  url: "https://staging.myapp.com/"
+  server: "alpha.example.com"
+  user: "deploy"
+  env: "PATH=/home/deploy/bin:$PATH"
+  directory: "/var/www/myapp_staging"
+  deploy_repository: "/home/deploy/repos/myapp_staging.git"
+  before_deploy:
+  - "@local composer update"
+  - "@local npm install"
+  - "@local gulp"
+  - "@local gulp admin"
+  rsync:
+  - "public/admin/dist/"
+  - "vendor/"
+  after_deploy:
+  - "./scripts/migrate && ./scripts/delete_temporary_files dbmole_cache"
+```
 
 Deploy to production:
 
-    [john@asterix ~/projects/myapp]$ ./scripts/deploy production
+```shell
+[john@asterix ~/projects/myapp]$ ./scripts/deploy production
+```
 
 Deploy to staging:
 
-    [john@asterix ~/projects/myapp]$ ./scripts/deploy staging
+```shell
+[john@asterix ~/projects/myapp]$ ./scripts/deploy staging
+```
 
 Looking at this file with instructions for deploying to two production installations, you might notice that it contains a lot of duplicate lines. That's exactly why the next chapter covers how to simplify the contents of `config/deploy.yml`.

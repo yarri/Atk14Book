@@ -8,29 +8,35 @@ With a template
 
 Add a *hello_world* action to the *main* controller, ...
 
-    <?php
-    // file: app/controllers/main_controller.php
-    class MainController extends ApplicationController{
-      function hello_world(){ } // akce je prazdna
-    }
+```php
+<?php
+// file: app/controllers/main_controller.php
+class MainController extends ApplicationController{
+  function hello_world(){ } // akce je prazdna
+}
+```
 
 create the template in the right place...
 
-    {* file: app/views/main/hello_world.tpl *}
-    Hello World!
+```smarty
+{* file: app/views/main/hello_world.tpl *}
+Hello World!
+```
 
 and the greeting will be waiting for you at http://myapp.localhost/en/main/hello_world/
 
 Without a template
 ------------------
 
-    <?php
-    // file: app/controllers/main_controller.php
-    class MainController extends ApplicationController{
-      function hello_world(){
-        $this->render_template = false;
-        $this->response->write("Hello World!");
-      }
-    }
+```php
+<?php
+// file: app/controllers/main_controller.php
+class MainController extends ApplicationController{
+  function hello_world(){
+    $this->render_template = false;
+    $this->response->write("Hello World!");
+  }
+}
+```
 
 You'll find the greeting at the same URL.

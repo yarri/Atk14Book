@@ -14,7 +14,9 @@ Dále adresa může obsahovat:
 
 Vezměme si konkrétní adresu:
 
-    http://www.atk14.net/en/books/edit/?id=29
+```text
+http://www.atk14.net/en/books/edit/?id=29
+```
 
  * **en** je kód jazykové verze
  * **books** je název kontroleru
@@ -23,16 +25,22 @@ Vezměme si konkrétní adresu:
 
 Pokud je název akce *index*, v URL se neuvádí.
 
-    http://www.atk14.net/en/books/
-    http://www.atk14.net/en/books/?search=boat&offset=10
+```text
+http://www.atk14.net/en/books/
+http://www.atk14.net/en/books/?search=boat&offset=10
+```
 
 Akce *index* v kontroleru *main* ve výchozím jazyce je považována za *frontpage*.
 
-    http://www.atk14.net/
+```text
+http://www.atk14.net/
+```
 
 Frontpage v jiné jazykové verzi než výchozí je servírována takto:
 
-    http://www.atk14.net/fr/
+```text
+http://www.atk14.net/fr/
+```
 
 Namespace
 ---------
@@ -42,13 +50,17 @@ Typickým příkladem je administrační rozhraní.
 
 Zákazníkům elektronického obchodu je servírována základní aplikace bez pojmenovaného namespace.
 
-    http://www.gibona.net/
-    http://www.gibona.net/en/products/detail/?id=29
+```text
+http://www.gibona.net/
+http://www.gibona.net/en/products/detail/?id=29
+```
 
 Administrátor má v namespace *admin* k dispozici odlišný pohled na produkt.
 
-    http://www.gibona.net/admin/
-    http://www.gibona.net/admin/en/products/detail/?id=29
+```text
+http://www.gibona.net/admin/
+http://www.gibona.net/admin/en/products/detail/?id=29
+```
 
 Jeden ATK14 projekt může obsahovat několik takových namespaců (podaplikací).
 
@@ -57,5 +69,7 @@ Adresář public
 
 Adresář *public* je určen pro statický obsah jako jsou styly CSS, javascripty, obrázky atd. Adresy směřující do `/public/` nejsou obsluhovány frameworkem ATK14.
 
-    http://www.atk14.net/public/stylesheets/styles.css
-    http://www.atk14.net/public/images/atk14.gif
+```text
+http://www.atk14.net/public/stylesheets/styles.css
+http://www.atk14.net/public/images/atk14.gif
+```

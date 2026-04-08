@@ -15,35 +15,41 @@ This step only needs to be done once. When installing a second or further ATK14 
 
 Kinky creates a `$HOME/bin` directory on his allocated Opalstack server and symlinks the preferred PHP binary there.
 
-    [kinky@notebook ~]$ ssh snapper@snapper.opalstacked.com
-    [snapper@opal6 ~]$ mkdir bin
-    [snapper@opal6 ~]$ ln -s /usr/bin/php83 ~/bin/php
+```shell
+[kinky@notebook ~]$ ssh snapper@snapper.opalstacked.com
+[snapper@opal6 ~]$ mkdir bin
+[snapper@opal6 ~]$ ln -s /usr/bin/php83 ~/bin/php
+```
 
 He adds the new path to PATH in `~/.bash_profile` and sets the ATK14_ENV environment variable.
 
-    # .bash_profile
+```bash
+# .bash_profile
 
-    # Get the aliases and functions
-    if [ -f ~/.bashrc ]; then
-            . ~/.bashrc
-    fi
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+fi
 
-    # User specific environment and startup programs
+# User specific environment and startup programs
 
-    PATH=$HOME/bin:$PATH
-    export PATH
+PATH=$HOME/bin:$PATH
+export PATH
 
-    ATK14_ENV=production
-    export ATK14_ENV
+ATK14_ENV=production
+export ATK14_ENV
+```
 
 He also adds the PATH and ATK14_ENV settings at the top of the crontab.
 
-    [snapper@opal6 ~]$ crontab -e
+```shell
+[snapper@opal6 ~]$ crontab -e
 
-    MAILTO=jan.kucera@example.com
-    ATK14_ENV=production
-    PATH=/home/snapper/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
-    CRON_TZ=Europe/Prague
+MAILTO=jan.kucera@example.com
+ATK14_ENV=production
+PATH=/home/snapper/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+CRON_TZ=Europe/Prague
+```
 
 Creating the application, site, and database
 ---------------------------------------------
@@ -65,27 +71,31 @@ Deployment recipe for production
 
 Kinky writes the deployment recipe into `config/deploy.yml`.
 
-    [kinky@notebook ~/projects/filcker]$ vim config/deploy.yml
+```shell
+[kinky@notebook ~/projects/filcker]$ vim config/deploy.yml
+```
 
-    # file: config/deploy.yml
-    production:
-      url: "https://www.filcker.net/"
-      user: "snapper"
-      env: "PATH=/home/{{user}}/bin:$PATH"
-      server: "{{user}}.opalstacked.com"
-      directory: "/home/{{user}}/apps/filcker/"
-      deploy_repository: "{{user}}@{{server}}:repos/filcker.git"
-      before_deploy:
-      - "@local composer update"
-      - "@local npm install"
-      - "@local gulp"
-      - "@local gulp admin"
-      rsync: 
-      - "public/dist/"
-      - "public/admin/dist/"
-      - "vendor/"
-      after_deploy:
-      - "./scripts/migrate && ./scripts/delete_temporary_files dbmole_cache"
+```yaml
+# file: config/deploy.yml
+production:
+  url: "https://www.filcker.net/"
+  user: "snapper"
+  env: "PATH=/home/{{user}}/bin:$PATH"
+  server: "{{user}}.opalstacked.com"
+  directory: "/home/{{user}}/apps/filcker/"
+  deploy_repository: "{{user}}@{{server}}:repos/filcker.git"
+  before_deploy:
+  - "@local composer update"
+  - "@local npm install"
+  - "@local gulp"
+  - "@local gulp admin"
+  rsync: 
+  - "public/dist/"
+  - "public/admin/dist/"
+  - "vendor/"
+  after_deploy:
+  - "./scripts/migrate && ./scripts/delete_temporary_files dbmole_cache"
+```
 
 Transferring the application to production
 -------------------------------------------
@@ -94,11 +104,15 @@ The ATK14 framework includes the `scripts/initialize_deployment_stage` tool, whi
 
 Kinky runs:
 
-    [kinky@notebook ~/projects/filcker]$ ./scripts/initialize_deployment_stage production
+```shell
+[kinky@notebook ~/projects/filcker]$ ./scripts/initialize_deployment_stage production
+```
 
 He carefully reviews the printed commands. They look good, so he boldly enters:
 
-    [kinky@notebook ~/projects/filcker]$ ./scripts/initialize_deployment_stage production | sh
+```shell
+[kinky@notebook ~/projects/filcker]$ ./scripts/initialize_deployment_stage production | sh
+```
 
 Phew. Everything went well this time, so Kinky relaxes again and his blood pressure slowly returns to normal.
 
@@ -111,23 +125,31 @@ Kinky logs into the production installation, where he creates a local file with 
 
 Note that there is no need to configure the test and development databases at all — those won't be connected to in production.
 
-    [kinky@notebook ~/projects/filcker]$ ./scripts/shell production
-    [snapper@opal6 ~/apps/filcker$ vim local_config/database.yml
+```shell
+[kinky@notebook ~/projects/filcker]$ ./scripts/shell production
+[snapper@opal6 ~/apps/filcker$ vim local_config/database.yml
+```
 
-    # file: local_config/database.yml
-    production:
-      host: 127.0.0.1
-      database: "filcker_production"
-      username: "filcker_production"
-      password: "DatabasePassword123"
+```yaml
+# file: local_config/database.yml
+production:
+  host: 127.0.0.1
+  database: "filcker_production"
+  username: "filcker_production"
+  password: "DatabasePassword123"
+```
 
 Kinky can now test that the production database connection works:
 
-    [snapper@opal6 ~/apps/filcker]$ ./scripts/dbconsole
+```shell
+[snapper@opal6 ~/apps/filcker]$ ./scripts/dbconsole
+```
 
 If everything works, he runs the migrations:
-    
-    [snapper@opal6 ~/apps/filcker]$ ./scripts/migrate
+
+```shell
+[snapper@opal6 ~/apps/filcker]$ ./scripts/migrate
+```
 
 And that's it.
 
@@ -136,6 +158,8 @@ Deployment
 
 Subsequent deployments are then as easy as pie. Kinky and his colleagues develop calmly on their laptops, and whenever they decide to publish their work to production, they simply run:
 
-    [kinky@notebook ~/projects/filcker]$ ./scripts/deployment production
+```shell
+[kinky@notebook ~/projects/filcker]$ ./scripts/deployment production
+```
 
 Kinky really nailed this one! :)

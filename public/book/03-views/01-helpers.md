@@ -14,38 +14,42 @@ Za velkou pozornost stojí dvojice funkcí *{placeholder}* a *{content}*.
 
 Představ si takovýto layout.
 
-    {* file: app/layouts/default.tpl *}
-    
-    <html>
-      <head>
-        <title>{$page_title}</title>
-      </head>
-      <body>
+```smarty
+{* file: app/layouts/default.tpl *}
 
-        <div id="navigation">
-          <h3>Rozcestník</h3>
-          <ul id="navigation">
-            <li><a href="/">Hlavní stránka</a></li>
-            {placeholder for=other_navigation_items}
-          </ul>
-        </div>
+<html>
+  <head>
+    <title>{$page_title}</title>
+  </head>
+  <body>
 
-        {render partial="shared/layout/flash_message"}
-        {placeholder}
-      </body>
+    <div id="navigation">
+      <h3>Rozcestník</h3>
+      <ul id="navigation">
+        <li><a href="/">Hlavní stránka</a></li>
+        {placeholder for=other_navigation_items}
+      </ul>
+    </div>
 
-    </html>
+    {render partial="shared/layout/flash_message"}
+    {placeholder}
+  </body>
+
+</html>
+```
 
 Teď uvažujme o šabloně detailu produktu.
 
-    {* soubor app/views/products/detail.tpl *}
+```smarty
+{* soubor app/views/products/detail.tpl *}
 
-    <h1>{$product->getTitle()}</h1>
-    {$product->getDescription()}
+<h1>{$product->getTitle()}</h1>
+{$product->getDescription()}
 
-    {content for=other_navigation_items}
-      <li><a href="{$product->getManualUrl()}">Stáhněte si manuál k produktu</a></li>
-    {/content}
+{content for=other_navigation_items}
+  <li><a href="{$product->getManualUrl()}">Stáhněte si manuál k produktu</a></li>
+{/content}
+```
 
 Co bude zobrazeno? Informace o produktu budou zobrazeny v *{placeholder}* a do navigace, tedy mimo hlavní obsah, bude přidán další odkaz pro stažení manuálu právě prohlíženého produktu.
 
@@ -57,30 +61,34 @@ Platí, že parciální šablony začínají podtržítkem a mají příponu tpl
 
 Helper {render} však nahrazuje i Smartyho {foreach}. To si ukážeme na zobrazení přehledu produktů.
 
-    {* soubor app/views/products/index.tpl *}
+```smarty
+{* soubor app/views/products/index.tpl *}
 
-    <h1>Přehled produktů</h1>
-  
-    <table>
-      <thead>
-        <tr>
-          <th>Název</th>
-          <th>Cena</th>
-        </tr>
-      </thead>
-      <tbody>
-        {render partial=product_item from=$products item=product}
-      </tbody>
-    </table>
+<h1>Přehled produktů</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Název</th>
+      <th>Cena</th>
+    </tr>
+  </thead>
+  <tbody>
+    {render partial=product_item from=$products item=product}
+  </tbody>
+</table>
+```
 
 Každý řádek tabulky pak vykreslíme pomocí nasledující parciální šablony.
 
-    {* soubor app/views/products/_product_item.tpl *}
-    
-    <tr>
-      <td>{$product->getTitle()}</td>
-      <td>{$product->getPrice()}</td>
-    </tr>
+```smarty
+{* soubor app/views/products/_product_item.tpl *}
+
+<tr>
+  <td>{$product->getTitle()}</td>
+  <td>{$product->getPrice()}</td>
+</tr>
+```
 
 Pokud se ti zdá, že používání parciálních šablon místo {foreach} postrádá smysl, asi o tom docela dost přemýšlíš. Věz však, že parciální šablonky jsou fajn a podporují princip DRY.
 

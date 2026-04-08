@@ -21,11 +21,15 @@ This little robot does nothing — it just logs a message to `./log/robots.log`.
 
 Run it with this command:
 
-	$ ./scripts/robot_runner cool_hand
+```shell
+$ ./scripts/robot_runner cool_hand
+```
 
 Running `robot_runner` without a parameter prints a list of available robots and prompts you to enter the name of the robot to run.
 
-	$ ./scripts/robot_runner
+```shell
+$ ./scripts/robot_runner
+```
 
 Available resources
 -------------------
@@ -146,16 +150,18 @@ cd ..
 
 You then add these scripts to the crontab on the production server:
 
-	$ crontab -e
+```shell
+$ crontab -e
 
-	MAILTO=admin@example.com
-	ATK14_ENV=production
-	PATH=/home/deploy/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
-	CRON_TZ=Europe/Prague
+MAILTO=admin@example.com
+ATK14_ENV=production
+PATH=/home/deploy/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+CRON_TZ=Europe/Prague
 
-	*/5 * * * *  /var/www/myapp/local_scripts/robots_regular >> /var/www/myapp/log/cron.log 2>&1
-	0   3 * * *  /var/www/myapp/local_scripts/robots_daily  >> /var/www/myapp/log/cron.log 2>&1
-	0   4 * * 0  /var/www/myapp/local_scripts/robots_weekly >> /var/www/myapp/log/cron.log 2>&1
+*/5 * * * *  /var/www/myapp/local_scripts/robots_regular >> /var/www/myapp/log/cron.log 2>&1
+0   3 * * *  /var/www/myapp/local_scripts/robots_daily  >> /var/www/myapp/log/cron.log 2>&1
+0   4 * * 0  /var/www/myapp/local_scripts/robots_weekly >> /var/www/myapp/log/cron.log 2>&1
+```
 
 Robot output is written to `./log/robots.log`. Error output from crontab goes to the email defined in `MAILTO`.
 
