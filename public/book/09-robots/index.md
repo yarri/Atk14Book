@@ -21,11 +21,15 @@ Tento robůtek nedělá nic, pouze zaloguje zprávu do logu `./log/robots.log`.
 
 Spustíme jej tímto příkazem:
 
-	$ ./scripts/robot_runner cool_hand
+```shell
+$ ./scripts/robot_runner cool_hand
+```
 
 Příkaz `robot_runner` spuštěný bez parametru vypíše seznam dostupných robotů a nabídne prompt pro zadání názvu robota, který má být spuštěn.
 
-	$ ./scripts/robot_runner
+```shell
+$ ./scripts/robot_runner
+```
 
 Dostupné zdroje
 ---------------
@@ -103,7 +107,7 @@ Agregační skripty a crontab
 
 V praxi roboty nespouštíš po jednom, ale seskupuješ je do agregačních skriptů podle toho, jak často mají běžet. Tyto skripty umísťuj do adresáře `./local_scripts/`.
 
-Pro skripty spouštěné každých 5 minut:
+Pro roboty spouštěné každých 5 minut:
 
 ```bash
 #!/usr/bin/env bash
@@ -118,7 +122,7 @@ cd ..
 ./scripts/robot_runner invoice_file_notifier
 ```
 
-Pro skripty spouštěné jednou denně:
+Pro roboty spouštěné jednou denně:
 
 ```bash
 #!/usr/bin/env bash
@@ -132,7 +136,7 @@ cd ..
 ./scripts/robot_runner import_delivery_service_branches
 ```
 
-Pro skripty spouštěné jednou týdně:
+Pro roboty spouštěné jednou týdně:
 
 ```bash
 #!/usr/bin/env bash
@@ -146,16 +150,18 @@ cd ..
 
 Tyto skripty pak zadáš do crontabu na produkčním serveru:
 
-	$ crontab -e
+```shell
+$ crontab -e
 
-	MAILTO=admin@example.com
-	ATK14_ENV=production
-	PATH=/home/deploy/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
-	CRON_TZ=Europe/Prague
+MAILTO=admin@example.com
+ATK14_ENV=production
+PATH=/home/deploy/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+CRON_TZ=Europe/Prague
 
-	*/5 * * * *  /var/www/myapp/local_scripts/robots_regular >> /var/www/myapp/log/cron.log 2>&1
-	0   3 * * *  /var/www/myapp/local_scripts/robots_daily  >> /var/www/myapp/log/cron.log 2>&1
-	0   4 * * 0  /var/www/myapp/local_scripts/robots_weekly >> /var/www/myapp/log/cron.log 2>&1
+*/5 * * * *  /var/www/myapp/local_scripts/robots_regular >> /var/www/myapp/log/cron.log 2>&1
+0   3 * * *  /var/www/myapp/local_scripts/robots_daily  >> /var/www/myapp/log/cron.log 2>&1
+0   4 * * 0  /var/www/myapp/local_scripts/robots_weekly >> /var/www/myapp/log/cron.log 2>&1
+```
 
 Výstup robotů se zapisuje do `./log/robots.log`. Chybový výstup z crontabu jde na e-mail definovaný v `MAILTO`.
 

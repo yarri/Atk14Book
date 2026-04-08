@@ -8,50 +8,60 @@ A static router can only make formal changes to the appearance of a URL. It cann
 
 Consider the fairly realistic case of an article detail URL.
 
-	{* a partial template *}
-	{a controller=articles action=detail id=$article}{$article->getTitle()|h}{/a}
+```smarty
+{* a partial template *}
+{a controller=articles action=detail id=$article}{$article->getTitle()|h}{/a}
+```
 
 The above code can generate the following HTML.
-	
-	<a href="/en/articles/detail/?id=123">Some very nice article about ATK14`s routing</a>
+
+```html
+<a href="/en/articles/detail/?id=123">Some very nice article about ATK14`s routing</a>
+```
 
 If you want to change the article detail URL to look like this, ...
 
-	<!-- english variant -->
-	<a href="/article-123.html">Some very nice article about ATK14`s routing</a>
+```html
+<!-- english variant -->
+<a href="/article-123.html">Some very nice article about ATK14`s routing</a>
 
-	<!-- czech variant -->
-	<a href="/clanek-123.html">Velmi zdařilý článek o routování v ATK14</a>
+<!-- czech variant -->
+<a href="/clanek-123.html">Velmi zdařilý článek o routování v ATK14</a>
+```
 
 ... use a static router.
 
-	<?php
-	// file: config/routers/articles_router.php
+```php
+<?php
+// file: config/routers/articles_router.php
 
-	class ArticlesRouter extends Atk14Router{
-		function setUp(){
-			$this->addRoute("/article-<id>.html","en/articles/detail",array(
-				"id" => "/[0-9]+/"
-			));
-			$this->addRoute("/clanek-<id>.html","cs/articles/detail",array(
-				"id" => "/[0-9]+/"
-			));
-		}
+class ArticlesRouter extends Atk14Router{
+	function setUp(){
+		$this->addRoute("/article-<id>.html","en/articles/detail",array(
+			"id" => "/[0-9]+/"
+		));
+		$this->addRoute("/clanek-<id>.html","cs/articles/detail",array(
+			"id" => "/[0-9]+/"
+		));
 	}
+}
+```
 
 Sharp eyes will have spotted the use of regular expressions to detect the number in the URL. And with regular expressions, a static router is far from toothless.
 
 Now imagine that you later add a Finnish language version to the application but forget to add Finnish URL support to the router. What happens?
 Links to articles in Finnish will be built using the generic rule.
 
-	<!-- english variant -->
-	<a href="/article-123.html">Some very nice article about ATK14`s routing</a>
+```html
+<!-- english variant -->
+<a href="/article-123.html">Some very nice article about ATK14`s routing</a>
 
-	<!-- czech variant -->
-	<a href="/clanek-123.html">Velmi zdařilý článek o routování v ATK14</a>
+<!-- czech variant -->
+<a href="/clanek-123.html">Velmi zdařilý článek o routování v ATK14</a>
 
-	<!-- finnish  variant -->
-	<a href="/fi/articles/detail/?id=123">Jotkut erittäin mukava juttu ATK14 `s reititys</a>
+<!-- finnish  variant -->
+<a href="/fi/articles/detail/?id=123">Jotkut erittäin mukava juttu ATK14 `s reititys</a>
+```
 
 It is quite likely that search engines will index this generic form of "Finnish" URLs. But will these generic URLs still work after you add the Finnish form to the router?
 Of course they will! And on top of that, visiting them will trigger an automatic redirect to the new form with the HTTP code _301 Moved Permanently_, guiding search engines to the new URLs completely without any further effort on your part.
@@ -61,25 +71,31 @@ First come, first served
 
 When building links, ATK14 iterates through all the rules and uses the first one that fits the given case. Unfortunately this is a moment that can cause quite a headache. The previous chapter includes the following router as an example.
 
-	<?php
-	// file: config/routers/seo_router.php
-	class SeoRouter extends Atk14Router{
-		function setUp(){
-			$this->addRoute("/company/about-us/","main/about_us");
-			$this->addRoute("/company/contact/","main/contact");
-			$this->addRoute("/sitemap.xml","sitemap/index",array("format" => "xml"));
-			$this->addRoute("/sitemap/","sitemap/index");
-		}
+```php
+<?php
+// file: config/routers/seo_router.php
+class SeoRouter extends Atk14Router{
+	function setUp(){
+		$this->addRoute("/company/about-us/","main/about_us");
+		$this->addRoute("/company/contact/","main/contact");
+		$this->addRoute("/sitemap.xml","sitemap/index",array("format" => "xml"));
+		$this->addRoute("/sitemap/","sitemap/index");
 	}
+}
+```
 
 It is very important to realise here what would happen if the last 2 rules were swapped. Bad things would start happening. The following code...
 
-	{* a template snippet *}
-	{a controller=sitemap action=index format=xml}Sitemap in XML{/a}
+```smarty
+{* a template snippet *}
+{a controller=sitemap action=index format=xml}Sitemap in XML{/a}
+```
 
 ... would generate this output...
 
-	<a href="/sitemap/?format=xml">Sitemap in XML</a>
+```html
+<a href="/sitemap/?format=xml">Sitemap in XML</a>
+```
 
 ... and the headache slowly begins. In reality the last rule would never be used.
 

@@ -31,70 +31,74 @@ The list goes in the _index_ action.
 
 The simplest possible version of a list might look like this — no searching or column sorting.
 
-	<?php
-	// file: app/controllers/books_controller.php
-	class BooksController extends ApplicationController{
+```php
+<?php
+// file: app/controllers/books_controller.php
+class BooksController extends ApplicationController{
 
-		/**
-		 * Provides the list of books.
-		 */
-		function index(){
-			$this->page_title = "Listing books";
+	/**
+	 * Provides the list of books.
+	 */
+	function index(){
+		$this->page_title = "Listing books";
 
-			$this->tpl_data["finder"] = Book::Finder(array(
-				"order" => "UPPER(title)",
-				"limit" => 10,
-				"offset" => $this->params->getInt("offset"),
-			));
-		}
-
-		// ... other actions...
+		$this->tpl_data["finder"] = Book::Finder(array(
+			"order" => "UPPER(title)",
+			"limit" => 10,
+			"offset" => $this->params->getInt("offset"),
+		));
 	}
+
+	// ... other actions...
+}
+```
 
 In practice, however, searching and column sorting are usually needed.
 
-	<?php
-	// file: app/controllers/books_controller.php
-	class BooksController extends ApplicationController{
+```php
+<?php
+// file: app/controllers/books_controller.php
+class BooksController extends ApplicationController{
 
-		/**
-		 * Provides the list of books.
-		 */
-		function index(){
-			$this->page_title = "Listing books";
+	/**
+	 * Provides the list of books.
+	 */
+	function index(){
+		$this->page_title = "Listing books";
 
-			// initialize sorting
-			$this->sorting->add("title",array("order_by" => "UPPER(title)"));
-			$this->sorting->add("author",array(
-				"ascending_ordering" => "UPPER(author), UPPER(title)",
-				"descending_ordering" => "UPPER(author) DESC, UPPER(title) DESC"
-			));
-			$this->sorting->add("code");
+		// initialize sorting
+		$this->sorting->add("title",array("order_by" => "UPPER(title)"));
+		$this->sorting->add("author",array(
+			"ascending_ordering" => "UPPER(author), UPPER(title)",
+			"descending_ordering" => "UPPER(author) DESC, UPPER(title) DESC"
+		));
+		$this->sorting->add("code");
 
-			// validate input parameters
-			if(!($d = $this->form->validate($this->params))){
-				return;
-			}
-
-			// build conditions
-			$conditions = array();
-			$bind_ar = array();
-			if($d["search"]){
-				$conditions[] = "UPPER(title||author||code||shelfmark) LIKE UPPER(:search)";
-				$bind_ar[":search"] = "%$d[search]%";
-			}
-
-			$this->tpl_data["finder"] = Book::Finder(array(
-				"conditions" => $conditions,
-				"bind_ar" => $bind_ar,
-				"order" => $this->sorting->getOrder(),
-				"limit" => 10,
-				"offset" => $this->params->getInt("offset"),
-			));
+		// validate input parameters
+		if(!($d = $this->form->validate($this->params))){
+			return;
 		}
 
-		// ... other actions...
+		// build conditions
+		$conditions = array();
+		$bind_ar = array();
+		if($d["search"]){
+			$conditions[] = "UPPER(title||author||code||shelfmark) LIKE UPPER(:search)";
+			$bind_ar[":search"] = "%$d[search]%";
+		}
+
+		$this->tpl_data["finder"] = Book::Finder(array(
+			"conditions" => $conditions,
+			"bind_ar" => $bind_ar,
+			"order" => $this->sorting->getOrder(),
+			"limit" => 10,
+			"offset" => $this->params->getInt("offset"),
+		));
 	}
+
+	// ... other actions...
+}
+```
 
 The form has a single search field — simple as can be.
 

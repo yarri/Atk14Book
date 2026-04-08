@@ -14,38 +14,42 @@ A pair worth special attention is *{placeholder}* and *{content}*.
 
 Imagine a layout like this.
 
-    {* file: app/layouts/default.tpl *}
-    
-    <html>
-      <head>
-        <title>{$page_title}</title>
-      </head>
-      <body>
+```smarty
+{* file: app/layouts/default.tpl *}
 
-        <div id="navigation">
-          <h3>Navigation</h3>
-          <ul id="navigation">
-            <li><a href="/">Home</a></li>
-            {placeholder for=other_navigation_items}
-          </ul>
-        </div>
+<html>
+  <head>
+    <title>{$page_title}</title>
+  </head>
+  <body>
 
-        {render partial="shared/layout/flash_message"}
-        {placeholder}
-      </body>
+    <div id="navigation">
+      <h3>Navigation</h3>
+      <ul id="navigation">
+        <li><a href="/">Home</a></li>
+        {placeholder for=other_navigation_items}
+      </ul>
+    </div>
 
-    </html>
+    {render partial="shared/layout/flash_message"}
+    {placeholder}
+  </body>
+
+</html>
+```
 
 Now consider a product detail template.
 
-    {* file: app/views/products/detail.tpl *}
+```smarty
+{* file: app/views/products/detail.tpl *}
 
-    <h1>{$product->getTitle()}</h1>
-    {$product->getDescription()}
+<h1>{$product->getTitle()}</h1>
+{$product->getDescription()}
 
-    {content for=other_navigation_items}
-      <li><a href="{$product->getManualUrl()}">Download the product manual</a></li>
-    {/content}
+{content for=other_navigation_items}
+  <li><a href="{$product->getManualUrl()}">Download the product manual</a></li>
+{/content}
+```
 
 What will be rendered? The product information will appear in *{placeholder}* and an additional link to download the manual for the currently viewed product will be injected into the navigation — outside the main content area.
 
@@ -57,30 +61,34 @@ Partial templates start with an underscore and have the `.tpl` extension — nei
 
 The *{render}* helper also replaces Smarty's *{foreach}*. Let's see this in action on a product listing.
 
-    {* file: app/views/products/index.tpl *}
+```smarty
+{* file: app/views/products/index.tpl *}
 
-    <h1>Product listing</h1>
-  
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Price</th>
-        </tr>
-      </thead>
-      <tbody>
-        {render partial=product_item from=$products item=product}
-      </tbody>
-    </table>
+<h1>Product listing</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    {render partial=product_item from=$products item=product}
+  </tbody>
+</table>
+```
 
 Each table row is then rendered by the following partial template.
 
-    {* file: app/views/products/_product_item.tpl *}
-    
-    <tr>
-      <td>{$product->getTitle()}</td>
-      <td>{$product->getPrice()}</td>
-    </tr>
+```smarty
+{* file: app/views/products/_product_item.tpl *}
+
+<tr>
+  <td>{$product->getTitle()}</td>
+  <td>{$product->getPrice()}</td>
+</tr>
+```
 
 If using partial templates instead of *{foreach}* seems pointless to you, you're probably thinking about it quite a lot. Know, however, that partial templates are great and support the DRY principle.
 
