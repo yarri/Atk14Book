@@ -1,4 +1,5 @@
 /* Imports */
+//eslint-disable-next-line no-unused-vars
 import * as bootstrap from "bootstrap";
 
 // Alternatively you can import only the BS components you need. Seems to have no effect on the bundle size.

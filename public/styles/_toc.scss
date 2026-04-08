@@ -27,6 +27,33 @@
       }
     }
   }
+  &.nav--subchapters {
+    border-left: 1px solid $primary;
+    .nav-link {
+      color: $nav-link-color;
+      .chapter-no {
+        color: $gray-600;
+      }
+      &:hover {
+        text-decoration: underline;
+        background-color: transparent;
+        color: $nav-link-hover-color;
+      }
+    }
+  }
+  &.nav--inpage {
+    .nav-link {
+      color: $nav-link-color;
+      .chapter-no {
+        color: $gray-600;
+      }
+      &:hover {
+        text-decoration: underline;
+        background-color: transparent;
+        color: $nav-link-hover-color;
+      }
+    }
+  }
 }
 
 #toc-toggle {
