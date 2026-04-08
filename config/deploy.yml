@@ -6,8 +6,8 @@ production:
   deploy_repository: "{{user}}@{{server}}:apps/book.atk14.net/repos/production.git"
   before_deploy:
   - "@local composer update"
-  - "@local bower update"
-  - "@local gulp"
+  - "@local npm install"
+  - "@local npm run dist"
   rsync:
   - "vendor"
   - "public/dist"
