@@ -63,7 +63,7 @@
 
 	<body class="body_{$controller}_{$action}" data-controller="{$controller}" data-action="{$action}">
 
-		<header class="mt-0 pt-0">
+		<header class="mt-0 pt-0 bg-body-tertiary">
 			{render partial="shared/layout/header"}
 
 
