@@ -6,35 +6,39 @@ Lze zadat příkazy, které budou spuštěny před nebo po deploymentu na lokaln
 
 Prohlédni ukázkový konfigurační soubor.
 
-    # file: config/deploy.yml
-    production:
-      user: "deploy"
-      server: "venus.universe-hosting.org"
-      directory: "/home/deploy/apps/www.myapp.net/"
-      deploy_repository: "deploy@venus.universe-hosting.org:repos/myapp.git"
-      before_deploy:
-      - "@local composer update"
-      - "@local bower update"
-      - "@local gulp"
-      rsync: 
-      - "./vendor/"
-      - "./public/dist/"
-      after_deploy:
-      - "./scripts/migrate"
-      - "./scripts/delete_temporary_files dbmole_cache"
+```yaml
+# file: config/deploy.yml
+production:
+  user: "deploy"
+  server: "venus.universe-hosting.org"
+  directory: "/home/deploy/apps/www.myapp.net/"
+  deploy_repository: "deploy@venus.universe-hosting.org:repos/myapp.git"
+  before_deploy:
+  - "@local composer update"
+  - "@local bower update"
+  - "@local gulp"
+  rsync: 
+  - "./vendor/"
+  - "./public/dist/"
+  after_deploy:
+  - "./scripts/migrate"
+  - "./scripts/delete_temporary_files dbmole_cache"
+```
 
 Je zde popsán deployment do jednoho produkčního prostředí (tzv. stage) s názvem _production_.
 V praxi se ale běžně stává, že existuje více produkčních prostředí &mdash; např. _preview_, _acceptation_... I na to bylo myšleno.
 
 Deployment je spuštěn příkazem ```./scripts/deploy```
 
-    # deployment do výchozí (první) stage
-    $ ./scripts/deploy
+```shell
+# deployment do výchozí (první) stage
+$ ./scripts/deploy
   
-    # deployment do stage production
-    $ ./scripts/deploy production
+# deployment do stage production
+$ ./scripts/deploy production
 
-    # deployment do stage preview
-    $ ./scripts/deploy preview
+# deployment do stage preview
+$ ./scripts/deploy preview
+```
 
-Více bude o deploymentu pojednáno v samostatné kapitole. 
+Více bude o deploymentu pojednáno v samostatné kapitole.

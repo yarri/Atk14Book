@@ -9,25 +9,29 @@ doplnit do URL titulek článku, po čemž baží SEO kouzelníci.
 
 Věz, že pokud jsme se u statického routeru spokojili s tímto, ...
 
-	<!-- english variant -->
-	<a href="/article-123.html">Some very nice article about ATK14`s routing</a>
+```html
+<!-- english variant -->
+<a href="/article-123.html">Some very nice article about ATK14`s routing</a>
 
-	<!-- czech variant -->
-	<a href="/clanek-123.html">Velmi zdařilý článek o routování v ATK14</a>
+<!-- czech variant -->
+<a href="/clanek-123.html">Velmi zdařilý článek o routování v ATK14</a>
 
-	<!-- finnish  variant -->
-	<a href="/artikkeli-123.html">Jotkut erittäin mukava juttu ATK14 `s reititys</a>
+<!-- finnish  variant -->
+<a href="/artikkeli-123.html">Jotkut erittäin mukava juttu ATK14 `s reititys</a>
+```
 
 ... s dynamickým routerem jsme schopni dosáhnout něčeho takového...
 
-	<!-- english variant -->
-	<a href="/article/some-very-nice-article-about-atk14s-routing.html">Some very nice article about ATK14`s routing</a>
+```html
+<!-- english variant -->
+<a href="/article/some-very-nice-article-about-atk14s-routing.html">Some very nice article about ATK14`s routing</a>
 
-	<!-- czech variant -->
-	<a href="/clanek/velmi-zdarily-clanek-o-routovani-v-atk14.html">Velmi zdařilý článek o routování v ATK14</a>
+<!-- czech variant -->
+<a href="/clanek/velmi-zdarily-clanek-o-routovani-v-atk14.html">Velmi zdařilý článek o routování v ATK14</a>
 
-	<!-- finnish variant -->
-	<a href="/artikkeli/jotkut-erittain-mukava-juttu-atk14s-reititys.html">Jotkut erittäin mukava juttu ATK14 `s reititys</a>
+<!-- finnish variant -->
+<a href="/artikkeli/jotkut-erittain-mukava-juttu-atk14s-reititys.html">Jotkut erittäin mukava juttu ATK14 `s reititys</a>
+```
 
 ... a opět se vše obejde bez potřeby úpravy již hotového kódu.
 
@@ -99,11 +103,15 @@ class BooksRouter extends Atk14Router{
 Metoda _recognize()_ rozpoznává příchozí URI. Jestliže router usoudí, že dané URI obsluhuje, nastaví všechny potřebné vlastnosti (controller, action, lang a params).
 V opačném případě nenastavuje nic a ATK14 pak předá URI k rozpoznání dalšímu routeru v pořadí. Metoda _recognize()_ přijímá parametr _$uri_. Hodnota předaná v tomto parametru vznikla zeštíhlením skutečného URI. Uvažujte tuto adresu, ...
 
-	http://myapp.localhost/admin/en/articles/edit/?id=123
+```text
+http://myapp.localhost/admin/en/articles/edit/?id=123
+```
 
 ... kde _admin_ je _namespace_. Pak hodnota předaná parametrem $uri bude
 
-	/en/articles/edit/
+```text
+/en/articles/edit/
+```
 
 Parametr _id_ najdeš v členské vlastnosti _$this->params_ a název _namespace_ v _$this->namespace_.
 

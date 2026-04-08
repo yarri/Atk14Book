@@ -14,7 +14,9 @@ Optionally a URL may also contain:
 
 Let's look at a concrete URL:
 
-    http://www.atk14.net/en/books/edit/?id=29
+```text
+http://www.atk14.net/en/books/edit/?id=29
+```
 
  * **en** is the language code
  * **books** is the controller name
@@ -23,16 +25,22 @@ Let's look at a concrete URL:
 
 If the action name is *index*, it is omitted from the URL.
 
-    http://www.atk14.net/en/books/
-    http://www.atk14.net/en/books/?search=boat&offset=10
+```text
+http://www.atk14.net/en/books/
+http://www.atk14.net/en/books/?search=boat&offset=10
+```
 
 The *index* action of the *main* controller in the default language is treated as the *frontpage*.
 
-    http://www.atk14.net/
+```text
+http://www.atk14.net/
+```
 
 The frontpage in a language other than the default is served like this:
 
-    http://www.atk14.net/fr/
+```text
+http://www.atk14.net/fr/
+```
 
 Namespace
 ---------
@@ -42,13 +50,17 @@ A typical example is an administration interface.
 
 Customers of an e-shop are served by the main application with no named namespace.
 
-    http://www.gibona.net/
-    http://www.gibona.net/en/products/detail/?id=29
+```text
+http://www.gibona.net/
+http://www.gibona.net/en/products/detail/?id=29
+```
 
 The administrator has a different view of a product in the *admin* namespace.
 
-    http://www.gibona.net/admin/
-    http://www.gibona.net/admin/en/products/detail/?id=29
+```text
+http://www.gibona.net/admin/
+http://www.gibona.net/admin/en/products/detail/?id=29
+```
 
 A single ATK14 project can contain several such namespaces (sub-applications).
 
@@ -57,5 +69,7 @@ The public directory
 
 The *public* directory is intended for static content such as CSS stylesheets, JavaScript files, images, etc. URLs pointing to `/public/` are not handled by the ATK14 framework.
 
-    http://www.atk14.net/public/stylesheets/styles.css
-    http://www.atk14.net/public/images/atk14.gif
+```text
+http://www.atk14.net/public/stylesheets/styles.css
+http://www.atk14.net/public/images/atk14.gif
+```

@@ -70,7 +70,9 @@ In short, enabling CSRF protection comes down to a single line — calling `enab
 
 The protected form contains a security token that might look like this:
 
-	<input type="hidden" value="2d1cd52926b3e0cb61e13858e8dd868622e758ef" name="_token" />
+```html
+<input type="hidden" value="2d1cd52926b3e0cb61e13858e8dd868622e758ef" name="_token" />
+```
 
 The token is hard to guess, is different for every visitor, and has a limited validity period (about 10 minutes). If the user submits no token or an expired one, form validation fails with the error message *Please submit the form again.*
 

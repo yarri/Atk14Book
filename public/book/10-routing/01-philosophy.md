@@ -6,54 +6,62 @@ ATK14 umožňuje definovat vzhled adres URL vedoucích na konkrétní akce tak, 
 Nicméně v počátcích vývoje aplikace se programátor o tvar URL nestará a pokorně se spokojí s výchozím vzhledem. Raději se věnuje smysluplnému uspořádání kontrolerů a jejich akcí a
 v šablonách veškeré odkazy generuje zásadně pomocí helperů.
 
-	{* file: app/views/shared/_navigation.tpl *}
+```smarty
+{* file: app/views/shared/_navigation.tpl *}
 
-	<h4>Navigation</h4>
-	<ul>
-		<li>{a controller=main action=index}Homepage{/a}</li>
-		<li>{a controller=main action=about_us}About Us{/a}</li>
-		<li>{a controller=main action=contact}Contact{/a}</li>
-		<li>{a controller=sitemap action=index}Sitemap{/a}</li>
-		<li>{a controller=sitemap action=index format=xml}Sitemap in XML{/a}</li>
-	</ul>
+<h4>Navigation</h4>
+<ul>
+	<li>{a controller=main action=index}Homepage{/a}</li>
+	<li>{a controller=main action=about_us}About Us{/a}</li>
+	<li>{a controller=main action=contact}Contact{/a}</li>
+	<li>{a controller=sitemap action=index}Sitemap{/a}</li>
+	<li>{a controller=sitemap action=index format=xml}Sitemap in XML{/a}</li>
+</ul>
+```
 
 Taková šablonka vygeneruje na základě výchozích pravidel pro sestavovaní URL následující výstup.
 
-	<h4>Navigation</h4>
-	<ul>
-		<li><a href="/">Homepage</a></li>
-		<li><a href="/en/main/about_us/">About Us</a></li>
-		<li><a href="/en/main/contact/">Contact</a></li>
-		<li><a href="/en/sitemap/">Sitemap</a></li>
-		<li><a href="/en/sitemap/?format=xml">Sitemap in XML</a></li>
-	</ul>
+```html
+<h4>Navigation</h4>
+<ul>
+	<li><a href="/">Homepage</a></li>
+	<li><a href="/en/main/about_us/">About Us</a></li>
+	<li><a href="/en/main/contact/">Contact</a></li>
+	<li><a href="/en/sitemap/">Sitemap</a></li>
+	<li><a href="/en/sitemap/?format=xml">Sitemap in XML</a></li>
+</ul>
+```
 
 Aplikace si několik dnů spokojeně pobrukuje v beta režimu a pak se objeví požadavek na změnu některých adres. Kýžený stav je následující.
 
-	<h4>Navigation</h4>
-	<ul>
-		<li><a href="/">Homepage</a></li>
-		<li><a href="/company/about-us/">About Us</a></li>
-		<li><a href="/company/contact/">Contact</a></li>
-		<li><a href="/sitemap/">Sitemap</a></li>
-		<li><a href="/sitemap.xml">Sitemap in XML</a></li>
-	</ul>
+```html
+<h4>Navigation</h4>
+<ul>
+	<li><a href="/">Homepage</a></li>
+	<li><a href="/company/about-us/">About Us</a></li>
+	<li><a href="/company/contact/">Contact</a></li>
+	<li><a href="/sitemap/">Sitemap</a></li>
+	<li><a href="/sitemap.xml">Sitemap in XML</a></li>
+</ul>
+```
 
 
 Taková změna pochopitelně v ATK14 možná je - jinak by zde nebyla vůbec zmiňována :) A velmi radostná zpráva je, že se do hotového kódu kontrolerů, šablon a modelů už nezasahuje.
 
 V našem příkladě si vystačíme s jedním statickým routerem.
 
-	<?php
-	// file: config/routers/seo_router.php
-	class SeoRouter extends Atk14Router{
-		function setUp(){
-			$this->addRoute("/company/about-us/","main/about_us");
-			$this->addRoute("/company/contact/","main/contact");
-			$this->addRoute("/sitemap.xml","sitemap/index",array("format" => "xml"));
-			$this->addRoute("/sitemap/","sitemap/index");
-		}
+```php
+<?php
+// file: config/routers/seo_router.php
+class SeoRouter extends Atk14Router{
+	function setUp(){
+		$this->addRoute("/company/about-us/","main/about_us");
+		$this->addRoute("/company/contact/","main/contact");
+		$this->addRoute("/sitemap.xml","sitemap/index",array("format" => "xml"));
+		$this->addRoute("/sitemap/","sitemap/index");
 	}
+}
+```
 
 Více je statickým routerům věnováno v následující kapitole.
 

@@ -16,35 +16,41 @@ Tento krok je nutné provést pouze jednou. Při instalaci druhé a další ATK1
 
 Kinky vytvoří na přiděleném opalstack serveru adresář $HOME/bin, kam nalinkuje binárku php v preferované verzi.
 
-    [kinky@notebook ~]$ ssh snapper@snapper.opalstacked.com
-    [snapper@opal6 ~]$ mkdir bin
-    [snapper@opal6 ~]$ ln -s /usr/bin/php83 ~/bin/php
+```shell
+[kinky@notebook ~]$ ssh snapper@snapper.opalstacked.com
+[snapper@opal6 ~]$ mkdir bin
+[snapper@opal6 ~]$ ln -s /usr/bin/php83 ~/bin/php
+```
 
 Do ~/.bash_profile si novou cestu přidá do PATH a nastaví proměnnou prostředí ATK14_ENV.
 
-    # .bash_profile
+```bash
+# .bash_profile
 
-    # Get the aliases and functions
-    if [ -f ~/.bashrc ]; then
-            . ~/.bashrc
-    fi
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+fi
 
-    # User specific environment and startup programs
+# User specific environment and startup programs
 
-    PATH=$HOME/bin:$PATH
-    export PATH
+PATH=$HOME/bin:$PATH
+export PATH
 
-    ATK14_ENV=production
-    export ATK14_ENV
+ATK14_ENV=production
+export ATK14_ENV
+```
 
 Rovněž na začátek crontabu doplní nastavení PATH a ATK14_ENV.
 
-    [snapper@opal6 ~]$ crontab -e
+```shell
+[snapper@opal6 ~]$ crontab -e
 
-    MAILTO=jan.kucera@example.com
-    ATK14_ENV=production
-    PATH=/home/snapper/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
-    CRON_TZ=Europe/Prague
+MAILTO=jan.kucera@example.com
+ATK14_ENV=production
+PATH=/home/snapper/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+CRON_TZ=Europe/Prague
+```
 
 Vytvoření aplikace, site a databáze
 -----------------------------------
@@ -66,27 +72,31 @@ Recept pro deployment do produkce
 
 Kinky zapíše recept pro deployment do produkce do souboru config/deploy.yml.
 
-    [kinky@notebook ~/projects/filcker]$ vim config/deploy.yml
+```shell
+[kinky@notebook ~/projects/filcker]$ vim config/deploy.yml
+```
 
-    # file: config/deploy.yml
-    production:
-      url: "https://www.filcker.net/"
-      user: "snapper"
-      env: "PATH=/home/{{user}}/bin:$PATH"
-      server: "{{user}}.opalstacked.com"
-      directory: "/home/{{user}}/apps/filcker/"
-      deploy_repository: "{{user}}@{{server}}:repos/filcker.git"
-      before_deploy:
-      - "@local composer update"
-      - "@local npm install"
-      - "@local gulp"
-      - "@local gulp admin"
-      rsync: 
-      - "public/dist/"
-      - "public/admin/dist/"
-      - "vendor/"
-      after_deploy:
-      - "./scripts/migrate && ./scripts/delete_temporary_files dbmole_cache"
+```yaml
+# file: config/deploy.yml
+production:
+  url: "https://www.filcker.net/"
+  user: "snapper"
+  env: "PATH=/home/{{user}}/bin:$PATH"
+  server: "{{user}}.opalstacked.com"
+  directory: "/home/{{user}}/apps/filcker/"
+  deploy_repository: "{{user}}@{{server}}:repos/filcker.git"
+  before_deploy:
+  - "@local composer update"
+  - "@local npm install"
+  - "@local gulp"
+  - "@local gulp admin"
+  rsync: 
+  - "public/dist/"
+  - "public/admin/dist/"
+  - "vendor/"
+  after_deploy:
+  - "./scripts/migrate && ./scripts/delete_temporary_files dbmole_cache"
+```
 
 Přenos aplikace do produkce
 ---------------------------
@@ -95,11 +105,15 @@ ATK14 framework obsahuje nástroj scripts/initialize_deployment_stage, který na
 
 Kinky tedy spustí:
 
-    [kinky@notebook ~/projects/filcker]$ ./scripts/initialize_deployment_stage production
+```shell
+[kinky@notebook ~/projects/filcker]$ ./scripts/initialize_deployment_stage production
+```
 
 Pečlivě prozkoumá, jaké příkazy jsou vypsány. Vypadá to dobře a tak nebojácně zadává:
 
-    [kinky@notebook ~/projects/filcker]$ ./scripts/initialize_deployment_stage production | sh
+```shell
+[kinky@notebook ~/projects/filcker]$ ./scripts/initialize_deployment_stage production | sh
+```
 
 Uf. Tentokrát dopadlo všechno dobře, proto se Kinky zase uvolňuje a jeho krevní tlak se pozvolna vrácí zpět do normálu.
 
@@ -112,23 +126,31 @@ Kinky se přihlásí do produkční instalace, kde založí lokální soubor s k
 
 Všimni si, že vůbec není nutné zadávat konfiguraci pro testovací a vývojovou databázi. Do těch se v produkci napojovat nebudeme.
 
-    [kinky@notebook ~/projects/filcker]$ ./scripts/shell production
-    [snapper@opal6 ~/apps/filcker$ vim local_config/database.yml
+```shell
+[kinky@notebook ~/projects/filcker]$ ./scripts/shell production
+[snapper@opal6 ~/apps/filcker$ vim local_config/database.yml
+```
 
-    # file: local_config/database.yml
-    production:
-      host: 127.0.0.1
-      database: "filcker_production"
-      username: "filcker_production"
-      password: "DatabasePassword123"
+```yaml
+# file: local_config/database.yml
+production:
+  host: 127.0.0.1
+  database: "filcker_production"
+  username: "filcker_production"
+  password: "DatabasePassword123"
+```
 
 Kinky teď může otestovat, že se do produkční databáze připojí:
 
-    [snapper@opal6 ~/apps/filcker]$ ./scripts/dbconsole
+```shell
+[snapper@opal6 ~/apps/filcker]$ ./scripts/dbconsole
+```
 
 Pokud vše klapne, spustí migrace:
-    
-    [snapper@opal6 ~/apps/filcker]$ ./scripts/migrate
+
+```shell
+[snapper@opal6 ~/apps/filcker]$ ./scripts/migrate
+```
 
 A je hotovo.
 
@@ -137,6 +159,8 @@ Deployment
 
 Následný deployment je pak snadný jako facka. Kinky a jeho kolegové v klidu vyvíjejí na svých noteboocích a jakmile se rozhodnou svou práci zveřejnit v produkci, spustí:
 
-    [kinky@notebook ~/projects/filcker]$ ./scripts/deployment production
+```shell
+[kinky@notebook ~/projects/filcker]$ ./scripts/deployment production
+```
 
 Tohleto se Kinkymu vážně podařilo! :)

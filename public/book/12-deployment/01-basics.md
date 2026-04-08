@@ -34,12 +34,14 @@ Konfigurační soubor
 
 Konfigurace je uložena v souboru ```config/deploy.yml``` a ve své nejjednodušší podobě může vypadat například takto:
 
-    # file: config/deploy.yml
-    production:
-      server: "alpha.example.com"
-      user: "deploy"
-      directory: "/var/www/myapp/"
-      deploy_repository: "/home/deploy/repos/myapp.git"
+```yaml
+# file: config/deploy.yml
+production:
+  server: "alpha.example.com"
+  user: "deploy"
+  directory: "/var/www/myapp/"
+  deploy_repository: "/home/deploy/repos/myapp.git"
+```
 
 V tomto konfiguračním souboru je toliko zapsáno, že:
 
@@ -51,24 +53,26 @@ V tomto konfiguračním souboru je toliko zapsáno, že:
 
 Ve skutečnosti však toho bude konfigurační soubor obsahovat více. Následující příklad se už více podobá tomu, co vidíme v praxi.
 
-    # file: config/deploy.yml
-    production:
-      url: "https://www.myapp.com/"
-      server: "alpha.example.com"
-      user: "deploy"
-      env: "PATH=/home/deploy/bin:$PATH"
-      directory: "/var/www/myapp/"
-      deploy_repository: "/home/deploy/repos/myapp.git"
-      before_deploy:
-      - "@local composer update"
-      - "@local npm install"
-      - "@local gulp"
-      - "@local gulp admin"
-      rsync:
-      - "public/admin/dist/"
-      - "vendor/"
-      after_deploy:
-      - "./scripts/migrate && ./scripts/delete_temporary_files dbmole_cache"
+```yaml
+# file: config/deploy.yml
+production:
+  url: "https://www.myapp.com/"
+  server: "alpha.example.com"
+  user: "deploy"
+  env: "PATH=/home/deploy/bin:$PATH"
+  directory: "/var/www/myapp/"
+  deploy_repository: "/home/deploy/repos/myapp.git"
+  before_deploy:
+  - "@local composer update"
+  - "@local npm install"
+  - "@local gulp"
+  - "@local gulp admin"
+  rsync:
+  - "public/admin/dist/"
+  - "vendor/"
+  after_deploy:
+  - "./scripts/migrate && ./scripts/delete_temporary_files dbmole_cache"
+```
 
 - Hodnota url je pouze informační. Pro přehlednost a případné odhalování problémů je prostě vhodné uvést, na jaké URL daná produkční instalace běží.
 - Pomocí env můžeme nastavovat proměnné prostředí.
@@ -82,7 +86,9 @@ Před samotným deploymentem je dobré se ujistit, že commit hash, na kterém s
 
 Pak už stačí zadat:
 
-    [john@asterix ~/projects/myapp]$ ./scripts/deploy production
+```shell
+[john@asterix ~/projects/myapp]$ ./scripts/deploy production
+```
 
 Proces deploymentu začne provádět postupně příkazy, o kterých informuje na svém výstupu.
 
@@ -90,16 +96,22 @@ Mimo jiné je provedeno následující:
 
 1. Vytvoří se git remote nazvaný *production*, pokud ještě neexistuje:
 
-    git remote add production deploy@alpha.example.com:/home/deploy/repos/myapp.git
+```shell
+git remote add production deploy@alpha.example.com:/home/deploy/repos/myapp.git
+```
 
 2. Pushne se do remote production do větve *master* aktuální HEAD z aktuální větve (dejme tomu develop):
 
-    git push production develop:master
+```shell
+git push production develop:master
+```
 
 3. Na serveru alpha.example.com budou v adresáři /var/www/myapp/ provedeny tyto příkazy:
 
-    git checkout master && git fetch origin && git reset --hard origin/master
-    git submodule init && git submodule update
+```shell
+git checkout master && git fetch origin && git reset --hard origin/master
+git submodule init && git submodule update
+```
 
 Případné další příkazy, které budou provedeny, závisí na konfiguraci v config/deploy.yml.
 
@@ -110,49 +122,55 @@ Konfigurace pro více produkčních prostředí
 
 Konfigurační soubor může obsahovat popis pro více produkčních instalací.
 
-    # file: config/deploy.yml
-    production:
-      url: "https://www.myapp.com/"
-      server: "alpha.example.com"
-      user: "deploy"
-      env: "PATH=/home/deploy/bin:$PATH"
-      directory: "/var/www/myapp/"
-      deploy_repository: "/home/deploy/repos/myapp.git"
-      before_deploy:
-      - "@local composer update"
-      - "@local npm install"
-      - "@local gulp"
-      - "@local gulp admin"
-      rsync:
-      - "public/admin/dist/"
-      - "vendor/"
-      after_deploy:
-      - "./scripts/migrate && ./scripts/delete_temporary_files dbmole_cache"
+```yaml
+# file: config/deploy.yml
+production:
+  url: "https://www.myapp.com/"
+  server: "alpha.example.com"
+  user: "deploy"
+  env: "PATH=/home/deploy/bin:$PATH"
+  directory: "/var/www/myapp/"
+  deploy_repository: "/home/deploy/repos/myapp.git"
+  before_deploy:
+  - "@local composer update"
+  - "@local npm install"
+  - "@local gulp"
+  - "@local gulp admin"
+  rsync:
+  - "public/admin/dist/"
+  - "vendor/"
+  after_deploy:
+  - "./scripts/migrate && ./scripts/delete_temporary_files dbmole_cache"
 
-    staging:
-      url: "https://staging.myapp.com/"
-      server: "alpha.example.com"
-      user: "deploy"
-      env: "PATH=/home/deploy/bin:$PATH"
-      directory: "/var/www/myapp_staging"
-      deploy_repository: "/home/deploy/repos/myapp_staging.git"
-      before_deploy:
-      - "@local composer update"
-      - "@local npm install"
-      - "@local gulp"
-      - "@local gulp admin"
-      rsync:
-      - "public/admin/dist/"
-      - "vendor/"
-      after_deploy:
-      - "./scripts/migrate && ./scripts/delete_temporary_files dbmole_cache"
+staging:
+  url: "https://staging.myapp.com/"
+  server: "alpha.example.com"
+  user: "deploy"
+  env: "PATH=/home/deploy/bin:$PATH"
+  directory: "/var/www/myapp_staging"
+  deploy_repository: "/home/deploy/repos/myapp_staging.git"
+  before_deploy:
+  - "@local composer update"
+  - "@local npm install"
+  - "@local gulp"
+  - "@local gulp admin"
+  rsync:
+  - "public/admin/dist/"
+  - "vendor/"
+  after_deploy:
+  - "./scripts/migrate && ./scripts/delete_temporary_files dbmole_cache"
+```
 
 Deployment do produkce:
 
-    [john@asterix ~/projects/myapp]$ ./scripts/deploy production
+```shell
+[john@asterix ~/projects/myapp]$ ./scripts/deploy production
+```
 
 Deployment na staging:
 
-    [john@asterix ~/projects/myapp]$ ./scripts/deploy staging
+```shell
+[john@asterix ~/projects/myapp]$ ./scripts/deploy staging
+```
 
 Při pohledu na obsah souboru s návody na deployment do dvou produkčních instalací si možná řekneš, že obsahuje příliš mnoho duplicitních řádků. A právě proto se v další kapitole podíváme na to, jak obsah souboru config/deploy.yml zjednodušit.

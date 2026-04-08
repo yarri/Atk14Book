@@ -11,95 +11,117 @@ Každý migrační soubor musí začínat numerickým prefixem, který zajistí 
 
 ### Příklady názvů migračních souborů
 
-	$ ls db/migrations/
-	0000_sessions.sql
-	0001_users.sql
-	0002_reset_admins_password_migration.php
-	0003_create_table_sections.sql
-	0004_filling_up_sections_migration.php
-	application_migration.php
+```shell
+$ ls db/migrations/
+0000_sessions.sql
+0001_users.sql
+0002_reset_admins_password_migration.php
+0003_create_table_sections.sql
+0004_filling_up_sections_migration.php
+application_migration.php
+```
 
 ### Pojďme se podívat dovnitř migračních souborů
 
 Pokud je migrační soubor SQL skript, může jeho obsah vypadat třeba takto:
 
-	-- file: db/migrations/0003_create_table_sections.sql
-	-- this migration creates the section table
-	CREATE SEQUENCE seq_sections;
-	CREATE TABLE sections(
-	 id INT PRIMARY KEY,
-	 title VARCHAR(255)
-	);
+```sql
+-- file: db/migrations/0003_create_table_sections.sql
+-- this migration creates the section table
+CREATE SEQUENCE seq_sections;
+CREATE TABLE sections(
+ id INT PRIMARY KEY,
+ title VARCHAR(255)
+);
+```
 
 Pokud je migrační soubor PHP skript, očekává se, že obsahuje třídu se stejným názvem, která je potomkem třídy Atk14Migration a která implementuje metodu up() - právě tato metoda je během migrace spuštěna.
 
-	<?php
-	// file: db/migrations/0004_filling_up_sections_migration.php
-	// this migration fills up the migration table
-	class FillingUpSectionsMigration extends ApplicationMigration{
-	 function up(){
-		 foreach(array("Javascript","PHP","CSS","Python","Ruby") as $title){
-			 Section::CreateNewRecord(array("title" => $title));
-		 }
-
-		 // it's also possible to utilize the dbmole!
-		 $this->dbmole->insertIntoTable("sections",array(
-			 "title" => "Perl"
-		 ));
+```php
+<?php
+// file: db/migrations/0004_filling_up_sections_migration.php
+// this migration fills up the migration table
+class FillingUpSectionsMigration extends ApplicationMigration{
+ function up(){
+	 foreach(array("Javascript","PHP","CSS","Python","Ruby") as $title){
+		 Section::CreateNewRecord(array("title" => $title));
 	 }
-	}
+
+	 // it's also possible to utilize the dbmole!
+	 $this->dbmole->insertIntoTable("sections",array(
+		 "title" => "Perl"
+	 ));
+ }
+}
+```
 
 Třída ApplicationMigration je určena pro společné funkce všech PHP migrací. V některých aplikacích to může být užitečné.
 
-	<?php
-	// file: db/migrations/application_migration.php
-	/**
-	 * The base class for all PHP migrations
-	 *
-	 * The perfect place for common methods (e.g. lorem ipsum generator)
-	 */
-	class ApplicationMigration extends Atk14Migration{
+```php
+<?php
+// file: db/migrations/application_migration.php
+/**
+ * The base class for all PHP migrations
+ *
+ * The perfect place for common methods (e.g. lorem ipsum generator)
+ */
+class ApplicationMigration extends Atk14Migration{
 
-	}
+}
+```
 
 ### Spuštění migrací
 
 Pro provedení všech čekajících migrací spusť
 
-	$ ./scripts/migration
+```shell
+$ ./scripts/migration
+```
 
 V produkci je nutné mít správně nastavenou proměnnou prostředí ATK14_ENV
 
-	$ ATK14_ENV=production ./scripts/migration
+```shell
+$ ATK14_ENV=production ./scripts/migration
+```
 
 nebo
 
-	$ export ATK14_ENV=production
-	$ ./scripts/migration
+```shell
+$ export ATK14_ENV=production
+$ ./scripts/migration
+```
 
 ### Hrátky na příkazové řádce
 
 Zjištění, které migrace ještě nebyly provedeny
 
-	$ ./scripts/migrace -p
-	# or
-	$ ./scripts/migrace --preview
+```shell
+$ ./scripts/migrace -p
+# or
+$ ./scripts/migrace --preview
+```
 
 Zjištění, které migrace již proběhly
 
-	$ ./scripts/migrace -l
-	# or
-	$ ./scripts/migrace --list
+```shell
+$ ./scripts/migrace -l
+# or
+$ ./scripts/migrace --list
+```
 
 Provedení vybraných čekajících migrace mimo definované pořadí
 
-	$ ./scripts/migrace 0145_altering_basket_items.sql 0146_order_gifts.sql
+```shell
+$ ./scripts/migrace 0145_altering_basket_items.sql 0146_order_gifts.sql
+```
 
 Opakované provedení migrace
 
-	$ ./scripts/migrace -f 0002_reset_admins_password_migration.php
-	# or
-	$ ./scripts/migrace --force 0002_reset_admins_password_migration.php
+```shell
+$ ./scripts/migrace -f 0002_reset_admins_password_migration.php
+# or
+$ ./scripts/migrace --force 0002_reset_admins_password_migration.php
+```
 
 Závěrem
 -------

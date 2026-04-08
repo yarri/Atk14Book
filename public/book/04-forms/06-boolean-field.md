@@ -32,18 +32,20 @@ Na adrese <http://www.atk14.net/en/fields/boolean_field/> si formulář proklike
 Volba *required* nemá pro boolean políčka smysl, proto je u obou polí nastavena na false. Pokud budeš po uživateli chtít, aby zaškrtl nějaký checkbox
 (a například tím potvrdil souhlas s obchodními podmínkami e-shopu), doplň tuto kontrolu do validační metody *clean()*.
 
-	<?php
-	class OrderForm extends ApplicationForm{
+```php
+<?php
+class OrderForm extends ApplicationForm{
 
-		// ....
+	// ....
 
-		function clean(){
-			if(!$this->cleaned_data["confirm"]){
-				$this->set_error("confirm","Please, check the checkbox");
-			}
-
-			return array(null,$this->cleaned_data);
+	function clean(){
+		if(!$this->cleaned_data["confirm"]){
+			$this->set_error("confirm","Please, check the checkbox");
 		}
+
+		return array(null,$this->cleaned_data);
 	}
+}
+```
 
 Tolik o boolean políčkách.

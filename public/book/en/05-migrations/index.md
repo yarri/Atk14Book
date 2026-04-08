@@ -11,95 +11,117 @@ Each migration file must start with a numeric prefix that ensures the migrations
 
 ### Examples of migration file names
 
-	$ ls db/migrations/
-	0000_sessions.sql
-	0001_users.sql
-	0002_reset_admins_password_migration.php
-	0003_create_table_sections.sql
-	0004_filling_up_sections_migration.php
-	application_migration.php
+```shell
+$ ls db/migrations/
+0000_sessions.sql
+0001_users.sql
+0002_reset_admins_password_migration.php
+0003_create_table_sections.sql
+0004_filling_up_sections_migration.php
+application_migration.php
+```
 
 ### Let's look inside migration files
 
 If a migration file is an SQL script, its contents might look like this:
 
-	-- file: db/migrations/0003_create_table_sections.sql
-	-- this migration creates the section table
-	CREATE SEQUENCE seq_sections;
-	CREATE TABLE sections(
-	 id INT PRIMARY KEY,
-	 title VARCHAR(255)
-	);
+```sql
+-- file: db/migrations/0003_create_table_sections.sql
+-- this migration creates the section table
+CREATE SEQUENCE seq_sections;
+CREATE TABLE sections(
+ id INT PRIMARY KEY,
+ title VARCHAR(255)
+);
+```
 
 If a migration file is a PHP script, it is expected to contain a class of the same name that is a subclass of Atk14Migration and implements the `up()` method — this method is executed during the migration.
 
-	<?php
-	// file: db/migrations/0004_filling_up_sections_migration.php
-	// this migration fills up the migration table
-	class FillingUpSectionsMigration extends ApplicationMigration{
-	 function up(){
-		 foreach(array("Javascript","PHP","CSS","Python","Ruby") as $title){
-			 Section::CreateNewRecord(array("title" => $title));
-		 }
-
-		 // it's also possible to utilize the dbmole!
-		 $this->dbmole->insertIntoTable("sections",array(
-			 "title" => "Perl"
-		 ));
+```php
+<?php
+// file: db/migrations/0004_filling_up_sections_migration.php
+// this migration fills up the migration table
+class FillingUpSectionsMigration extends ApplicationMigration{
+ function up(){
+	 foreach(array("Javascript","PHP","CSS","Python","Ruby") as $title){
+		 Section::CreateNewRecord(array("title" => $title));
 	 }
-	}
+
+	 // it's also possible to utilize the dbmole!
+	 $this->dbmole->insertIntoTable("sections",array(
+		 "title" => "Perl"
+	 ));
+ }
+}
+```
 
 The `ApplicationMigration` class is intended for shared functionality across all PHP migrations. In some applications this can be useful.
 
-	<?php
-	// file: db/migrations/application_migration.php
-	/**
-	 * The base class for all PHP migrations
-	 *
-	 * The perfect place for common methods (e.g. lorem ipsum generator)
-	 */
-	class ApplicationMigration extends Atk14Migration{
+```php
+<?php
+// file: db/migrations/application_migration.php
+/**
+ * The base class for all PHP migrations
+ *
+ * The perfect place for common methods (e.g. lorem ipsum generator)
+ */
+class ApplicationMigration extends Atk14Migration{
 
-	}
+}
+```
 
 ### Running migrations
 
 To apply all pending migrations, run:
 
-	$ ./scripts/migration
+```shell
+$ ./scripts/migration
+```
 
 In production, make sure the ATK14_ENV environment variable is set correctly:
 
-	$ ATK14_ENV=production ./scripts/migration
+```shell
+$ ATK14_ENV=production ./scripts/migration
+```
 
 or
 
-	$ export ATK14_ENV=production
-	$ ./scripts/migration
+```shell
+$ export ATK14_ENV=production
+$ ./scripts/migration
+```
 
 ### Command-line options
 
 Check which migrations have not yet been applied:
 
-	$ ./scripts/migrace -p
-	# or
-	$ ./scripts/migrace --preview
+```shell
+$ ./scripts/migrace -p
+# or
+$ ./scripts/migrace --preview
+```
 
 Check which migrations have already been applied:
 
-	$ ./scripts/migrace -l
-	# or
-	$ ./scripts/migrace --list
+```shell
+$ ./scripts/migrace -l
+# or
+$ ./scripts/migrace --list
+```
 
 Apply selected pending migrations out of the defined order:
 
-	$ ./scripts/migrace 0145_altering_basket_items.sql 0146_order_gifts.sql
+```shell
+$ ./scripts/migrace 0145_altering_basket_items.sql 0146_order_gifts.sql
+```
 
 Re-apply a migration:
 
-	$ ./scripts/migrace -f 0002_reset_admins_password_migration.php
-	# or
-	$ ./scripts/migrace --force 0002_reset_admins_password_migration.php
+```shell
+$ ./scripts/migrace -f 0002_reset_admins_password_migration.php
+# or
+$ ./scripts/migrace --force 0002_reset_admins_password_migration.php
+```
 
 ### Conclusion
 
