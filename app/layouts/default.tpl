@@ -61,21 +61,10 @@
 		{placeholder for=head} {* a place for <link rel="canonical" ...>, etc. *}
 	</head>
 
-	<body class="body_{$controller}_{$action}" data-controller="{$controller}" data-action="{$action}">
+	<body class="body_{$controller}_{$action}" data-controller="{$controller}" data-action="{$action}" data-bs-theme="{if $request->getCookieVar("dark_mode")}dark{else}light{/if}">
 
-		<header class="mt-0 pt-0 bg-body-tertiary">
-			{render partial="shared/layout/header"}
+		{render partial="shared/layout/header"}
 
-
-			<!-- Docs page layout -->
-			<div class="bs-docs-header hidden-xs" id="content" tabindex="-1">
-				<div class="container-fluid">
-					<h1>ATK14 Book</h1>
-					<p>{t}Read, hear, and study the ATK14 Book. Grow your skills. Relax. Repeat.{/t}</p>
-				</div>
-			</div>
-
-		</header>
 		
 
 

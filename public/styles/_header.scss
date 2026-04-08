@@ -1,12 +1,69 @@
 // Admin header and breadcrumbs
 
 ol.breadcrumb {
-	border-bottom: 1px solid $gray-300;
+	margin-top: -1.5rem;
+	margin-bottom: 3rem;
+	li:not(:first-child)::before {
+		font-family: $fa-font-family;
+		content: "\f061";
+		font-weight: bold;
+		font-size: 0.875em;
+		margin-top: 0.175em;
+	}
 }
 
-.header-main {
-	h1, .h1 {
-		font-size: 1.5rem;
-		font-weight: bold;
+.header--main {
+	padding-top: 0;
+	$borderStyle: 1px solid $primary;
+	//border-bottom: $borderStyle;
+	.container-fluid {
+		border-right: $borderStyle;
+		border-left: $borderStyle;
+	}
+	nav.navbar {
+		padding-top: 0;
+		padding-bottom: 0;
+		color: $primary;
+		.nav-link {
+			padding-top: 1em;
+			padding-bottom: 1em;
+			color: $primary;
+		}
+		.nav-separator {
+			border-left: $borderStyle;
+			margin-left: 0.75rem;
+			margin-right: 0.75rem;
+			width: 0;
+			padding: 0;
+		}
+		.container-fluid {
+			border-bottom: $borderStyle;
+		}
+	}
+	.header__title {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border-bottom: $borderStyle;
+		flex-wrap: wrap;
+		gap: 1rem 2rem;
+		color: $primary;	
+		line-height: 1;
+		padding-top: 1.5rem;
+		padding-bottom: 1.5rem;
+		a {
+			color: inherit;
+		}
+		p {
+			margin: 0;
+			font-weight: 500;
+		}
+		h1,.h1 {
+			margin: 0;
+			font-weight: 600;
+			//padding: 0.75em;
+			padding-left: 0;
+			white-space: nowrap;
+		}
 	}
 }

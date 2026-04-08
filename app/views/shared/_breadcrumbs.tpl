@@ -3,7 +3,9 @@
 	{foreach $breadcrumbs as $breadcrumb}
 			{if $breadcrumb->getUrl() && !$breadcrumb@last}
 			<li class="breadcrumb-item">
-				<a href="{$breadcrumb->getUrl()}">{$breadcrumb->getTitle()}</a>
+				<a href="{$breadcrumb->getUrl()}">
+					{$breadcrumb->getTitle()}
+				</a>
 			</li>
 			{else}
 			<li class="breadcrumb-item active">

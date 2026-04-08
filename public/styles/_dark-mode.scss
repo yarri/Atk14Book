@@ -1,0 +1,19 @@
+body[data-bs-theme="dark"] {
+  pre {
+    background-color: black;
+
+    // Override inline color styles (in markdown code blocks)
+    [style*="#880000"] {
+		  color: lighten(#880000, 30%) !important;
+    }
+    [style*="#397300"] {
+      color: lighten(#397300, 20%) !important;
+    }
+    [style*="#78A960"] {
+      color: lighten(#78A960, 20%) !important;
+    }
+    [style*="#1f7199"] {
+      color: lighten(#1f7199, 20%) !important;
+    }
+  }
+}

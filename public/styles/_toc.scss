@@ -5,11 +5,16 @@
     transition: background-color 1s ease;
     &.active {
       color: $primary;
-      border-bottom: 1px solid $primary;
+      //border-bottom: 1px solid $primary;
+      font-weight: 600;
     }
     &:hover {
-      background-color: $gray-200;
+      background-color: $primary;
+      color: white;
       transition: background-color 0.2s ease;
+      .chapter-no {
+        color: rgba(white,0.6);
+      }
     }
     &--level-1 {
       font-weight: bold;
@@ -25,7 +30,7 @@
 }
 
 #toc-toggle {
-  border-inline-start: 1px solid $border-color;
+  border-inline-start: 1px solid $primary;
   &.show, &.showing, &.hiding {
     overflow-y:scroll;
     padding-top: 1rem;
