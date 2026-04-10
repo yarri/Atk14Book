@@ -3,6 +3,9 @@
 	margin: auto;
 }
 
+body {
+	padding-bottom: $grid-gutter-width * 4;
+}
 // Applies CSS Grid for layout w/sidebar
 
 .has-nav-section {
