@@ -64,6 +64,36 @@ ol.breadcrumb {
 			//padding: 0.75em;
 			padding-left: 0;
 			white-space: nowrap;
+			text-decoration: none;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	.navbar-toggler {
+		border: none;
+		color: $primary;
+		padding: 0.5rem;
+		font-size: 1.5rem;
+		&:focus:not(:focus-visible) {
+			box-shadow: none;
+		}
+		&[aria-expanded="false"] {
+			.navbar-toggler__bars {
+				display: inline-block;
+			}
+			.navbar-toggler__xmark {
+				display: none;
+			}
+		}
+		&[aria-expanded="true"] {
+			.navbar-toggler__bars {
+				display: none;
+			}
+			.navbar-toggler__xmark {
+				display: inline-block;
+			}
 		}
 	}
 }
