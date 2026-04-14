@@ -58,6 +58,7 @@
 
 #toc-toggle {
   border-inline-start: 1px solid $primary;
+  max-width: 85%;
   &.show, &.showing, &.hiding {
     overflow-y:scroll;
     padding-top: 1rem;
