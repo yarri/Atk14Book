@@ -15,7 +15,8 @@ ol.breadcrumb {
 .header--main {
 	padding-top: 0;
 	$borderStyle: 1px solid $primary;
-	//border-bottom: $borderStyle;
+	$collapseBreakpoint: lg;
+	
 	.container-fluid {
 		border-right: $borderStyle;
 		border-left: $borderStyle;
@@ -38,6 +39,9 @@ ol.breadcrumb {
 		}
 		.container-fluid {
 			border-bottom: $borderStyle;
+		}
+		@include media-breakpoint-up($collapseBreakpoint) {
+			border-top: $borderStyle;
 		}
 	}
 	.header__title {
@@ -68,6 +72,32 @@ ol.breadcrumb {
 			&:hover {
 				text-decoration: underline;
 			}
+		}
+		@include media-breakpoint-down($collapseBreakpoint) {
+			border-top: $borderStyle;
+			p {
+				flex-basis: 100%;
+			}
+		}
+		
+	}
+
+	@include media-breakpoint-down($collapseBreakpoint) {
+		display: flex;
+		flex-direction: column;
+		> nav.navbar {
+			.container-fluid {
+				border-bottom: none;
+				padding: 0;
+				> * {
+					padding-left: 1rem;//$container-padding-x;
+					padding-right: 1rem;//$container-padding-x;
+					border-bottom: $borderStyle;
+					padding-bottom: 1rem;
+					background-color: rgba(	$primary, 0.05);
+				}
+			}
+			order: 2;
 		}
 	}
 
