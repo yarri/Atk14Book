@@ -29,7 +29,7 @@
         <form class="d-flex" role="search">
           <div class="input-group">
             <input class="form-control" type="search" placeholder="Search" aria-label="{t}Search{/t}"/>
-            <button class="btn btn-outline-success" type="submit" aria-label="{t}Search{/t}">{!"magnifying-glass"|icon}</button>
+            <button class="btn btn-outline-primary" type="submit" aria-label="{t}Search{/t}">{!"magnifying-glass"|icon}</button>
           </div>
         </form>
       </div>

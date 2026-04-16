@@ -41,7 +41,9 @@ ol.breadcrumb {
 			border-bottom: $borderStyle;
 		}
 		@include media-breakpoint-up($collapseBreakpoint) {
+			.container-fluid {
 			border-top: $borderStyle;
+			}
 		}
 	}
 	.header__title {

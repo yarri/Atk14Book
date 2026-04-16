@@ -56,7 +56,7 @@
   }
 }
 
-#toc-toggle {
+#toc-container {
   border-inline-start: 1px solid $primary;
   max-width: 85%;
   &.show, &.showing, &.hiding {
@@ -68,6 +68,6 @@
   
 }
 
-.toc {
-  
+.toc-toggler {
+  margin-bottom: $grid-gutter-width*2;
 }
