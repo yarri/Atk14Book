@@ -65,9 +65,6 @@
 
 		{render partial="shared/layout/header"}
 
-		
-
-
 		<div class="container-fluid{if $section_navigation} has-nav-section{/if}">
 			{*render partial="shared/layout/header" *}
 			{render partial="shared/breadcrumbs"}

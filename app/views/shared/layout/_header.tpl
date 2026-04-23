@@ -26,9 +26,9 @@
           </li>
           <li class="nav-separator"></li>
         </ul>
-        <form class="d-flex" role="search">
+        <form class="d-flex" role="search" action="{link_to action="searches/search"}" method="get">
           <div class="input-group">
-            <input class="form-control" type="search" placeholder="Search" aria-label="{t}Search{/t}"/>
+            <input class="form-control" type="search" placeholder="Search" aria-label="{t}Search{/t}" name="q"/>
             <button class="btn btn-outline-primary" type="submit" aria-label="{t}Search{/t}">{!"magnifying-glass"|icon}</button>
           </div>
         </form>
