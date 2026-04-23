@@ -93,7 +93,7 @@ class ApplicationController extends Atk14Controller{
 			);
 			if($this->lang==$l){
 				$current_language = $item;
-				//continue;
+				continue;
 			}
 			$languages[] = $item;
 		}
